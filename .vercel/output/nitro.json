@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-16T08:08:08.802Z",
+  "preset": "vercel",
+  "framework": {
+    "name": "nitro",
+    "version": "3.0.260610-beta"
+  },
+  "versions": {
+    "nitro": "3.0.260610-beta"
+  },
+  "serverEntry": "functions/__server.func/index.mjs",
+  "publicDir": "static",
+  "commands": {
+    "preview": "npx srvx --static ../../static ./functions/__server.func/index.mjs",
+    "deploy": "npx vercel deploy --prebuilt"
+  },
+  "config": {
+    "cloudflare": {
+      "wrangler": {
+        "compatibility_date": "2026-10-07",
+        "assets": {
+          "html_handling": "none",
+          "run_worker_first": [
+            "/privacy.html",
+            "/terms.html"
+          ]
+        },
+        "workers_dev": true,
+        "routes": [
+          {
+            "pattern": "hozerion.zazeroks.com",
+            "zone_name": "zazeroks.com",
+            "custom_domain": true
+          }
+        ]
+      }
+    },
+    "vercel": {
+      "skewProtection": false,
+      "cronHandlerRoute": "/_vercel/cron",
+      "functions": {
+        "runtime": "nodejs24.x"
+      }
+    }
+  }
+}

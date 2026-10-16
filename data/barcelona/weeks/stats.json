@@ -1,0 +1,78 @@
+{
+  "source": "https://github.com/alberto-santini/berth-allocation-problems",
+  "doi": "10.5281/zenodo.17665596",
+  "files": [
+    {
+      "name": "bcn_24B_2.json",
+      "n_ships": 12,
+      "n_berths": 20,
+      "n_periods": 336,
+      "max_ship_len": 5,
+      "ships_longer_than_one_berth": 12,
+      "bks_makespan": 162
+    },
+    {
+      "name": "bcn_24B_10.json",
+      "n_ships": 20,
+      "n_berths": 20,
+      "n_periods": 336,
+      "max_ship_len": 8,
+      "ships_longer_than_one_berth": 20,
+      "bks_makespan": null
+    },
+    {
+      "name": "bcn_24B_25.json",
+      "n_ships": 22,
+      "n_berths": 20,
+      "n_periods": 336,
+      "max_ship_len": 8,
+      "ships_longer_than_one_berth": 22,
+      "bks_makespan": null
+    },
+    {
+      "name": "bcn_24B_50.json",
+      "n_ships": 24,
+      "n_berths": 20,
+      "n_periods": 336,
+      "max_ship_len": 8,
+      "ships_longer_than_one_berth": 24,
+      "bks_makespan": null
+    },
+    {
+      "name": "bcn_36A_2.json",
+      "n_ships": 32,
+      "n_berths": 29,
+      "n_periods": 336,
+      "max_ship_len": 8,
+      "ships_longer_than_one_berth": 32,
+      "bks_makespan": null
+    },
+    {
+      "name": "bcn_36A_10.json",
+      "n_ships": 54,
+      "n_berths": 29,
+      "n_periods": 336,
+      "max_ship_len": 9,
+      "ships_longer_than_one_berth": 54,
+      "bks_makespan": null
+    },
+    {
+      "name": "bcn_36A_25.json",
+      "n_ships": 35,
+      "n_berths": 29,
+      "n_periods": 336,
+      "max_ship_len": 10,
+      "ships_longer_than_one_berth": 35,
+      "bks_makespan": null
+    },
+    {
+      "name": "bcn_36A_50.json",
+      "n_ships": 36,
+      "n_berths": 29,
+      "n_periods": 336,
+      "max_ship_len": 8,
+      "ships_longer_than_one_berth": 36,
+      "bks_makespan": null
+    }
+  ]
+}

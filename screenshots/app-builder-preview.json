@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "MinMove",
+      "hasCanvas": false,
+      "bodyTextLen": 842,
+      "bodyTextHash": "d24431a78b4d8c798225191812590bf5d5bbafbfc222395f92f077f0a75d5fa6",
+      "bodyTextPrefix": "M MinMove SITE Tan Thuan ICD Gate B · morning board Timeline App",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "MinMove",
+      "hasCanvas": false,
+      "bodyTextLen": 406,
+      "bodyTextHash": "7bea52a29774515d6c82d9335c988a132598bd6e9ebb6d37d9939585ad370b37",
+      "bodyTextPrefix": "MinMove Find plan Board List Flow Reset Door 08:00 09:00 10:00 1",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

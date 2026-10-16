@@ -1,0 +1,158 @@
+import assert from "node:assert/strict";
+import { describe, it } from "node:test";
+import { planProof } from "./proof.ts";
+import { bookedHeadline, holdingCall, nextOccupantHour, probeBooked, publishedFacts, publishedWeekList, publishedYard, scoreOneHourLate } from "./published-week.ts";
+import { useBoardStore } from "./store.ts";
+import { solve } from "./solver.ts";
+
+describe("published week on the board", () => {
+  it("maps quay 24B week 2 onto the file's mooring, length, and arrival", () => {
+    const yard = publishedYard();
+    const facts = publishedFacts();
+    assert.equal(yard.id, "bcn-24B-2");
+    assert.equal(yard.timeUnit, "hour");
+    assert.equal(yard.shiftLenMin, 336);
+    assert.equal(yard.docks.length, 20);
+    assert.equal(facts.length, 12);
+    const s9 = facts.find((row) => row.id === "S9");
+    const s11 = facts.find((row) => row.id === "S11");
+    assert.ok(s9);
+    assert.ok(s11);
+    assert.equal(s9.arrival, 6);
+    assert.equal(s9.moor, 10);
+    assert.equal(s9.berth, 13);
+    assert.equal(s9.len, 4);
+    assert.equal(s11.arrival, 78);
+    assert.equal(s11.moor, 78);
+    assert.equal(s11.berth, 16);
+    assert.equal(s11.len, 4);
+    assert.equal(s11.handling, 37);
+    assert.equal(yard.appointments.find((a) => a.truckId === "S11")?.dockId, "B16");
+    assert.equal(yard.appointments.find((a) => a.truckId === "S11")?.startMin, 78);
+    assert.equal(yard.trucks.find((t) => t.id === "S11")?.span, 4);
+  });
+
+  it("scores the one-hour probe from solve(), and keeps the zeros", () => {
+    const yard = publishedYard();
+    const scores = scoreOneHourLate(yard);
+    assert.equal(scores.length, 12);
+    assert.equal(scores.every((row) => row.status === "OPTIMAL"), true);
+    const saved = scores.map((row) => row.saved);
+    assert.deepEqual(saved, [0, 0, 0, 0, 26, 0, 10, 0, 0, 13, 0, 84]);
+    assert.equal(scores.filter((row) => row.saved === 0).length, 8);
+    assert.equal(scores.filter((row) => (row.saved ?? 0) > 0).length, 4);
+    assert.equal(scores.filter((row) => (row.saved ?? 0) < 0).length, 0);
+    assert.equal(scores.reduce((n, row) => n + (row.saved ?? 0), 0), 133);
+    assert.equal(scores.every((row) => row.moved === 0), true);
+
+    const direct = solve(yard, { truckId: "S11", newEtaMin: 79, source: "manual" });
+    const proof = planProof(direct, "hour");
+    assert.ok(proof);
+    assert.equal(proof.savedMin, 84);
+    assert.equal(proof.waitMin, 0);
+    assert.equal(proof.habitWaitMin, 84);
+    assert.equal(proof.habitDock, "B0");
+    assert.equal(proof.dock, "B16");
+    assert.equal(proof.moved, 0);
+    assert.equal(proof.headline, "Saves 84 h versus the first free berth");
+    const s11booked = probeBooked(yard).find((row) => row.id === "S11");
+    assert.ok(s11booked);
+    assert.equal(s11booked.matches, true);
+    assert.equal(s11booked.saved, 0);
+    assert.equal(s11booked.planDock, "B16");
+    assert.equal(s11booked.planStart, 79);
+    assert.equal(s11booked.holdDock, "B16");
+    assert.equal(s11booked.holdStart, 79);
+    assert.equal(s11booked.planMoves, 0);
+    assert.equal(s11booked.leftmostSaved, 84);
+    assert.equal(bookedHeadline(s11booked), "Booked berth is still free. The plan stays on berth 16 at hour 79.");
+    const forced = solve(yard, { truckId: "S11", newEtaMin: 79, source: "manual", forceDockId: "B16" });
+    assert.equal(forced.status, "OPTIMAL");
+    assert.equal(forced.certificate?.chosen.dockId, "B16");
+    assert.equal(forced.certificate?.chosen.startMin, 79);
+    assert.equal(forced.metrics.displaced, 0);
+    assert.equal(scores.every((row) => row.matchesBooked), true);
+    assert.equal(scores.every((row) => row.versusBooked === 0), true);
+    assert.equal(scores.find((row) => row.id === "S11")?.saved, proof.savedMin);
+    assert.equal(scores.find((row) => row.id === "S11")?.firstDock, "B0");
+    assert.equal(scores.find((row) => row.id === "S11")?.nextEta, null);
+    assert.equal(scores.find((row) => row.id === "S11")?.nextSaved, null);
+    assert.equal(holdingCall(yard, "B0", 163, 4), "S1");
+    assert.equal(nextOccupantHour(yard, "S0"), 36);
+    assert.equal(nextOccupantHour(yard, "S11"), null);
+    const s0score = scores.find((row) => row.id === "S0");
+    assert.equal(s0score?.nextEta, 36);
+    const nextDirect = solve(yard, { truckId: "S0", newEtaMin: 36, source: "manual" });
+    const nextProof = planProof(nextDirect, "hour");
+    assert.equal(s0score?.nextSaved, nextProof ? nextProof.savedMin : 0);
+
+    const tied = planProof(solve(yard, { truckId: "S0", newEtaMin: 17, source: "manual" }), "hour");
+    assert.ok(tied);
+    assert.equal(tied.savedMin, 0);
+    assert.equal(tied.headline, "Same wait as the first free berth");
+  });
+
+  it("week 24B-10 uses that file's arrival 40, not week 2's 16", () => {
+    const list = publishedWeekList();
+    assert.equal(list.length, 8);
+    assert.deepEqual(
+      list.map((week) => week.ships),
+      [12, 20, 22, 24, 32, 54, 35, 36],
+    );
+    const yard = publishedYard("bcn-24B-10");
+    assert.equal(yard.id, "bcn-24B-10");
+    assert.equal(yard.docks.length, 20);
+    assert.equal(yard.trucks.length, 20);
+    const truck = yard.trucks.find((row) => row.id === "S0");
+    const appt = yard.appointments.find((row) => row.truckId === "S0");
+    assert.equal(truck?.arrivalMin, 40);
+    assert.equal(truck?.durationMin, 18);
+    assert.equal(truck?.span, 7);
+    assert.equal(appt?.startMin, 77);
+    assert.equal(appt?.dockId, "B0");
+    const scores = scoreOneHourLate(yard);
+    assert.equal(scores.filter((row) => (row.saved ?? 0) > 0).length, 16);
+    assert.equal(scores.filter((row) => row.saved === 0).length, 4);
+    assert.equal(scores.reduce((sum, row) => sum + (row.saved ?? 0), 0), 808);
+    const score = scores.find((row) => row.id === "S0");
+    assert.equal(score?.arrival, 40);
+    assert.equal(score?.moor, 77);
+    assert.equal(score?.len, 7);
+    assert.equal(score?.status, "OPTIMAL");
+    const direct = solve(yard, { truckId: "S0", newEtaMin: 78, source: "manual" });
+    const proof = planProof(direct, "hour");
+    assert.equal(score?.saved, proof ? proof.savedMin : 0);
+    assert.equal(score?.saved === 0 || (score?.saved ?? 0) > 0, true);
+  });
+
+  it("the open board's Find plan matches that certificate, including a zero", () => {
+    useBoardStore.getState().openPublished();
+    const open = useBoardStore.getState();
+    assert.equal(open.yard.id, "bcn-24B-2");
+    assert.equal(open.selectedId, "S11");
+    assert.equal(open.delayMin, 1);
+    const s11 = planProof(open.result!, "hour");
+    assert.equal(s11?.savedMin, 84);
+    assert.equal(s11?.headline, "Saves 84 h versus the first free berth");
+    useBoardStore.getState().setSelectedId("S0");
+    const s0 = planProof(useBoardStore.getState().result!, "hour");
+    assert.equal(s0?.savedMin, 0);
+    assert.equal(s0?.headline, "Same wait as the first free berth");
+    useBoardStore.getState().setDelayMin(3);
+    useBoardStore.getState().reset();
+    const restored = useBoardStore.getState();
+    assert.equal(restored.yard.id, "bcn-24B-47");
+    assert.equal(restored.selectedId, "S8");
+    assert.equal(restored.delayMin, 1);
+    assert.equal(restored.result, null);
+    useBoardStore.getState().openWeek("bcn-24B-10");
+    const other = useBoardStore.getState();
+    assert.equal(other.yard.id, "bcn-24B-10");
+    assert.equal(other.selectedId, "S0");
+    assert.equal(other.yard.trucks.find((row) => row.id === "S0")?.arrivalMin, 40);
+    assert.equal(other.result?.status, "OPTIMAL");
+    useBoardStore.getState().openWeek("bcn-24B-2");
+    assert.equal(useBoardStore.getState().yard.id, "bcn-24B-2");
+    assert.equal(useBoardStore.getState().selectedId, "S11");
+  });
+});
