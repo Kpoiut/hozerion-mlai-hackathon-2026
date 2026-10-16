@@ -175,6 +175,7 @@ export default defineConfig(({ command, isPreview }) => ({
             preset: process.env.NITRO_PRESET || "vercel",
             cloudflare: {
               wrangler: {
+                name: "app-builder-workspace",
                 compatibility_date: "2026-10-07",
                 assets: {
                   html_handling: "none",

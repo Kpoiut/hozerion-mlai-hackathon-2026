@@ -13,6 +13,7 @@ export const QUOTAMESH_MODELS_ENDPOINT = `${QUOTAMESH_GATEWAY_URL}/v1/models`;
 export const QUOTAMESH_HEALTH_ENDPOINT = `${QUOTAMESH_GATEWAY_URL}/healthz`;
 
 export const ALLOWED_WEB_ORIGINS: readonly string[] = [
+  "https://hozerion.zazeroks.com",
   "http://localhost:8090",
   "http://127.0.0.1:8090",
   "http://localhost:8080",
@@ -54,6 +55,8 @@ export function isAllowedHozerionOrigin(rawOrigin: string): boolean {
   if (ALLOWED_WEB_ORIGINS.includes(norm)) return true;
   // Also allow local dev preview ports on localhost / 127.0.0.1
   if (/^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(norm)) return true;
+  if (/^https:\/\/([a-z0-9-]+\.)?zazeroks\.com$/.test(norm)) return true;
+  if (/^https:\/\/app-builder-workspace\.[a-z0-9-]+\.workers\.dev$/.test(norm)) return true;
   if (/^https:\/\/[a-z0-9-]+\.grok\.me$/.test(norm)) return true;
   if (/^https:\/\/[a-z0-9-]+-kpoiuts-projects\.vercel\.app$/.test(norm)) return true;
   return false;
