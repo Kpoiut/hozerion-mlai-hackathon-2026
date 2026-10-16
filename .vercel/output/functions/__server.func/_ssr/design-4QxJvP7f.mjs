@@ -1,9 +1,9 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link, b as require_jsx_runtime, v as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { N as CircleCheck, l as ShieldCheck, u as RefreshCw } from "../_libs/lucide-react.mjs";
-import { B as evaluateGateTransaction, F as calculateContainerBilling, I as classifyYardContestedCalls, M as blockedExampleYard, Q as reconcileShipmentDocuments, Z as recommendIncomingSlot, a as HCMC_INCIDENTS, at as solveHinterlandExceptions, d as SHIPMENT_DOCUMENT_CASES, dt as validateIso6346, f as UniversalSidecarAndBenchmarkPanel, it as solveBayRetrieval, l as SEED_BAY_CONTAINERS, ot as solveInterPortFederation, r as DEFAULT_BAY_CONFIG, rt as solveBacapRecovery, ut as useBoardStore, z as computeIso6346CheckDigit } from "./dock-exceptions-DQdKk7ce.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/design-Dpu6KGCu.js
+import { H as CircleCheck, g as RefreshCw, m as ShieldCheck } from "../_libs/lucide-react.mjs";
+import { B as evaluateGateTransaction, F as calculateContainerBilling, I as classifyYardContestedCalls, M as blockedExampleYard, Q as reconcileShipmentDocuments, Z as recommendIncomingSlot, a as HCMC_INCIDENTS, at as solveHinterlandExceptions, d as SHIPMENT_DOCUMENT_CASES, dt as validateIso6346, f as UniversalSidecarAndBenchmarkPanel, it as solveBayRetrieval, l as SEED_BAY_CONTAINERS, ot as solveInterPortFederation, r as DEFAULT_BAY_CONFIG, rt as solveBacapRecovery, ut as useBoardStore, z as computeIso6346CheckDigit } from "./dock-exceptions-Dr5QNb07.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/design-4QxJvP7f.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ArchitectureDiagram({ compact = false }) {
@@ -251,7 +251,7 @@ function runEnterpriseQualityAudit(liveTiming = false) {
 			incumbentBlindSpot: "TOS chỉ nhìn thấy cầu và bãi của CHÍNH cảng đó (Single-Terminal Silo). TOPOVN của Cát Lái không đọc được lịch cầu trống của SGP-TOS Hiệp Phước hay VTOS SP-ITC, và không tự sinh tờ khai vận chuyển độc lập VNACCS OLA khi đổi cảng đích.",
 			whyEnterpriseMustUseUs: "Hozerion không thay thế TOS đang chạy mà đóng vai trò Lớp Liên Thông Trung Gian (Federation Sidecar) nối 5 cảng TP.HCM: tự động giải bài toán kinh tế (Phạt lưu tàu Demurrage vs Phí sà lan/Đường bộ vs Đứt chuỗi lạnh) và dịch tự động 1-click giữa TOPOVN SQL, SGP-TOS VTOS JSON, Navis N4 SNX XML, UN/EDIFACT BAPLIE/COPARN và VNACCS OLA.",
 			dailyOperationalTrigger: "Trực ban điều độ hãng tàu / trung tâm sà lan mở lên ngay khi nhận bản tin AIS báo tàu trễ > 3h hoặc cảnh báo ùn tắc cổng/bãi vượt ngưỡng 85% tại Cát Lái / Tân Thuận.",
-			qualityGateMetric: `${fedMs}ms · 4 chuẩn bản tin liên cảng · Lợi ích ròng +$${fed1.recommendedOption.netSavingsUsd.toLocaleString()} (Cát Lái) & +$${fed2.recommendedOption.netSavingsUsd.toLocaleString()} (Tân Thuận)`,
+			qualityGateMetric: `${fedMs}ms · 4 chuẩn bản tin liên cảng · Lợi ích ròng +$${fed1.recommendedOption.netSavingsUsd.toLocaleString("en-US")} (Cát Lái) & +$${fed2.recommendedOption.netSavingsUsd.toLocaleString("en-US")} (Tân Thuận)`,
 			qualityStatus: "VERIFIED_EXACT",
 			liveLatencyMs: fedMs,
 			liveProofSummary: `Đã kiểm chứng 3 kịch bản liên cảng TP.HCM: kiểm tra cứng mớn nước luồng Soài Rạp (${fed3.recommendedOption.targetPortName} nhận tàu 11.4m khi Tân Thuận giới hạn 10.5m) và sinh đủ gói EDIFACT/VTOS/TOPOVN/OLA.`,
@@ -307,7 +307,7 @@ function runEnterpriseQualityAudit(liveTiming = false) {
 			incumbentBlindSpot: "Các công cụ kéo-thả truyền thống tách rời bước xếp vị trí cầu (Berth Allocation) và bước phân bổ cẩu bờ (Quay Crane Assignment), hoặc đòi hỏi thay thế/mua license module tối ưu hàng trăm nghìn USD gắn chặt vào một hãng TOS duy nhất.",
 			whyEnterpriseMustUseUs: "Hozerion giải đồng thời Cầu + Cẩu bờ STS d(q) = ceil(d0*(q0/q)^alpha) + Ràng buộc không giao cắt ray + Bảo vệ kết nối trung chuyển (Feeder-to-Mother) + Cửa sổ thủy triều trong < 150ms kèm Chứng chỉ Toán học (Proof Certificate), và xuất trực tiếp gói tin đẩy vào cả 4 hệ TOS (SGP-TOS VTOS, TOPOVN, Navis N4, EDIFACT BERMAN).",
 			dailyOperationalTrigger: "Kế hoạch viên cầu bến (Berth Planner) chạy mỗi khi tàu báo ETA lệch > 1 giờ hoặc khi cẩu bờ gặp sự cố kỹ thuật làm thay đổi năng suất làm hàng.",
-			qualityGateMetric: `${bacapMs}ms · 0 xung đột ray cẩu STS · Giảm tổng chi phí từ $${bacap.modes[0].totalCostUsd.toLocaleString()} xuống $${bacap.modes[2].totalCostUsd.toLocaleString()}`,
+			qualityGateMetric: `${bacapMs}ms · 0 xung đột ray cẩu STS · Giảm tổng chi phí từ $${bacap.modes[0].totalCostUsd.toLocaleString("en-US")} xuống $${bacap.modes[2].totalCostUsd.toLocaleString("en-US")}`,
 			qualityStatus: "VERIFIED_EXACT",
 			liveLatencyMs: bacapMs,
 			liveProofSummary: `Tàu S8 (tuần 47): tăng cường 3 → 4 cẩu STS nén thời gian làm hàng ${bacap.modes[1].eventDurationHours}h → ${bacap.modes[2].eventDurationHours}h, bảo vệ 100% lô trung chuyển và giữ nguyên k=0 tàu khác phải dời.`,
@@ -357,7 +357,7 @@ function runEnterpriseQualityAudit(liveTiming = false) {
 		}
 	];
 	return {
-		timestampIso: (/* @__PURE__ */ new Date()).toISOString(),
+		timestampIso: liveTiming ? (/* @__PURE__ */ new Date()).toISOString() : "2026-10-16T08:00:00.000Z",
 		totalChecksRun: wedges.length + systemInvariants.length,
 		allPassed: fedPassed && microPassed && docPassed && hintPassed && bacapPassed,
 		totalAuditMs,

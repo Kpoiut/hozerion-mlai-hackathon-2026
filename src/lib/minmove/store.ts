@@ -12,6 +12,20 @@ import type { Appointment, ConstraintId, DelayEvent, EtcReading, EtcSourceId, Et
 import { defaultNowMin } from "./windows.ts";
 
 export type Tab = "board" | "roster" | "flow" | "mlai" | "sidecar" | "bacap" | "federation" | "docs" | "microtos";
+export type GanttFilter = "all" | "late" | "moved" | "reefer" | "dry" | "priority";
+export type FacilityPresetId = "icd-minute" | "bcn-hour" | "reefer-cold" | "crossdock-fmcg" | "barge-hub";
+
+export interface CustomJobInput {
+  plate: string;
+  hauler: string;
+  dockId: string;
+  startMin: number;
+  delayMin: number;
+  durationMin: number;
+  cargo: "dry" | "reefer";
+  priority: 1 | 2 | 3;
+  span?: number;
+}
 
 export interface BoardState {
   yard: Yard;
@@ -34,6 +48,12 @@ export interface BoardState {
   previous: Yard | null;
   liveEta: string | null;
   etc: EtcVerdict | null;
+  setupOpen: boolean;
+  ganttFilter: GanttFilter;
+  slaRateUsd: number;
+  maxMovesAllowed: 0 | 1 | 2;
+  freezeWindowMin: number;
+  hostAdapter: string;
 
   setSelectedId: (id: string) => void;
   setDelayMin: (n: number) => void;
@@ -63,6 +83,21 @@ export interface BoardState {
   openWeek: (weekId: string) => void;
   openBuiltYard: (yard: Yard, focusId?: string) => void;
   liveRoute: () => Promise<void>;
+  setSetupOpen: (v: boolean) => void;
+  setGanttFilter: (f: GanttFilter) => void;
+  setSlaRateUsd: (n: number) => void;
+  setMaxMovesAllowed: (k: 0 | 1 | 2) => void;
+  setFreezeWindowMin: (n: number) => void;
+  setHostAdapter: (a: string) => void;
+  applyFacilityPreset: (preset: FacilityPresetId) => void;
+  updateYardMeta: (name: string, gate: string) => void;
+  toggleDockOpen: (dockId: string) => void;
+  toggleDockReefer: (dockId: string) => void;
+  addCustomDock: () => void;
+  removeLastDock: () => void;
+  setTruckPriority: (truckId: string, priority: 1 | 2 | 3) => void;
+  setTruckDuration: (truckId: string, delta: number) => void;
+  injectCustomJob: (job: CustomJobInput) => void;
 }
 
 function blankChrome() {
@@ -83,6 +118,12 @@ function blankChrome() {
     previous: null as Yard | null,
     liveEta: null as string | null,
     etc: null as EtcVerdict | null,
+    setupOpen: false,
+    ganttFilter: "all" as GanttFilter,
+    slaRateUsd: 1500,
+    maxMovesAllowed: 0 as 0 | 1 | 2,
+    freezeWindowMin: 30,
+    hostAdapter: "Navis N4 / RBS TOPOVN",
   };
 }
 
@@ -93,6 +134,8 @@ function demoState() {
     selectedId: EVENT_TRUCK_ID,
     delayMin: BASE_DELAY_MIN,
     message: "Truck C late 47 min",
+    slaRateUsd: 18,
+    hostAdapter: "SGP-TOS / Smart ICD YMS",
   };
 }
 
@@ -103,6 +146,8 @@ function publishedState() {
     selectedId: "S8",
     delayMin: 1,
     message: "S8 arrives 1 hour after its published mooring",
+    slaRateUsd: 1500,
+    hostAdapter: "Navis N4 / RBS TOPOVN",
   };
 }
 
@@ -551,6 +596,221 @@ export const useBoardStore = create<BoardState>((set, get) => ({
     } finally {
       set({ busy: false });
     }
+  },
+
+  setSetupOpen: (v) => set({ setupOpen: v }),
+  setGanttFilter: (f) => set({ ganttFilter: get().ganttFilter === f ? "all" : f }),
+  setSlaRateUsd: (n) => set({ slaRateUsd: Math.max(1, Math.round(n)) }),
+  setMaxMovesAllowed: (k) => {
+    set({ maxMovesAllowed: k });
+    if (get().event) get().findPlan();
+  },
+  setFreezeWindowMin: (n) => {
+    set({ freezeWindowMin: Math.max(0, Math.round(n)) });
+    if (get().event) get().findPlan();
+  },
+  setHostAdapter: (a) => set({ hostAdapter: a }),
+
+  applyFacilityPreset: (preset) => {
+    const keep = { dark: get().dark, collapsed: get().collapsed, tab: get().tab };
+    if (preset === "bcn-hour") {
+      syncClock(0, false);
+      lastClockSync = nowMs();
+      set({ ...publishedState(), ...keep });
+      get().findPlan();
+      return;
+    }
+    if (preset === "icd-minute") {
+      syncClock(0, false);
+      lastClockSync = nowMs();
+      set({ ...demoState(), ...keep });
+      get().findPlan();
+      return;
+    }
+    const base = createYard();
+    if (preset === "reefer-cold") {
+      base.name = "Mekong Cold Hub -25°C";
+      base.gate = "Cold Chain Gate A · Reefer WMS";
+      base.docks = base.docks.map((d, idx) => ({
+        ...d,
+        mode: idx === 3 ? "closed" : "open",
+        cargo: ["reefer", "dry"],
+        equipment: ["reefer_plug", "forklift"],
+      }));
+      base.trucks = base.trucks.map((t) => ({ ...t, cargo: "reefer" }));
+      syncClock(0, false);
+      lastClockSync = nowMs();
+      set({
+        ...demoState(),
+        ...keep,
+        yard: base,
+        slaRateUsd: 28,
+        hostAdapter: "Blue Yonder WMS / Cold-Chain ERP",
+      });
+      get().findPlan();
+      return;
+    }
+    if (preset === "crossdock-fmcg") {
+      base.name = "Bình Dương Cross-Dock Hub";
+      base.gate = "High-Velocity Gate C · 8 Doors";
+      const extraDocks = [
+        { id: "D7", name: "Door 7", label: "Door 7", short: "D7", mode: "open" as const, cargo: ["dry" as const], equipment: ["forklift" as const] },
+        { id: "D8", name: "Door 8", label: "Door 8", short: "D8", mode: "open" as const, cargo: ["dry" as const, "reefer" as const], equipment: ["forklift" as const, "reefer_plug" as const] },
+      ];
+      base.docks = [...base.docks.map((d) => ({ ...d, mode: "open" as const })), ...extraDocks];
+      syncClock(0, false);
+      lastClockSync = nowMs();
+      set({
+        ...demoState(),
+        ...keep,
+        yard: base,
+        slaRateUsd: 15,
+        hostAdapter: "SAP EWM / FourKites Dynamic Yard",
+      });
+      get().findPlan();
+      return;
+    }
+    if (preset === "barge-hub") {
+      base.name = "Cát Lái – Hiệp Phước Barge ICD";
+      base.gate = "Sông Đồng Nai · 6 Cầu Sà Lan";
+      base.docks = base.docks.map((d, i) => ({
+        ...d,
+        name: `Bến Sà Lan ${i + 1}`,
+        label: `Bến Sà Lan ${i + 1}`,
+        mode: "open" as const,
+      }));
+      syncClock(0, false);
+      lastClockSync = nowMs();
+      set({
+        ...demoState(),
+        ...keep,
+        yard: base,
+        slaRateUsd: 22,
+        hostAdapter: "SGP-TOS (VTOS / TOPOVN / VETC)",
+      });
+      get().findPlan();
+    }
+  },
+
+  updateYardMeta: (name, gate) => {
+    const yard = cloneYard(get().yard);
+    yard.name = name;
+    yard.gate = gate;
+    set({ yard });
+  },
+
+  toggleDockOpen: (dockId) => {
+    const yard = cloneYard(get().yard);
+    const dock = yard.docks.find((d) => d.id === dockId);
+    if (!dock) return;
+    dock.mode = dock.mode === "closed" ? "open" : "closed";
+    set({ yard });
+    if (get().event) get().findPlan();
+  },
+
+  toggleDockReefer: (dockId) => {
+    const yard = cloneYard(get().yard);
+    const dock = yard.docks.find((d) => d.id === dockId);
+    if (!dock) return;
+    const hasReefer = dock.cargo.includes("reefer");
+    if (hasReefer) {
+      dock.cargo = ["dry"];
+      dock.equipment = dock.equipment.filter((e) => e !== "reefer_plug");
+    } else {
+      dock.cargo = Array.from(new Set([...dock.cargo, "reefer"]));
+      dock.equipment = Array.from(new Set([...dock.equipment, "reefer_plug"]));
+    }
+    set({ yard });
+    if (get().event) get().findPlan();
+  },
+
+  addCustomDock: () => {
+    const yard = cloneYard(get().yard);
+    const hour = yard.timeUnit === "hour";
+    const n = yard.docks.length;
+    const id = hour ? `B${n}` : `D${n + 1}`;
+    const name = hour ? `Berth ${n}` : `Door ${n + 1}`;
+    yard.docks.push({
+      id,
+      name,
+      label: name,
+      short: id,
+      mode: "open",
+      cargo: ["dry", "reefer"],
+      equipment: ["forklift", "reefer_plug"],
+    });
+    set({ yard });
+    if (get().event) get().findPlan();
+  },
+
+  removeLastDock: () => {
+    const yard = cloneYard(get().yard);
+    if (yard.docks.length <= 3) return;
+    const last = yard.docks[yard.docks.length - 1];
+    if (!last) return;
+    if (yard.appointments.some((a) => a.dockId === last.id)) return;
+    yard.docks.pop();
+    set({ yard });
+    if (get().event) get().findPlan();
+  },
+
+  setTruckPriority: (truckId, priority) => {
+    const yard = cloneYard(get().yard);
+    const t = yard.trucks.find((x) => x.id === truckId);
+    if (!t) return;
+    t.priority = priority;
+    set({ yard });
+    if (get().event) get().findPlan();
+  },
+
+  setTruckDuration: (truckId, delta) => {
+    const yard = cloneYard(get().yard);
+    const t = yard.trucks.find((x) => x.id === truckId);
+    if (!t) return;
+    const minDur = yard.timeUnit === "hour" ? 2 : 15;
+    const maxDur = yard.timeUnit === "hour" ? 96 : 240;
+    t.durationMin = Math.max(minDur, Math.min(maxDur, t.durationMin + delta));
+    set({ yard });
+    if (get().event) get().findPlan();
+  },
+
+  injectCustomJob: (job) => {
+    const yard = cloneYard(get().yard);
+    const hour = yard.timeUnit === "hour";
+    const id = job.plate.trim() || (hour ? `S${yard.trucks.length}` : `T-${yard.trucks.length + 1}`);
+    const existingIdx = yard.trucks.findIndex((t) => t.id === id);
+    const newTruck = {
+      id,
+      plate: job.plate.trim() || id,
+      hauler: job.hauler.trim() || (hour ? "Custom Vessel Line" : "Custom Logistics Fleet"),
+      cargo: job.cargo,
+      requiredEquipment: job.cargo === "reefer" ? (["reefer_plug"] as ("forklift" | "reefer_plug" | "crane")[]) : ([] as ("forklift" | "reefer_plug" | "crane")[]),
+      durationMin: job.durationMin,
+      priority: job.priority,
+      maxWaitMin: hour ? 240 : 180,
+      deadlineMin: yard.shiftLenMin,
+      span: hour ? (job.span ?? 4) : 1,
+      arrivalMin: job.startMin,
+    };
+    if (existingIdx >= 0) {
+      yard.trucks[existingIdx] = newTruck;
+      const apptIdx = yard.appointments.findIndex((a) => a.truckId === id);
+      if (apptIdx >= 0) {
+        yard.appointments[apptIdx] = { truckId: id, dockId: job.dockId, startMin: job.startMin };
+      }
+    } else {
+      yard.trucks.push(newTruck);
+      yard.appointments.push({ truckId: id, dockId: job.dockId, startMin: job.startMin });
+    }
+    set({
+      yard,
+      selectedId: id,
+      delayMin: job.delayMin,
+      setupOpen: false,
+      tab: "board",
+      message: `${newTruck.plate} late ${job.delayMin}${hour ? "h" : " min"}`,
+    });
+    get().findPlan();
   },
 }));
 

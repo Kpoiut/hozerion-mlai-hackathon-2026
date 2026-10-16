@@ -1,45 +1,70 @@
 import { useMemo, useState } from "react";
 import {
-  Check,
+  Activity,
+  AlertTriangle,
+  ArrowRight,
   CheckCircle2,
   Copy,
-  FileCheck2,
+  Cpu,
   Lock,
   Navigation,
-  Radio,
-  RotateCcw,
+  RefreshCw,
+  ShieldAlert,
   ShieldCheck,
+  SlidersHorizontal,
   Sparkles,
   UserCheck,
 } from "lucide-react";
 import {
-  createHitlSignedAuditBlock,
   HCMC_CORRIDOR_EDGES,
   HCMC_CORRIDOR_NODES,
+  createHitlSignedAuditBlock,
   runOrganizationalAgentPipeline,
   type AuditLogBlock,
+  type GuardrailCheck,
 } from "@/lib/minmove/mlai-agents.ts";
 import { useBoardStore } from "@/lib/minmove/store.ts";
+import { Button } from "@/components/ui/button.tsx";
 import { cn } from "@/lib/utils.ts";
 
 export function MlaiHackathonCommandCenter() {
   const yard = useBoardStore((s) => s.yard);
-  const selectedId = useBoardStore((s) => s.selectedId);
   const event = useBoardStore((s) => s.event);
   const result = useBoardStore((s) => s.result);
+  const selectedId = useBoardStore((s) => s.selectedId);
 
   const [stressMode, setStressMode] = useState<
     "NORMAL" | "LOW_CONFIDENCE_STORM" | "TRANSSHIPMENT_CRITICAL"
   >("NORMAL");
-  const [selectedMapNodeId, setSelectedMapNodeId] =
-    useState<string>("PORT_CAT_LAI");
-  const [operatorName, setOperatorName] = useState(
-    "Trưởng ca Nguyễn Minh Quân (HCMUT-VNG)",
-  );
-  const [signedBlocks, setSignedBlocks] = useState<AuditLogBlock[]>([]);
+  const [selectedPortId, setSelectedPortId] = useState<string>("VNCLI");
+  const [divertedPorts, setDivertedPorts] = useState<Record<string, number>>({});
+  const [selectedAgentIdx, setSelectedAgentIdx] = useState<number>(2);
+  const [overriddenGuards, setOverriddenGuards] = useState<Record<string, boolean>>({});
+  const [operatorName, setOperatorName] = useState("Nguyễn Minh Quân · Senior Dispatcher");
+  const [customAuditChain, setCustomAuditChain] = useState<AuditLogBlock[]>([]);
   const [copiedAudit, setCopiedAudit] = useState(false);
 
-  const evaluation = useMemo(
+  const hour = yard.timeUnit === "hour";
+  const unit = hour ? "h" : "min";
+  const truck = yard.trucks.find((t) => t.id === selectedId) ?? yard.trucks[0]!;
+  const orig = yard.appointments.find((a) => a.truckId === truck.id);
+  const live = result?.appointments.find((a) => a.truckId === truck.id) ?? orig;
+
+  const portLoads = useMemo(() => {
+    return HCMC_CORRIDOR_NODES.map((node) => {
+      const delta = divertedPorts[node.id] ?? 0;
+      const util = Math.max(25, Math.min(99, node.utilizationPct + delta));
+      const wait = Math.max(0.1, Number((node.queueWaitHours + delta * 0.08).toFixed(1)));
+      return { ...node, utilizationPct: util, queueWaitHours: wait };
+    });
+  }, [divertedPorts]);
+
+  const activePort = portLoads.find((p) => p.id === selectedPortId) ?? portLoads[0]!;
+  const corridorDensityPct = Math.round(
+    portLoads.reduce((acc, n) => acc + n.utilizationPct, 0) / portLoads.length,
+  );
+
+  const pipeline = useMemo(
     () =>
       runOrganizationalAgentPipeline({
         yard,
@@ -51,907 +76,510 @@ export function MlaiHackathonCommandCenter() {
     [yard, selectedId, event, result, stressMode],
   );
 
-  const selectedMapNode = useMemo(
-    () =>
-      HCMC_CORRIDOR_NODES.find((n) => n.id === selectedMapNodeId) ??
-      HCMC_CORRIDOR_NODES[0]!,
-    [selectedMapNodeId],
+  const fullAuditChain = useMemo(
+    () => [pipeline.initialAuditBlock, ...customAuditChain],
+    [pipeline.initialAuditBlock, customAuditChain],
   );
 
-  const auditChain = useMemo(() => {
-    const genesisBlock: AuditLogBlock = {
-      blockIndex: 1041,
-      timestampIso: "17:40:12",
-      vesselId: "SYS-SYNC",
-      vesselName: "5-TOS Sync",
-      weekTag: yard.name,
-      rawSignal: "3,092 calls sync",
-      tier: "TIER_0_AUTONOMOUS_NO_OP",
-      confidencePct: 99.8,
-      guardrailsPassed: 5,
-      guardrailsTotal: 5,
-      actionSummaryVi: "DCSA v3.0 Sync (NO_OP)",
-      economicDeltaUsd: 0,
-      hitlStatus: "AUTO_VERIFIED",
-      operatorId: "GENESIS_VERIFIER",
-      operatorNote: "OK",
-      prevHash: "0x00000000000000000000000000000000",
-      blockHash: "0x000000008f4b2e91c7d3a605192e4b7c",
-    };
-    return [genesisBlock, evaluation.initialAuditBlock, ...signedBlocks];
-  }, [evaluation, signedBlocks, yard.name]);
+  const activeStep = pipeline.agents[selectedAgentIdx] ?? pipeline.agents[0]!;
+  const totalPipelineMs = Number(
+    pipeline.agents.reduce((acc, a) => acc + a.latencyMs, 0).toFixed(2),
+  );
+  const requiresHumanSignOff = pipeline.tier === "TIER_2_HITL_ESCALATION_REFEREE";
 
-  const handleHitlDecision = (
-    decision: "HUMAN_APPROVED" | "HUMAN_OVERRIDDEN" | "HUMAN_REJECTED",
-  ) => {
-    const latestBlock =
-      signedBlocks.length > 0
-        ? signedBlocks[signedBlocks.length - 1]!
-        : evaluation.initialAuditBlock;
-    const nextBlock = createHitlSignedAuditBlock(
-      latestBlock,
-      decision,
-      operatorName,
-      decision,
-    );
-    setSignedBlocks((prev) => [...prev, nextBlock]);
+  const handleDivert = () => {
+    setDivertedPorts((prev) => ({
+      ...prev,
+      VNCLI: (prev.VNCLI ?? 0) - 18,
+      VNICD: (prev.VNICD ?? 0) - 12,
+      VNHPH: (prev.VNHPH ?? 0) + 14,
+      VNITC: (prev.VNITC ?? 0) + 10,
+    }));
   };
 
-  const handleCopyAuditJson = () => {
-    const payload = JSON.stringify(
-      {
-        competition: "MLAI Hackathon 2026",
-        activeEvaluation: {
-          vesselId: evaluation.vesselId,
-          tier: evaluation.tier,
-          conformalQuantiles: evaluation.conformal,
-          guardrails: evaluation.guardrails,
-        },
-        immutableAuditChain: auditChain,
-      },
-      null,
-      2,
-    );
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(payload);
-      setCopiedAudit(true);
-      setTimeout(() => setCopiedAudit(false), 2000);
+  const handleHitlAction = (
+    decision: "HUMAN_APPROVED" | "HUMAN_OVERRIDDEN" | "HUMAN_REJECTED",
+  ) => {
+    const prevBlock = fullAuditChain[fullAuditChain.length - 1] ?? pipeline.initialAuditBlock;
+    const note =
+      decision === "HUMAN_REJECTED"
+        ? `Rollback ${truck.id} -> ${orig?.dockId ?? "B0"}`
+        : `${decision === "HUMAN_APPROVED" ? "Approved" : "Override"} ${truck.id}: ${orig?.dockId ?? "B0"} -> ${live?.dockId ?? "B5"}`;
+    const nextBlock = createHitlSignedAuditBlock(prevBlock, decision, operatorName, note);
+    setCustomAuditChain((prev) => [...prev, nextBlock]);
+    if (decision === "HUMAN_APPROVED") {
+      useBoardStore.getState().commit();
     }
   };
 
-  const passedGuardrailCount = evaluation.guardrails.filter(
-    (g) => g.passed,
-  ).length;
-
   return (
-    <div className="space-y-3 pb-6" data-testid="mlai-hackathon-command-center">
-      {/* COMPACT KPI RIBBON (NO PROSE — PURE METRICS & SCENARIO SWITCHER) */}
-      <section className="rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-md bg-accent px-2 py-0.5 font-mono text-[10px] font-bold uppercase text-accent-fg">
-              <Sparkles className="size-3" />
-              MLAI CONTROL SCADA
-            </span>
-            <span className="rounded bg-ok/15 px-2 py-0.5 font-mono text-[10px] font-bold text-ok">
-              Track 01 Map · Track 02 Agents/HITL · Track 03 Decision
-            </span>
-            <span
-              className={cn(
-                "rounded px-2 py-0.5 font-mono text-[10px] font-bold",
-                evaluation.tier === "TIER_2_HITL_ESCALATION_REFEREE"
-                  ? "bg-warn/20 text-warn"
-                  : evaluation.tier === "TIER_1_AUTONOMOUS_COMMIT_K0"
-                    ? "bg-accent/15 text-accent"
-                    : "bg-ok/15 text-ok",
-              )}
-            >
-              {evaluation.tier}
-            </span>
-          </div>
-
-          {/* Scenario Simulation Buttons */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="flex items-center gap-1 font-mono text-[10px] font-bold uppercase text-muted">
-              <Radio className="size-3 text-accent" />
-              Mode:
-            </span>
-            <button
-              type="button"
-              onClick={() => setStressMode("NORMAL")}
-              className={cn(
-                "rounded-md px-2.5 py-1 font-mono text-[10px] font-semibold transition-colors",
-                stressMode === "NORMAL"
-                  ? "bg-accent text-accent-fg"
-                  : "bg-raised text-muted ring-1 ring-line hover:text-fg",
-              )}
-            >
-              1. Luồng chuẩn (Auto k=0 / NO_OP)
-            </button>
-            <button
-              type="button"
-              onClick={() => setStressMode("LOW_CONFIDENCE_STORM")}
-              className={cn(
-                "rounded-md px-2.5 py-1 font-mono text-[10px] font-semibold transition-colors",
-                stressMode === "LOW_CONFIDENCE_STORM"
-                  ? "bg-warn text-white"
-                  : "bg-warn/10 text-warn ring-1 ring-warn/30",
-              )}
-            >
-              2. Mưa giông (&lt;85% Conf -&gt; HITL)
-            </button>
-            <button
-              type="button"
-              onClick={() => setStressMode("TRANSSHIPMENT_CRITICAL")}
-              className={cn(
-                "rounded-md px-2.5 py-1 font-mono text-[10px] font-semibold transition-colors",
-                stressMode === "TRANSSHIPMENT_CRITICAL"
-                  ? "bg-danger text-white"
-                  : "bg-danger/10 text-danger ring-1 ring-danger/30",
-              )}
-            >
-              3. Rớt Tàu Mẹ (G4 Fail -&gt; HITL)
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ROW 1: VISUAL GEOSPATIAL RADAR MAP (LEFT 7 COLS) + VISUAL CONFORMAL CURVE & 5 RADIAL GUARDRAIL GAUGES (RIGHT 5 COLS) */}
-      <div className="grid grid-cols-1 gap-3 lg:grid-cols-12">
-        {/* LEFT 7 COLS: INTERACTIVE HCMC PORT & VETC RADAR MAP + COMPACT METRIC TABLE */}
-        <section className="flex flex-col justify-between rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line lg:col-span-7">
-          <div className="mb-2 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Navigation className="size-4 text-accent" />
-              <span className="font-mono text-xs font-bold uppercase tracking-wide text-fg">
-                RADAR ĐIỀU PHỐI KHÔNG GIAN CỤM CẢNG TP.HCM – VETC – CÁI MÉP
-              </span>
-            </div>
-            <div className="flex items-center gap-3 font-mono text-[10px]">
-              <span className="flex items-center gap-1 text-ok">
-                <span className="size-2 rounded-full bg-ok" /> Chia tải k=0
-              </span>
-              <span className="flex items-center gap-1 text-warn">
-                <span className="size-2 rounded-full bg-warn" /> Tải cao
-              </span>
-              <span className="flex items-center gap-1 text-danger">
-                <span className="size-2 rounded-full bg-danger" /> Nghẽn đỏ
-              </span>
-            </div>
-          </div>
-
-          {/* Interactive SVG Spatial Radar Canvas */}
-          <div className="relative overflow-hidden rounded-xl bg-[#09111e] ring-1 ring-line">
-            <svg
-              viewBox="0 0 760 330"
-              className="h-[275px] w-full select-none"
-              role="img"
-              aria-label="Radar bản đồ cụm cảng TP.HCM và trạm VETC"
-            >
-              <defs>
-                <pattern
-                  id="scadaGrid"
-                  width="32"
-                  height="32"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M 32 0 L 0 0 0 32"
-                    fill="none"
-                    stroke="rgba(56, 189, 248, 0.08)"
-                    strokeWidth="1"
-                  />
-                </pattern>
-                <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="rgba(56, 189, 248, 0.16)" />
-                  <stop offset="100%" stopColor="rgba(15, 23, 42, 0)" />
-                </radialGradient>
-              </defs>
-              <rect width="760" height="330" fill="url(#scadaGrid)" />
-              <circle cx="410" cy="170" r="155" fill="url(#radarGlow)" />
-              <circle
-                cx="410"
-                cy="170"
-                r="130"
-                fill="none"
-                stroke="rgba(56, 189, 248, 0.12)"
-                strokeDasharray="4 4"
-              />
-
-              {/* Rivers: Saigon River, Dong Nai River & Soai Rap Channel */}
-              <path
-                d="M 165 15 Q 205 110 235 185 T 285 280 L 330 325"
-                fill="none"
-                stroke="rgba(14, 165, 233, 0.25)"
-                strokeWidth="24"
-                strokeLinecap="round"
-              />
-              <path
-                d="M 500 15 Q 465 95 415 160 T 625 290"
-                fill="none"
-                stroke="rgba(14, 165, 233, 0.30)"
-                strokeWidth="28"
-                strokeLinecap="round"
-              />
-
-              {/* Edges with Animated/Visual Ship & Truck Vectors */}
-              {HCMC_CORRIDOR_EDGES.map((edge) => {
-                const fromNode = HCMC_CORRIDOR_NODES.find(
-                  (n) => n.id === edge.from,
-                );
-                const toNode = HCMC_CORRIDOR_NODES.find(
-                  (n) => n.id === edge.to,
-                );
-                if (!fromNode || !toNode) return null;
-                const fx = fromNode.x - 15;
-                const fy = Math.round(fromNode.y * 0.76);
-                const tx = toNode.x - 15;
-                const ty = Math.round(toNode.y * 0.76);
-                const mx = (fx + tx) / 2;
-                const my = (fy + ty) / 2;
-                const strokeColor =
-                  edge.trafficState === "RED_BOTTLENECK"
-                    ? "#f43f5e"
-                    : edge.activeDivert
-                      ? "#10b981"
-                      : "#f59e0b";
-                return (
-                  <g key={edge.id}>
-                    <line
-                      x1={fx}
-                      y1={fy}
-                      x2={tx}
-                      y2={ty}
-                      stroke={strokeColor}
-                      strokeWidth={edge.activeDivert ? 3.5 : 2.5}
-                      strokeDasharray={
-                        edge.mode === "WATERWAY_BARGE" ? "7 4" : undefined
-                      }
-                    />
-                    {/* Midpoint Vessel/Truck Icon Pill */}
-                    <rect
-                      x={mx - 36}
-                      y={my - 9}
-                      width={72}
-                      height={16}
-                      rx={8}
-                      fill="#0f172a"
-                      stroke={strokeColor}
-                      strokeWidth="1.2"
-                    />
-                    <text
-                      x={mx}
-                      y={my + 2}
-                      textAnchor="middle"
-                      fill="#f8fafc"
-                      fontSize="8.5"
-                      fontFamily="monospace"
-                      fontWeight="bold"
-                    >
-                      {edge.mode === "WATERWAY_BARGE" ? "🚢 " : "🚛 "}
-                      {edge.distanceKm}km·{edge.travelMinutes}p
-                    </text>
-                  </g>
-                );
-              })}
-
-              {/* Interactive Port & VETC Nodes with Radial Progress Rings */}
-              {HCMC_CORRIDOR_NODES.map((node) => {
-                const nx = node.x - 15;
-                const ny = Math.round(node.y * 0.76);
-                const isSelected = node.id === selectedMapNode.id;
-                const color =
-                  node.status === "CRITICAL_DIVERT"
-                    ? "#f43f5e"
-                    : node.status === "CONGESTED"
-                      ? "#f59e0b"
-                      : "#10b981";
-                const r = 18;
-                const c = 2 * Math.PI * r;
-                const dash = (node.utilizationPct / 100) * c;
-                return (
-                  <g
-                    key={node.id}
-                    onClick={() => setSelectedMapNodeId(node.id)}
-                    className="cursor-pointer"
-                  >
-                    {isSelected && (
-                      <circle
-                        cx={nx}
-                        cy={ny}
-                        r={26}
-                        fill="rgba(56, 189, 248, 0.15)"
-                        stroke="#38bdf8"
-                        strokeWidth={1.8}
-                        strokeDasharray="4 2"
-                      />
-                    )}
-                    <circle
-                      cx={nx}
-                      cy={ny}
-                      r={r}
-                      fill="#0f172a"
-                      stroke="rgba(148,163,184,0.25)"
-                      strokeWidth={3.5}
-                    />
-                    <circle
-                      cx={nx}
-                      cy={ny}
-                      r={r}
-                      fill="none"
-                      stroke={color}
-                      strokeWidth={3.5}
-                      strokeDasharray={`${dash} ${c}`}
-                      transform={`rotate(-90 ${nx} ${ny})`}
-                      strokeLinecap="round"
-                    />
-                    <text
-                      x={nx}
-                      y={ny + 3.5}
-                      textAnchor="middle"
-                      fill="#ffffff"
-                      fontSize="9.5"
-                      fontWeight="bold"
-                      fontFamily="monospace"
-                    >
-                      {node.utilizationPct}%
-                    </text>
-                    <rect
-                      x={nx - 66}
-                      y={ny + 21}
-                      width={132}
-                      height={16}
-                      rx={4}
-                      fill="rgba(15, 23, 42, 0.92)"
-                      stroke={isSelected ? "#38bdf8" : "rgba(148, 163, 184, 0.3)"}
-                    />
-                    <text
-                      x={nx}
-                      y={ny + 32}
-                      textAnchor="middle"
-                      fill="#f8fafc"
-                      fontSize="8.5"
-                      fontWeight="bold"
-                    >
-                      {node.name.split("(")[0]!.trim()}
-                    </text>
-                  </g>
-                );
-              })}
-            </svg>
-          </div>
-
-          {/* Pure Metric Table for the 6 HCMC Corridor Nodes */}
-          <div className="mt-2.5 overflow-x-auto">
-            <table className="w-full border-collapse text-left font-mono text-[11px]">
-              <thead>
-                <tr className="border-b border-line bg-raised text-[9px] uppercase text-muted">
-                  <th className="px-2 py-1.5">Điểm Nút Cảng / VETC</th>
-                  <th className="px-2 py-1.5">Hệ Thống TOS</th>
-                  <th className="px-2 py-1.5 text-right">Tải Bến</th>
-                  <th className="px-2 py-1.5 text-right">Chờ (h)</th>
-                  <th className="px-2 py-1.5 text-right">Luồng VETC</th>
-                  <th className="px-2 py-1.5 text-right">Trạng Thái</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-line">
-                {HCMC_CORRIDOR_NODES.map((n) => (
-                  <tr
-                    key={n.id}
-                    onClick={() => setSelectedMapNodeId(n.id)}
-                    className={cn(
-                      "cursor-pointer transition-colors hover:bg-raised/70",
-                      n.id === selectedMapNode.id && "bg-accent/10",
-                    )}
-                  >
-                    <td className="px-2 py-1.5 font-sans text-xs font-semibold text-fg">
-                      {n.name.split("(")[0]!.trim()}
-                    </td>
-                    <td className="px-2 py-1.5 text-[10px] text-muted">
-                      {n.tosSystem}
-                    </td>
-                    <td className="px-2 py-1.5 text-right font-bold text-fg">
-                      {n.utilizationPct}%
-                    </td>
-                    <td className="px-2 py-1.5 text-right text-fg">
-                      {n.queueWaitHours}h
-                    </td>
-                    <td className="px-2 py-1.5 text-right text-accent">
-                      {n.vetcFlowPerHour} xe/h
-                    </td>
-                    <td className="px-2 py-1.5 text-right">
-                      <span
-                        className={cn(
-                          "rounded px-1.5 py-0.5 text-[9px] font-bold",
-                          n.status === "CRITICAL_DIVERT"
-                            ? "bg-danger/20 text-danger"
-                            : n.status === "CONGESTED"
-                              ? "bg-warn/20 text-warn"
-                              : "bg-ok/20 text-ok",
-                        )}
-                      >
-                        {n.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* RIGHT 5 COLS: VISUAL CONFORMAL BELL CURVE + 5 RADIAL GUARDRAIL GAUGES + HITL PAD */}
-        <section className="flex flex-col justify-between gap-3 rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line lg:col-span-5">
-          {/* 1. Visual SVG Conformal ML Probability Distribution & Berth Window Chart */}
-          <div className="rounded-xl bg-[#09111e] p-3 ring-1 ring-line">
-            <div className="flex items-center justify-between font-mono text-[10px]">
-              <span className="font-bold uppercase text-sky-400">
-                PHỔ XÁC SUẤT ETA CONFORMAL ML [Q10, Q50, Q90]
-              </span>
-              <span className="rounded bg-emerald-500/20 px-1.5 py-0.5 font-bold text-emerald-400">
-                Conf: {evaluation.conformal.confidencePct}% · σ={evaluation.conformal.epistemicSigma}
-              </span>
-            </div>
-
-            <svg
-              viewBox="0 0 420 125"
-              className="mt-1.5 h-[115px] w-full select-none"
-              role="img"
-              aria-label="Biểu đồ phân phối xác suất dự báo Conformal ML"
-            >
-              {/* Safe Berth Window vs Conflict Zone */}
-              <rect
-                x="25"
-                y="12"
-                width="265"
-                height="86"
-                rx="4"
-                fill="rgba(16, 185, 129, 0.09)"
-                stroke="rgba(16, 185, 129, 0.3)"
-                strokeDasharray="3 3"
-              />
-              <rect
-                x="295"
-                y="12"
-                width="105"
-                height="86"
-                rx="4"
-                fill="rgba(244, 63, 94, 0.12)"
-                stroke="rgba(244, 63, 94, 0.35)"
-                strokeDasharray="3 3"
-              />
-              <text x="34" y="25" fill="#10b981" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
-                CỬA SỔ CẦU TRỐNG ({evaluation.proposedLane}) · k=0
-              </text>
-              <text x="302" y="25" fill="#f43f5e" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
-                VÙNG XUNG ĐỘT LỊCH
-              </text>
-
-              {/* Gaussian / Conformal Bell Curve */}
-              <path
-                d={
-                  stressMode === "LOW_CONFIDENCE_STORM"
-                    ? "M 40 98 Q 140 96 200 50 Q 260 15 320 55 Q 365 88 395 98"
-                    : "M 40 98 Q 110 96 145 48 Q 175 12 205 48 Q 240 95 310 98"
-                }
-                fill={
-                  stressMode === "LOW_CONFIDENCE_STORM"
-                    ? "rgba(245, 158, 11, 0.25)"
-                    : "rgba(56, 189, 248, 0.25)"
-                }
-                stroke={stressMode === "LOW_CONFIDENCE_STORM" ? "#f59e0b" : "#38bdf8"}
-                strokeWidth="2.5"
-              />
-
-              {/* Q10, Q50, Q90 Vertical Markers */}
-              <line x1="130" y1="28" x2="130" y2="98" stroke="#94a3b8" strokeWidth="1.2" strokeDasharray="2 2" />
-              <line x1="175" y1="16" x2="175" y2="98" stroke="#38bdf8" strokeWidth="2" />
-              <line
-                x1={stressMode === "LOW_CONFIDENCE_STORM" ? "315" : "225"}
-                y1="24"
-                x2={stressMode === "LOW_CONFIDENCE_STORM" ? "315" : "225"}
-                y2="98"
-                stroke={stressMode === "LOW_CONFIDENCE_STORM" ? "#f43f5e" : "#10b981"}
-                strokeWidth="2"
-                strokeDasharray="3 2"
-              />
-
-              <text x="130" y="112" textAnchor="middle" fill="#cbd5e1" fontSize="9" fontFamily="monospace">
-                Q10={evaluation.conformal.q10Optimistic}h
-              </text>
-              <text x="175" y="112" textAnchor="middle" fill="#38bdf8" fontSize="9" fontFamily="monospace" fontWeight="bold">
-                Q50={evaluation.conformal.q50Median}h
-              </text>
-              <text
-                x={stressMode === "LOW_CONFIDENCE_STORM" ? "315" : "225"}
-                y="112"
-                textAnchor="middle"
-                fill={stressMode === "LOW_CONFIDENCE_STORM" ? "#f43f5e" : "#10b981"}
-                fontSize="9"
-                fontFamily="monospace"
-                fontWeight="bold"
-              >
-                Q90={evaluation.conformal.q90Conservative}h
-              </text>
-            </svg>
-          </div>
-
-          {/* 2. 5 Visual Radial Guardrail Gauges (Zero Text Walls!) */}
-          <div className="rounded-xl bg-raised p-3 ring-1 ring-line">
-            <div className="flex items-center justify-between">
-              <span className="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase text-fg">
-                <ShieldCheck className="size-3.5 text-accent" />
-                5 ĐỒNG HỒ GUARDRAIL (ESCALATION REFEREE)
-              </span>
-              <span className="font-mono text-[11px] font-bold text-ok">
-                {passedGuardrailCount}/5 PASS
-              </span>
-            </div>
-
-            <div className="mt-2.5 grid grid-cols-5 gap-1.5">
-              {evaluation.guardrails.map((g, idx) => {
-                const shortLabels = ["G1 k=0", "G2 Q90", "G3 ROI", "G4 SLA", "G5 Conf"];
-                const stroke = g.passed ? "#10b981" : "#f59e0b";
-                return (
-                  <div
-                    key={g.id}
-                    className={cn(
-                      "flex flex-col items-center rounded-lg p-1.5 text-center ring-1",
-                      g.passed ? "bg-surface ring-ok/30" : "bg-warn/10 ring-warn/50",
-                    )}
-                  >
-                    <svg viewBox="0 0 48 48" className="size-11">
-                      <circle
-                        cx="24"
-                        cy="24"
-                        r="18"
-                        fill="none"
-                        stroke="rgba(148,163,184,0.2)"
-                        strokeWidth="4.5"
-                      />
-                      <circle
-                        cx="24"
-                        cy="24"
-                        r="18"
-                        fill="none"
-                        stroke={stroke}
-                        strokeWidth="4.5"
-                        strokeDasharray={g.passed ? "113 113" : "68 113"}
-                        transform="rotate(-90 24 24)"
-                        strokeLinecap="round"
-                      />
-                      <text
-                        x="24"
-                        y="27"
-                        textAnchor="middle"
-                        fill="currentColor"
-                        fontSize="10"
-                        fontFamily="monospace"
-                        fontWeight="bold"
-                      >
-                        {g.passed ? "OK" : "HITL"}
-                      </text>
-                    </svg>
-                    <span className="mt-0.5 font-mono text-[10px] font-bold text-fg">
-                      {shortLabels[idx]}
-                    </span>
-                    <span className="truncate w-full font-mono text-[9px] text-muted">
-                      {g.metricLabel.split(" ")[0]}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* 3. Hardware-Style HITL Control Pad */}
-          <div className="rounded-xl bg-raised p-3 ring-1 ring-line">
-            <div className="flex items-center justify-between">
-              <span className="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase text-fg">
-                <UserCheck className="size-3.5 text-accent" />
-                HUMAN-IN-THE-LOOP SIGN-OFF PAD
-              </span>
-              <span className="rounded bg-accent/15 px-1.5 py-0.5 font-mono text-[9px] font-bold text-accent">
-                SHA-256 Hardware Key
-              </span>
-            </div>
-
-            <div className="mt-2 flex items-center gap-2">
-              <input
-                type="text"
-                value={operatorName}
-                onChange={(e) => setOperatorName(e.target.value)}
-                className="w-full rounded-lg bg-surface px-2.5 py-1 font-mono text-[11px] text-fg ring-1 ring-line"
-                aria-label="Operator Name"
-              />
-            </div>
-
-            <div className="mt-2 grid grid-cols-3 gap-2">
-              <button
-                type="button"
-                onClick={() => handleHitlDecision("HUMAN_APPROVED")}
-                className="flex items-center justify-center gap-1 rounded-lg bg-ok px-2 py-2 font-mono text-[10px] font-bold text-white shadow-sm hover:opacity-90"
-              >
-                <CheckCircle2 className="size-3.5 shrink-0" />
-                Phê Duyệt Patch
-              </button>
-              <button
-                type="button"
-                onClick={() => handleHitlDecision("HUMAN_OVERRIDDEN")}
-                className="flex items-center justify-center gap-1 rounded-lg bg-warn px-2 py-2 font-mono text-[10px] font-bold text-white shadow-sm hover:opacity-90"
-              >
-                <FileCheck2 className="size-3.5 shrink-0" />
-                Ghi Đè Guardrail
-              </button>
-              <button
-                type="button"
-                onClick={() => handleHitlDecision("HUMAN_REJECTED")}
-                className="flex items-center justify-center gap-1 rounded-lg bg-danger/15 px-2 py-2 font-mono text-[10px] font-bold text-danger ring-1 ring-danger/40 hover:bg-danger/25"
-              >
-                <RotateCcw className="size-3.5 shrink-0" />
-                Rollback Gốc
-              </button>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      {/* ROW 2: VISUAL 5-AGENT NODE-GRAPH CIRCUIT DIAGRAM + PURE METRIC TABLE */}
-      <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
-        <div className="flex flex-wrap items-center justify-between gap-2 pb-2">
-          <span className="font-mono text-xs font-bold uppercase tracking-wide text-fg">
-            SƠ ĐỒ MẠCH ĐIỀU PHỐI 5 AI AGENT (NEURO-SYMBOLIC COORDINATION PIPELINE · 4.71ms)
+    <div data-mlai-command-center="" className="space-y-4">
+      {/* Top Interactive Scenario & Quick Control Bar (Refined Light Surface matching attachments/image.png) */}
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3 shadow-card ring-1 ring-line">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-xl bg-accent/10 px-3 py-1 font-mono text-xs font-semibold text-accent ring-1 ring-accent/25">
+            <Sparkles className="size-3.5" />
+            AI Agent &amp; Guardrails
           </span>
-          <span className="font-mono text-[11px] font-bold text-ok">
-            Booked {evaluation.bookedLane}@{evaluation.bookedStart}h → Plan {evaluation.proposedLane}@{evaluation.proposedStart}h · Cứu {evaluation.waitSavedHours}h (+${evaluation.netEconomicBenefitUsd.toLocaleString("en-US")}) · k={evaluation.displacedCount}
-          </span>
-        </div>
-
-        {/* Visual SVG 5-Node Pipeline Schematic */}
-        <div className="overflow-hidden rounded-xl bg-[#09111e] p-2.5 ring-1 ring-line">
-          <svg
-            viewBox="0 0 920 88"
-            className="h-[82px] w-full select-none"
-            role="img"
-            aria-label="Sơ đồ mạch 5 AI Agent"
+          <span
+            className={cn(
+              "rounded-xl px-2.5 py-1 font-mono text-xs font-semibold ring-1",
+              requiresHumanSignOff
+                ? "bg-warn/10 text-warn ring-warn/30"
+                : "bg-ok/10 text-ok ring-ok/25",
+            )}
           >
-            {evaluation.agents.map((ag, i) => {
-              const x = 14 + i * 182;
-              const isFlagged = ag.status === "FLAGGED_FOR_HITL";
-              const borderCol = isFlagged ? "#f59e0b" : "#10b981";
-              const shortTitles = [
-                "1. NLP VHF/AIS",
-                "2. CONFORMAL ML",
-                "3. GO 536× SOLVER",
-                "4. REFEREE G1-G5",
-                "5. DCSA & SHA-256",
-              ];
-              return (
-                <g key={ag.agentId}>
-                  {i < 4 && (
-                    <g>
-                      <line
-                        x1={x + 154}
-                        y1={44}
-                        x2={x + 182}
-                        y2={44}
-                        stroke="#38bdf8"
-                        strokeWidth="2.2"
-                        strokeDasharray="4 2"
-                      />
-                      <polygon
-                        points={`${x + 182},44 ${x + 175},40 ${x + 175},48`}
-                        fill="#38bdf8"
-                      />
-                    </g>
-                  )}
-                  <rect
-                    x={x}
-                    y={8}
-                    width={154}
-                    height={72}
-                    rx={8}
-                    fill="#0f172a"
-                    stroke={borderCol}
-                    strokeWidth="2"
-                  />
-                  <circle cx={x + 14} cy={22} r={4.5} fill={borderCol} />
-                  <text
-                    x={x + 24}
-                    y={25}
-                    fill="#f8fafc"
-                    fontSize="9.5"
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                  >
-                    {shortTitles[i]}
-                  </text>
-                  <text
-                    x={x + 12}
-                    y={46}
-                    fill="#38bdf8"
-                    fontSize="10"
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                  >
-                    Conf: {ag.confidencePct}%
-                  </text>
-                  <text
-                    x={x + 100}
-                    y={46}
-                    fill="#94a3b8"
-                    fontSize="9"
-                    fontFamily="monospace"
-                  >
-                    {ag.latencyMs}ms
-                  </text>
-                  <text
-                    x={x + 12}
-                    y={66}
-                    fill="#cbd5e1"
-                    fontSize="8.5"
-                    fontFamily="monospace"
-                  >
-                    {ag.outputSummary.slice(0, 22)}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
+            {pipeline.tier}
+          </span>
+          <span className="font-mono text-xs text-muted">
+            {pipeline.conformal.q50Median}
+            {unit} ([Q10={pipeline.conformal.q10Optimistic}
+            {unit}, Q90={pipeline.conformal.q90Conservative}
+            {unit}]) · Conf {pipeline.conformal.confidencePct}%
+          </span>
         </div>
 
-        {/* Compact 5-Agent Telemetry Table */}
-        <div className="mt-2.5 overflow-x-auto">
-          <table className="w-full border-collapse text-left font-mono text-[11px]">
-            <thead>
-              <tr className="border-b border-line bg-raised text-[9px] uppercase text-muted">
-                <th className="px-2.5 py-1.5">AI Agent Node</th>
-                <th className="px-2.5 py-1.5">Track</th>
-                <th className="px-2.5 py-1.5">Input Telemetry</th>
-                <th className="px-2.5 py-1.5">Output Vector</th>
-                <th className="px-2.5 py-1.5 text-right">Latency</th>
-                <th className="px-2.5 py-1.5 text-right">Conf %</th>
-                <th className="px-2.5 py-1.5 text-right">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-line">
-              {evaluation.agents.map((ag, idx) => (
-                <tr key={ag.agentId} className="hover:bg-raised/60">
-                  <td className="px-2.5 py-1.5 font-sans text-xs font-semibold text-fg">
-                    #{idx + 1} · {ag.nameVi.split("·")[1]?.trim() ?? ag.nameVi}
-                  </td>
-                  <td className="px-2.5 py-1.5 text-[10px] text-accent">
-                    {ag.trackBadge}
-                  </td>
-                  <td className="max-w-[220px] truncate px-2.5 py-1.5 text-[10px] text-muted">
-                    {ag.inputSummary}
-                  </td>
-                  <td className="max-w-[240px] truncate px-2.5 py-1.5 text-[10px] font-bold text-fg">
-                    {ag.outputSummary}
-                  </td>
-                  <td className="px-2.5 py-1.5 text-right text-muted">
-                    {ag.latencyMs}ms
-                  </td>
-                  <td className="px-2.5 py-1.5 text-right font-bold text-ok">
-                    {ag.confidencePct}%
-                  </td>
-                  <td className="px-2.5 py-1.5 text-right">
-                    <span
-                      className={cn(
-                        "rounded px-1.5 py-0.5 text-[9px] font-bold",
-                        ag.status === "FLAGGED_FOR_HITL"
-                          ? "bg-warn/20 text-warn"
-                          : "bg-ok/15 text-ok",
-                      )}
-                    >
-                      {ag.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* ROW 3: COMPACT SHA-256 HASH-CHAINED AUDIT TABLE */}
-      <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
-        <div className="flex flex-wrap items-center justify-between gap-2 pb-2">
-          <div className="flex items-center gap-2">
-            <Lock className="size-4 text-ok" />
-            <span className="font-mono text-xs font-bold uppercase tracking-wide text-fg">
-              Sổ Cái Kiểm Toán Minh Bạch (SHA-256 Hash-Chained Audit Ledger)
-            </span>
-          </div>
+        <div className="flex flex-wrap items-center gap-1.5">
+          {(
+            [
+              { id: "NORMAL", label: "Auto k=0 (Standard)" },
+              { id: "LOW_CONFIDENCE_STORM", label: "Storm (<85% Conf → HITL)" },
+              { id: "TRANSSHIPMENT_CRITICAL", label: "Cut-off Risk (G4 → HITL)" },
+            ] as const
+          ).map((m) => (
+            <button
+              key={m.id}
+              type="button"
+              onClick={() => setStressMode(m.id)}
+              className={cn(
+                "h-8 rounded-xl px-3 text-xs font-medium ring-1 transition",
+                stressMode === m.id
+                  ? "bg-accent text-accent-fg ring-accent shadow-xs"
+                  : "bg-raised/70 text-muted ring-line hover:text-fg",
+              )}
+            >
+              {m.label}
+            </button>
+          ))}
           <button
             type="button"
-            onClick={handleCopyAuditJson}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-raised px-2.5 py-1 font-mono text-[10px] font-semibold text-fg ring-1 ring-line hover:bg-bg"
+            onClick={() => useBoardStore.getState().setSetupOpen(true)}
+            className="inline-flex h-8 items-center gap-1.5 rounded-xl bg-raised px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent"
           >
-            {copiedAudit ? (
-              <>
-                <Check className="size-3 text-ok" />
-                Đã chép JSON
-              </>
-            ) : (
-              <>
-                <Copy className="size-3 text-accent" />
-                Xuất Audit JSON
-              </>
-            )}
+            <SlidersHorizontal className="size-3.5 text-accent" />
+            Setup
           </button>
         </div>
+      </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-left font-mono text-[11px]">
-            <thead>
-              <tr className="border-b border-line bg-raised text-[9px] uppercase text-muted">
-                <th className="px-2.5 py-1.5">Block #</th>
-                <th className="px-2.5 py-1.5">Entity</th>
-                <th className="px-2.5 py-1.5">Referee Tier</th>
-                <th className="px-2.5 py-1.5">Guardrails</th>
-                <th className="px-2.5 py-1.5">Action / Delta</th>
-                <th className="px-2.5 py-1.5">ROI (USD)</th>
-                <th className="px-2.5 py-1.5">HITL Status / Signer</th>
-                <th className="px-2.5 py-1.5">SHA-256 Chain</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-line">
-              {auditChain.map((blk) => (
-                <tr key={blk.blockIndex} className="hover:bg-raised/60">
-                  <td className="px-2.5 py-1.5 font-bold text-fg">
-                    #{blk.blockIndex}
-                  </td>
-                  <td className="px-2.5 py-1.5 font-bold text-fg">
-                    {blk.vesselId}
-                  </td>
-                  <td className="px-2.5 py-1.5">
+      {/* Main 12-Col Interactive Grid */}
+      <div className="grid gap-4 lg:grid-cols-12">
+        {/* LEFT 7 COLS: Interactive Port & Corridor Node Studio */}
+        <div className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line lg:col-span-7">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3">
+            <div className="flex items-center gap-2">
+              <Navigation className="size-4 text-accent" />
+              <h3 className="text-sm font-semibold text-fg">HCMC Port &amp; VETC Corridor Network</h3>
+              <span className="rounded-lg bg-raised px-2 py-0.5 font-mono text-[11px] text-muted ring-1 ring-line">
+                Avg Load: {corridorDensityPct}%
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Button
+                type="button"
+                size="sm"
+                variant="secondary"
+                className="h-8 rounded-xl text-xs"
+                onClick={handleDivert}
+              >
+                <Sparkles className="size-3.5 text-accent" />
+                Divert Load (k=0)
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="ghost"
+                className="h-8 rounded-xl text-xs"
+                onClick={() => setDivertedPorts({})}
+              >
+                <RefreshCw className="size-3.5" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Interactive 6-Port Node Grid (Click any port card to inspect & adjust live load) */}
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+            {portLoads.map((node) => {
+              const active = node.id === selectedPortId;
+              const high = node.utilizationPct >= 85;
+              const med = node.utilizationPct >= 70 && node.utilizationPct < 85;
+              return (
+                <button
+                  key={node.id}
+                  type="button"
+                  onClick={() => setSelectedPortId(node.id)}
+                  className={cn(
+                    "flex flex-col justify-between rounded-xl p-3 text-left ring-1 transition",
+                    active
+                      ? "bg-accent/10 ring-2 ring-accent"
+                      : "bg-raised/50 ring-line hover:bg-raised",
+                  )}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[11px] font-bold text-muted">{node.id}</span>
                     <span
                       className={cn(
-                        "rounded px-1.5 py-0.5 text-[9px] font-bold",
-                        blk.tier === "TIER_2_HITL_ESCALATION_REFEREE"
-                          ? "bg-warn/20 text-warn"
-                          : blk.tier === "TIER_1_AUTONOMOUS_COMMIT_K0"
-                            ? "bg-accent/15 text-accent"
+                        "rounded-full px-2 py-0.5 font-mono text-[11px] font-bold",
+                        high
+                          ? "bg-bad/15 text-bad"
+                          : med
+                            ? "bg-warn/15 text-warn"
                             : "bg-ok/15 text-ok",
                       )}
                     >
-                      {blk.tier}
+                      {node.utilizationPct}%
                     </span>
-                  </td>
-                  <td className="px-2.5 py-1.5 font-bold text-fg">
-                    {blk.guardrailsPassed}/{blk.guardrailsTotal} ({blk.confidencePct}%)
-                  </td>
-                  <td className="max-w-[230px] truncate px-2.5 py-1.5 text-[10px] text-fg">
-                    {blk.actionSummaryVi}
-                  </td>
-                  <td className="px-2.5 py-1.5 font-bold text-ok">
-                    +${blk.economicDeltaUsd.toLocaleString("en-US")}
-                  </td>
-                  <td className="px-2.5 py-1.5">
-                    <span
+                  </div>
+                  <p className="mt-1.5 truncate text-xs font-semibold text-fg">{node.name}</p>
+                  <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-line/60">
+                    <div
                       className={cn(
-                        "rounded px-1.5 py-0.5 text-[9px] font-bold",
-                        blk.hitlStatus === "HUMAN_APPROVED" ||
-                          blk.hitlStatus === "AUTO_VERIFIED"
-                          ? "bg-ok/15 text-ok"
-                          : blk.hitlStatus === "HUMAN_REJECTED"
-                            ? "bg-danger/15 text-danger"
-                            : "bg-warn/20 text-warn",
+                        "h-full rounded-full transition-all",
+                        high ? "bg-bad" : med ? "bg-warn" : "bg-ok",
                       )}
-                    >
-                      {blk.hitlStatus}
+                      style={{ width: `${node.utilizationPct}%` }}
+                    />
+                  </div>
+                  <div className="mt-2 flex items-center justify-between font-mono text-[11px] text-muted">
+                    <span>Wait {node.queueWaitHours}h</span>
+                    <span>{node.vetcFlowPerHour}/h</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Interactive Selected Port Live Control Strip */}
+          <div className="mt-3 rounded-xl bg-raised/60 p-3 ring-1 ring-line">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <p className="text-xs font-semibold text-fg">
+                  {activePort.name}{" "}
+                  <span className="font-mono text-muted">({activePort.tosSystem})</span>
+                </p>
+                <p className="font-mono text-[11px] text-muted">
+                  Wait: {activePort.queueWaitHours}h · VETC: {activePort.vetcFlowPerHour} vehicles/h
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-xs text-muted">Simulate Load:</span>
+                <input
+                  type="range"
+                  min={-30}
+                  max={20}
+                  step={2}
+                  value={divertedPorts[activePort.id] ?? 0}
+                  onChange={(e) =>
+                    setDivertedPorts((prev) => ({
+                      ...prev,
+                      [activePort.id]: Number(e.target.value),
+                    }))
+                  }
+                  className="w-28 accent-accent"
+                  aria-label="Simulate port load delta"
+                />
+                <span className="w-10 text-right font-mono text-xs font-bold text-accent">
+                  {activePort.utilizationPct}%
+                </span>
+              </div>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-1.5 border-t border-line/60 pt-2">
+              {HCMC_CORRIDOR_EDGES.map((edge) => (
+                <span
+                  key={edge.id}
+                  className="inline-flex items-center gap-1 rounded-lg bg-surface px-2 py-0.5 font-mono text-[10px] text-muted ring-1 ring-line"
+                >
+                  <span className="font-semibold text-fg">{edge.from}</span>
+                  <ArrowRight className="size-2.5 text-accent" />
+                  <span className="font-semibold text-fg">{edge.to}</span>
+                  <span>
+                    ({edge.distanceKm}km · {edge.travelMinutes}m)
+                  </span>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT 5 COLS: Conformal Quantile Visual Bar + Interactive Guardrails + HITL Sign-Off */}
+        <div className="flex flex-col justify-between gap-3 lg:col-span-5">
+          {/* Card 1: Conformal ML Quantile Band + 5 Interactive Guardrails */}
+          <div className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+            <div className="flex items-center justify-between">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-fg">
+                <Activity className="size-4 text-accent" />
+                Conformal ETA Band &amp; 5 Guardrails
+              </span>
+              <span className="rounded-lg bg-ok/10 px-2 py-0.5 font-mono text-xs font-semibold text-ok">
+                {pipeline.guardrails.filter((g) => g.passed || overriddenGuards[g.id]).length}/5 PASS
+              </span>
+            </div>
+
+            {/* Clean Visual Quantile Range Bar */}
+            <div className="mt-3 rounded-xl bg-raised/60 p-3 ring-1 ring-line">
+              <div className="flex justify-between font-mono text-xs">
+                <span className="text-muted">
+                  Q10:{" "}
+                  <strong className="text-fg">
+                    {pipeline.conformal.q10Optimistic}
+                    {unit}
+                  </strong>
+                </span>
+                <span className="text-accent">
+                  Q50:{" "}
+                  <strong>
+                    {pipeline.conformal.q50Median}
+                    {unit}
+                  </strong>
+                </span>
+                <span className="text-ok">
+                  Q90:{" "}
+                  <strong>
+                    {pipeline.conformal.q90Conservative}
+                    {unit}
+                  </strong>
+                </span>
+                <span className="text-muted">σ = {pipeline.conformal.epistemicSigma}</span>
+              </div>
+              <div className="relative mt-2 h-2.5 w-full rounded-full bg-line/60">
+                <div className="absolute inset-y-0 left-[18%] right-[24%] rounded-full bg-accent/25 ring-1 ring-accent" />
+                <div className="absolute top-1/2 left-[45%] size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent ring-2 ring-surface" />
+              </div>
+            </div>
+
+            {/* 5 Interactive Guardrail Pills (Click to toggle override) */}
+            <div className="mt-3 grid grid-cols-5 gap-1.5">
+              {pipeline.guardrails.map((g: GuardrailCheck) => {
+                const effectivePass = g.passed
+                  ? !overriddenGuards[g.id]
+                  : Boolean(overriddenGuards[g.id]);
+                return (
+                  <button
+                    key={g.id}
+                    type="button"
+                    onClick={() => setOverriddenGuards((prev) => ({ ...prev, [g.id]: !prev[g.id] }))}
+                    title={`${g.titleEn}: ${g.metricLabel} (Click to toggle test state)`}
+                    className={cn(
+                      "flex flex-col items-center rounded-xl p-2 text-center ring-1 transition",
+                      effectivePass
+                        ? "bg-ok/10 text-ok ring-ok/30 hover:bg-ok/15"
+                        : "bg-warn/15 text-warn ring-warn/40 hover:bg-warn/20",
+                    )}
+                  >
+                    {effectivePass ? (
+                      <CheckCircle2 className="size-4" />
+                    ) : (
+                      <AlertTriangle className="size-4" />
+                    )}
+                    <span className="mt-1 font-mono text-[10px] font-bold text-fg">
+                      {g.id === "G1_ZERO_DISPLACEMENT"
+                        ? "G1 k=0"
+                        : g.id === "G2_CONFORMAL_ROBUSTNESS"
+                          ? "G2 Q90"
+                          : g.id === "G3_ECONOMIC_THRESHOLD"
+                            ? "G3 ROI"
+                            : g.id === "G4_TRANSSHIPMENT_SLA"
+                              ? "G4 SLA"
+                              : "G5 Conf"}
+                    </span>
+                    <span className="mt-0.5 w-full truncate font-mono text-[9px] text-muted">
+                      {g.metricLabel}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Card 2: Interactive HITL Sign-Off Pad */}
+          <div className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+            <div className="flex items-center justify-between">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-fg">
+                <UserCheck className="size-4 text-accent" />
+                Human-in-the-Loop Sign-Off
+              </span>
+              <span className="font-mono text-xs font-bold text-ok">
+                +${pipeline.netEconomicBenefitUsd.toLocaleString("en-US")}
+              </span>
+            </div>
+            <input
+              type="text"
+              value={operatorName}
+              onChange={(e) => setOperatorName(e.target.value)}
+              className="mt-2.5 h-8 w-full rounded-xl bg-raised/70 px-3 font-mono text-xs text-fg ring-1 ring-line focus:ring-accent focus:outline-none"
+              aria-label="Operator Sign-off Name"
+            />
+            <div className="mt-2.5 flex flex-wrap gap-1.5">
+              <Button
+                type="button"
+                size="sm"
+                className="h-8 flex-1 rounded-xl bg-ok text-xs text-white hover:bg-ok/90"
+                onClick={() => handleHitlAction("HUMAN_APPROVED")}
+              >
+                <ShieldCheck className="size-3.5" />
+                Approve &amp; Commit
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="secondary"
+                className="h-8 rounded-xl text-xs"
+                onClick={() => handleHitlAction("HUMAN_OVERRIDDEN")}
+              >
+                <ShieldAlert className="size-3.5 text-warn" />
+                Override
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="ghost"
+                className="h-8 rounded-xl text-xs"
+                onClick={() => handleHitlAction("HUMAN_REJECTED")}
+              >
+                <RefreshCw className="size-3.5" />
+                Rollback
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive 5-Agent Stepper (Click any Agent step to inspect live Input/Output vector) */}
+      <div className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Cpu className="size-4 text-accent" />
+            <h3 className="text-sm font-semibold text-fg">
+              SƠ ĐỒ MẠCH ĐIỀU PHỐI 5 AI AGENT ({totalPipelineMs}ms)
+            </h3>
+          </div>
+          <span className="font-mono text-xs font-semibold text-ok">
+            {orig?.dockId ?? "B0"}@{orig?.startMin ?? 4}
+            {unit} → {live?.dockId ?? "B5"}@{live?.startMin ?? 5}
+            {unit} · k={result?.kUsed ?? 0}
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+          {pipeline.agents.map((s, idx) => {
+            const active = idx === selectedAgentIdx;
+            return (
+              <button
+                key={s.agentId}
+                type="button"
+                onClick={() => setSelectedAgentIdx(idx)}
+                className={cn(
+                  "flex flex-col justify-between rounded-xl p-3 text-left ring-1 transition",
+                  active
+                    ? "bg-accent/10 ring-2 ring-accent"
+                    : "bg-raised/50 ring-line hover:bg-raised",
+                )}
+              >
+                <div className="flex items-center justify-between font-mono text-[11px]">
+                  <span className="font-bold text-accent">#{idx + 1}</span>
+                  <span className="text-ok">
+                    {s.confidencePct}% · {s.latencyMs}ms
+                  </span>
+                </div>
+                <p className="mt-1.5 line-clamp-1 text-xs font-semibold text-fg">{s.nameVi}</p>
+                <p className="mt-1 truncate font-mono text-[10px] text-muted">{s.outputSummary}</p>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Selected Agent Step Inspector Bar */}
+        <div className="mt-3 grid gap-2 rounded-xl bg-raised/60 p-3 font-mono text-xs ring-1 ring-line sm:grid-cols-3">
+          <div>
+            <span className="text-[10px] font-semibold uppercase text-faint">Selected Agent</span>
+            <p className="mt-0.5 font-sans text-xs font-semibold text-fg">
+              #{selectedAgentIdx + 1} · {activeStep.nameVi} ({activeStep.roleEn})
+            </p>
+          </div>
+          <div>
+            <span className="text-[10px] font-semibold uppercase text-faint">Input Telemetry</span>
+            <p className="mt-0.5 truncate text-muted">{activeStep.inputSummary}</p>
+          </div>
+          <div>
+            <span className="text-[10px] font-semibold uppercase text-faint">Verified Output</span>
+            <p className="mt-0.5 truncate font-semibold text-fg">{activeStep.outputSummary}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Compact SHA-256 Hash-Chained Audit Ledger */}
+      <div className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-line">
+        <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+          <div className="flex items-center gap-2">
+            <Lock className="size-3.5 text-ok" />
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted">
+              SHA-256 Audit Ledger ({fullAuditChain.length} Blocks)
+            </h3>
+          </div>
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            className="h-7 rounded-lg text-xs"
+            onClick={() => {
+              void navigator.clipboard.writeText(JSON.stringify(fullAuditChain, null, 2));
+              setCopiedAudit(true);
+              setTimeout(() => setCopiedAudit(false), 1800);
+            }}
+          >
+            <Copy className="size-3" />
+            {copiedAudit ? "Copied" : "Export JSON"}
+          </Button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left font-mono text-xs">
+            <thead>
+              <tr className="border-b border-line bg-raised/50 text-[10px] uppercase text-muted">
+                <th className="px-4 py-2">Block</th>
+                <th className="px-3 py-2">Entity</th>
+                <th className="px-3 py-2">Tier</th>
+                <th className="px-3 py-2">Guardrails</th>
+                <th className="px-3 py-2">Action</th>
+                <th className="px-3 py-2">ROI</th>
+                <th className="px-3 py-2">Decision</th>
+                <th className="px-4 py-2">SHA-256</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-line/60">
+              {fullAuditChain.map((rec) => (
+                <tr key={`${rec.blockIndex}-${rec.blockHash}`} className="hover:bg-raised/30">
+                  <td className="px-4 py-2 font-bold text-fg">#{rec.blockIndex}</td>
+                  <td className="px-3 py-2 font-bold text-accent">{rec.vesselId}</td>
+                  <td className="px-3 py-2 text-[11px] text-muted">{rec.tier}</td>
+                  <td className="px-3 py-2">
+                    {rec.guardrailsPassed}/{rec.guardrailsTotal}
+                  </td>
+                  <td className="px-3 py-2 font-sans text-xs text-fg">{rec.actionSummaryVi}</td>
+                  <td className="px-3 py-2 font-bold text-ok">
+                    +${rec.economicDeltaUsd.toLocaleString("en-US")}
+                  </td>
+                  <td className="px-3 py-2">
+                    <span className="rounded-md bg-ok/10 px-2 py-0.5 text-[10px] font-semibold text-ok">
+                      {rec.hitlStatus}
                     </span>
                   </td>
-                  <td className="px-2.5 py-1.5 text-[10px] text-ok">
-                    {blk.blockHash.slice(0, 16)}...
-                  </td>
+                  <td className="px-4 py-2 text-[11px] text-muted">{rec.blockHash.slice(0, 16)}…</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

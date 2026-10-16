@@ -1,5 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, CalendarClock, CalendarDays, Clock, Copy, Cpu, Flag, MoreHorizontal, Pause, PenLine, ShieldCheck, Snowflake, Sparkles, Truck } from "lucide-react";
+import {
+  Anchor,
+  ArrowRight,
+  CalendarClock,
+  CalendarDays,
+  Clock,
+  Copy,
+  Flag,
+  Minus,
+  MoreHorizontal,
+  Pause,
+  PenLine,
+  Plus,
+  SlidersHorizontal,
+  Snowflake,
+  Truck,
+} from "lucide-react";
 import { bookedFromPlan } from "@/lib/minmove/published-week.ts";
 import { formatWhen } from "@/lib/minmove/seed.ts";
 import { useBoardStore } from "@/lib/minmove/store.ts";
@@ -35,6 +51,9 @@ export function Inspector({
   const len = yard.shiftLenMin;
   const wait = event && event.truckId === truck.id && start ? Math.max(0, start.startMin - event.newEtaMin) : 0;
   const forceReefer = useBoardStore((s) => s.forceReefer);
+  const forceDock = useBoardStore((s) => s.forceDock);
+  const holdOn = useBoardStore((s) => s.holdOn);
+  const slaRateUsd = useBoardStore((s) => s.slaRateUsd);
   const reeferOn = truck.cargo === "reefer" || forceReefer;
   const [menu, setMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -44,7 +63,7 @@ export function Inspector({
     [hour, yard, event, result],
   );
   const savedUnits = hour ? Math.max(0, compare?.saved ?? 0) : moved ? 40 : 0;
-  const savedUsd = hour ? savedUnits * 1500 : savedUnits * 12;
+  const savedUsd = savedUnits * slaRateUsd;
 
   useEffect(() => {
     if (!menu) return;
@@ -55,12 +74,12 @@ export function Inspector({
     return () => document.removeEventListener("mousedown", onDoc);
   }, [menu]);
 
+  const nextPriority = ((truck.priority % 3) + 1) as 1 | 2 | 3;
+
   return (
     <aside className="flex h-full flex-col overflow-y-auto bg-surface p-5">
       <div className="flex items-center justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-accent">Appointment · Chi Tiết Lệnh</p>
-        </div>
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted">APPOINTMENT</p>
         <div className="relative" ref={menuRef}>
           <button type="button" className="text-faint hover:text-fg" aria-label="Appointment menu" onClick={() => setMenu((v) => !v)}>
             <MoreHorizontal className="size-4" />
@@ -76,7 +95,7 @@ export function Inspector({
                 }}
               >
                 <Copy className="size-3.5 text-muted" />
-                Copy plate (Chép mã)
+                Copy plate
               </button>
               <button
                 type="button"
@@ -87,13 +106,14 @@ export function Inspector({
                 }}
               >
                 <CalendarClock className="size-3.5 text-muted" />
-                Reschedule (Tính lại)
+                Reschedule
               </button>
             </div>
           ) : null}
         </div>
       </div>
 
+      {/* Vehicle / Vessel Identity matching attachments/image.png */}
       <div className="mt-4 flex items-center gap-3">
         <div className="relative shrink-0">
           <img src="/truck.jpg" alt="" className="size-13 rounded-full object-cover outline outline-1 -outline-offset-1 outline-black/10" />
@@ -109,56 +129,91 @@ export function Inspector({
         </div>
       </div>
 
-      {hour ? (
-        <p className="mt-3 rounded-lg bg-raised/70 px-2.5 py-1.5 font-mono text-xs tabular-nums text-muted ring-1 ring-line">
-          Occupies {truck.span ?? 1} berths · works {truck.durationMin}h (Chiếm {truck.span ?? 1} cầu · làm hàng {truck.durationMin}h)
-        </p>
-      ) : (
-        <div className="mt-3 flex flex-wrap gap-1.5">
-          <button
-            type="button"
-            onClick={() => {
-              const s = useBoardStore.getState();
-              if (!s.forceReefer) s.toggleForceReefer();
-            }}
-            className={cn(
-              "inline-flex h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium ring-1",
-              reeferOn ? "bg-accent/10 text-accent ring-accent/25" : "bg-raised text-muted ring-line",
-            )}
-          >
-            <Snowflake className="size-3.5" />
-            Reefer (Lạnh)
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              const s = useBoardStore.getState();
-              if (s.forceReefer) s.toggleForceReefer();
-            }}
-            className={cn(
-              "inline-flex h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium ring-1",
-              !reeferOn ? "bg-ok/10 text-ok ring-ok/25" : "bg-raised text-muted ring-line",
-            )}
-          >
-            <Truck className="size-3.5" />
-            Dry (Khô)
-          </button>
-          <span className="inline-flex h-8 items-center rounded-full bg-raised px-2.5 font-mono text-xs tabular-nums text-muted ring-1 ring-line">
-            P{truck.priority}
-          </span>
-        </div>
-      )}
+      {/* Interactive Attribute Pills (Reefer / Dry / Priority / Span) */}
+      <div className="mt-3.5 flex flex-wrap gap-1.5">
+        {hour ? (
+          <>
+            <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-accent/10 px-2.5 font-mono text-xs font-medium text-accent ring-1 ring-accent/25">
+              <Anchor className="size-3.5" />
+              {truck.span ?? 1} berths · {truck.durationMin}h
+            </span>
+            <span className="sr-only">
+              Occupies {truck.span ?? 1} berths · works {truck.durationMin}h
+            </span>
+          </>
+        ) : (
+          <>
+            <button
+              type="button"
+              onClick={() => {
+                const s = useBoardStore.getState();
+                if (!s.forceReefer) s.toggleForceReefer();
+              }}
+              className={cn(
+                "inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-medium ring-1 transition",
+                reeferOn ? "bg-accent/10 text-accent ring-accent/25" : "bg-raised text-muted ring-line hover:text-fg",
+              )}
+            >
+              <Snowflake className="size-3.5" />
+              Reefer
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const s = useBoardStore.getState();
+                if (s.forceReefer) s.toggleForceReefer();
+              }}
+              className={cn(
+                "inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-medium ring-1 transition",
+                !reeferOn ? "bg-ok/10 text-ok ring-ok/25" : "bg-raised text-muted ring-line hover:text-fg",
+              )}
+            >
+              <Truck className="size-3.5" />
+              Dry
+            </button>
+          </>
+        )}
+        <button
+          type="button"
+          onClick={() => useBoardStore.getState().setTruckPriority(truck.id, nextPriority)}
+          title="Click to cycle priority P1 -> P2 -> P3"
+          className="inline-flex h-8 items-center gap-1 rounded-full bg-raised px-3 font-mono text-xs font-semibold tabular-nums text-accent ring-1 ring-line transition hover:bg-accent/10"
+        >
+          P{truck.priority}
+        </button>
+      </div>
 
-      <div className="mt-4">
-        <div className="mb-1.5 flex justify-between text-xs text-muted">
-          <span>Shift · Khung giờ làm hàng</span>
-          <span className="font-mono tabular-nums">{startLabel} – {endLabel}</span>
+      {/* Interactive Shift Progress Bar */}
+      <div className="mt-5">
+        <div className="mb-1.5 flex items-center justify-between text-xs text-muted">
+          <span className="font-semibold uppercase tracking-wider text-faint">SHIFT</span>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => useBoardStore.getState().nudge(hour ? -1 : -15)}
+              className="flex size-5 items-center justify-center rounded bg-raised text-muted ring-1 ring-line hover:text-fg"
+              title="Nudge earlier"
+            >
+              <Minus className="size-3" />
+            </button>
+            <span className="font-mono font-medium tabular-nums text-fg">
+              {startLabel} – {endLabel}
+            </span>
+            <button
+              type="button"
+              onClick={() => useBoardStore.getState().nudge(hour ? 1 : 15)}
+              className="flex size-5 items-center justify-center rounded bg-raised text-muted ring-1 ring-line hover:text-fg"
+              title="Nudge later"
+            >
+              <Plus className="size-3" />
+            </button>
+          </div>
         </div>
         <div className="relative h-2 rounded-full bg-raised">
           {start ? (
             <span
-              className="absolute top-0 h-2 rounded-full bg-accent"
-              style={{ left: `${(start.startMin / len) * 100}%`, width: `${(truck.durationMin / len) * 100}%` }}
+              className="absolute top-0 h-2 rounded-full bg-accent transition-all"
+              style={{ left: `${(start.startMin / len) * 100}%`, width: `${Math.max(4, (truck.durationMin / len) * 100)}%` }}
             />
           ) : null}
         </div>
@@ -168,56 +223,97 @@ export function Inspector({
         </div>
       </div>
 
+      {/* Interactive Booked -> Plan Cards matching attachments/image.png */}
       <div className="mt-4 flex items-center justify-between gap-2.5">
-        <DoorCard label="Booked · Gốc" id={origDock?.short.replace("D", "") ?? "—"} muted={Boolean(moved)} />
+        <DoorCard
+          label="Booked"
+          id={origDock?.short.replace("D", "") ?? "—"}
+          muted={Boolean(moved)}
+          selected={holdOn}
+          onClick={() => useBoardStore.getState().hold()}
+        />
         <ArrowRight className={cn("size-4 shrink-0", moved ? "text-accent" : "text-faint")} />
-        <DoorCard label={moved ? "Plan · Mới" : "Holds · Giữ"} id={liveDock?.short.replace("D", "") ?? "—"} active={Boolean(moved)} />
-      </div>
-
-      {/* Sidecar Telemetry & Economic Value Box */}
-      <div className={cn("mt-4 rounded-xl p-3 ring-1", savedUsd > 0 ? "bg-ok/10 ring-ok/30" : "bg-raised/60 ring-line")}>
-        <div className="flex items-center justify-between gap-1">
-          <span className="inline-flex items-center gap-1 font-mono text-[10px] font-semibold uppercase text-fg">
-            {savedUsd > 0 ? <Sparkles className="size-3 text-ok" /> : <ShieldCheck className="size-3 text-accent" />}
-            {savedUsd > 0 ? "MINIMAL DIFF PATCH (k=0)" : "ZERO-TOUCH (NO_OP)"}
-          </span>
-          <span className="font-mono text-xs font-bold text-ok">
-            {savedUsd > 0 ? `+$${savedUsd.toLocaleString("en-US")}` : "100% Bảo toàn"}
-          </span>
-        </div>
-        <p className="mt-1 text-[11px] leading-snug text-muted">
-          {savedUsd > 0
-            ? `Cứu ${savedUnits}${unit} chờ dây chuyền, giữ nguyên 100% lệnh khác trên TOS/WMS chủ.`
-            : "Cầu/cửa gốc vẫn tối ưu — Plugin không can thiệp dữ liệu hệ thống chủ."}
-        </p>
+        <DoorCard
+          label={moved ? "Plan" : "Holds"}
+          id={liveDock?.short.replace("D", "") ?? "—"}
+          active={Boolean(moved) && !holdOn}
+          onClick={() => {
+            useBoardStore.setState({ holdOn: false, forceDock: "" });
+            useBoardStore.getState().findPlan();
+          }}
+        />
       </div>
 
       {event && event.truckId === truck.id ? (
-        <>
-          <p className="mt-3.5 text-xs font-medium text-bad">Late to {formatWhen(yard, event.newEtaMin)} (Đến trễ)</p>
-          {result ? (
-            <p className="mt-0.5 text-xs text-muted">
-              {result.status === "OPTIMAL" ? "Draft · not committed (Bản nháp tối ưu)" : "No legal draft"}
-            </p>
+        <div className="mt-3.5 flex items-center justify-between">
+          <p className="text-xs font-medium text-bad">Late to {formatWhen(yard, event.newEtaMin)}</p>
+          {savedUsd > 0 ? (
+            <span className="rounded-full bg-ok/10 px-2 py-0.5 font-mono text-[11px] font-semibold text-ok ring-1 ring-ok/25">
+              +${savedUsd.toLocaleString("en-US")} saved
+            </span>
           ) : null}
-        </>
+        </div>
       ) : (
-        <p className="mt-3.5 text-xs text-muted">On the published board (Theo kế hoạch gốc)</p>
+        <p className="mt-3.5 text-xs text-muted">On the published board</p>
       )}
 
-      <dl className="mt-3.5 space-y-2.5 text-xs">
-        <Row icon={Clock} label="Wait (Chờ)" value={`${result?.metrics.eventWaitMin ?? wait} ${unit}`} />
-        <Row icon={Clock} label="Service time (Làm hàng)" value={`${truck.durationMin} ${unit}`} />
-        <Row icon={CalendarClock} label={hour ? "Berth (Cầu)" : "Door (Cửa)"} value={liveDock?.short.replace("D", "") ?? "—"} />
-        <Row icon={Flag} label="Priority (Ưu tiên)" value={`P${truck.priority}`} />
+      {/* Clean Interactive Key-Value Rows matching attachments/image.png */}
+      <dl className="mt-3.5 space-y-3 border-t border-line/70 pt-3.5 text-xs">
+        <Row icon={Clock} label="Wait" value={`${result?.metrics.eventWaitMin ?? wait} ${unit}`} />
+        <div className="flex items-center justify-between gap-2">
+          <span className="inline-flex items-center gap-1.5 text-muted">
+            <Clock className="size-3.5" />
+            Service time
+          </span>
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => useBoardStore.getState().setTruckDuration(truck.id, hour ? -2 : -15)}
+              className="flex size-5 items-center justify-center rounded bg-raised text-muted ring-1 ring-line hover:text-fg"
+              title="Decrease service time"
+            >
+              <Minus className="size-2.5" />
+            </button>
+            <span className="min-w-12 text-center font-mono text-xs font-semibold tabular-nums text-fg">
+              {truck.durationMin} {unit}
+            </span>
+            <button
+              type="button"
+              onClick={() => useBoardStore.getState().setTruckDuration(truck.id, hour ? 2 : 15)}
+              className="flex size-5 items-center justify-center rounded bg-raised text-muted ring-1 ring-line hover:text-fg"
+              title="Increase service time"
+            >
+              <Plus className="size-2.5" />
+            </button>
+          </div>
+        </div>
+        <div className="flex items-center justify-between gap-2">
+          <span className="inline-flex items-center gap-1.5 text-muted">
+            <CalendarClock className="size-3.5" />
+            {hour ? "Berth" : "Door"}
+          </span>
+          <select
+            value={forceDock || (liveDock?.id ?? "")}
+            onChange={(e) => useBoardStore.getState().toggleForceDock(e.target.value)}
+            aria-label={hour ? "Pin berth" : "Pin door"}
+            className="h-6 rounded-md bg-raised px-2 font-mono text-xs font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none"
+          >
+            {yard.docks.map((d) => (
+              <option key={d.id} value={d.id}>
+                {d.short.replace("D", "")} {forceDock === d.id ? "(Pinned)" : ""}
+              </option>
+            ))}
+          </select>
+        </div>
+        <Row icon={Flag} label="Priority" value={`P${truck.priority}`} />
         <Row
           icon={Snowflake}
-          label="Type (Loại hàng)"
+          label="Type"
           value={
             hour
               ? "Not in the file"
               : forceReefer && truck.cargo !== "reefer"
-                ? "Dry · treat as reefer"
+                ? "Dry (Reefer)"
                 : truck.cargo === "reefer"
                   ? "Reefer"
                   : "Dry"
@@ -225,28 +321,34 @@ export function Inspector({
         />
       </dl>
 
+      {/* Bottom Action Bar matching attachments/image.png */}
       <div className="mt-auto space-y-2 border-t border-line pt-4">
         <div className="flex flex-wrap gap-1.5">
-          <Button type="button" variant="secondary" size="sm" className="rounded-full" onClick={onFind}>
+          <Button type="button" variant="secondary" size="sm" className="rounded-xl" onClick={onFind}>
             <CalendarClock className="size-3.5" />
             Reschedule
           </Button>
-          <Button type="button" variant="ghost" size="sm" className="rounded-full" onClick={() => useBoardStore.getState().hold()}>
+          <Button type="button" variant="ghost" size="sm" className="rounded-xl" onClick={() => useBoardStore.getState().hold()}>
             <Pause className="size-3.5" />
             Hold
           </Button>
-          <Button type="button" size="sm" className="rounded-full shadow-[var(--shadow-float)]" onClick={() => useBoardStore.getState().nudge(15)}>
+          <Button
+            type="button"
+            size="sm"
+            className="rounded-xl shadow-[var(--shadow-float)]"
+            onClick={() => useBoardStore.getState().nudge(hour ? 1 : 15)}
+          >
             <PenLine className="size-3.5" />
             Edit plan
           </Button>
         </div>
         <button
           type="button"
-          onClick={() => useBoardStore.getState().setTab("sidecar")}
-          className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-accent/10 px-3 py-2 text-xs font-semibold text-accent ring-1 ring-accent/30 hover:bg-accent/15"
+          onClick={() => useBoardStore.getState().setSetupOpen(true)}
+          className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-raised px-3 py-2 text-xs font-medium text-fg ring-1 ring-line transition hover:bg-accent/10 hover:text-accent hover:ring-accent/30"
         >
-          <Cpu className="size-3.5" />
-          Mở Plugin Sidecar &amp; Benchmark Go/Rust
+          <SlidersHorizontal className="size-3.5 text-accent" />
+          Tự Setup Cấu Hình Logistics
         </button>
       </div>
     </aside>
@@ -260,20 +362,44 @@ function Row({ icon: Icon, label, value }: { icon: typeof Clock; label: string; 
         <Icon className="size-3.5" />
         {label}
       </span>
-      <span className="font-mono text-xs font-medium tabular-nums text-fg">{value}</span>
+      <span className="font-mono text-xs font-semibold tabular-nums text-fg">{value}</span>
     </div>
   );
 }
 
-function DoorCard({ label, id, muted, active }: { label: string; id: string; muted?: boolean; active?: boolean }) {
+function DoorCard({
+  label,
+  id,
+  muted,
+  active,
+  selected,
+  onClick,
+}: {
+  label: string;
+  id: string;
+  muted?: boolean;
+  active?: boolean;
+  selected?: boolean;
+  onClick?: () => void;
+}) {
   return (
-    <div className={cn("flex-1 rounded-2xl px-3 py-2.5 ring-1", active ? "bg-accent/10 text-fg ring-accent/30 shadow-[inset_0_0_0_1px_rgba(91,77,255,0.08)]" : "bg-raised/80 ring-line")}>
-      <p className={cn("inline-flex items-center gap-1 text-[10px] font-semibold", active ? "text-accent" : "text-faint")}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "flex-1 rounded-2xl px-3 py-2.5 text-left ring-1 transition",
+        active
+          ? "bg-accent/10 text-fg ring-accent/30 shadow-[inset_0_0_0_1px_rgba(91,77,255,0.08)]"
+          : selected
+            ? "bg-bad/10 text-fg ring-bad/30"
+            : "bg-raised/80 ring-line hover:bg-raised",
+      )}
+    >
+      <p className={cn("inline-flex items-center gap-1 text-[11px] font-medium", active ? "text-accent" : "text-muted")}>
         <CalendarDays className="size-3" />
         {label}
       </p>
-      <p className={cn("mt-0.5 font-mono text-xl font-bold tabular-nums", muted && !active && "text-muted")}>{id}</p>
-    </div>
+      <p className={cn("mt-1 font-mono text-xl font-bold tabular-nums", muted && !active && "text-muted")}>{id}</p>
+    </button>
   );
 }
-

@@ -52,27 +52,47 @@ export function PublishedLedger() {
   const leftmostSum = scores.reduce((sum, row) => sum + (row.saved ?? 0), 0);
 
   return (
-    <section className="mb-4 overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-line">
-      <div className="border-b border-line px-4 py-3.5 sm:px-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-accent">
-              Published calls · Sổ Cái Kiểm Chứng Từng Tàu Trên Tuần Đang Chọn
-            </p>
-            <h2 className="mt-1 text-base font-semibold tracking-tight">
-              Same question on every call · quay {week.quay} · week {week.week}
+    <section className="mt-4 mb-4 overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-line">
+      <div className="border-b border-line px-4 py-3 sm:px-5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <h2 className="text-sm font-semibold tracking-tight text-fg">
+              Quay {week.quay} · Week {week.week}
             </h2>
+            <span className="rounded-lg bg-raised px-2 py-1 font-mono text-xs font-medium text-muted ring-1 ring-line" data-cite={PUBLISHED_DOI}>
+              {week.file} · {week.bksFile} ·{" "}
+              <a className="text-accent underline" href={PUBLISHED_DOI_URL} target="_blank" rel="noreferrer">
+                {PUBLISHED_DOI}
+              </a>{" "}
+              ·{" "}
+              <a className="text-accent underline" href={PUBLISHED_REPO} target="_blank" rel="noreferrer">
+                repo
+              </a>
+            </span>
           </div>
-          <label className="flex max-w-full flex-col gap-1 text-xs font-medium text-muted">
-            Published week (Chọn trong 98 tuần cảng Barcelona):
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-lg bg-raised/80 px-2.5 py-1 font-mono text-xs font-semibold text-fg ring-1 ring-line">
+              {scores.length} calls
+            </span>
+            <span className="rounded-lg bg-ok/10 px-2.5 py-1 font-mono text-xs font-semibold text-ok ring-1 ring-ok/25">
+              NO_OP: {stay}/{scores.length}
+            </span>
+            <span className="rounded-lg bg-accent/10 px-2.5 py-1 font-mono text-xs font-semibold text-accent ring-1 ring-accent/25">
+              Saved: {versusSum}h ({beat} ships · k={movedSum} · gap {leftmostSum}h)
+            </span>
+            <span className="rounded-lg bg-ok/15 px-2.5 py-1 font-mono text-xs font-bold text-ok ring-1 ring-ok/30">
+              +${(versusSum * 1500).toLocaleString("en-US")}
+            </span>
             <select
               data-week-select=""
               value={yard.id}
+              aria-label="Published week"
               onChange={(e) => {
                 const next = clientYard(e.target.value);
                 if (next) useBoardStore.getState().openBuiltYard(next);
               }}
-              className="h-9 max-w-full rounded-lg bg-bg px-2.5 text-sm font-medium text-fg ring-1 ring-line"
+              className="h-8 rounded-lg bg-bg px-2.5 font-mono text-xs font-medium text-fg ring-1 ring-line"
             >
               {weeks.map((row) => (
                 <option key={row.id} value={row.id}>
@@ -80,53 +100,8 @@ export function PublishedLedger() {
                 </option>
               ))}
             </select>
-          </label>
-        </div>
-
-        {/* 4-Card Empirical Week Summary */}
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
-          <div className="rounded-xl bg-raised/70 p-2.5 ring-1 ring-line">
-            <p className="text-[10px] font-semibold uppercase text-faint">Tàu Trong Tuần {week.week}</p>
-            <p className="mt-0.5 font-mono text-base font-bold tabular-nums text-fg">{scores.length} tàu</p>
-            <p className="text-[11px] text-muted">Cầu {week.quay} · Bấm vào dòng để chọn tàu</p>
-          </div>
-          <div className="rounded-xl bg-raised/70 p-2.5 ring-1 ring-line">
-            <p className="text-[10px] font-semibold uppercase text-faint">Giữ Nguyên Cầu Gốc (NO_OP)</p>
-            <p className="mt-0.5 font-mono text-base font-bold tabular-nums text-ok">
-              {stay}/{scores.length} tàu
-            </p>
-            <p className="text-[11px] text-muted">0 sửa đổi vào TOS chủ</p>
-          </div>
-          <div className="rounded-xl bg-raised/70 p-2.5 ring-1 ring-line">
-            <p className="text-[10px] font-semibold uppercase text-faint">Ca Kẹt Cứu Được (k=0)</p>
-            <p className="mt-0.5 font-mono text-base font-bold tabular-nums text-accent">
-              {beat} tàu · {versusSum} giờ
-            </p>
-            <p className="text-[11px] text-muted">{movedSum} tàu khác bị dời</p>
-          </div>
-          <div className="rounded-xl bg-ok/10 p-2.5 ring-1 ring-ok/30">
-            <p className="text-[10px] font-semibold uppercase text-ok">Lợi Ích Kinh Tế Tuần {week.week}</p>
-            <p className="mt-0.5 font-mono text-base font-bold tabular-nums text-ok">
-              +${(versusSum * 1500).toLocaleString("en-US")} USD
-            </p>
-            <p className="text-[11px] text-muted">Phí lưu tàu $1,500/giờ</p>
           </div>
         </div>
-
-        <p className="mt-3 max-w-4xl text-xs leading-relaxed text-muted sm:text-sm" data-cite={PUBLISHED_DOI}>
-          Quay {week.quay}, week {week.week} of 2024. Port of Barcelona container calls, one-hour periods, Alberto Santini (DOI {PUBLISHED_DOI}). The blocks are the published plan in {week.file} and {week.bksFile}. {weeks.length} weeks, quays 24B and 36A, weeks 2–50.{" "}
-          <a className="text-accent underline" href={PUBLISHED_DOI_URL} target="_blank" rel="noreferrer">
-            {PUBLISHED_DOI}
-          </a>
-          {" · "}
-          <a className="text-accent underline" href={PUBLISHED_REPO} target="_blank" rel="noreferrer">
-            source repository
-          </a>
-          . ship_len is consecutive berths. The file has no cargo or equipment field, so the solver does not reject a berth for either.
-        </p>
-        <p className="mt-1.5 max-w-4xl text-xs leading-relaxed text-muted sm:text-sm">
-          Versus booked is solve() for that call one hour after its published mooring, compared with the same solve() forced onto the booked berth. Leftmost gap is the first section that can take the call, which is a different question. Saved at the next call uses the hour the next ship on those sections starts. A dash means no later ship uses them. This week at +1h: {scores.length} calls. {stay} stay on the booked berth. {beat} beat staying, {versusSum} h together, {movedSum} other calls moved. Leftmost-section gap: {leftmostSum} h. The file's makespan is the latest completion hour and is not either total.
-        </p>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full min-w-[52rem] text-left text-sm">

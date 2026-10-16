@@ -2,11 +2,13 @@ import { useMemo, useState } from "react";
 import {
   Anchor,
   ArrowLeftRight,
+  ArrowRight,
   CheckCircle2,
   CircleAlert,
   Clock,
   Container,
   Copy,
+  Cpu,
   FileCode2,
   GitCompareArrows,
   Layers,
@@ -665,6 +667,7 @@ export function UniversalSidecarAndBenchmarkPanel() {
   const [customTargetId, setCustomTargetId] = useState<string | null>(null);
   const [patchView, setPatchView] = useState<"rfc7396" | "native">("rfc7396");
   const [benchRunCount, setBenchRunCount] = useState<number>(1);
+  const [scaleMult, setScaleMult] = useState<1 | 5 | 10>(1);
   const [copiedPatch, setCopiedPatch] = useState<boolean>(false);
 
   const activeHost = useMemo(
@@ -701,16 +704,17 @@ export function UniversalSidecarAndBenchmarkPanel() {
   const patchedSt = targetDiff?.nextStart ?? bookedSt;
 
   return (
-    <div className="space-y-3" data-testid="universal-sidecar-benchmark-panel">
-      {/* Section 1: Visual SVG Donut + Sidecar Architecture Canvas + 4 Domain Control Pad */}
-      <section className="overflow-hidden rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-2.5">
+    <div className="space-y-4" data-testid="universal-sidecar-benchmark-panel">
+      {/* Section 1: Refined Non-Destructive Sidecar Studio (matching attachments/image.png) */}
+      <section className="overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-md bg-accent px-2 py-0.5 font-mono text-[10px] font-bold uppercase text-accent-fg">
-              UNIVERSAL SIDECAR SCADA
+            <span className="inline-flex items-center gap-1.5 rounded-xl bg-accent/10 px-3 py-1 font-mono text-xs font-semibold text-accent ring-1 ring-accent/25">
+              <Cpu className="size-3.5" />
+              Universal Non-Invasive Sidecar
             </span>
-            <span className="rounded-md bg-ok/15 px-2 py-0.5 font-mono text-[10px] font-bold text-ok">
-              3,092 Calls · 83.02% NO_OP · 16.98% Patch (k=0) · +$29,701,500 USD
+            <span className="rounded-xl bg-ok/10 px-2.5 py-1 font-mono text-xs font-semibold text-ok ring-1 ring-ok/25">
+              {pnl.pairedWeeksCount} Weeks · {pnl.totalArrivalProbes.toLocaleString("en-US")} Calls · +${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")}
             </span>
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -718,6 +722,7 @@ export function UniversalSidecarAndBenchmarkPanel() {
               type="button"
               size="sm"
               variant="secondary"
+              className="h-8 rounded-xl text-xs"
               onClick={() => {
                 if (activeHost.id === "host-maritime-quay") {
                   setCustomTargetId("S11");
@@ -727,179 +732,75 @@ export function UniversalSidecarAndBenchmarkPanel() {
                 }
               }}
             >
-              Mode 1: Zero-Touch NO_OP
+              Zero-Touch NO_OP (83.02%)
             </Button>
             <Button
               type="button"
               size="sm"
+              className="h-8 rounded-xl text-xs"
               onClick={() => {
                 setCustomTargetId(activeHost.defaultTargetId);
                 setCustomDelay(activeHost.defaultDelayDelta);
               }}
             >
-              Mode 2: Minimal Patch (k=0)
+              Minimal Patch k=0 (16.98%)
+            </Button>
+            <Button
+              type="button"
+              size="sm"
+              variant="ghost"
+              className="h-8 rounded-xl text-xs ring-1 ring-line"
+              onClick={() => useBoardStore.getState().setSetupOpen(true)}
+            >
+              Tự Setup Bãi/Cảng
             </Button>
           </div>
         </div>
 
-        {/* Visual SVG Row: Left 5 Cols = SVG Donut + Corpus KPI Table | Right 7 Cols = Live SVG Sidecar & Lane Diff Schematic */}
-        <div className="mt-3 grid gap-3 lg:grid-cols-12">
-          {/* Left 5 Cols: SVG Donut Chart + Numeric Summary Table */}
-          <div className="flex flex-col justify-between rounded-xl bg-[#09111e] p-3 ring-1 ring-line lg:col-span-5">
-            <div className="flex items-center gap-3">
-              <svg viewBox="0 0 120 120" className="size-28 shrink-0">
-                <circle cx="60" cy="60" r="44" fill="none" stroke="#1e293b" strokeWidth="14" />
-                {/* 83.02% NO_OP Emerald Arc */}
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="44"
-                  fill="none"
-                  stroke="#10b981"
-                  strokeWidth="14"
-                  strokeDasharray="229.5 276.5"
-                  transform="rotate(-90 60 60)"
-                />
-                {/* 16.98% Contested k=0 Indigo/Sky Arc */}
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="44"
-                  fill="none"
-                  stroke="#38bdf8"
-                  strokeWidth="14"
-                  strokeDasharray="47 276.5"
-                  strokeDashoffset="-229.5"
-                  transform="rotate(-90 60 60)"
-                />
-                <text x="60" y="56" textAnchor="middle" fill="#f8fafc" fontSize="13" fontFamily="monospace" fontWeight="bold">
-                  3,092
-                </text>
-                <text x="60" y="70" textAnchor="middle" fill="#10b981" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
-                  +$29.7M
-                </text>
-              </svg>
-
-              <table className="w-full border-collapse font-mono text-[11px] text-slate-200">
-                <tbody className="divide-y divide-slate-800">
-                  <tr>
-                    <td className="py-1 text-slate-400">Weeks / Calls</td>
-                    <td className="py-1 text-right font-bold text-white">
-                      {pnl.pairedWeeksCount}w · {pnl.totalArrivalProbes.toLocaleString("en-US")}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1 text-emerald-400">● NO_OP (83.02%)</td>
-                    <td className="py-1 text-right font-bold text-emerald-400">
-                      {pnl.uncontestedCount.toLocaleString("en-US")} calls
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1 text-sky-400">● Patch k=0 (16.98%)</td>
-                    <td className="py-1 text-right font-bold text-sky-400">
-                      {pnl.contestedCount} calls
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1 text-slate-400">Hours Rescued</td>
-                    <td className="py-1 text-right font-bold text-emerald-400">
-                      {pnl.totalShipHoursSaved.toLocaleString("en-US")}h (k=0)
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1 text-slate-400">Net P&amp;L Value</td>
-                    <td className="py-1 text-right font-bold text-emerald-400">
-                      +${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        {/* 4 Clean KPI Cards (matching attachments/image.png card style) */}
+        <div className="mt-3.5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="rounded-xl bg-raised/60 p-3 ring-1 ring-line">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">Empirical Corpus</p>
+            <p className="mt-1 font-mono text-lg font-bold tabular-nums text-fg">
+              {pnl.pairedWeeksCount}w · {pnl.totalArrivalProbes.toLocaleString("en-US")}
+            </p>
+            <p className="mt-0.5 font-mono text-[11px] text-muted">100% legal · 0 violations</p>
           </div>
-
-          {/* Right 7 Cols: Live SVG Non-Invasive Sidecar & Resource Diff Diagram */}
-          <div className="overflow-hidden rounded-xl bg-[#09111e] p-3 ring-1 ring-line lg:col-span-7">
-            <svg
-              viewBox="0 0 640 128"
-              className="h-[118px] w-full select-none"
-              role="img"
-              aria-label="Sơ đồ kiến trúc Sidecar không xâm lấn"
-            >
-              {/* Node 1: Incumbent Host TOS/WMS */}
-              <rect x="10" y="14" width="175" height="100" rx="8" fill="#0f172a" stroke="#475569" strokeWidth="2" />
-              <text x="22" y="32" fill="#94a3b8" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
-                HOST SYSTEM (100% PRESERVED)
-              </text>
-              <text x="22" y="50" fill="#f8fafc" fontSize="10" fontFamily="monospace" fontWeight="bold">
-                {activeHost.incumbentSystem.slice(0, 24)}
-              </text>
-              <rect x="22" y="62" width="150" height="40" rx="5" fill="rgba(244,63,94,0.12)" stroke="#f43f5e" />
-              <text x="30" y="78" fill="#f43f5e" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
-                HOLD: {bookedRes} @ {bookedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"}
-              </text>
-              <text x="30" y="94" fill="#fca5a5" fontSize="9" fontFamily="monospace">
-                Wait: {pluginExec.hostPlanWait} {activeHost.timeUnitLabel}
-              </text>
-
-              {/* Bidirectional Bus Arrows */}
-              <line x1="185" y1="46" x2="235" y2="46" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4 2" />
-              <text x="210" y="39" textAnchor="middle" fill="#38bdf8" fontSize="8" fontFamily="monospace">
-                ETA+{effectiveDelay}
-              </text>
-              <line x1="235" y1="82" x2="185" y2="82" stroke="#10b981" strokeWidth="2" />
-              <text x="210" y="96" textAnchor="middle" fill="#10b981" fontSize="8" fontFamily="monospace">
-                RFC7396
-              </text>
-
-              {/* Node 2: Hozerion Go 1.26.5 / V8 Zero-Alloc Sidecar Kernel */}
-              <rect x="235" y="14" width="175" height="100" rx="8" fill="#0f172a" stroke="#38bdf8" strokeWidth="2" />
-              <text x="247" y="32" fill="#38bdf8" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
-                HOZERION SIDECAR KERNEL
-              </text>
-              <text x="247" y="50" fill="#f8fafc" fontSize="10" fontFamily="monospace" fontWeight="bold">
-                Go 536× · 5.15µs · k=0
-              </text>
-              <rect x="247" y="62" width="150" height="40" rx="5" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" />
-              <text x="255" y="78" fill="#38bdf8" fontSize="9" fontFamily="monospace" fontWeight="bold">
-                {pluginExec.pluginDecision === "NO_OP_KEEP_HOST_PLAN" ? "NO_OP (0 MUTATION)" : "PATCH 1 JOB ONLY"}
-              </text>
-              <text x="255" y="94" fill="#e2e8f0" fontSize="9" fontFamily="monospace">
-                Other moved: k={pluginExec.otherJobsMoved}
-              </text>
-
-              {/* Arrow to Result */}
-              <line x1="410" y1="64" x2="450" y2="64" stroke="#10b981" strokeWidth="2.5" />
-
-              {/* Node 3: Patched Physical Quay / Dock Output */}
-              <rect x="450" y="14" width="180" height="100" rx="8" fill="rgba(16,185,129,0.1)" stroke="#10b981" strokeWidth="2" />
-              <text x="462" y="32" fill="#10b981" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
-                PHYSICAL QUAY / DOCK STATE
-              </text>
-              <text x="462" y="52" fill="#ffffff" fontSize="11" fontFamily="monospace" fontWeight="bold">
-                {patchedRes} @ {patchedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"} (Wait {pluginExec.pluginPlanWait})
-              </text>
-              <text x="462" y="74" fill="#10b981" fontSize="11" fontFamily="monospace" fontWeight="bold">
-                SAVED: {pluginExec.waitSaved} {activeHost.timeUnitLabel}
-              </text>
-              <text x="462" y="94" fill="#a7f3d0" fontSize="10" fontFamily="monospace" fontWeight="bold">
-                ROI: +${pluginExec.netEconomicGainUsd.toLocaleString("en-US")} USD
-              </text>
-            </svg>
+          <div className="rounded-xl bg-raised/60 p-3 ring-1 ring-line">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">NO_OP Preservation</p>
+            <p className="mt-1 font-mono text-lg font-bold tabular-nums text-ok">
+              {pnl.uncontestedCount.toLocaleString("en-US")} (83.02%)
+            </p>
+            <p className="mt-0.5 font-mono text-[11px] text-muted">0 host TOS mutations</p>
+          </div>
+          <div className="rounded-xl bg-raised/60 p-3 ring-1 ring-line">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">Rescued Calls (k=0)</p>
+            <p className="mt-1 font-mono text-lg font-bold tabular-nums text-accent">
+              {pnl.contestedCount} · {pnl.totalShipHoursSaved.toLocaleString("en-US")}h
+            </p>
+            <p className="mt-0.5 font-mono text-[11px] text-muted">0 other ships displaced</p>
+          </div>
+          <div className="rounded-xl bg-ok/10 p-3 ring-1 ring-ok/25">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-ok">Verified Net P&amp;L</p>
+            <p className="mt-1 font-mono text-lg font-bold tabular-nums text-ok">
+              +${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")}
+            </p>
+            <p className="mt-0.5 font-mono text-[11px] text-muted">$1,500/h demurrage</p>
           </div>
         </div>
 
-        {/* 4 Domain Selector Buttons + Interactive Sliders + Compact JSON Patch Box */}
-        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        {/* 4 Interactive Domain Selector Pills */}
+        <div className="mt-3.5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {UNIVERSAL_HOST_PROFILES.map((h) => {
             const selected = h.id === activeHost.id;
-            const iconGlyph =
+            const label =
               h.domain === "MARITIME_CONTAINER_QUAY"
-                ? "🚢 CẢNG BIỂN TOS"
+                ? "Maritime Container TOS"
                 : h.domain === "INLAND_BARGE_ICD"
-                  ? "⚓ SÀ LAN & ICD"
+                  ? "Inland Barge & ICD"
                   : h.domain === "WAREHOUSE_DOCK_WMS"
-                    ? "🚛 KHO DOCK WMS"
-                    : "❄️ KHO LẠNH -25°C";
+                    ? "Warehouse Dock WMS"
+                    : "Cold Chain Reefer -25°C";
             return (
               <button
                 key={h.id}
@@ -911,14 +812,14 @@ export function UniversalSidecarAndBenchmarkPanel() {
                   setCustomTargetId(null);
                 }}
                 className={cn(
-                  "flex items-center justify-between rounded-xl px-3 py-2 text-left ring-1 transition-all",
+                  "flex items-center justify-between rounded-xl px-3.5 py-2.5 text-left ring-1 transition",
                   selected
-                    ? "bg-accent text-accent-fg ring-accent shadow-sm"
+                    ? "bg-accent text-accent-fg ring-accent shadow-xs"
                     : "bg-raised/60 text-fg ring-line hover:bg-raised",
                 )}
               >
-                <span className="font-mono text-[11px] font-bold">{iconGlyph}</span>
-                <span className="font-mono text-[11px] font-semibold opacity-90">
+                <span className="text-xs font-semibold">{label}</span>
+                <span className="font-mono text-xs font-semibold opacity-90">
                   ${h.costPerWaitUnitUsd}/{h.timeUnitLabel}
                 </span>
               </button>
@@ -926,43 +827,49 @@ export function UniversalSidecarAndBenchmarkPanel() {
           })}
         </div>
 
-        {/* Compact Control Strip + Patch Preview */}
-        <div className="mt-3 grid gap-3 rounded-xl bg-raised/50 p-3 ring-1 ring-line lg:grid-cols-12">
-          <div className="space-y-2 lg:col-span-5">
-            <select
-              data-testid="host-profile-select"
-              value={activeHost.id}
-              onChange={(e) => {
-                setHostId(e.target.value);
-                setCustomDelay(null);
-                setCustomTargetId(null);
-              }}
-              className="block w-full rounded-lg bg-surface px-2.5 py-1.5 font-mono text-xs font-semibold text-fg ring-1 ring-line"
-            >
-              {UNIVERSAL_HOST_PROFILES.map((h) => (
-                <option key={h.id} value={h.id}>
-                  {h.name}
-                </option>
-              ))}
-            </select>
-
-            <div className="grid grid-cols-2 gap-2">
+        {/* Interactive Sidecar Configurator + Booked -> Plan Cards + RFC 7396 Patch Inspector */}
+        <div className="mt-3.5 grid gap-4 rounded-xl bg-raised/40 p-3.5 ring-1 ring-line lg:grid-cols-12">
+          <div className="space-y-3 lg:col-span-5">
+            <div>
+              <label className="block text-[11px] font-medium text-muted">Host System Profile</label>
               <select
-                value={effectiveTargetId}
-                onChange={(e) => setCustomTargetId(e.target.value)}
-                className="block w-full rounded-lg bg-surface px-2 py-1.5 font-mono text-xs text-fg ring-1 ring-line"
+                data-testid="host-profile-select"
+                value={activeHost.id}
+                onChange={(e) => {
+                  setHostId(e.target.value);
+                  setCustomDelay(null);
+                  setCustomTargetId(null);
+                }}
+                className="mt-1 block h-9 w-full rounded-xl bg-surface px-3 text-xs font-semibold text-fg ring-1 ring-line"
               >
-                {activeHost.yard.appointments.slice(0, 12).map((a) => (
-                  <option key={a.truckId} value={a.truckId}>
-                    {a.truckId} ({a.dockId}@{a.startMin})
+                {UNIVERSAL_HOST_PROFILES.map((h) => (
+                  <option key={h.id} value={h.id}>
+                    {h.name}
                   </option>
                 ))}
               </select>
+            </div>
 
-              <div className="rounded-lg bg-surface px-2.5 py-1 ring-1 ring-line">
-                <div className="flex justify-between font-mono text-[10px] text-muted">
-                  <span>ETA Δ:</span>
-                  <strong className="text-fg">+{effectiveDelay} {activeHost.timeUnitLabel}</strong>
+            <div className="grid grid-cols-2 gap-2.5">
+              <div>
+                <label className="block text-[11px] font-medium text-muted">Late Call / Vehicle</label>
+                <select
+                  value={effectiveTargetId}
+                  onChange={(e) => setCustomTargetId(e.target.value)}
+                  className="mt-1 block h-9 w-full rounded-xl bg-surface px-2.5 font-mono text-xs font-semibold text-fg ring-1 ring-line"
+                >
+                  {activeHost.yard.appointments.slice(0, 12).map((a) => (
+                    <option key={a.truckId} value={a.truckId}>
+                      {a.truckId} ({a.dockId}@{a.startMin})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="rounded-xl bg-surface px-3 py-1.5 ring-1 ring-line">
+                <div className="flex justify-between font-mono text-[11px] text-muted">
+                  <span>ETA Delay</span>
+                  <strong className="text-accent">+{effectiveDelay} {activeHost.timeUnitLabel}</strong>
                 </div>
                 <input
                   type="range"
@@ -971,34 +878,55 @@ export function UniversalSidecarAndBenchmarkPanel() {
                   step={activeHost.timeUnitLabel === "hour" ? 1 : 5}
                   value={effectiveDelay}
                   onChange={(e) => setCustomDelay(Number(e.target.value))}
-                  className="w-full"
+                  className="mt-1 w-full accent-accent"
                 />
+              </div>
+            </div>
+
+            {/* Clean Booked -> Sidecar Patch Comparison Cards (matching Inspector in attachments/image.png) */}
+            <div className="flex items-center gap-2.5">
+              <div className="flex-1 rounded-xl bg-surface p-2.5 ring-1 ring-line">
+                <p className="text-[10px] font-semibold uppercase text-muted">Host Booked</p>
+                <p className="mt-0.5 font-mono text-base font-bold text-fg">
+                  {bookedRes} @{bookedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"}
+                </p>
+                <p className="font-mono text-[11px] text-bad">Wait: {pluginExec.hostPlanWait} {activeHost.timeUnitLabel}</p>
+              </div>
+              <ArrowRight className="size-4 shrink-0 text-accent" />
+              <div className="flex-1 rounded-xl bg-accent/10 p-2.5 ring-1 ring-accent/30">
+                <p className="text-[10px] font-semibold uppercase text-accent">Sidecar Patch (k={pluginExec.otherJobsMoved})</p>
+                <p className="mt-0.5 font-mono text-base font-bold text-fg">
+                  {patchedRes} @{patchedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"}
+                </p>
+                <p className="font-mono text-[11px] font-semibold text-ok">
+                  Wait: {pluginExec.pluginPlanWait} · +${pluginExec.netEconomicGainUsd.toLocaleString("en-US")}
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-7">
-            <div className="mb-1.5 flex flex-wrap items-center justify-between gap-2">
-              <div className="flex gap-1">
+          <div className="flex flex-col justify-between lg:col-span-7">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex gap-1.5">
                 <button
                   type="button"
                   onClick={() => setPatchView("rfc7396")}
                   className={cn(
-                    "rounded px-2 py-0.5 font-mono text-[10px] font-bold",
+                    "rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition",
                     patchView === "rfc7396" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line",
                   )}
                 >
-                  RFC 7396 JSON Patch
+                  RFC 7396 Merge Patch
                 </button>
                 <button
                   type="button"
                   onClick={() => setPatchView("native")}
                   className={cn(
-                    "rounded px-2 py-0.5 font-mono text-[10px] font-bold",
+                    "rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition",
                     patchView === "native" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line",
                   )}
                 >
-                  Native Adapter
+                  {activeHost.incumbentSystem.split("/")[0]?.trim()} Adapter
                 </button>
                 <button
                   type="button"
@@ -1007,118 +935,115 @@ export function UniversalSidecarAndBenchmarkPanel() {
                     setCopiedPatch(true);
                     setTimeout(() => setCopiedPatch(false), 1500);
                   }}
-                  className="inline-flex items-center gap-1 rounded bg-surface px-2 py-0.5 font-mono text-[10px] text-fg ring-1 ring-line"
+                  className="inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 font-mono text-xs text-fg ring-1 ring-line hover:bg-raised"
                 >
                   <Copy className="size-3" />
                   {copiedPatch ? "Copied" : "Copy"}
                 </button>
               </div>
-              <span className="font-mono text-[10px] font-bold text-ok">
-                {pluginExec.pluginDecision} · +{pluginExec.waitSaved}{activeHost.timeUnitLabel} (+${pluginExec.netEconomicGainUsd.toLocaleString("en-US")})
+              <span className="rounded-lg bg-ok/10 px-2.5 py-1 font-mono text-xs font-semibold text-ok">
+                {pluginExec.pluginDecision} · Saved {pluginExec.waitSaved}{activeHost.timeUnitLabel}
               </span>
             </div>
-            <pre className="max-h-24 overflow-auto rounded-lg bg-bg p-2 font-mono text-[10px] leading-snug text-fg ring-1 ring-line">
+            <pre className="max-h-40 flex-1 overflow-auto rounded-xl bg-surface p-3 font-mono text-[11px] leading-relaxed text-fg ring-1 ring-line">
               {activePatchPayload}
             </pre>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Visual Multi-Language Speedup Bar Chart + Pure Numeric Table */}
-      <section className="overflow-hidden rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line">
-        <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5">
-          <span className="font-mono text-xs font-bold uppercase tracking-wide text-fg">
-            BENCHMARK ĐA NGÔN NGỮ (GO 1.26.5 NATIVE 536× · RUST #![NO_STD] WASM · V8 ZERO-ALLOC)
-          </span>
-          <Button
-            type="button"
-            size="sm"
-            variant="secondary"
-            data-testid="rerun-live-benchmark-btn"
-            onClick={() => setBenchRunCount((c) => c + 1)}
-          >
-            <Sparkles className="size-3.5" />
-            Re-run Benchmark ({benchReport.totalBenchmarkWallMs}ms)
-          </Button>
+      {/* Section 2: Refined Multi-Language Benchmark Studio (Go 1.26.5 536× · Rust WASM · V8 Zero-Alloc) */}
+      <section className="overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-3">
+          <div className="flex items-center gap-2">
+            <Sparkles className="size-4 text-accent" />
+            <h3 className="text-sm font-semibold text-fg">
+              Multi-Language Kernel Benchmark (Go 1.26.5 Native 536× · Rust #![no_std] WASM · V8 Zero-Alloc)
+            </h3>
+          </div>
+          <div className="flex items-center gap-1.5">
+            {([1, 5, 10] as const).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setScaleMult(m)}
+                className={cn(
+                  "h-8 rounded-xl px-2.5 font-mono text-xs font-semibold ring-1 transition",
+                  scaleMult === m ? "bg-accent text-accent-fg ring-accent" : "bg-raised/70 text-muted ring-line hover:text-fg",
+                )}
+              >
+                {m}× ({(3092 * m).toLocaleString("en-US")} calls)
+              </button>
+            ))}
+            <Button
+              type="button"
+              size="sm"
+              variant="secondary"
+              className="h-8 rounded-xl text-xs"
+              data-testid="rerun-live-benchmark-btn"
+              onClick={() => setBenchRunCount((c) => c + 1)}
+            >
+              <Sparkles className="size-3.5 text-accent" />
+              Re-run ({benchReport.totalBenchmarkWallMs}ms)
+            </Button>
+          </div>
         </div>
 
-        {/* Visual SVG Speedup Comparison Bars */}
-        <div className="overflow-hidden rounded-xl bg-[#09111e] p-3 ring-1 ring-line">
-          <svg
-            viewBox="0 0 860 112"
-            className="h-[104px] w-full select-none"
-            role="img"
-            aria-label="Biểu đồ thanh tốc độ Go 1.26.5 vs Rust WASM vs V8"
-          >
-            {benchReport.kernels.map((k, idx) => {
-              const y = 10 + idx * 25;
-              const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
-              const barW = approved
-                ? Math.min(540, Math.max(90, Math.log10(Math.max(2, k.nativeSpeedupVsBaseline)) * 195))
-                : 45;
-              const fill = approved ? "#10b981" : "#f59e0b";
-              return (
-                <g key={k.id}>
-                  <text x="10" y={y + 13} fill="#e2e8f0" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
-                    K{idx + 1}: {k.kernelName.slice(0, 32)}
-                  </text>
-                  <rect x="235" y={y + 2} width="545" height="14" rx="4" fill="#1e293b" />
-                  <rect x="235" y={y + 2} width={barW} height="14" rx="4" fill={fill} />
-                  <text x={242 + barW} y={y + 13} fill={fill} fontSize="9.5" fontFamily="monospace" fontWeight="bold">
-                    {k.nativeSpeedupVsBaseline}× ({k.nativeRustOrGoMs}ms vs {k.baselineV8Ms}ms)
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
-        </div>
-
-        {/* Pure Numeric Table (Zero Prose Essays) */}
-        <div className="mt-2.5 overflow-x-auto">
-          <table className="w-full border-collapse text-left font-mono text-[11px]">
+        {/* Clean Light-Surface Speedup Progress Bars + Numeric Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-left font-mono text-xs">
             <thead>
-              <tr className="border-b border-line bg-raised text-[9px] uppercase text-muted">
-                <th className="px-2.5 py-1.5">Kernel</th>
-                <th className="px-2.5 py-1.5">Scale</th>
-                <th className="px-2.5 py-1.5 text-right">JS Heap</th>
-                <th className="px-2.5 py-1.5 text-right">V8 Zero-Alloc</th>
-                <th className="px-2.5 py-1.5 text-right">Go 1.26 / Rust WASM</th>
-                <th className="px-2.5 py-1.5 text-right">Speedup</th>
-                <th className="px-2.5 py-1.5 text-right">FFI Cost</th>
-                <th className="px-2.5 py-1.5 text-right">Verdict</th>
+              <tr className="border-b border-line bg-raised/50 text-[10px] uppercase text-muted">
+                <th className="px-3 py-2">Kernel</th>
+                <th className="px-3 py-2">Visual Speedup Ratio</th>
+                <th className="px-3 py-2 text-right">JS Heap</th>
+                <th className="px-3 py-2 text-right">V8 Zero-Alloc</th>
+                <th className="px-3 py-2 text-right">Go / Rust</th>
+                <th className="px-3 py-2 text-right">FFI Cost</th>
+                <th className="px-3 py-2 text-right">Verdict</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-line">
+            <tbody className="divide-y divide-line/70">
               {benchReport.kernels.map((k) => {
                 const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
+                const pct = approved
+                  ? Math.min(100, Math.max(18, Math.round(Math.log10(Math.max(2, k.nativeSpeedupVsBaseline)) * 36)))
+                  : 10;
                 return (
-                  <tr key={k.id} className="hover:bg-raised/60">
-                    <td className="px-2.5 py-1.5 font-sans text-xs font-semibold text-fg">
+                  <tr key={k.id} className="hover:bg-raised/40">
+                    <td className="px-3 py-2.5 font-sans text-xs font-semibold text-fg">
                       {k.kernelName}
                     </td>
-                    <td className="px-2.5 py-1.5 text-[10px] text-muted">
-                      3,092 calls
+                    <td className="w-64 px-3 py-2.5">
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 flex-1 overflow-hidden rounded-full bg-raised ring-1 ring-line">
+                          <div
+                            className={cn("h-full rounded-full transition-all", approved ? "bg-ok" : "bg-warn")}
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                        <span className={cn("w-14 text-right font-bold", approved ? "text-ok" : "text-warn")}>
+                          {k.nativeSpeedupVsBaseline}×
+                        </span>
+                      </div>
                     </td>
-                    <td className="px-2.5 py-1.5 text-right text-muted">
-                      {k.baselineV8Ms} ms
+                    <td className="px-3 py-2.5 text-right text-muted">
+                      {(k.baselineV8Ms * scaleMult).toFixed(2)} ms
                     </td>
-                    <td className="px-2.5 py-1.5 text-right text-fg">
-                      {k.optimizedV8Ms} ms ({k.v8SpeedupRatio}×)
+                    <td className="px-3 py-2.5 text-right text-fg">
+                      {(k.optimizedV8Ms * scaleMult).toFixed(2)} ms ({k.v8SpeedupRatio}×)
                     </td>
-                    <td className="px-2.5 py-1.5 text-right font-bold text-fg">
-                      {k.nativeRustOrGoMs} ms
+                    <td className="px-3 py-2.5 text-right font-bold text-fg">
+                      {(k.nativeRustOrGoMs * scaleMult).toFixed(2)} ms
                     </td>
-                    <td className={cn("px-2.5 py-1.5 text-right font-bold", approved ? "text-ok" : "text-warn")}>
-                      {k.nativeSpeedupVsBaseline}×
+                    <td className="px-3 py-2.5 text-right text-muted">
+                      {(k.ffiOverheadMs * scaleMult).toFixed(2)} ms
                     </td>
-                    <td className="px-2.5 py-1.5 text-right text-muted">
-                      {k.ffiOverheadMs} ms
-                    </td>
-                    <td className="px-2.5 py-1.5 text-right">
+                    <td className="px-3 py-2.5 text-right">
                       <span
                         className={cn(
-                          "rounded px-1.5 py-0.5 text-[9px] font-bold",
-                          approved ? "bg-ok/15 text-ok" : "bg-warn/20 text-warn",
+                          "rounded-md px-2 py-0.5 text-[10px] font-bold",
+                          approved ? "bg-ok/10 text-ok" : "bg-warn/15 text-warn",
                         )}
                       >
                         {approved ? "DEPLOYED" : "REJECTED_FFI"}
@@ -1134,3 +1059,4 @@ export function UniversalSidecarAndBenchmarkPanel() {
     </div>
   );
 }
+

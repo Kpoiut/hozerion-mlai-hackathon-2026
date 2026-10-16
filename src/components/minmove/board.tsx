@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, type RefObject } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { useAtomValue } from "jotai";
 import { Link } from "@tanstack/react-router";
 import {
@@ -6,6 +6,7 @@ import {
   Boxes,
   CalendarClock,
   Check,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   Clock,
@@ -20,6 +21,7 @@ import {
   Pause,
   Play,
   Radio,
+  SlidersHorizontal,
   Sparkles,
   Sun,
   Truck,
@@ -34,6 +36,7 @@ import { JobCard } from "@/components/minmove/job-card.tsx";
 import { FlowStage } from "@/components/minmove/flow-stage.tsx";
 import { Gantt } from "@/components/minmove/gantt.tsx";
 import { Inspector } from "@/components/minmove/inspector.tsx";
+import { LogisticsSetupModal } from "@/components/minmove/logistics-setup-modal.tsx";
 import { PublishedLedger } from "@/components/minmove/published-ledger.tsx";
 import { Roster } from "@/components/minmove/roster.tsx";
 import { Button } from "@/components/ui/button.tsx";
@@ -82,6 +85,7 @@ export function Board() {
   return (
     <div className="flex h-dvh overflow-hidden bg-bg text-fg">
       <ClockDriver />
+      <LogisticsSetupModal />
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
         <Header noteRef={noteRef} />
@@ -123,6 +127,7 @@ function Sidebar() {
   const useAgent = useBoardStore((s) => s.useAgent);
   const health = healthMap(useAgent);
   const lateCount = event ? 1 : 0;
+  const [siteMenu, setSiteMenu] = useState(false);
 
   return (
     <aside
@@ -132,7 +137,7 @@ function Sidebar() {
       )}
     >
       <div className="flex h-14 items-center gap-3 px-4">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-accent text-sm font-bold text-accent-fg">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-accent text-sm font-bold text-accent-fg shadow-xs">
           H
         </span>
         {collapsed ? null : (
@@ -143,30 +148,68 @@ function Sidebar() {
         )}
       </div>
       {collapsed ? null : (
-        <div className="mx-3 mb-2.5 rounded-xl bg-raised/80 px-3 py-2 ring-1 ring-line/60">
-          <div className="flex items-center justify-between">
-            <p className="text-[10px] font-semibold uppercase tracking-wide text-nav-muted">Site · Điểm Vận Hành</p>
-            <span className="rounded bg-ok/15 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ok">k=0</span>
-          </div>
-          <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-medium">
-            <MapPin className="size-3.5 text-accent" />
-            {yard.name}
-          </p>
-          <p className="pl-5 text-xs text-nav-muted">{yard.gate}</p>
+        <div className="relative mx-3 mb-2.5">
+          <button
+            type="button"
+            onClick={() => setSiteMenu((v) => !v)}
+            className="w-full rounded-xl bg-surface px-3 py-2 text-left shadow-border transition hover:bg-raised/80"
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-nav-muted">SITE</p>
+              <ChevronDown className={cn("size-3.5 text-nav-muted transition-transform", siteMenu && "rotate-180")} />
+            </div>
+            <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-nav-fg">
+              <MapPin className="size-3.5 text-accent" />
+              <span className="truncate">{yard.name}</span>
+            </p>
+            <p className="truncate pl-5 text-xs text-nav-muted">{yard.gate}</p>
+          </button>
+          {siteMenu ? (
+            <div className="absolute top-full right-0 left-0 z-50 mt-1 rounded-xl bg-surface p-1.5 shadow-float ring-1 ring-line">
+              {(
+                [
+                  { id: "icd-minute", label: "Tan Thuan ICD (Minute)" },
+                  { id: "bcn-hour", label: "Barcelona Quay 24B (Hour)" },
+                  { id: "reefer-cold", label: "Mekong Cold -25°C (Reefer)" },
+                  { id: "crossdock-fmcg", label: "Cross-Dock FMCG (8 Doors)" },
+                  { id: "barge-hub", label: "Cát Lái – Hiệp Phước Barge" },
+                ] as const
+              ).map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => {
+                    setSiteMenu(false);
+                    useBoardStore.getState().applyFacilityPreset(item.id);
+                  }}
+                  className="flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-xs font-medium text-fg hover:bg-raised"
+                >
+                  <span>{item.label}</span>
+                </button>
+              ))}
+              <div className="my-1 border-t border-line" />
+              <button
+                type="button"
+                onClick={() => {
+                  setSiteMenu(false);
+                  useBoardStore.getState().setSetupOpen(true);
+                }}
+                className="flex w-full items-center gap-1.5 rounded-lg bg-accent/10 px-2.5 py-1.5 text-left text-xs font-semibold text-accent hover:bg-accent/15"
+              >
+                <SlidersHorizontal className="size-3.5" />
+                Tự Setup Cấu Hình Riêng...
+              </button>
+            </div>
+          ) : null}
         </div>
       )}
       <nav className="flex flex-col gap-0.5 overflow-y-auto px-3">
-        {collapsed ? null : (
-          <p className="px-2 pt-1 pb-1 text-[10px] font-semibold uppercase tracking-wider text-faint">
-            Điều Độ Lịch &amp; Luồng
-          </p>
-        )}
         <NavBtn icon={CalendarClock} label="Timeline" active={tab === "board"} onClick={() => setTab("board")} collapsed={collapsed} />
         <NavBtn icon={LayoutGrid} label="Appointments" active={tab === "roster"} onClick={() => setTab("roster")} collapsed={collapsed} />
         <NavBtn icon={Waypoints} label="Flow" active={tab === "flow"} onClick={() => setTab("flow")} collapsed={collapsed} />
         {collapsed ? null : (
-          <p className="px-2 pt-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
-            Hệ Sinh Thái 7 Trụ Cột
+          <p className="px-2 pt-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-faint">
+            Modules
           </p>
         )}
         <NavBtn
@@ -226,56 +269,42 @@ function Sidebar() {
               <Kpi value={yard.docks.length} label={yard.timeUnit === "hour" ? "Berths" : "Doors"} icon={LayoutList} />
               <Kpi value={lateCount} label="Late" warn={lateCount > 0} />
             </div>
-            {yard.timeUnit === "hour" ? (
-              <div className="rounded-xl bg-raised/80 px-3 py-2 ring-1 ring-line/60">
-                <div className="flex items-center justify-between">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-nav-muted">Thực nghiệm 3.092 Ca</p>
-                  <span className="font-mono text-[10px] font-bold text-ok">+$29.7M</span>
-                </div>
-                <p className="mt-1 text-xs leading-snug text-nav-fg">
-                  83.02% giữ nguyên TOS (NO_OP) · 16.98% cứu 19.801 giờ tàu chờ (k=0).
-                </p>
-                {result ? (
-                  <p className="mt-1.5 font-mono text-[11px] tabular-nums text-nav-muted">
-                    V8: {result.ms}ms · Go: 5.15µs · k={result.kUsed}
-                  </p>
-                ) : null}
+            <div className="rounded-xl bg-surface px-3 py-2.5 shadow-border">
+              <div className="mb-1.5 flex items-center justify-between">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-nav-muted">SERVICES</p>
+                <span className="font-mono text-[10px] font-semibold text-ok">Go 5.15µs</span>
               </div>
-            ) : (
-              <div className="rounded-xl bg-raised/80 px-3 py-2">
-                <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-nav-muted">Services</p>
-                <ul className="space-y-1">
-                  {SERVICES.map((s) => (
-                    <li key={s.id} className="flex items-center justify-between text-xs">
-                      <span className="text-nav-muted">{s.label}</span>
-                      {health[s.id] === "ok" ? (
-                        <Check className="size-3.5 text-ok" />
-                      ) : (
-                        <span className="font-mono text-[10px] uppercase text-faint">{health[s.id]}</span>
-                      )}
-                    </li>
-                  ))}
-                  <li className="flex items-center justify-between text-xs">
-                    <button type="button" onClick={() => useBoardStore.getState().toggleAgent()} className="text-nav-muted hover:text-nav-fg">
-                      Agent {useAgent ? "on" : "off"}
-                    </button>
-                    {useAgent ? <Check className="size-3.5 text-ok" /> : <Minus className="size-3.5 text-faint" />}
+              <ul className="space-y-1">
+                {SERVICES.map((s) => (
+                  <li key={s.id} className="flex items-center justify-between text-xs">
+                    <span className="text-nav-muted">{s.label}</span>
+                    {health[s.id] === "ok" ? (
+                      <Check className="size-3.5 text-ok" />
+                    ) : (
+                      <span className="font-mono text-[10px] uppercase text-faint">{health[s.id]}</span>
+                    )}
                   </li>
-                </ul>
-                {result ? (
-                  <p className="mt-1.5 font-mono text-xs tabular-nums text-nav-muted">
-                    {result.ms}ms · {result.nodes ?? 0}n · k={result.kUsed}
-                  </p>
-                ) : null}
-                {liveEta ? <p className="mt-1 text-xs text-ok">{liveEta}</p> : null}
-              </div>
-            )}
+                ))}
+                <li className="flex items-center justify-between text-xs">
+                  <button type="button" onClick={() => useBoardStore.getState().toggleAgent()} className="text-nav-muted hover:text-nav-fg">
+                    Agent {useAgent ? "on" : "off"}
+                  </button>
+                  {useAgent ? <Check className="size-3.5 text-ok" /> : <Minus className="size-3.5 text-faint" />}
+                </li>
+              </ul>
+              {result ? (
+                <p className="mt-2 rounded-lg bg-accent/10 px-2 py-1 text-center font-mono text-[11px] font-medium tabular-nums text-accent">
+                  Last {result.ms}ms · k={result.kUsed}
+                </p>
+              ) : null}
+              {liveEta ? <p className="mt-1 text-xs text-ok">{liveEta}</p> : null}
+            </div>
             <div className="flex flex-wrap gap-1">
               {yard.timeUnit === "hour" ? (
                 <button
                   type="button"
                   onClick={() => useBoardStore.getState().openDemo()}
-                  className="rounded-full bg-raised px-2 py-1 text-xs text-nav-muted ring-1 ring-line hover:bg-nav-hover hover:text-nav-fg"
+                  className="rounded-full bg-surface px-2.5 py-1 text-xs text-nav-muted shadow-border hover:bg-nav-hover hover:text-nav-fg"
                 >
                   ICD minute demo
                 </button>
@@ -286,7 +315,7 @@ function Sidebar() {
                       key={p.id}
                       type="button"
                       onClick={() => useBoardStore.getState().setMessage(p.text)}
-                      className="rounded-full bg-raised px-2 py-1 text-xs text-nav-muted hover:bg-nav-hover hover:text-nav-fg"
+                      className="rounded-full bg-surface px-2 py-1 text-xs text-nav-muted shadow-border hover:bg-nav-hover hover:text-nav-fg"
                     >
                       {p.label}
                     </button>
@@ -294,7 +323,7 @@ function Sidebar() {
                   <button
                     type="button"
                     onClick={() => useBoardStore.getState().openPublished()}
-                    className="rounded-full bg-raised px-2 py-1 text-xs text-nav-muted hover:bg-nav-hover hover:text-nav-fg"
+                    className="rounded-full bg-surface px-2 py-1 text-xs text-nav-muted shadow-border hover:bg-nav-hover hover:text-nav-fg"
                   >
                     Barcelona 24B
                   </button>
@@ -328,6 +357,7 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
   const forceDock = useBoardStore((s) => s.forceDock);
   const playing = useBoardStore((s) => s.playing);
   const event = useBoardStore((s) => s.event);
+  const selectedId = useBoardStore((s) => s.selectedId);
   const dark = useBoardStore((s) => s.dark);
   const yard = useBoardStore((s) => s.yard);
   const hour = yard.timeUnit === "hour";
@@ -339,47 +369,48 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
 
   return (
     <header className="flex h-16 shrink-0 flex-nowrap items-center gap-3 overflow-hidden border-b border-line bg-surface px-4 sm:px-5">
-      <h1 className="shrink-0 text-sm font-semibold tracking-tight">Hozerion</h1>
-      <p className="hidden shrink-0 whitespace-nowrap text-sm xl:block">
-        <span className="font-semibold tracking-tight">
+      <p className="shrink-0 whitespace-nowrap text-base">
+        <span className="font-semibold tracking-tight text-fg">
           {tab === "sidecar"
-            ? "Universal Sidecar Plugin & Go/Rust Benchmark"
-            : tab === "bacap"
-              ? "BACAP-R · Quay Crane & TOS"
-              : tab === "federation"
-                ? "Inter-Port TOS Federation"
-                : tab === "docs"
-                  ? "VNACCS · eDO · VGM Reconciliation"
-                  : tab === "microtos"
-                    ? "Micro-TOS · 3D Yard & Billing"
-                    : hour
-                      ? "Late call"
-                      : tab === "board"
-                        ? "Timeline"
-                        : tab === "roster"
-                          ? "Appointments"
-                          : "Flow"}
+            ? "Sidecar & Go/Rust"
+            : tab === "mlai"
+              ? "AI Agent & Guardrails"
+              : tab === "bacap"
+                ? "BACAP · STS Cranes"
+                : tab === "federation"
+                  ? "5-TOS Federation"
+                  : tab === "docs"
+                    ? "eDO & ISO 6346"
+                    : tab === "microtos"
+                      ? "3D Yard & Billing"
+                      : tab === "roster"
+                        ? "Appointments"
+                        : tab === "flow"
+                          ? "Flow"
+                          : "Timeline"}
         </span>
         <span className="mx-1.5 text-faint">/</span>
         <span className="text-muted">{hour ? "Published berth plan" : "Morning board"}</span>
       </p>
       <div className="ml-auto flex min-w-0 flex-nowrap items-center gap-2">
         {hour ? (
-          <button
-            type="button"
-            onClick={() => useBoardStore.getState().setTab(tab === "sidecar" ? "board" : "sidecar")}
-            className={cn(
-              "hidden h-9 shrink-0 items-center gap-1.5 rounded-full px-3 text-xs font-semibold ring-1 transition-all md:inline-flex",
-              tab === "sidecar"
-                ? "bg-accent text-accent-fg ring-accent"
-                : "bg-accent/10 text-accent ring-accent/30 hover:bg-accent/15",
-            )}
-          >
-            <Cpu className="size-3.5" />
-            Sidecar &amp; Go/Rust (536×)
-          </button>
+          <div className="hidden items-center gap-1.5 rounded-xl bg-bg px-2.5 py-1 ring-1 ring-line md:flex">
+            <Truck className="size-3.5 text-muted" />
+            <select
+              value={selectedId}
+              aria-label="Active vessel call"
+              onChange={(e) => useBoardStore.getState().setSelectedId(e.target.value)}
+              className="bg-transparent font-mono text-xs font-semibold text-fg outline-none"
+            >
+              {yard.trucks.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.plate} late {delayMin >= 0 ? `+${delayMin}h` : `${delayMin}h`}
+                </option>
+              ))}
+            </select>
+          </div>
         ) : (
-          <label className="flex h-9 shrink-0 items-center gap-2 rounded-full bg-bg px-3 ring-1 ring-line focus-within:ring-2 focus-within:ring-accent/30">
+          <label className="flex h-9 shrink-0 items-center gap-2 rounded-xl bg-bg px-3 ring-1 ring-line focus-within:ring-2 focus-within:ring-accent/30">
             <Truck className="size-4 shrink-0 text-muted" />
             <input
               ref={noteRef}
@@ -412,24 +443,24 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
           <div className="flex justify-between overflow-hidden whitespace-nowrap font-mono text-[10px] leading-none text-faint">
             {ticks.map((t) => (
               <span key={t} className={cn(!hour && Math.abs(t) === 60 && "hidden 2xl:inline")}>
-                {t === 0 ? "0" : t > 0 ? `+${t}` : String(t)}
+                {t === 0 ? "Now" : t > 0 ? `+${t}` : String(t)}
               </span>
             ))}
           </div>
         </div>
-        <span className="hidden h-9 shrink-0 items-center rounded-full bg-bg px-2.5 font-mono text-xs tabular-nums ring-1 ring-line sm:inline-flex">
+        <span className="hidden h-9 shrink-0 items-center rounded-xl bg-bg px-2.5 font-mono text-xs font-semibold tabular-nums ring-1 ring-line sm:inline-flex">
           {delayMin >= 0 ? `+${delayMin}` : delayMin} {hour ? "h" : "min"}
         </span>
         {forceDock ? (
           <button
             type="button"
             onClick={() => useBoardStore.getState().setForceDock("")}
-            className="hidden h-9 shrink-0 items-center rounded-full bg-accent px-3 font-mono text-xs text-accent-fg sm:inline-flex"
+            className="hidden h-9 shrink-0 items-center rounded-xl bg-accent px-3 font-mono text-xs text-accent-fg sm:inline-flex"
           >
             Door {forceDock.replace("D", "")}
           </button>
         ) : null}
-        <Button type="button" variant="ghost" className="h-9 shrink-0 rounded-full px-3 ring-1 ring-line" onClick={() => useBoardStore.getState().findPlan()}>
+        <Button type="button" variant="ghost" className="h-9 shrink-0 rounded-xl px-3 ring-1 ring-line" onClick={() => useBoardStore.getState().findPlan()}>
           <Sparkles className="size-3.5 text-accent" />
           Find plan
         </Button>
@@ -438,21 +469,30 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
           onClick={() => void useBoardStore.getState().liveRoute()}
           disabled={busy}
           hidden={hour}
-          className="hidden h-9 shrink-0 items-center gap-1.5 rounded-full bg-ok/10 px-3 text-xs font-medium text-ok ring-1 ring-ok/20 hover:bg-ok/15 sm:inline-flex"
+          className="hidden h-9 shrink-0 items-center gap-1.5 rounded-xl bg-ok/10 px-3 text-xs font-medium text-ok ring-1 ring-ok/20 hover:bg-ok/15 sm:inline-flex"
           title="Arbitrate the radio note against the road ETA. Range estimate if the router is down."
         >
           <Radio className="size-3.5" />
           Live
         </button>
         <HeaderClock shift={shift} start={start} etaMin={event?.newEtaMin} playing={playing} hour={hour} />
-        <Button type="button" variant="ghost" size="sm" className="hidden h-9 shrink-0 rounded-full lg:inline-flex" onClick={() => useBoardStore.getState().reset()}>
+        <Button type="button" variant="ghost" size="sm" className="hidden h-9 shrink-0 rounded-xl lg:inline-flex" onClick={() => useBoardStore.getState().reset()}>
           Reset
         </Button>
         <UndoHeader />
         <button
           type="button"
+          onClick={() => useBoardStore.getState().setSetupOpen(true)}
+          className="hidden h-9 shrink-0 items-center gap-1.5 rounded-xl bg-accent/10 px-2.5 text-xs font-semibold text-accent ring-1 ring-accent/25 hover:bg-accent/15 md:inline-flex"
+          title="Tự cấu hình cầu bến, cửa kho, SLA và thêm lệnh riêng"
+        >
+          <SlidersHorizontal className="size-3.5" />
+          Setup
+        </button>
+        <button
+          type="button"
           onClick={() => useBoardStore.getState().toggleTheme()}
-          className="inline-flex size-9 shrink-0 items-center justify-center rounded-full text-muted ring-1 ring-line hover:bg-raised hover:text-fg"
+          className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl text-muted ring-1 ring-line hover:bg-raised hover:text-fg"
           aria-label={dark ? "Switch to light" : "Switch to dark"}
         >
           {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
@@ -478,7 +518,7 @@ function HeaderClock({
   const clockMin = useAtomValue(clockMinAtom);
   const label = etaMin ?? clockMin;
   return (
-    <div className="hidden h-9 shrink-0 items-center gap-1.5 rounded-full bg-bg px-2 ring-1 ring-line md:flex">
+    <div className="hidden h-9 shrink-0 items-center gap-1.5 rounded-xl bg-bg px-2.5 ring-1 ring-line md:flex">
       <button type="button" onClick={() => useBoardStore.getState().setPlaying(!playing)} aria-label={playing ? "Pause" : "Play"}>
         {playing ? <Pause className="size-3.5" /> : <Play className="ml-px size-3.5" />}
       </button>
@@ -502,7 +542,7 @@ function UndoHeader() {
   const previous = useBoardStore((s) => s.previous);
   if (!previous) return null;
   return (
-    <Button type="button" variant="ghost" size="sm" className="hidden h-9 shrink-0 rounded-full lg:inline-flex" onClick={() => useBoardStore.getState().undo()}>
+    <Button type="button" variant="ghost" size="sm" className="hidden h-9 shrink-0 rounded-xl lg:inline-flex" onClick={() => useBoardStore.getState().undo()}>
       <Undo2 className="size-3.5" />
       Undo
     </Button>
@@ -540,7 +580,7 @@ function Main() {
     <div className="min-h-0 min-w-0 flex-1 overflow-auto p-4 sm:p-5">
       {yard.timeUnit === "hour" && tab === "board" ? <JobCard /> : null}
       {result && isScheduleTab ? (
-        <div className="mb-3">
+        <div className="mb-3 rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line">
           <DecisionBar
             result={result}
             yard={yard}
@@ -568,10 +608,6 @@ function TimelinePane() {
     <>
       <Gantt {...gantt} />
       <PublishedLedger />
-      <div className="mt-4">
-        <MlaiHackathonCommandCenter />
-      </div>
-      <UniversalSidecarAndBenchmarkPanel />
     </>
   );
 }

@@ -514,15 +514,28 @@ const DoorStatus = memo(function DoorStatus({
   compact: boolean;
 }) {
   const { icon: StatusIcon, label, tone } = doorStatus(occupancy, dock);
+  const forced = useBoardStore((s) => s.forceDock === dock.id);
   const index = dock.short.replace(/^D|^B/, "");
   return (
     <button
       type="button"
       onClick={() => onForce(dock.id)}
-      className={cn("flex flex-col items-start justify-center px-1 text-left hover:bg-raised/50", !last && "border-b border-line/80")}
+      title={`Click to pin/unpin ${dock.label}`}
+      className={cn(
+        "flex w-full flex-col items-start justify-center px-1.5 text-left transition hover:bg-raised/60",
+        !last && "border-b border-line/80",
+        forced && "bg-accent/10 ring-1 ring-inset ring-accent/40",
+      )}
       style={{ height: rowH }}
     >
-      <span className={cn("font-semibold tabular-nums leading-none tracking-tight", compact ? "font-mono text-[11px]" : "text-2xl")}>{index}</span>
+      <span className="flex w-full items-center justify-between">
+        <span className={cn("font-semibold tabular-nums leading-none tracking-tight", compact ? "font-mono text-[11px]" : "text-2xl", forced && "text-accent")}>
+          {index}
+        </span>
+        {forced ? (
+          <span className="rounded bg-accent px-1 py-0.5 font-mono text-[9px] font-bold text-accent-fg">PIN</span>
+        ) : null}
+      </span>
       {compact ? null : (
         <span className={cn("mt-1 inline-flex items-center gap-1 text-xs font-medium", tone)}>
           <StatusIcon className="size-3.5" strokeWidth={1.9} />
@@ -552,10 +565,20 @@ const ApptCard = memo(function ApptCard({
 }) {
   const geom = useGeom();
   const treatReefer = useBoardStore((s) => s.event?.truckId === block.truckId && s.event?.cargoOverride === "reefer");
+  const filter = useBoardStore((s) => s.ganttFilter);
   const reefer = truck.cargo === "reefer" || Boolean(treatReefer);
   const stacked = block.stack > 0;
   const inset = geom.compact ? geom.cardInset : stacked ? STACK_INSET : featured ? FEATURED_INSET : CARD_INSET;
   const height = geom.compact ? geom.cardH : featured && !stacked ? FEATURED_H : CARD_H;
+
+  const matchesFilter =
+    filter === "all" ||
+    (filter === "late" && featured) ||
+    (filter === "moved" && (block.changed || featured)) ||
+    (filter === "reefer" && reefer) ||
+    (filter === "dry" && !reefer) ||
+    (filter === "priority" && truck.priority === 1);
+
   return (
     <button
       type="button"
@@ -565,13 +588,14 @@ const ApptCard = memo(function ApptCard({
         onSelect(block.truckId);
       }}
       className={cn(
-        "absolute z-10 text-left [contain:layout]",
+        "absolute z-10 text-left transition-opacity [contain:layout]",
         geom.compact ? "" : "[content-visibility:auto]",
         geom.compact ? "rounded-md px-1" : "rounded-2xl px-3",
-        featured ? "z-30 overflow-visible bg-accent text-accent-fg shadow-float" : "overflow-hidden bg-surface ring-1 ring-line",
+        featured ? "z-30 overflow-visible bg-accent text-accent-fg shadow-float" : "overflow-hidden bg-surface ring-1 ring-line hover:ring-accent/50",
         !featured && block.changed && "bg-ok/10 ring-ok/25",
         !featured && reefer && !block.changed && "bg-warn/[0.12] ring-warn/25",
         selected && !featured && "ring-2 ring-accent",
+        !matchesFilter && "opacity-25",
       )}
       style={{ left: `${block.left}%`, width: `${block.width}%`, top: top + inset, height }}
     >
@@ -631,6 +655,8 @@ const LegendRow = memo(function LegendRow({
   scaleStart: number;
   scaleEnd: number;
 }) {
+  const filter = useBoardStore((s) => s.ganttFilter);
+  const setFilter = useBoardStore((s) => s.setGanttFilter);
   if (tipTruck && tipLive) {
     return (
       <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted">
@@ -645,12 +671,12 @@ const LegendRow = memo(function LegendRow({
   }
   return (
     <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted">
-      <Legend icon={Icon.late} label="Late" className="text-bad" />
-      <Legend icon={Icon.moved} label="Moved" className="text-warn" />
-      <Legend icon={Icon.reefer} label="Reefer" className="text-accent" />
-      <Legend icon={Icon.dry} label="Dry" className="text-ok" />
-      <Legend icon={Icon.other} label="Other" className="text-accent" />
-      <Legend icon={Flag} label="Priority" />
+      <Legend icon={Icon.late} label="Late" className="text-bad" active={filter === "late"} onClick={() => setFilter("late")} />
+      <Legend icon={Icon.moved} label="Moved" className="text-warn" active={filter === "moved"} onClick={() => setFilter("moved")} />
+      <Legend icon={Icon.reefer} label="Reefer" className="text-accent" active={filter === "reefer"} onClick={() => setFilter("reefer")} />
+      <Legend icon={Icon.dry} label="Dry" className="text-ok" active={filter === "dry"} onClick={() => setFilter("dry")} />
+      <Legend icon={Icon.other} label="Other" className="text-accent" active={false} onClick={() => setFilter("all")} />
+      <Legend icon={Flag} label="Priority" active={filter === "priority"} onClick={() => setFilter("priority")} />
       <LegendStats />
       {dense ? (
         <span className="ml-auto text-faint">
@@ -666,19 +692,38 @@ function LegendStats() {
   const hour = useBoardStore((s) => s.yard.timeUnit === "hour");
   if (!result || result.status !== "OPTIMAL") return null;
   return (
-    <span className="ml-auto inline-flex items-center gap-1 text-ok">
+    <span className="ml-auto inline-flex h-8 items-center gap-1.5 rounded-full bg-surface px-3 font-mono text-xs text-ok shadow-border">
       Wait {result.metrics.eventWaitMin}
       {hour ? "h" : " min"} · k={result.kUsed} · {result.ms}ms
     </span>
   );
 }
 
-function Legend({ icon: Glyph, label, className }: { icon: LucideIcon; label: string; className?: string }) {
+function Legend({
+  icon: Glyph,
+  label,
+  className,
+  active,
+  onClick,
+}: {
+  icon: LucideIcon;
+  label: string;
+  className?: string;
+  active?: boolean;
+  onClick?: () => void;
+}) {
   return (
-    <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-surface px-2.5 text-xs shadow-border">
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition",
+        active ? "bg-accent/10 text-accent ring-1 ring-accent" : "bg-surface text-fg shadow-border hover:bg-raised",
+      )}
+    >
       <Glyph className={cn("size-3.5", className)} strokeWidth={1.9} />
       {label}
-    </span>
+    </button>
   );
 }
 

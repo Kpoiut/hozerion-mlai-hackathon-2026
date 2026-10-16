@@ -4,13 +4,13 @@ import { b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].
 import { n as TSS_SERVER_FUNCTION, r as getServerFnById, t as createServerFn } from "./ssr.mjs";
 import { i as parseEvent, n as createYard, t as clockLabel } from "./parse-C_Xtcwss.mjs";
 import { a as string, i as object, r as number, t as _enum } from "../_libs/zod.mjs";
-import { A as Copy, c as Ship, o as Sparkles } from "../_libs/lucide-react.mjs";
+import { $ as ArrowRight, R as Cpu, p as Ship, u as Sparkles, z as Copy } from "../_libs/lucide-react.mjs";
 import { t as Slot } from "../_libs/radix-ui__react-slot.mjs";
 import { n as clsx, t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { n as atom, r as getDefaultStore } from "../_libs/jotai.mjs";
 import { t as create } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-DQdKk7ce.js
+//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-Dr5QNb07.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -7362,11 +7362,7 @@ function buildBargeIcdYard() {
 				name: "Cầu Sà Lan 1 (Cẩu Liebherr 45T)",
 				short: "B1",
 				equipment: ["crane", "forklift"],
-				cargo: [
-					"dry",
-					"reefer",
-					"haz"
-				]
+				cargo: ["dry", "reefer"]
 			},
 			{
 				id: "BRG-2",
@@ -7387,11 +7383,7 @@ function buildBargeIcdYard() {
 				name: "Cầu Sà Lan 4 (Bến Tiếp Nhận ĐBSCL)",
 				short: "B4",
 				equipment: ["crane", "forklift"],
-				cargo: [
-					"dry",
-					"reefer",
-					"haz"
-				]
+				cargo: ["dry", "reefer"]
 			}
 		],
 		trucks: [
@@ -7473,11 +7465,7 @@ function buildBargeIcdYard() {
 	};
 }
 function buildColdChainCrossdockYard() {
-	const equipmentAll = [
-		"reefer_plug",
-		"forklift",
-		"dock_lock"
-	];
+	const equipmentAll = ["reefer_plug", "forklift"];
 	const cargoCold = ["reefer", "dry"];
 	return {
 		id: "cold-chain-crossdock-aba",
@@ -7506,7 +7494,7 @@ function buildColdChainCrossdockYard() {
 				id: "CLD-03",
 				name: "Cửa Lạnh 03 (Khô/Mát +2°C)",
 				short: "C3",
-				equipment: ["forklift", "dock_lock"],
+				equipment: ["forklift"],
 				cargo: ["dry"]
 			},
 			{
@@ -8440,7 +8428,13 @@ function blankChrome() {
 		holdOn: false,
 		previous: null,
 		liveEta: null,
-		etc: null
+		etc: null,
+		setupOpen: false,
+		ganttFilter: "all",
+		slaRateUsd: 1500,
+		maxMovesAllowed: 0,
+		freezeWindowMin: 30,
+		hostAdapter: "Navis N4 / RBS TOPOVN"
 	};
 }
 function demoState() {
@@ -8449,7 +8443,9 @@ function demoState() {
 		yard: createYard(),
 		selectedId: "C",
 		delayMin: 47,
-		message: "Truck C late 47 min"
+		message: "Truck C late 47 min",
+		slaRateUsd: 18,
+		hostAdapter: "SGP-TOS / Smart ICD YMS"
 	};
 }
 function publishedState() {
@@ -8458,7 +8454,9 @@ function publishedState() {
 		yard: blockedExampleYard(),
 		selectedId: "S8",
 		delayMin: 1,
-		message: "S8 arrives 1 hour after its published mooring"
+		message: "S8 arrives 1 hour after its published mooring",
+		slaRateUsd: 1500,
+		hostAdapter: "Navis N4 / RBS TOPOVN"
 	};
 }
 function cloneYard(yard) {
@@ -8973,6 +8971,240 @@ var useBoardStore = create((set, get) => ({
 		} finally {
 			set({ busy: false });
 		}
+	},
+	setSetupOpen: (v) => set({ setupOpen: v }),
+	setGanttFilter: (f) => set({ ganttFilter: get().ganttFilter === f ? "all" : f }),
+	setSlaRateUsd: (n) => set({ slaRateUsd: Math.max(1, Math.round(n)) }),
+	setMaxMovesAllowed: (k) => {
+		set({ maxMovesAllowed: k });
+		if (get().event) get().findPlan();
+	},
+	setFreezeWindowMin: (n) => {
+		set({ freezeWindowMin: Math.max(0, Math.round(n)) });
+		if (get().event) get().findPlan();
+	},
+	setHostAdapter: (a) => set({ hostAdapter: a }),
+	applyFacilityPreset: (preset) => {
+		const keep = {
+			dark: get().dark,
+			collapsed: get().collapsed,
+			tab: get().tab
+		};
+		if (preset === "bcn-hour") {
+			syncClock(0, false);
+			lastClockSync = nowMs();
+			set({
+				...publishedState(),
+				...keep
+			});
+			get().findPlan();
+			return;
+		}
+		if (preset === "icd-minute") {
+			syncClock(0, false);
+			lastClockSync = nowMs();
+			set({
+				...demoState(),
+				...keep
+			});
+			get().findPlan();
+			return;
+		}
+		const base = createYard();
+		if (preset === "reefer-cold") {
+			base.name = "Mekong Cold Hub -25°C";
+			base.gate = "Cold Chain Gate A · Reefer WMS";
+			base.docks = base.docks.map((d, idx) => ({
+				...d,
+				mode: idx === 3 ? "closed" : "open",
+				cargo: ["reefer", "dry"],
+				equipment: ["reefer_plug", "forklift"]
+			}));
+			base.trucks = base.trucks.map((t) => ({
+				...t,
+				cargo: "reefer"
+			}));
+			syncClock(0, false);
+			lastClockSync = nowMs();
+			set({
+				...demoState(),
+				...keep,
+				yard: base,
+				slaRateUsd: 28,
+				hostAdapter: "Blue Yonder WMS / Cold-Chain ERP"
+			});
+			get().findPlan();
+			return;
+		}
+		if (preset === "crossdock-fmcg") {
+			base.name = "Bình Dương Cross-Dock Hub";
+			base.gate = "High-Velocity Gate C · 8 Doors";
+			const extraDocks = [{
+				id: "D7",
+				label: "Door 7",
+				short: "D7",
+				mode: "open",
+				cargo: ["dry"],
+				equipment: ["forklift"]
+			}, {
+				id: "D8",
+				label: "Door 8",
+				short: "D8",
+				mode: "open",
+				cargo: ["dry", "reefer"],
+				equipment: ["forklift", "reefer_plug"]
+			}];
+			base.docks = [...base.docks.map((d) => ({
+				...d,
+				mode: "open"
+			})), ...extraDocks];
+			syncClock(0, false);
+			lastClockSync = nowMs();
+			set({
+				...demoState(),
+				...keep,
+				yard: base,
+				slaRateUsd: 15,
+				hostAdapter: "SAP EWM / FourKites Dynamic Yard"
+			});
+			get().findPlan();
+			return;
+		}
+		if (preset === "barge-hub") {
+			base.name = "Cát Lái – Hiệp Phước Barge ICD";
+			base.gate = "Sông Đồng Nai · 6 Cầu Sà Lan";
+			base.docks = base.docks.map((d, i) => ({
+				...d,
+				label: `Bến Sà Lan ${i + 1}`,
+				mode: "open"
+			}));
+			syncClock(0, false);
+			lastClockSync = nowMs();
+			set({
+				...demoState(),
+				...keep,
+				yard: base,
+				slaRateUsd: 22,
+				hostAdapter: "SGP-TOS (VTOS / TOPOVN / VETC)"
+			});
+			get().findPlan();
+		}
+	},
+	updateYardMeta: (name, gate) => {
+		const yard = cloneYard(get().yard);
+		yard.name = name;
+		yard.gate = gate;
+		set({ yard });
+	},
+	toggleDockOpen: (dockId) => {
+		const yard = cloneYard(get().yard);
+		const dock = yard.docks.find((d) => d.id === dockId);
+		if (!dock) return;
+		dock.mode = dock.mode === "closed" ? "open" : "closed";
+		set({ yard });
+		if (get().event) get().findPlan();
+	},
+	toggleDockReefer: (dockId) => {
+		const yard = cloneYard(get().yard);
+		const dock = yard.docks.find((d) => d.id === dockId);
+		if (!dock) return;
+		if (dock.cargo.includes("reefer")) {
+			dock.cargo = ["dry"];
+			dock.equipment = dock.equipment.filter((e) => e !== "reefer_plug");
+		} else {
+			dock.cargo = Array.from(/* @__PURE__ */ new Set([...dock.cargo, "reefer"]));
+			dock.equipment = Array.from(/* @__PURE__ */ new Set([...dock.equipment, "reefer_plug"]));
+		}
+		set({ yard });
+		if (get().event) get().findPlan();
+	},
+	addCustomDock: () => {
+		const yard = cloneYard(get().yard);
+		const hour = yard.timeUnit === "hour";
+		const n = yard.docks.length;
+		const id = hour ? `B${n}` : `D${n + 1}`;
+		yard.docks.push({
+			id,
+			label: hour ? `Berth ${n}` : `Door ${n + 1}`,
+			short: id,
+			mode: "open",
+			cargo: ["dry", "reefer"],
+			equipment: ["forklift", "reefer_plug"]
+		});
+		set({ yard });
+		if (get().event) get().findPlan();
+	},
+	removeLastDock: () => {
+		const yard = cloneYard(get().yard);
+		if (yard.docks.length <= 3) return;
+		const last = yard.docks[yard.docks.length - 1];
+		if (!last) return;
+		if (yard.appointments.some((a) => a.dockId === last.id)) return;
+		yard.docks.pop();
+		set({ yard });
+		if (get().event) get().findPlan();
+	},
+	setTruckPriority: (truckId, priority) => {
+		const yard = cloneYard(get().yard);
+		const t = yard.trucks.find((x) => x.id === truckId);
+		if (!t) return;
+		t.priority = priority;
+		set({ yard });
+		if (get().event) get().findPlan();
+	},
+	setTruckDuration: (truckId, delta) => {
+		const yard = cloneYard(get().yard);
+		const t = yard.trucks.find((x) => x.id === truckId);
+		if (!t) return;
+		const minDur = yard.timeUnit === "hour" ? 2 : 15;
+		const maxDur = yard.timeUnit === "hour" ? 96 : 240;
+		t.durationMin = Math.max(minDur, Math.min(maxDur, t.durationMin + delta));
+		set({ yard });
+		if (get().event) get().findPlan();
+	},
+	injectCustomJob: (job) => {
+		const yard = cloneYard(get().yard);
+		const hour = yard.timeUnit === "hour";
+		const id = job.plate.trim() || (hour ? `S${yard.trucks.length}` : `T-${yard.trucks.length + 1}`);
+		const existingIdx = yard.trucks.findIndex((t) => t.id === id);
+		const newTruck = {
+			id,
+			plate: job.plate.trim() || id,
+			hauler: job.hauler.trim() || (hour ? "Custom Vessel Line" : "Custom Logistics Fleet"),
+			cargo: job.cargo,
+			requiredEquipment: job.cargo === "reefer" ? ["reefer_plug"] : [],
+			durationMin: job.durationMin,
+			priority: job.priority,
+			maxWaitMin: hour ? 240 : 180,
+			deadlineMin: yard.shiftLenMin,
+			span: hour ? job.span ?? 4 : 1,
+			arrivalMin: job.startMin
+		};
+		if (existingIdx >= 0) {
+			yard.trucks[existingIdx] = newTruck;
+			const apptIdx = yard.appointments.findIndex((a) => a.truckId === id);
+			if (apptIdx >= 0) yard.appointments[apptIdx] = {
+				truckId: id,
+				dockId: job.dockId,
+				startMin: job.startMin
+			};
+		} else {
+			yard.trucks.push(newTruck);
+			yard.appointments.push({
+				truckId: id,
+				dockId: job.dockId,
+				startMin: job.startMin
+			});
+		}
+		set({
+			yard,
+			selectedId: id,
+			delayMin: job.delayMin,
+			setupOpen: false,
+			tab: "board",
+			message: `${newTruck.plate} late ${job.delayMin}${hour ? "h" : " min"}`
+		});
+		get().findPlan();
 	}
 }));
 function selectLive(s) {
@@ -9856,6 +10088,8 @@ function UniversalSidecarAndBenchmarkPanel() {
 	const [customTargetId, setCustomTargetId] = (0, import_react.useState)(null);
 	const [patchView, setPatchView] = (0, import_react.useState)("rfc7396");
 	const [benchRunCount, setBenchRunCount] = (0, import_react.useState)(1);
+	const [scaleMult, setScaleMult] = (0, import_react.useState)(1);
+	const [copiedPatch, setCopiedPatch] = (0, import_react.useState)(false);
 	const activeHost = (0, import_react.useMemo)(() => UNIVERSAL_HOST_PROFILES.find((h) => h.id === hostId) ?? UNIVERSAL_HOST_PROFILES[0], [hostId]);
 	const effectiveTargetId = customTargetId && activeHost.yard.appointments.some((a) => a.truckId === customTargetId) ? customTargetId : activeHost.defaultTargetId;
 	const effectiveDelay = customDelay ?? activeHost.defaultDelayDelta;
@@ -9870,311 +10104,232 @@ function UniversalSidecarAndBenchmarkPanel() {
 		return runEmpiricalLanguageBenchmark(benchRunCount > 1);
 	}, [benchRunCount]);
 	const pnl = benchReport.corpusPnl;
+	const activePatchPayload = patchView === "rfc7396" ? pluginExec.rfc7396MergePatchJson : pluginExec.hostNativeAdapterPayload;
+	const targetAppt = activeHost.yard.appointments.find((a) => a.truckId === pluginExec.targetJobId);
+	const targetDiff = pluginExec.diffEntries.find((d) => d.jobId === pluginExec.targetJobId);
+	const bookedRes = targetDiff?.previousResource ?? targetAppt?.dockId ?? "B0";
+	const bookedSt = targetDiff?.previousStart ?? targetAppt?.startMin ?? 0;
+	const patchedRes = targetDiff?.nextResource ?? bookedRes;
+	const patchedSt = targetDiff?.nextStart ?? bookedSt;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
+		"data-testid": "universal-sidecar-benchmark-panel",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line sm:p-5",
+			className: "overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-wrap items-start justify-between gap-3",
+					className: "flex flex-wrap items-center justify-between gap-3 border-b border-line pb-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "min-w-0",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs font-medium uppercase tracking-wide text-accent",
-								children: "Universal Non-Invasive Sidecar Plugin · Cắm Vào Mọi Cảng / Bến Sà Lan / Kho Lạnh / WMS Không Làm Mất Giá Trị Hệ Thống Chủ"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "mt-1 text-base font-semibold tracking-tight sm:text-lg",
-								children: "Kiến Trúc Plugin Đa Năng Zero-Lock-In & Kiểm Chứng Lợi Nhuận Thực Nghiệm (3.092 Ca Tàu Thực Tế)"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "mt-1 max-w-4xl text-xs text-muted sm:text-sm",
-								children: [
-									"Doanh nghiệp đã bỏ hàng triệu USD mua ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-medium text-fg",
-										children: "Navis N4, TOPOVN, SGP-TOS, SAP EWM, C3 hay FourKites"
-									}),
-									" sẽ không bao giờ thay hệ thống gốc. Hozerion hoạt động như một",
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-semibold text-fg",
-										children: "Plugin Sidecar Không Xâm Lấn"
-									}),
-									": trong",
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-mono font-semibold text-ok",
-										children: [
-											pnl.uncontestedCount.toLocaleString("en-US"),
-											"/",
-											pnl.totalArrivalProbes.toLocaleString("en-US"),
-											" ca (",
-											pnl.uncontestedPct,
-											"%)"
-										]
-									}),
-									" ",
-									"khi tàu/xe trễ nhưng cầu đã đặt vẫn trống, Plugin tự động phát lệnh",
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-mono font-semibold text-fg",
-										children: "NO_OP_KEEP_HOST_PLAN"
-									}),
-									" (không sửa 1 byte nào của TOS/WMS chủ). Chỉ trong",
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-mono font-semibold text-accent",
-										children: [
-											pnl.contestedCount,
-											"/",
-											pnl.totalArrivalProbes.toLocaleString("en-US"),
-											" ca (",
-											pnl.contestedPct,
-											"%)"
-										]
-									}),
-									" ",
-									"thực sự bị kẹt dây chuyền, Plugin mới xuất bản vá tối thiểu (",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-mono text-fg",
-										children: "RFC 7396 Merge Patch"
-									}),
-									",",
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-mono text-ok",
-										children: "k = 0 tàu khác bị dời"
-									}),
-									"), cứu được",
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-mono font-semibold text-ok",
-										children: [pnl.totalShipHoursSaved.toLocaleString("en-US"), " giờ tàu chờ"]
-									}),
-									" (tương đương",
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-mono font-semibold text-ok",
-										children: [
-											"+$",
-											pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US"),
-											" USD"
-										]
-									}),
-									")."
-								]
-							})
-						]
+						className: "flex flex-wrap items-center gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-accent/10 px-3 py-1 font-mono text-xs font-semibold text-accent ring-1 ring-accent/25",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Cpu, { className: "size-3.5" }), "Universal Non-Invasive Sidecar"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "rounded-xl bg-ok/10 px-2.5 py-1 font-mono text-xs font-semibold text-ok ring-1 ring-ok/25",
+							children: [
+								pnl.pairedWeeksCount,
+								" Weeks · ",
+								pnl.totalArrivalProbes.toLocaleString("en-US"),
+								" Calls · +$",
+								pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")
+							]
+						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex flex-wrap gap-1.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "button",
-							size: "sm",
-							variant: "secondary",
-							onClick: () => {
-								if (activeHost.id === "host-maritime-quay") {
-									setCustomTargetId("S11");
-									setCustomDelay(0);
-								} else setCustomDelay(0);
-							},
-							children: "Thử Ca Không Tranh Chấp (Zero-Touch NO_OP)"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-							type: "button",
-							size: "sm",
-							onClick: () => {
-								setCustomTargetId(activeHost.defaultTargetId);
-								setCustomDelay(activeHost.defaultDelayDelta);
-							},
-							children: "Thử Ca Kẹt Dây Chuyền (Minimal Diff Patch)"
-						})]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								size: "sm",
+								variant: "secondary",
+								className: "h-8 rounded-xl text-xs",
+								onClick: () => {
+									if (activeHost.id === "host-maritime-quay") {
+										setCustomTargetId("S11");
+										setCustomDelay(0);
+									} else setCustomDelay(0);
+								},
+								children: "Zero-Touch NO_OP (83.02%)"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								size: "sm",
+								className: "h-8 rounded-xl text-xs",
+								onClick: () => {
+									setCustomTargetId(activeHost.defaultTargetId);
+									setCustomDelay(activeHost.defaultDelayDelta);
+								},
+								children: "Minimal Patch k=0 (16.98%)"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								type: "button",
+								size: "sm",
+								variant: "ghost",
+								className: "h-8 rounded-xl text-xs ring-1 ring-line",
+								onClick: () => useBoardStore.getState().setSetupOpen(true),
+								children: "Tự Setup Bãi/Cảng"
+							})
+						]
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4",
+					className: "mt-3.5 grid grid-cols-2 gap-3 sm:grid-cols-4",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-raised/70 p-3 ring-1 ring-line",
+							className: "rounded-xl bg-raised/60 p-3 ring-1 ring-line",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[11px] font-medium uppercase text-faint",
-									children: "Tập Kiểm Chứng Thực Nghiệm"
+									className: "text-[10px] font-semibold uppercase tracking-wider text-muted",
+									children: "Empirical Corpus"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-semibold tabular-nums text-fg",
+									className: "mt-1 font-mono text-lg font-bold tabular-nums text-fg",
 									children: [
 										pnl.pairedWeeksCount,
-										" tuần · ",
-										pnl.totalArrivalProbes.toLocaleString("en-US"),
-										" ca"
+										"w · ",
+										pnl.totalArrivalProbes.toLocaleString("en-US")
 									]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-0.5 text-[11px] text-muted",
-									children: [
-										"100% ca hợp lệ · ",
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-mono text-ok",
-											children: "0 ca lỗi"
-										}),
-										" · Quét mẫu Tuần 47 (",
-										pnl.liveSampleWeek47Probes,
-										" tàu) trong",
-										" ",
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono text-fg",
-											children: [pnl.liveSampleSweepMs, "ms"]
-										})
-									]
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-0.5 font-mono text-[11px] text-muted",
+									children: "100% legal · 0 violations"
 								})
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-raised/70 p-3 ring-1 ring-line",
+							className: "rounded-xl bg-raised/60 p-3 ring-1 ring-line",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[11px] font-medium uppercase text-faint",
-									children: "Chế Độ Bảo Toàn Hệ Thống Chủ (NO_OP)"
+									className: "text-[10px] font-semibold uppercase tracking-wider text-muted",
+									children: "NO_OP Preservation"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-semibold tabular-nums text-ok",
-									children: [
-										pnl.uncontestedCount.toLocaleString("en-US"),
-										" ca (",
-										pnl.uncontestedPct,
-										"%)"
-									]
+									className: "mt-1 font-mono text-lg font-bold tabular-nums text-ok",
+									children: [pnl.uncontestedCount.toLocaleString("en-US"), " (83.02%)"]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-0.5 text-[11px] text-muted",
-									children: "Giữ nguyên 100% lịch của TOS/WMS chủ khi cầu/cửa gốc vẫn trống (Không gây nhiễu vận hành)"
+									className: "mt-0.5 font-mono text-[11px] text-muted",
+									children: "0 host TOS mutations"
 								})
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-raised/70 p-3 ring-1 ring-line",
+							className: "rounded-xl bg-raised/60 p-3 ring-1 ring-line",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[11px] font-medium uppercase text-faint",
-									children: "Ca Tranh Chấp Cứu Được (k = 0)"
+									className: "text-[10px] font-semibold uppercase tracking-wider text-muted",
+									children: "Rescued Calls (k=0)"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-semibold tabular-nums text-accent",
+									className: "mt-1 font-mono text-lg font-bold tabular-nums text-accent",
 									children: [
 										pnl.contestedCount,
-										" ca · ",
+										" · ",
 										pnl.totalShipHoursSaved.toLocaleString("en-US"),
-										" giờ tàu"
+										"h"
 									]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-0.5 text-[11px] text-muted",
-									children: [
-										"Trung bình ",
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono text-fg",
-											children: [pnl.avgHoursSavedPerContested, "h/ca"]
-										}),
-										" · Đỉnh",
-										" ",
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono text-fg",
-											children: [pnl.maxSingleCallHoursSaved, "h"]
-										}),
-										" (",
-										pnl.maxSingleCallId,
-										")"
-									]
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-0.5 font-mono text-[11px] text-muted",
+									children: "0 other ships displaced"
 								})
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-ok/10 p-3 ring-1 ring-ok/30",
+							className: "rounded-xl bg-ok/10 p-3 ring-1 ring-ok/25",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[11px] font-medium uppercase text-ok",
-									children: "Giá Trị Kinh Tế Ròng Thực Nghiệm"
+									className: "text-[10px] font-semibold uppercase tracking-wider text-ok",
+									children: "Verified Net P&L"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-semibold tabular-nums text-ok",
-									children: [
-										"+$",
-										pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US"),
-										" USD"
-									]
+									className: "mt-1 font-mono text-lg font-bold tabular-nums text-ok",
+									children: ["+$", pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-0.5 text-[11px] text-muted",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono font-semibold text-fg",
-											children: [
-												"+$",
-												pnl.avgSavingsPerContestedCallUsd.toLocaleString("en-US"),
-												"/ca tranh chấp"
-											]
-										}),
-										" ·",
-										" ",
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono text-ok",
-											children: [pnl.otherVesselsDisplacedTotal, " tàu khác bị dời"]
-										})
-									]
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-0.5 font-mono text-[11px] text-muted",
+									children: "$1,500/h demurrage"
 								})
 							]
 						})
 					]
 				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-3.5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4",
+					children: UNIVERSAL_HOST_PROFILES.map((h) => {
+						const selected = h.id === activeHost.id;
+						const label = h.domain === "MARITIME_CONTAINER_QUAY" ? "Maritime Container TOS" : h.domain === "INLAND_BARGE_ICD" ? "Inland Barge & ICD" : h.domain === "WAREHOUSE_DOCK_WMS" ? "Warehouse Dock WMS" : "Cold Chain Reefer -25°C";
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							"data-testid": `sidecar-profile-${h.domain}`,
+							onClick: () => {
+								setHostId(h.id);
+								setCustomDelay(null);
+								setCustomTargetId(null);
+							},
+							className: cn("flex items-center justify-between rounded-xl px-3.5 py-2.5 text-left ring-1 transition", selected ? "bg-accent text-accent-fg ring-accent shadow-xs" : "bg-raised/60 text-fg ring-line hover:bg-raised"),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-semibold",
+								children: label
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "font-mono text-xs font-semibold opacity-90",
+								children: [
+									"$",
+									h.costPerWaitUnitUsd,
+									"/",
+									h.timeUnitLabel
+								]
+							})]
+						}, h.id);
+					})
+				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mt-4 grid gap-3 rounded-xl bg-raised/50 p-3.5 ring-1 ring-line lg:grid-cols-12",
+					className: "mt-3.5 grid gap-4 rounded-xl bg-raised/40 p-3.5 ring-1 ring-line lg:grid-cols-12",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "min-w-0 space-y-2.5 lg:col-span-5",
+						className: "space-y-3 lg:col-span-5",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-								className: "block text-xs font-medium text-muted",
-								children: ["1. Chọn Hệ Thống Cầu Cảng / Sà Lan / Kho WMS Để Cắm Plugin Sidecar:", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-									value: activeHost.id,
-									onChange: (e) => {
-										setHostId(e.target.value);
-										setCustomDelay(null);
-										setCustomTargetId(null);
-									},
-									className: "mt-1 block w-full rounded-lg bg-surface px-2.5 py-2 text-xs font-medium text-fg ring-1 ring-line",
-									children: UNIVERSAL_HOST_PROFILES.map((h) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-										value: h.id,
-										children: h.name
-									}, h.id))
-								})]
-							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+								className: "block text-[11px] font-medium text-muted",
+								children: "Host System Profile"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+								"data-testid": "host-profile-select",
+								value: activeHost.id,
+								onChange: (e) => {
+									setHostId(e.target.value);
+									setCustomDelay(null);
+									setCustomTargetId(null);
+								},
+								className: "mt-1 block h-9 w-full rounded-xl bg-surface px-3 text-xs font-semibold text-fg ring-1 ring-line",
+								children: UNIVERSAL_HOST_PROFILES.map((h) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+									value: h.id,
+									children: h.name
+								}, h.id))
+							})] }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-1 gap-2 sm:grid-cols-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "block text-xs text-muted",
-									children: ["2. Chọn Tàu / Sà lan / Xe:", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-										value: effectiveTargetId,
-										onChange: (e) => setCustomTargetId(e.target.value),
-										className: "mt-1 block w-full rounded-lg bg-surface px-2.5 py-1.5 font-mono text-xs text-fg ring-1 ring-line",
-										children: activeHost.yard.appointments.slice(0, 12).map((a) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-											value: a.truckId,
-											children: [
-												a.truckId,
-												" (Gốc: ",
-												a.dockId,
-												" @ ",
-												a.startMin,
-												activeHost.timeUnitLabel === "hour" ? "h" : "m",
-												")"
-											]
-										}, a.truckId))
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-									className: "block text-xs text-muted",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "flex justify-between",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "3. Độ trễ ETA:" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono font-semibold text-fg",
+								className: "grid grid-cols-2 gap-2.5",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+									className: "block text-[11px] font-medium text-muted",
+									children: "Late Call / Vehicle"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+									value: effectiveTargetId,
+									onChange: (e) => setCustomTargetId(e.target.value),
+									className: "mt-1 block h-9 w-full rounded-xl bg-surface px-2.5 font-mono text-xs font-semibold text-fg ring-1 ring-line",
+									children: activeHost.yard.appointments.slice(0, 12).map((a) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+										value: a.truckId,
+										children: [
+											a.truckId,
+											" (",
+											a.dockId,
+											"@",
+											a.startMin,
+											")"
+										]
+									}, a.truckId))
+								})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "rounded-xl bg-surface px-3 py-1.5 ring-1 ring-line",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex justify-between font-mono text-[11px] text-muted",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "ETA Delay" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
+											className: "text-accent",
 											children: [
 												"+",
 												effectiveDelay,
@@ -10189,281 +10344,258 @@ function UniversalSidecarAndBenchmarkPanel() {
 										step: activeHost.timeUnitLabel === "hour" ? 1 : 5,
 										value: effectiveDelay,
 										onChange: (e) => setCustomDelay(Number(e.target.value)),
-										className: "mt-2 w-full"
+										className: "mt-1 w-full accent-accent"
 									})]
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "rounded-lg bg-surface p-2.5 text-xs ring-1 ring-line",
+								className: "flex items-center gap-2.5",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex flex-wrap items-center justify-between gap-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-faint",
-											children: "Hệ thống chủ (Host System):"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-mono font-semibold text-fg",
-											children: activeHost.incumbentSystem
-										})]
+										className: "flex-1 rounded-xl bg-surface p-2.5 ring-1 ring-line",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "text-[10px] font-semibold uppercase text-muted",
+												children: "Host Booked"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "mt-0.5 font-mono text-base font-bold text-fg",
+												children: [
+													bookedRes,
+													" @",
+													bookedSt,
+													activeHost.timeUnitLabel === "hour" ? "h" : "m"
+												]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "font-mono text-[11px] text-bad",
+												children: [
+													"Wait: ",
+													pluginExec.hostPlanWait,
+													" ",
+													activeHost.timeUnitLabel
+												]
+											})
+										]
 									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4 shrink-0 text-accent" }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "mt-1 flex flex-wrap items-center justify-between gap-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "text-faint",
-											children: "Giao thức kết nối:"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-mono text-[11px] text-accent",
-											children: activeHost.protocolStandard
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-1.5 text-[11px] text-muted",
-										children: activeHost.description
+										className: "flex-1 rounded-xl bg-accent/10 p-2.5 ring-1 ring-accent/30",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "text-[10px] font-semibold uppercase text-accent",
+												children: [
+													"Sidecar Patch (k=",
+													pluginExec.otherJobsMoved,
+													")"
+												]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "mt-0.5 font-mono text-base font-bold text-fg",
+												children: [
+													patchedRes,
+													" @",
+													patchedSt,
+													activeHost.timeUnitLabel === "hour" ? "h" : "m"
+												]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+												className: "font-mono text-[11px] font-semibold text-ok",
+												children: [
+													"Wait: ",
+													pluginExec.pluginPlanWait,
+													" · +$",
+													pluginExec.netEconomicGainUsd.toLocaleString("en-US")
+												]
+											})
+										]
 									})
 								]
 							})
 						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "min-w-0 space-y-2.5 lg:col-span-7",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface p-3 ring-1 ring-line",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex flex-wrap items-center gap-2",
-									children: [pluginExec.pluginDecision === "NO_OP_KEEP_HOST_PLAN" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "rounded-md bg-ok/15 px-2.5 py-1 font-mono text-xs font-semibold text-ok",
-										children: "NO_OP_KEEP_HOST_PLAN (Zero-Touch)"
-									}) : pluginExec.pluginDecision === "APPLY_MINIMAL_DIFF_PATCH" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "rounded-md bg-accent/15 px-2.5 py-1 font-mono text-xs font-semibold text-accent",
-										children: [
-											"APPLY_MINIMAL_DIFF_PATCH (k=",
-											pluginExec.otherJobsMoved,
-											")"
-										]
-									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "rounded-md bg-warn/15 px-2.5 py-1 font-mono text-xs font-semibold text-warn",
-										children: "HOLD_FOR_HUMAN_REVIEW"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-mono text-xs text-muted",
-										children: [
-											"Giải trong ",
-											pluginExec.solveLatencyMs,
-											"ms · Bảo toàn ",
-											pluginExec.hostValuePreservationPct,
-											"% lệnh khác"
-										]
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "font-mono text-xs font-semibold text-ok",
-									children: [
-										"Lợi ích ca này: +$",
-										pluginExec.netEconomicGainUsd.toLocaleString("en-US"),
-										" USD"
-									]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs leading-relaxed text-fg",
-								children: pluginExec.decisionReason
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap items-center justify-between gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex flex-wrap gap-1",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						className: "flex flex-col justify-between lg:col-span-7",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mb-2 flex flex-wrap items-center justify-between gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex gap-1.5",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 										type: "button",
 										onClick: () => setPatchView("rfc7396"),
-										className: cn("rounded-md px-2.5 py-1 text-xs font-medium", patchView === "rfc7396" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line"),
-										children: "RFC 7396 JSON Merge Patch"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										className: cn("rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition", patchView === "rfc7396" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line"),
+										children: "RFC 7396 Merge Patch"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 										type: "button",
 										onClick: () => setPatchView("native"),
-										className: cn("rounded-md px-2.5 py-1 text-xs font-medium", patchView === "native" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line"),
-										children: ["Bản tin Adapter ", activeHost.incumbentSystem.split("/")[0]?.trim()]
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "break-all font-mono text-[11px] text-faint",
-									children: ["Rollback: ", pluginExec.rollbackToken]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
-								className: "max-h-40 overflow-auto rounded-lg bg-bg p-2.5 font-mono text-[11px] leading-relaxed text-fg ring-1 ring-line",
-								children: patchView === "rfc7396" ? pluginExec.rfc7396MergePatchJson : pluginExec.hostNativeAdapterPayload
-							})
-						]
+										className: cn("rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition", patchView === "native" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line"),
+										children: [activeHost.incumbentSystem.split("/")[0]?.trim(), " Adapter"]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										type: "button",
+										onClick: () => {
+											navigator.clipboard.writeText(activePatchPayload);
+											setCopiedPatch(true);
+											setTimeout(() => setCopiedPatch(false), 1500);
+										},
+										className: "inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 font-mono text-xs text-fg ring-1 ring-line hover:bg-raised",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "size-3" }), copiedPatch ? "Copied" : "Copy"]
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "rounded-lg bg-ok/10 px-2.5 py-1 font-mono text-xs font-semibold text-ok",
+								children: [
+									pluginExec.pluginDecision,
+									" · Saved ",
+									pluginExec.waitSaved,
+									activeHost.timeUnitLabel
+								]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
+							className: "max-h-40 flex-1 overflow-auto rounded-xl bg-surface p-3 font-mono text-[11px] leading-relaxed text-fg ring-1 ring-line",
+							children: activePatchPayload
+						})]
 					})]
 				})
 			]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line sm:p-5",
+			className: "overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-start justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-xs font-medium uppercase tracking-wide text-accent",
-						children: "Thực Nghiệm Tối Ưu Đa Ngôn Ngữ (TypeScript V8 vs Rust #![no_std] WebAssembly vs Go 1.26.5 Native)"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-						className: "mt-1 text-base font-semibold tracking-tight sm:text-lg",
-						children: "Bộ Test Quy Mô Lớn Trước & Sau Khi Cải Tạo Mã Nguồn: Chỉ Chuyển Đổi Khi Lợi Ích Thực Nghiệm Rõ Ràng"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "mt-1 max-w-4xl text-xs text-muted sm:text-sm",
+				className: "flex flex-wrap items-center justify-between gap-2 pb-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-4 text-accent" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+						className: "text-sm font-semibold text-fg",
+						children: "Multi-Language Kernel Benchmark (Go 1.26.5 Native 536× · Rust #![no_std] WASM · V8 Zero-Alloc)"
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-1.5",
+					children: [[
+						1,
+						5,
+						10
+					].map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: () => setScaleMult(m),
+						className: cn("h-8 rounded-xl px-2.5 font-mono text-xs font-semibold ring-1 transition", scaleMult === m ? "bg-accent text-accent-fg ring-accent" : "bg-raised/70 text-muted ring-line hover:text-fg"),
 						children: [
-							"Tuân thủ kỷ luật kỹ thuật: Trước khi viết lại bất kỳ mô-đun nào sang ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-mono text-fg",
-								children: "Go 1.26.5"
-							}),
-							" hoặc",
-							" ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-mono text-fg",
-								children: "Rust WebAssembly"
-							}),
-							", hệ thống chạy bộ đo kiểm thực nghiệm quy mô lớn trên cả 4 nhân tính toán.",
-							" ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-semibold text-ok",
-								children: "3 nhân tính toán tổ hợp/hình học (Phân cầu 2D, Xếp khối 3D, Đảo chuyển RTG)"
-							}),
-							" tăng tốc từ",
-							" ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-mono font-semibold text-ok",
-								children: "12.46× đến 536.27×"
-							}),
-							" nên được triển khai sâu; ngược lại",
-							" ",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-semibold text-warn",
-								children: "nhân xử lý chuỗi EDI/XML (Kernel 4)"
-							}),
-							" bị chậm đi do chi phí copy chuỗi UTF-8 qua biên FFI nên được giữ nguyên trên V8 để tránh lãng phí."
+							m,
+							"× (",
+							(3092 * m).toLocaleString("en-US"),
+							" calls)"
 						]
-					})
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					type: "button",
-					size: "sm",
-					variant: "secondary",
-					onClick: () => setBenchRunCount((c) => c + 1),
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5" }),
-						"Chạy Lại Thực Nghiệm Benchmark (",
-						benchReport.totalBenchmarkWallMs,
-						"ms)"
-					]
+					}, m)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						type: "button",
+						size: "sm",
+						variant: "secondary",
+						className: "h-8 rounded-xl text-xs",
+						"data-testid": "rerun-live-benchmark-btn",
+						onClick: () => setBenchRunCount((c) => c + 1),
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 text-accent" }),
+							"Re-run (",
+							benchReport.totalBenchmarkWallMs,
+							"ms)"
+						]
+					})]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-4 overflow-x-auto",
+				className: "overflow-x-auto",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
-					className: "w-full min-w-[54rem] text-left text-xs",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", {
-						className: "border-b border-line text-faint",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [
+					className: "w-full border-collapse text-left font-mono text-xs",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+						className: "border-b border-line bg-raised/50 text-[10px] uppercase text-muted",
+						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "py-2 pr-3 font-medium",
-								children: "Nhân Tính Toán & Quy Mô Bộ Test"
+								className: "px-3 py-2",
+								children: "Kernel"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-2 py-2 font-medium",
-								children: "V8 Trước Tối Ưu"
+								className: "px-3 py-2",
+								children: "Visual Speedup Ratio"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-2 py-2 font-medium",
+								className: "px-3 py-2 text-right",
+								children: "JS Heap"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-3 py-2 text-right",
 								children: "V8 Zero-Alloc"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-2 py-2 font-medium",
-								children: "Rust WASM / Go 1.26.5"
+								className: "px-3 py-2 text-right",
+								children: "Go / Rust"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-2 py-2 font-medium",
-								children: "Hệ Số Tăng Tốc"
+								className: "px-3 py-2 text-right",
+								children: "FFI Cost"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-2 py-2 font-medium",
-								children: "Quyết Định Kỹ Thuật"
+								className: "px-3 py-2 text-right",
+								children: "Verdict"
 							})
-						] })
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", { children: benchReport.kernels.map((k) => {
-						const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
-						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
-							className: "border-b border-line/70 align-top",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-									className: "py-2.5 pr-3",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "font-semibold text-fg",
-											children: k.kernelName
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "mt-0.5 text-[11px] text-muted",
-											children: k.workloadScale
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "mt-1 text-[11px] text-faint",
-											children: k.parityVerified
+						]
+					}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
+						className: "divide-y divide-line/70",
+						children: benchReport.kernels.map((k) => {
+							const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
+							const pct = approved ? Math.min(100, Math.max(18, Math.round(Math.log10(Math.max(2, k.nativeSpeedupVsBaseline)) * 36))) : 10;
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+								className: "hover:bg-raised/40",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										className: "px-3 py-2.5 font-sans text-xs font-semibold text-fg",
+										children: k.kernelName
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										className: "w-64 px-3 py-2.5",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center gap-2",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "h-2 flex-1 overflow-hidden rounded-full bg-raised ring-1 ring-line",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+													className: cn("h-full rounded-full transition-all", approved ? "bg-ok" : "bg-warn"),
+													style: { width: `${pct}%` }
+												})
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: cn("w-14 text-right font-bold", approved ? "text-ok" : "text-warn"),
+												children: [k.nativeSpeedupVsBaseline, "×"]
+											})]
 										})
-									]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-									className: "px-2 py-2.5 font-mono tabular-nums text-muted",
-									children: [k.baselineV8Ms, " ms"]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-									className: "px-2 py-2.5 font-mono tabular-nums text-fg",
-									children: [
-										k.optimizedV8Ms,
-										" ms",
-										k.v8SpeedupRatio > 1 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "ml-1 text-[11px] font-semibold text-ok",
-											children: [
-												"(",
-												k.v8SpeedupRatio,
-												"×)"
-											]
-										}) : null
-									]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-									className: "px-2 py-2.5 font-mono tabular-nums",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-semibold text-fg",
-										children: [k.nativeRustOrGoMs, " ms"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-0.5 font-sans text-[11px] text-muted",
-										children: k.nativeLanguage
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-									className: "px-2 py-2.5 font-mono tabular-nums",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: cn("font-semibold", approved ? "text-ok" : "text-warn"),
-										children: [k.nativeSpeedupVsBaseline, "× so với gốc"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-										className: "mt-0.5 text-[11px] text-faint",
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+										className: "px-3 py-2.5 text-right text-muted",
+										children: [(k.baselineV8Ms * scaleMult).toFixed(2), " ms"]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+										className: "px-3 py-2.5 text-right text-fg",
 										children: [
-											"FFI cost: ~",
-											k.ffiOverheadMs,
-											"ms"
+											(k.optimizedV8Ms * scaleMult).toFixed(2),
+											" ms (",
+											k.v8SpeedupRatio,
+											"×)"
 										]
-									})]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-									className: "px-2 py-2.5",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: cn("inline-block rounded-md px-2 py-0.5 font-mono text-[10px] font-semibold", approved ? "bg-ok/15 text-ok" : "bg-warn/15 text-warn"),
-										children: approved ? "ĐÃ TRIỂN KHAI (HIỆU QUẢ CAO)" : "LOẠI BỎ (LÃNG PHÍ FFI)"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-1 max-w-xs text-[11px] leading-relaxed text-muted",
-										children: k.engineeringRationale
-									})]
-								})
-							]
-						}, k.id);
-					}) })]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+										className: "px-3 py-2.5 text-right font-bold text-fg",
+										children: [(k.nativeRustOrGoMs * scaleMult).toFixed(2), " ms"]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+										className: "px-3 py-2.5 text-right text-muted",
+										children: [(k.ffiOverheadMs * scaleMult).toFixed(2), " ms"]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+										className: "px-3 py-2.5 text-right",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: cn("rounded-md px-2 py-0.5 text-[10px] font-bold", approved ? "bg-ok/10 text-ok" : "bg-warn/15 text-warn"),
+											children: approved ? "DEPLOYED" : "REJECTED_FFI"
+										})
+									})
+								]
+							}, k.id);
+						})
+					})]
 				})
 			})]
 		})]

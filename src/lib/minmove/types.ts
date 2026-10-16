@@ -9,7 +9,9 @@ export type Ternary = "allow" | "deny" | "unknown";
 export interface Dock {
   id: string;
   name: string;
+  label?: string;
   short: string;
+  mode?: "open" | "closed";
   equipment: Equipment[];
   cargo: Cargo[];
   /** Absence of a listed fact is deny. Unknown blocks autonomous commit if the only feasible plan needs it. */

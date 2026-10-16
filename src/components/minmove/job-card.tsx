@@ -1,14 +1,21 @@
 import { useMemo } from "react";
-import { Anchor, Boxes, Cpu, FileCheck2, Network, Sparkles } from "lucide-react";
+import { ArrowRight, Calendar, Lock, SlidersHorizontal, Sparkles } from "lucide-react";
 import { bookedFromPlan, bookedHeadline, stretchClear, stretchShips } from "@/lib/minmove/published-week.ts";
 import { useBoardStore } from "@/lib/minmove/store.ts";
+import { cn } from "@/lib/utils.ts";
 
-/** Visual SCADA Ship & Berth Compare Strip + Compact Metric Table (Zero prose walls). */
+/**
+ * Refined Interactive Berth & Vessel Control Strip (matching attachments/image.png aesthetic).
+ * Zero decorative dark boxes or prose walls; every badge is an interactive control.
+ */
 export function JobCard() {
   const yard = useBoardStore((s) => s.yard);
   const result = useBoardStore((s) => s.result);
   const event = useBoardStore((s) => s.event);
   const selectedId = useBoardStore((s) => s.selectedId);
+  const holdOn = useBoardStore((s) => s.holdOn);
+  const slaRateUsd = useBoardStore((s) => s.slaRateUsd);
+
   const compare = useMemo(
     () => (yard.timeUnit === "hour" && event ? bookedFromPlan(yard, event, result ?? undefined) : null),
     [yard, event, result],
@@ -36,272 +43,133 @@ export function JobCard() {
     (compare.leftmostDock !== compare.holdDock || compare.leftmostStart !== compare.holdStart);
 
   const savedHours = Math.max(0, compare?.saved ?? 0);
-  const savedUsd = savedHours * 1500;
+  const savedUsd = savedHours * slaRateUsd;
   const headlineText = compare ? bookedHeadline(compare) : "One late ship. The others stay put.";
 
   return (
-    <section data-job="one" className="mb-3 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-line">
-      {/* Compact Top Telemetry Bar + Quick Module Switcher */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line/70 pb-2">
+    <section data-job="one" className="mb-2.5 rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line">
+      <div className="flex flex-wrap items-center justify-between gap-2.5">
+        {/* Left: Interactive Booked -> Plan Slot Comparison Pills */}
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded bg-accent px-2 py-0.5 font-mono text-[10px] font-bold uppercase text-accent-fg">
-            SCADA BERTH CONTROL
+          <button
+            type="button"
+            onClick={() => useBoardStore.getState().hold()}
+            className={cn(
+              "inline-flex h-8 items-center gap-1.5 rounded-xl px-2.5 text-xs font-medium ring-1 transition",
+              holdOn ? "bg-bad/15 text-bad ring-bad/40" : "bg-raised/70 text-muted ring-line hover:text-fg",
+            )}
+            title="Click to hold on booked berth"
+          >
+            <Calendar className="size-3.5 text-bad" />
+            <span>Booked {compare?.holdDock ?? `B${berth}`}</span>
+            <span className="font-mono font-semibold text-fg">@{compare?.holdStart ?? "—"}h</span>
+            <span className="rounded bg-bad/10 px-1 py-0.5 font-mono text-[10px] font-semibold text-bad">
+              wait {compare?.holdWait ?? 0}h
+            </span>
+          </button>
+
+          <ArrowRight className="size-3.5 text-faint" />
+
+          <button
+            type="button"
+            onClick={() => {
+              useBoardStore.setState({ holdOn: false, forceDock: "" });
+              useBoardStore.getState().findPlan();
+            }}
+            className={cn(
+              "inline-flex h-8 items-center gap-1.5 rounded-xl px-2.5 text-xs font-medium ring-1 transition",
+              !holdOn ? "bg-accent/10 text-accent ring-accent/30" : "bg-raised/70 text-muted ring-line hover:text-fg",
+            )}
+            title="Click to apply optimal k=0 berth plan"
+          >
+            <Sparkles className="size-3.5 text-accent" />
+            <span>Plan {compare?.planDock ?? "—"}</span>
+            <span className="font-mono font-semibold">@{compare?.planStart ?? "—"}h</span>
+            <span className="rounded bg-ok/15 px-1 py-0.5 font-mono text-[10px] font-semibold text-ok">
+              wait {compare?.planWait ?? 0}h
+            </span>
+          </button>
+
+          {compare && compare.holdStart != null && compare.planStart != null ? (
+            <span
+              data-booked-equation=""
+              className="inline-flex h-8 items-center rounded-xl bg-raised/70 px-2.5 font-mono text-xs font-semibold tabular-nums text-accent ring-1 ring-line"
+            >
+              {compare.holdStart} − {compare.planStart} = {compare.saved ?? 0}
+            </span>
+          ) : null}
+
+          {leftmostDiffers && compare ? (
+            <span
+              data-job-equation=""
+              className="inline-flex h-8 items-center rounded-xl bg-raised/70 px-2.5 font-mono text-xs font-semibold tabular-nums text-accent ring-1 ring-line"
+            >
+              {compare.leftmostStart} − {compare.planStart} = {compare.leftmostSaved}
+            </span>
+          ) : null}
+
+          <span className="inline-flex h-8 items-center gap-1 rounded-xl bg-ok/10 px-2.5 font-mono text-xs font-semibold text-ok ring-1 ring-ok/25">
+            {savedHours > 0 ? `-${savedHours}h (+$${savedUsd.toLocaleString("en-US")})` : "Optimal Hold"} ·{" "}
+            {compare?.planMoves === 0 ? "Nobody else moves" : `${compare?.planMoves ?? 0} moved`}
           </span>
-          <span className="font-mono text-xs font-semibold text-fg">{headlineText}</span>
-          <span className="sr-only">One late ship. The others stay put.</span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-1.5">
+        {/* Right: Headline + Self-Setup Button */}
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-medium text-muted">{headlineText}</span>
+          <span className="sr-only">One late ship. The others stay put.</span>
           <button
             type="button"
-            onClick={() => useBoardStore.getState().setTab("mlai")}
-            className="inline-flex h-7 items-center gap-1 rounded-md bg-accent px-2.5 font-mono text-[10px] font-bold text-accent-fg hover:opacity-95"
+            onClick={() => useBoardStore.getState().setSetupOpen(true)}
+            className="inline-flex h-8 items-center gap-1.5 rounded-xl bg-raised px-2.5 text-xs font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent hover:ring-accent/30"
           >
-            <Sparkles className="size-3" />
-            Radar AI &amp; HITL
-          </button>
-          <button
-            type="button"
-            onClick={() => useBoardStore.getState().setTab("sidecar")}
-            className="inline-flex h-7 items-center gap-1 rounded-md bg-ok/15 px-2.5 font-mono text-[10px] font-bold text-ok ring-1 ring-ok/30"
-          >
-            <Cpu className="size-3" />
-            Go 536× / Rust
-          </button>
-          <button
-            type="button"
-            onClick={() => useBoardStore.getState().setTab("bacap")}
-            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
-          >
-            <Anchor className="size-3 text-accent" />
-            STS Cranes
-          </button>
-          <button
-            type="button"
-            onClick={() => useBoardStore.getState().setTab("federation")}
-            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
-          >
-            <Network className="size-3 text-accent" />
-            5-TOS
-          </button>
-          <button
-            type="button"
-            onClick={() => useBoardStore.getState().setTab("docs")}
-            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
-          >
-            <FileCheck2 className="size-3 text-ok" />
-            eDO
-          </button>
-          <button
-            type="button"
-            onClick={() => useBoardStore.getState().setTab("microtos")}
-            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
-          >
-            <Boxes className="size-3 text-warn" />
-            3D Yard
+            <SlidersHorizontal className="size-3.5 text-accent" />
+            Tự Setup Bãi/Cảng
           </button>
         </div>
       </div>
 
-      {/* Main Visual Grid: Left 7 Cols = Live SVG Quay & Ship Berthing Diagram | Right 5 Cols = Compact KPI Metric Table */}
-      <div className="mt-2.5 grid gap-3 lg:grid-cols-12">
-        {/* LEFT 7 COLS: VISUAL SVG QUAY WALL, VESSEL SILHOUETTES & STS CRANES */}
-        <div className="overflow-hidden rounded-xl bg-[#09111e] p-2.5 ring-1 ring-line lg:col-span-7">
-          <svg
-            viewBox="0 0 680 132"
-            className="h-[126px] w-full select-none"
-            role="img"
-            aria-label="Sơ đồ trực quan so sánh cầu bến gốc bị kẹt và phương án Sidecar k=0"
-          >
-            {/* Left Half: Booked Berth (Red Blocked State) */}
-            <rect
-              x="8"
-              y="8"
-              width="322"
-              height="116"
-              rx="8"
-              fill="rgba(244, 63, 94, 0.08)"
-              stroke="rgba(244, 63, 94, 0.35)"
-              strokeWidth="1.5"
-            />
-            <text x="18" y="24" fill="#f43f5e" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
-              1. BEFORE (HOLD BOOKED {compare?.holdDock ?? `B${berth}`}) · WAIT {compare?.holdWait ?? 0}h
-            </text>
-
-            {/* Quay Wall Line */}
-            <line x1="18" y1="62" x2="318" y2="62" stroke="#475569" strokeWidth="4" />
-
-            {/* Occupied Blocking Vessels on Booked Berth */}
-            {chain.length > 0 ? (
-              chain.slice(0, 4).map((b, idx) => (
-                <g key={b.id}>
-                  <rect
-                    x={22 + idx * 72}
-                    y={36}
-                    width={66}
-                    height={22}
-                    rx={4}
-                    fill="#334155"
-                    stroke="#f43f5e"
-                    strokeWidth="1.2"
-                  />
-                  <text
-                    x={55 + idx * 72}
-                    y={50}
-                    textAnchor="middle"
-                    fill="#f8fafc"
-                    fontSize="8.5"
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                  >
-                    🚢 {b.id} ({b.start}-{b.end}h)
-                  </text>
-                </g>
-              ))
-            ) : (
-              <rect x="24" y="36" width="160" height="22" rx="4" fill="rgba(16,185,129,0.2)" stroke="#10b981" />
-            )}
-
-            {/* Waiting Vessel Silhouette Below Quay */}
-            <polygon
-              points="30,82 185,82 200,94 185,106 30,106"
-              fill="#f43f5e"
-              opacity="0.88"
-            />
-            <text x="110" y="97" textAnchor="middle" fill="#ffffff" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
-              {selectedId} QUEUED @ {compare?.holdStart ?? 0}h (WAIT {compare?.holdWait ?? 0}h)
-            </text>
-
-            {/* Arrow Between Diagrams */}
-            <circle cx="340" cy="66" r="11" fill="#4f46e5" />
-            <text x="340" y="70" textAnchor="middle" fill="#ffffff" fontSize="11" fontFamily="monospace" fontWeight="bold">
-              →
-            </text>
-
-            {/* Right Half: Sidecar Patch Berth (Green Clear k=0 State) */}
-            <rect
-              x="350"
-              y="8"
-              width="322"
-              height="116"
-              rx="8"
-              fill="rgba(16, 185, 129, 0.09)"
-              stroke="rgba(16, 185, 129, 0.45)"
-              strokeWidth="1.5"
-            />
-            <text x="360" y="24" fill="#10b981" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
-              2. AFTER SIDECAR ({compare?.planDock ?? `B${berth}`} @ {compare?.planStart ?? 0}h) · WAIT {compare?.planWait ?? 0}h · k=0
-            </text>
-
-            {/* Quay Wall Line + STS Quay Crane Silhouettes */}
-            <line x1="360" y1="62" x2="660" y2="62" stroke="#10b981" strokeWidth="4" />
-            {[405, 465, 525].map((cx, i) => (
-              <g key={cx}>
-                <rect x={cx - 8} y={32} width={16} height={28} rx={2} fill="#0ea5e9" opacity="0.85" />
-                <line x1={cx} y1={28} x2={cx + 18} y2={88} stroke="#38bdf8" strokeWidth="2" />
-                <text x={cx} y={48} textAnchor="middle" fill="#fff" fontSize="7.5" fontFamily="monospace" fontWeight="bold">
-                  STS{i + 1}
-                </text>
-              </g>
-            ))}
-
-            {/* Moored Active Vessel Silhouette on Clear Stretch */}
-            <polygon
-              points="375,72 585,72 605,88 585,104 375,104"
-              fill="#10b981"
-            />
-            <text x="485" y="91" textAnchor="middle" fill="#052e16" fontSize="10" fontFamily="monospace" fontWeight="bold">
-              🚢 {selectedId} MOORED {compare?.planDock ?? ""} ({compare?.planStart ?? 0}h–{planEnd ?? 0}h) · +{savedHours}h SAVED
-            </text>
-          </svg>
-        </div>
-
-        {/* RIGHT 5 COLS: PURE NUMERIC KPI TABLE + COMPACT E2E METRIC CELLS */}
-        <div className="flex flex-col justify-between rounded-xl bg-raised p-2.5 ring-1 ring-line lg:col-span-5">
-          <table className="w-full border-collapse font-mono text-[11px]">
-            <thead>
-              <tr className="border-b border-line text-left text-[9px] uppercase text-muted">
-                <th className="pb-1">Metric</th>
-                <th className="pb-1">Stay Booked</th>
-                <th className="pb-1">Sidecar (k=0)</th>
-                <th className="pb-1 text-right">Delta / ROI</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-line/60">
-              <tr>
-                <td className="py-1 text-muted">Berth · Span</td>
-                <td className="py-1 font-bold text-fg">{compare?.holdDock ?? `B${berth}`} ({span}b)</td>
-                <td className="py-1 font-bold text-ok">{compare?.planDock ?? `B${berth}`} ({span}b)</td>
-                <td className="py-1 text-right font-bold text-ok">Nobody else moves</td>
-              </tr>
-              <tr>
-                <td className="py-1 text-muted">Mooring Hour</td>
-                <td className="py-1 text-fg">{compare?.holdStart ?? appt?.startMin ?? 0}h</td>
-                <td className="py-1 font-bold text-ok">{compare?.planStart ?? appt?.startMin ?? 0}h</td>
-                <td className="py-1 text-right font-bold text-accent">
-                  {compare && compare.holdStart != null && event ? (
-                    <span data-booked-equation>
-                      {compare.holdStart} − {event.newEtaMin} = {compare.holdWait}
-                    </span>
-                  ) : (
-                    "—"
-                  )}
-                </td>
-              </tr>
-              <tr>
-                <td className="py-1 text-muted">Wait / P&amp;L</td>
-                <td className="py-1 font-bold text-bad">{compare?.holdWait ?? 0}h</td>
-                <td className="py-1 font-bold text-ok">{compare?.planWait ?? 0}h</td>
-                <td className="py-1 text-right font-bold text-ok">
-                  -{savedHours}h (+${savedUsd.toLocaleString("en-US")})
-                </td>
-              </tr>
-              {leftmostDiffers && compare?.leftmostStart != null && compare.planStart != null ? (
-                <tr>
-                  <td className="py-1 text-muted">First Hole</td>
-                  <td className="py-1 text-fg">
-                    {compare.leftmostDock} @ {compare.leftmostStart}h
-                  </td>
-                  <td className="py-1 text-ok">
-                    {compare.planDock} @ {compare.planStart}h
-                  </td>
-                  <td className="py-1 text-right font-bold text-ok" data-job-equation>
-                    {compare.leftmostStart} − {compare.planStart} = {compare.leftmostSaved}
-                  </td>
-                </tr>
-              ) : null}
-            </tbody>
-          </table>
-
-          {/* Compact Status Strip preserving exact e2e DOM invariants without visible prose clutter */}
-          <div className="mt-1.5 flex flex-wrap items-center justify-between gap-1 border-t border-line/60 pt-1.5 font-mono text-[10px] text-muted">
-            <span>
-              {planClear && compare?.planDock && compare.planStart != null && planEnd != null
-                ? `Berth ${compare.planDock.replace(/^B/, "")} from hour ${compare.planStart} to ${planEnd} is clear in the file.`
-                : `${selectedId} @ berth ${berth}`}
+      {/* Interactive Blocking Chain Chips (Click any vessel chip to inspect it on Gantt) */}
+      {(chain.length > 0 || (planClear && compare && compare.planStart != null && planEnd != null)) ? (
+        <div className="mt-2 flex flex-wrap items-center gap-1.5 border-t border-line/60 pt-2">
+          {planClear && compare && compare.planStart != null && planEnd != null ? (
+            <span className="font-mono text-[11px] text-ok">
+              Berth {compare.planDock?.replace(/^B/, "")} from hour {compare.planStart} to {planEnd} is clear in the file.
+              {!leftmostDiffers && compare.saved && compare.saved > 0 ? " The leftmost section is this same opening." : ""}
             </span>
-            {!leftmostDiffers && (
-              <span className="text-ok">The leftmost section is this same opening.</span>
-            )}
-          </div>
-
+          ) : null}
           {chain.length > 0 ? (
-            <ul data-block-chain className="mt-1 flex flex-wrap gap-1">
-              {chain.map((b) => (
-                <li
-                  key={b.id}
-                  data-block-ship={b.id}
-                  data-block-start={b.start}
-                  data-block-end={b.end}
-                  className="rounded bg-surface px-1.5 py-0.5 font-mono text-[9px] text-muted ring-1 ring-line"
-                >
-                  {b.id}:{b.start}-{b.end}h
-                </li>
-              ))}
-            </ul>
+            <>
+              <span className="inline-flex items-center gap-1 font-mono text-[10px] font-semibold uppercase text-faint">
+                <Lock className="size-3 text-bad" />
+                Blocked on B{berth}:
+              </span>
+              <ol data-block-chain="" className="flex flex-wrap items-center gap-1 font-mono text-[11px] tabular-nums">
+                {chain.map((b) => (
+                  <li
+                    key={b.id}
+                    data-block-ship={b.id}
+                    data-block-start={b.start}
+                    data-block-end={b.end}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => useBoardStore.getState().setSelectedId(b.id)}
+                      className="inline-flex items-center gap-1 rounded-md bg-raised px-1.5 py-0.5 text-[11px] font-medium text-fg ring-1 ring-line transition hover:bg-accent/10 hover:text-accent hover:ring-accent/30"
+                      title={`Click to inspect ${b.id} on Gantt`}
+                    >
+                      <span className="font-bold">{b.id}</span>
+                      <span className="text-muted">
+                        {b.start}–{b.end}h
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            </>
           ) : null}
         </div>
-      </div>
+      ) : null}
     </section>
   );
 }
