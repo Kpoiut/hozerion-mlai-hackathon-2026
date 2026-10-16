@@ -4,13 +4,13 @@ import { b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].
 import { n as TSS_SERVER_FUNCTION, r as getServerFnById, t as createServerFn } from "./ssr.mjs";
 import { i as parseEvent, n as createYard, t as clockLabel } from "./parse-C_Xtcwss.mjs";
 import { a as string, i as object, r as number, t as _enum } from "../_libs/zod.mjs";
-import { _ as Ship, dt as CircleCheck, et as FileCode2, m as Sparkles, st as Copy } from "../_libs/lucide-react.mjs";
+import { h as Sparkles, ht as CircleCheck, lt as Copy, nt as FileCode2, v as Ship } from "../_libs/lucide-react.mjs";
 import { t as Slot } from "../_libs/radix-ui__react-slot.mjs";
 import { n as clsx, t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { n as atom, r as getDefaultStore } from "../_libs/jotai.mjs";
 import { t as create } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-sz2OHzmE.js
+//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-BU6MaZUW.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -8390,6 +8390,261 @@ async function runInterpret(text) {
 async function runLiveEta(note) {
 	return fetchLiveEta({ data: { note } });
 }
+var MULTIMODAL_FLEET_ASSETS = [
+	{
+		id: "ship",
+		code: "SEA-MOTHER",
+		shortVi: "Tàu biển",
+		nameVi: "Tàu Mẹ & Tàu Feeder",
+		categoryVi: "Đường biển Quốc tế",
+		image: "/assets/logistics/vehicle-ship.png",
+		activeUnits: 12,
+		totalUnits: 14,
+		capacityLabel: "2,850 – 18,000 TEU",
+		slaRate: "99.2% đúng lịch",
+		corridorVi: "Barcelona 24B · Cái Mép – Thị Vải",
+		badgeColor: "bg-indigo-500/12 text-indigo-600 ring-indigo-500/25",
+		chipBg: "bg-indigo-500/15 text-indigo-700 dark:text-indigo-300"
+	},
+	{
+		id: "barge",
+		code: "IWT-BARGE",
+		shortVi: "Sà lan",
+		nameVi: "Sà Lan Tự Hành Sông",
+		categoryVi: "Đường thủy Nội địa",
+		image: "/assets/logistics/vehicle-barge.png",
+		activeUnits: 28,
+		totalUnits: 32,
+		capacityLabel: "128 – 300 TEU / chiếc",
+		slaRate: "96.8% luồng xanh",
+		corridorVi: "Sông Sài Gòn · Đồng Nai · Soài Rạp",
+		badgeColor: "bg-sky-500/12 text-sky-600 ring-sky-500/25",
+		chipBg: "bg-sky-500/15 text-sky-700 dark:text-sky-300"
+	},
+	{
+		id: "train",
+		code: "RAIL-INTERMODAL",
+		shortVi: "Tàu hỏa",
+		nameVi: "Tàu Hỏa Chở Container",
+		categoryVi: "Đường sắt Liên vận",
+		image: "/assets/logistics/vehicle-train.png",
+		activeUnits: 6,
+		totalUnits: 6,
+		capacityLabel: "6 Line · 180 TEU / đoàn",
+		slaRate: "100% đúng giờ",
+		corridorVi: "ICD Sóng Thần · Trảng Bom · Liên vận",
+		badgeColor: "bg-amber-500/12 text-amber-600 ring-amber-500/25",
+		chipBg: "bg-amber-500/15 text-amber-700 dark:text-amber-300"
+	},
+	{
+		id: "aircraft",
+		code: "AIR-FREIGHT",
+		shortVi: "Air Cargo",
+		nameVi: "Máy Bay Vận Tải Cargo",
+		categoryVi: "Hàng không & ULD",
+		image: "/assets/logistics/vehicle-aircraft.png",
+		activeUnits: 4,
+		totalUnits: 5,
+		capacityLabel: "Boeing 777F · 102 Tấn ULD",
+		slaRate: "99.8% Express SLA",
+		corridorVi: "Tân Sơn Nhất Cargo · Long Thành Hub",
+		badgeColor: "bg-violet-500/12 text-violet-600 ring-violet-500/25",
+		chipBg: "bg-violet-500/15 text-violet-700 dark:text-violet-300"
+	},
+	{
+		id: "reefer-truck",
+		code: "ROAD-REEFER",
+		shortVi: "Đầu kéo",
+		nameVi: "Xe Đầu Kéo & Reefer -25°C",
+		categoryVi: "Đường bộ & Chuỗi lạnh",
+		image: "/assets/logistics/vehicle-reefer-truck.png",
+		activeUnits: 156,
+		totalUnits: 180,
+		capacityLabel: "20DC / 40HC / 45RF",
+		slaRate: "98.4% Cold SLA",
+		corridorVi: "Tân Thuận ICD · Cát Lái · Trường Thọ",
+		badgeColor: "bg-emerald-500/12 text-emerald-600 ring-emerald-500/25",
+		chipBg: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+	},
+	{
+		id: "agv-stacker",
+		code: "YARD-AGV-RS",
+		shortVi: "AGV Bãi",
+		nameVi: "Robot AGV & Xe Nâng Chụp",
+		categoryVi: "Tự động hóa Bãi & Kho",
+		image: "/assets/logistics/vehicle-agv-stacker.png",
+		activeUnits: 42,
+		totalUnits: 45,
+		capacityLabel: "45 Tấn · Tự hành Lidar 5G",
+		slaRate: "99.5% k=0",
+		corridorVi: "Bãi B01 – B06 · Cross-dock D1–D6",
+		badgeColor: "bg-teal-500/12 text-teal-600 ring-teal-500/25",
+		chipBg: "bg-teal-500/15 text-teal-700 dark:text-teal-300"
+	},
+	{
+		id: "sts-rtg",
+		code: "QUAY-STS-RTG",
+		shortVi: "Cẩu RTG",
+		nameVi: "Cẩu Bờ STS & Cẩu Khung RTG",
+		categoryVi: "Thiết bị Bốc xếp Cảng",
+		image: "/assets/logistics/vehicle-sts-rtg.png",
+		activeUnits: 34,
+		totalUnits: 36,
+		capacityLabel: "38 – 42 MPH / cẩu",
+		slaRate: "97.9% khả dụng",
+		corridorVi: "Cầu bến B0–B19 · Bãi RTG Điện",
+		badgeColor: "bg-blue-500/12 text-blue-600 ring-blue-500/25",
+		chipBg: "bg-blue-500/15 text-blue-700 dark:text-blue-300"
+	},
+	{
+		id: "van-drone",
+		code: "LASTMILE-UAV",
+		shortVi: "EV Van",
+		nameVi: "Xe Van Điện & Drone Bãi",
+		categoryVi: "Chặng cuối & Kiểm kê AI",
+		image: "/assets/logistics/vehicle-van-drone.png",
+		activeUnits: 64,
+		totalUnits: 70,
+		capacityLabel: "EV 3.5T & Drone Quét RFID",
+		slaRate: "99.1% giao nhanh",
+		corridorVi: "Nội đô TP.HCM & Quét nhãn ISO 6346",
+		badgeColor: "bg-rose-500/12 text-rose-600 ring-rose-500/25",
+		chipBg: "bg-rose-500/15 text-rose-700 dark:text-rose-300"
+	}
+];
+var SEED_TRUCK_MODES = {
+	A: "reefer-truck",
+	B: "van-drone",
+	C: "reefer-truck",
+	P: "train",
+	Q: "agv-stacker",
+	D: "barge",
+	E: "reefer-truck",
+	R: "aircraft",
+	F: "reefer-truck",
+	G: "reefer-truck",
+	I: "ship",
+	J: "sts-rtg",
+	L: "barge"
+};
+var OPERATORS_BY_ID = {
+	A: {
+		driverName: "Trần Quốc Bảo",
+		driverPhone: "0903 812 104",
+		bookingCode: "VN-ICD-880102"
+	},
+	B: {
+		driverName: "Lê Hoàng Nam",
+		driverPhone: "0918 442 910",
+		bookingCode: "EV-HUB-210440"
+	},
+	C: {
+		driverName: "Nguyễn Văn A",
+		driverPhone: "0909 123 456",
+		bookingCode: "HCMU1234567"
+	},
+	P: {
+		driverName: "Đặng Minh Tuấn (Trưởng tàu)",
+		driverPhone: "0982 501 774",
+		bookingCode: "RAIL-ST-40404"
+	},
+	Q: {
+		driverName: "Hệ tự hành AGV-09 (L4)",
+		driverPhone: "5G-LIDAR-CH09",
+		bookingCode: "AGV-YARD-90505"
+	},
+	D: {
+		driverName: "Thuyền trưởng Võ Văn Kiệt",
+		driverPhone: "0913 778 220",
+		bookingCode: "IWT-SG-12068"
+	},
+	E: {
+		driverName: "Phạm Hồng Phúc",
+		driverPhone: "0908 331 609",
+		bookingCode: "VN-ICD-221090"
+	},
+	R: {
+		driverName: "Điều phái ULD Vũ Hải",
+		driverPhone: "0977 889 112",
+		bookingCode: "AWB-777F-33119"
+	},
+	F: {
+		driverName: "Huỳnh Thanh Tùng",
+		driverPhone: "0902 901 118",
+		bookingCode: "COLD-RF-90111"
+	},
+	G: {
+		driverName: "Ngô Gia Huy",
+		driverPhone: "0906 922 129",
+		bookingCode: "COLD-RF-92212"
+	},
+	I: {
+		driverName: "Thuyền trưởng Lý Thành",
+		driverPhone: "0914 983 130",
+		bookingCode: "SEA-RF-98313"
+	},
+	J: {
+		driverName: "Kỹ sư điều khiển RTG-04",
+		driverPhone: "0938 112 660",
+		bookingCode: "RTG-SLOT-11266"
+	},
+	L: {
+		driverName: "Thuyền trưởng Bùi Văn Hòa",
+		driverPhone: "0919 119 088",
+		bookingCode: "IWT-CL-11908"
+	}
+};
+function resolveTruckModeId(truck, yard, overrides) {
+	if (overrides?.[truck.id]) return overrides[truck.id];
+	if (truck.vehicleMode) return truck.vehicleMode;
+	if (yard.timeUnit === "hour") {
+		if ((Number(truck.id.replace(/\D/g, "")) || 1) % 7 === 0) return "barge";
+		return "ship";
+	}
+	if (SEED_TRUCK_MODES[truck.id]) return SEED_TRUCK_MODES[truck.id];
+	if (truck.cargo === "reefer") return "reefer-truck";
+	return MULTIMODAL_FLEET_ASSETS[truck.id.charCodeAt(0) % MULTIMODAL_FLEET_ASSETS.length]?.id ?? "reefer-truck";
+}
+function resolveTruckVehicleMeta(truck, yard, overrides, forceReefer) {
+	const modeId = resolveTruckModeId(truck, yard, overrides);
+	const mode = MULTIMODAL_FLEET_ASSETS.find((m) => m.id === modeId) ?? MULTIMODAL_FLEET_ASSETS[4];
+	const isReefer = truck.cargo === "reefer" || Boolean(forceReefer);
+	const op = OPERATORS_BY_ID[truck.id];
+	const seedNum = truck.id.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0) + truck.durationMin;
+	const shortBadgeVi = mode.id === "reefer-truck" ? isReefer ? "Xe lạnh" : "Đầu kéo" : mode.shortVi;
+	const containerSpec = mode.id === "ship" ? `${(truck.span ?? 1) * 1450} TEU · ${truck.span ?? 1} bến` : mode.id === "barge" ? "128 TEU Sà lan" : mode.id === "train" ? "60 TEU Đoàn tàu" : mode.id === "aircraft" ? "ULD Air Pallet" : mode.id === "agv-stacker" ? "AGV 45T L4" : mode.id === "sts-rtg" ? "Twin-lift 40HC" : mode.id === "van-drone" ? "EV 3.5T + RFID" : isReefer ? "40RF -25°C" : "40DC Liên vận";
+	const vesselNames = [
+		"MSC OCEAN",
+		"EVER GREEN",
+		"CMA CGM MARCO",
+		"MAERSK HANOI",
+		"ONE INNOVATION",
+		"HAPAG LLOYD",
+		"OOCL ASIA",
+		"COSCO SHIPPING"
+	];
+	const vesselName = op?.vesselName ?? vesselNames[seedNum % vesselNames.length] ?? "MSC OCEAN";
+	const imoCode = op?.imoCode ?? `IMO ${981e4 + seedNum * 137 % 89999}`;
+	const teuCap = op?.teuCap ?? 1800 + (truck.span ?? 1) * 950 + seedNum % 7 * 200;
+	const lengthM = op?.lengthM ?? 220 + (truck.span ?? 1) * 40;
+	const draftM = op?.draftM ?? Number((11.2 + seedNum % 8 * .4).toFixed(1));
+	const photoUrl = truck.id === "C" && mode.id === "reefer-truck" ? "/assets/logistics/truck-51c-photo.png" : mode.image;
+	return {
+		mode,
+		shortBadgeVi,
+		driverName: op?.driverName ?? (yard.timeUnit === "hour" ? `Thuyền trưởng ${vesselName}` : `Điều vận ${truck.hauler} #${truck.id}`),
+		driverPhone: op?.driverPhone ?? `090${seedNum % 8 + 1} ${100 + seedNum % 899} ${200 + seedNum * 3 % 799}`,
+		bookingCode: op?.bookingCode ?? `${yard.timeUnit === "hour" ? "BCN" : "HCMU"}${1e6 + seedNum * 919 % 8999999}`,
+		containerSpec,
+		operationTypeVi: truck.priority === 1 ? "Ưu tiên P1 · Xuất hàng" : truck.priority === 2 ? "Chuyển cảng · Liên vận" : "Nhập bãi · Nội địa",
+		vesselName,
+		imoCode,
+		teuCap,
+		lengthM,
+		draftM,
+		photoUrl
+	};
+}
 /** Linear-style single store: domain slice + chrome slice, views select. */
 function blankChrome() {
 	return {
@@ -8411,6 +8666,8 @@ function blankChrome() {
 		etc: null,
 		setupOpen: false,
 		ganttFilter: "all",
+		vehicleModeFilter: "all",
+		truckModeOverrides: {},
 		slaRateUsd: 1500,
 		maxMovesAllowed: 0,
 		freezeWindowMin: 30,
@@ -8953,7 +9210,37 @@ var useBoardStore = create((set, get) => ({
 		}
 	},
 	setSetupOpen: (v) => set({ setupOpen: v }),
-	setGanttFilter: (f) => set({ ganttFilter: get().ganttFilter === f ? "all" : f }),
+	setGanttFilter: (f) => set({
+		ganttFilter: get().ganttFilter === f ? "all" : f,
+		vehicleModeFilter: "all"
+	}),
+	setVehicleModeFilter: (m) => {
+		const cur = get();
+		const next = cur.vehicleModeFilter === m ? "all" : m;
+		if (next === "all") {
+			set({ vehicleModeFilter: "all" });
+			return;
+		}
+		const matchingTruck = cur.yard.trucks.find((t) => resolveTruckModeId(t, cur.yard, cur.truckModeOverrides) === next);
+		set({
+			vehicleModeFilter: next,
+			ganttFilter: "all",
+			...matchingTruck ? { selectedId: matchingTruck.id } : {}
+		});
+	},
+	setTruckVehicleMode: (truckId, mode) => {
+		const cur = get();
+		const yard = cloneYard(cur.yard);
+		const t = yard.trucks.find((x) => x.id === truckId);
+		if (t) t.vehicleMode = mode;
+		set({
+			yard,
+			truckModeOverrides: {
+				...cur.truckModeOverrides,
+				[truckId]: mode
+			}
+		});
+	},
 	setSlaRateUsd: (n) => set({ slaRateUsd: Math.max(1, Math.round(n)) }),
 	setMaxMovesAllowed: (k) => {
 		set({ maxMovesAllowed: k });
@@ -11168,4 +11455,4 @@ function solveHinterlandExceptions(scenario = HINTERLAND_SCENARIOS[0]) {
 	};
 }
 //#endregion
-export { selectLive as $, bks_bcn_36A_50_default as A, formatEtcVerdict as B, bks_bcn_24B_25_default as C, bks_bcn_36A_10_default as D, bks_bcn_24B_50_default as E, classifyYardContestedCalls as F, packLanes as G, occupyIndexes as H, clockMinAtom as I, publishedYard as J, phaseAt as K, cn as L, bookedFromPlan as M, bookedHeadline as N, bks_bcn_36A_25_default as O, calculateContainerBilling as P, scoreOneHourLate as Q, computeIso6346CheckDigit as R, bks_bcn_24B_10_default as S, bks_bcn_24B_47_default as T, packCfsCargo3D as U, holdingCall as V, packDepth as W, reconcileShipmentDocuments as X, recommendIncomingSlot as Y, runFlow as Z, bcn_36A_10_default as _, HCMC_INCIDENTS as a, stretchClear as at, bcn_36A_50_default as b, PUBLISHED_REPO as c, useBoardStore as ct, UniversalSidecarAndBenchmarkPanel as d, selectPlayhead as et, bcn_24B_10_default as f, bcn_24B_50_default as g, bcn_24B_47_default as h, FederationPane as i, solveInterPortFederation as it, blockedExampleYard as j, bks_bcn_36A_2_default as k, SEED_BAY_CONTAINERS as l, validateIso6346 as lt, bcn_24B_2_default as m, Button as n, solveBayRetrieval as nt, PUBLISHED_DOI as o, stretchShips as ot, bcn_24B_25_default as p, publishedWeekList as q, DEFAULT_BAY_CONFIG as r, solveHinterlandExceptions as rt, PUBLISHED_DOI_URL as s, tryPublishedYard as st, BacapPane as t, solveBacapRecovery as tt, SHIPMENT_DOCUMENT_CASES as u, verifyAndRunQuotaMeshAgent as ut, bcn_36A_25_default as v, bks_bcn_24B_2_default as w, berthSpan as x, bcn_36A_2_default as y, evaluateGateTransaction as z };
+export { resolveTruckVehicleMeta as $, bks_bcn_36A_2_default as A, evaluateGateTransaction as B, bks_bcn_24B_10_default as C, bks_bcn_24B_50_default as D, bks_bcn_24B_47_default as E, calculateContainerBilling as F, packDepth as G, holdingCall as H, classifyYardContestedCalls as I, publishedWeekList as J, packLanes as K, clockMinAtom as L, blockedExampleYard as M, bookedFromPlan as N, bks_bcn_36A_10_default as O, bookedHeadline as P, resolveTruckModeId as Q, cn as R, berthSpan as S, bks_bcn_24B_2_default as T, occupyIndexes as U, formatEtcVerdict as V, packCfsCargo3D as W, recommendIncomingSlot as X, publishedYard as Y, reconcileShipmentDocuments as Z, bcn_24B_50_default as _, HCMC_INCIDENTS as a, solveBayRetrieval as at, bcn_36A_2_default as b, PUBLISHED_DOI_URL as c, stretchClear as ct, SHIPMENT_DOCUMENT_CASES as d, useBoardStore as dt, runFlow as et, UniversalSidecarAndBenchmarkPanel as f, validateIso6346 as ft, bcn_24B_47_default as g, bcn_24B_2_default as h, FederationPane as i, solveBacapRecovery as it, bks_bcn_36A_50_default as j, bks_bcn_36A_25_default as k, PUBLISHED_REPO as l, stretchShips as lt, bcn_24B_25_default as m, Button as n, selectLive as nt, MULTIMODAL_FLEET_ASSETS as o, solveHinterlandExceptions as ot, bcn_24B_10_default as p, verifyAndRunQuotaMeshAgent as pt, phaseAt as q, DEFAULT_BAY_CONFIG as r, selectPlayhead as rt, PUBLISHED_DOI as s, solveInterPortFederation as st, BacapPane as t, scoreOneHourLate as tt, SEED_BAY_CONTAINERS as u, tryPublishedYard as ut, bcn_36A_10_default as v, bks_bcn_24B_25_default as w, bcn_36A_50_default as x, bcn_36A_25_default as y, computeIso6346CheckDigit as z };

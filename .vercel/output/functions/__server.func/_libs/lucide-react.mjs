@@ -492,6 +492,28 @@ var CircleCheck = createLucideIcon("circle-check", [["circle", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var CirclePlus = createLucideIcon("circle-plus", [
+	["circle", {
+		cx: "12",
+		cy: "12",
+		r: "10",
+		key: "1mglay"
+	}],
+	["path", {
+		d: "M8 12h8",
+		key: "1wcyev"
+	}],
+	["path", {
+		d: "M12 8v8",
+		key: "napkw2"
+	}]
+]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var CircleX = createLucideIcon("circle-x", [
 	["circle", {
 		cx: "12",
@@ -538,6 +560,34 @@ var Compass = createLucideIcon("compass", [["path", {
 	r: "10",
 	key: "1mglay"
 }]]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Container = createLucideIcon("container", [
+	["path", {
+		d: "M22 7.7c0-.6-.4-1.2-.8-1.5l-6.3-3.9a1.72 1.72 0 0 0-1.7 0l-10.3 6c-.5.2-.9.8-.9 1.4v6.6c0 .5.4 1.2.8 1.5l6.3 3.9a1.72 1.72 0 0 0 1.7 0l10.3-6c.5-.3.9-1 .9-1.5Z",
+		key: "1t2lqe"
+	}],
+	["path", {
+		d: "M10 21.9V14L2.1 9.1",
+		key: "o7czzq"
+	}],
+	["path", {
+		d: "m10 14 11.9-6.9",
+		key: "zm5e20"
+	}],
+	["path", {
+		d: "M14 19.8v-8.1",
+		key: "159ecu"
+	}],
+	["path", {
+		d: "M18 17.5V9.4",
+		key: "11uown"
+	}]
+]);
 /**
 * @license lucide-react v0.510.0 - ISC
 *
@@ -1347,6 +1397,26 @@ var RotateCcw = createLucideIcon("rotate-ccw", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Sailboat = createLucideIcon("sailboat", [
+	["path", {
+		d: "M22 18H2a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4Z",
+		key: "1404fh"
+	}],
+	["path", {
+		d: "M21 14 10 2 3 14h18Z",
+		key: "1nzg7v"
+	}],
+	["path", {
+		d: "M10 2v16",
+		key: "1labyt"
+	}]
+]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Save = createLucideIcon("save", [
 	["path", {
 		d: "M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z",
@@ -1672,6 +1742,38 @@ var Sun = createLucideIcon("sun", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var TrainFront = createLucideIcon("train-front", [
+	["path", {
+		d: "M8 3.1V7a4 4 0 0 0 8 0V3.1",
+		key: "1v71zp"
+	}],
+	["path", {
+		d: "m9 15-1-1",
+		key: "1yrq24"
+	}],
+	["path", {
+		d: "m15 15 1-1",
+		key: "1t0d6s"
+	}],
+	["path", {
+		d: "M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z",
+		key: "1p0hjs"
+	}],
+	["path", {
+		d: "m8 19-2 3",
+		key: "13i0xs"
+	}],
+	["path", {
+		d: "m16 19 2 3",
+		key: "xo31yx"
+	}]
+]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var TrainTrack = createLucideIcon("train-track", [
 	["path", {
 		d: "M2 17 17 2",
@@ -1960,4 +2062,4 @@ var Zap = createLucideIcon("zap", [["path", {
 	key: "1xq2db"
 }]]);
 //#endregion
-export { Flag as $, Phone as A, MapPin as B, RotateCcw as C, Bot as Ct, Plus as D, Activity as Dt, Radio as E, Anchor as Et, Move as F, Leaf as G, LockOpen as H, MousePointer as I, Layers as J, LayoutGrid as K, Moon as L, Pause as M, Network as N, Play as O, Navigation as P, Flame as Q, Minus as R, Save as S, Box as St, Receipt as T, ArrowLeftRight as Tt, ListFilter as U, Lock as V, Lightbulb as W, Grid3x3 as X, KeyRound as Y, Funnel as Z, Ship as _, ChartColumn as _t, Waves as a, Crown as at, Search as b, Building2 as bt, Truck as c, Compass as ct, Trash2 as d, CircleCheck as dt, FileCode2 as et, TrainTrack as f, CircleAlert as ft, SlidersHorizontal as g, Check as gt, Snowflake as h, ChevronDown as ht, Waypoints as i, DoorClosed as it, PenLine as j, Plane as k, TriangleAlert as l, Clock as lt, Sparkles as m, ChevronLeft as mt, X as n, Ellipsis as nt, Warehouse as o, Cpu as ot, Sun as p, ChevronRight as pt, LayoutList as q, Wind as r, Droplets as rt, Undo2 as s, Copy as st, Zap as t, FileCheck2 as tt, Trees as u, CircleX as ut, ShieldCheck as v, CalendarDays as vt, RefreshCw as w, ArrowRight as wt, Scale as x, Boxes as xt, ShieldAlert as y, CalendarClock as yt, Maximize2 as z };
+export { Funnel as $, Play as A, Anchor as At, Minus as B, Save as C, CalendarClock as Ct, Receipt as D, Bot as Dt, RefreshCw as E, Box as Et, Network as F, ListFilter as G, MapPin as H, Navigation as I, LayoutGrid as J, Lightbulb as K, Move as L, Phone as M, PenLine as N, Radio as O, ArrowRight as Ot, Pause as P, Grid3x3 as Q, MousePointer as R, Scale as S, CalendarDays as St, RotateCcw as T, Boxes as Tt, Lock as U, Maximize2 as V, LockOpen as W, Layers as X, LayoutList as Y, KeyRound as Z, SlidersHorizontal as _, ChevronRight as _t, Waves as a, Droplets as at, ShieldAlert as b, Check as bt, Truck as c, Cpu as ct, Trash2 as d, Compass as dt, Flame as et, TrainTrack as f, Clock as ft, Snowflake as g, CircleAlert as gt, Sparkles as h, CircleCheck as ht, Waypoints as i, Ellipsis as it, Plane as j, Activity as jt, Plus as k, ArrowLeftRight as kt, TriangleAlert as l, Copy as lt, Sun as m, CirclePlus as mt, X as n, FileCode2 as nt, Warehouse as o, DoorClosed as ot, TrainFront as p, CircleX as pt, Leaf as q, Wind as r, FileCheck2 as rt, Undo2 as s, Crown as st, Zap as t, Flag as tt, Trees as u, Container as ut, Ship as v, ChevronLeft as vt, Sailboat as w, Building2 as wt, Search as x, ChartColumn as xt, ShieldCheck as y, ChevronDown as yt, Moon as z };

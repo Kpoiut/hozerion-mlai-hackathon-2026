@@ -3,8 +3,8 @@ import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].
 import { b as require_jsx_runtime, f as createRouter, g as createRootRoute, h as createFileRoute, l as Scripts, m as lazyRouteComponent, p as Outlet, u as HeadContent, y as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as string, i as object, n as literal, o as union, r as number } from "../_libs/zod.mjs";
 import { l as TriangleAlert } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-C0KRqqOS.js
-var router_C0KRqqOS_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DHFcWKAO.js
+var router_DHFcWKAO_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function AppErrorComponent({ error }) {
@@ -273,7 +273,7 @@ function PreviewHostBridge() {
 	}, [router]);
 	return null;
 }
-var styles_default = "/assets/styles-COOc4Acq.css";
+var styles_default = "/assets/styles-DP2MMWFw.css";
 var Route$2 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -359,9 +359,9 @@ var Route$2 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$1 = () => import("./routes-nv11LC5K.mjs");
+var $$splitComponentImporter$1 = () => import("./routes-DBoDp6oL.mjs");
 var Route$1 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./design-0w04yVd3.mjs");
+var $$splitComponentImporter = () => import("./design-DNPLipc4.mjs");
 var Route = createFileRoute("/design")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$1.update({
@@ -383,4 +383,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { getRouter, router_C0KRqqOS_exports as t };
+export { getRouter, router_DHFcWKAO_exports as t };

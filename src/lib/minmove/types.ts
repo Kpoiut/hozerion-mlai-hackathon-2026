@@ -33,6 +33,16 @@ export interface Truck {
   span?: number;
   /** Published arrival hour or minute. Omitted on yards that have no separate arrival field. */
   arrivalMin?: number;
+  /** Multi-modal vehicle system identifier (8 logistics systems). */
+  vehicleMode?:
+    | "ship"
+    | "barge"
+    | "train"
+    | "aircraft"
+    | "reefer-truck"
+    | "agv-stacker"
+    | "sts-rtg"
+    | "van-drone";
 }
 
 export interface Appointment {

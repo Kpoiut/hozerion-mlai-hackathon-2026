@@ -1,7 +1,18 @@
 import { createContext, memo, useCallback, useContext, useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import { useAtomValue } from "jotai";
 import type { LucideIcon } from "lucide-react";
-import { Flag, Snowflake, Truck } from "lucide-react";
+import {
+  Anchor,
+  Bot,
+  Container,
+  Flag,
+  Plane,
+  Sailboat,
+  Snowflake,
+  TrainFront,
+  Truck,
+  Zap,
+} from "lucide-react";
 import { holdingCall } from "@/lib/minmove/published-week.ts";
 import { windowBlocks, windowMarks } from "@/lib/minmove/virtual.ts";
 import { useVirtualGantt } from "@/lib/minmove/use-virtual-gantt.ts";
@@ -20,16 +31,40 @@ import {
 } from "@/lib/minmove/layout.ts";
 import { doorOccupancy, type Occupancy } from "@/lib/minmove/doors.ts";
 import type { Appointment, Dock, Truck as TruckT, Yard } from "@/lib/minmove/types.ts";
+import {
+  resolveTruckVehicleMeta,
+  type MultimodalModeId,
+} from "@/lib/minmove/vehicle-modes.ts";
 import { cn } from "@/lib/utils.ts";
 
-const ROW_H = 62;
-const CARD_H = 46;
+const ROW_H = 66;
+const CARD_H = 50;
 const CARD_INSET = 8;
 const FEATURED_INSET = 5;
 const FEATURED_H = ROW_H - FEATURED_INSET * 2;
 const STACK_INSET = 22;
-const DOOR_COL = "5.5rem";
+const DOOR_COL = "6.2rem";
 const EMPTY_FLOW: FlowBlock[] = [];
+
+export function VehicleModeGlyph({
+  modeId,
+  reefer,
+  className,
+}: {
+  modeId: MultimodalModeId;
+  reefer?: boolean;
+  className?: string;
+}) {
+  if (modeId === "ship") return <Anchor className={className} />;
+  if (modeId === "barge") return <Sailboat className={className} />;
+  if (modeId === "train") return <TrainFront className={className} />;
+  if (modeId === "aircraft") return <Plane className={className} />;
+  if (modeId === "agv-stacker") return <Bot className={className} />;
+  if (modeId === "sts-rtg") return <Container className={className} />;
+  if (modeId === "van-drone") return <Zap className={className} />;
+  if (reefer) return <Snowflake className={className} />;
+  return <Truck className={className} />;
+}
 
 interface RowGeom {
   rowH: number;
@@ -522,6 +557,11 @@ const DoorStatus = memo(function DoorStatus({
   const { icon: StatusIcon, label, tone } = doorStatus(occupancy, dock);
   const forced = useBoardStore((s) => s.forceDock === dock.id);
   const index = dock.short.replace(/^D|^B/, "");
+  const equipLabel = dock.equipment.includes("reefer_plug")
+    ? "Lạnh -25°C"
+    : dock.equipment.includes("crane")
+      ? "Cẩu 45T"
+      : "Xe nâng";
   return (
     <button
       type="button"
@@ -547,6 +587,10 @@ const DoorStatus = memo(function DoorStatus({
         {forced ? (
           <span className="rounded bg-accent px-1 py-0.5 font-mono text-[9px] font-bold text-accent-fg">
             PIN
+          </span>
+        ) : !compact ? (
+          <span className="rounded bg-raised px-1 py-0.5 font-mono text-[9px] font-semibold text-muted ring-1 ring-line">
+            {equipLabel}
           </span>
         ) : null}
       </span>
@@ -578,11 +622,20 @@ const ApptCard = memo(function ApptCard({
   onSelect: (id: string) => void;
 }) {
   const geom = useGeom();
+  const timeUnit = useBoardStore((s) => s.yard.timeUnit);
   const treatReefer = useBoardStore(
     (s) => s.event?.truckId === block.truckId && s.event?.cargoOverride === "reefer",
   );
   const filter = useBoardStore((s) => s.ganttFilter);
+  const vehicleModeFilter = useBoardStore((s) => s.vehicleModeFilter);
+  const truckModeOverrides = useBoardStore((s) => s.truckModeOverrides);
   const reefer = truck.cargo === "reefer" || Boolean(treatReefer);
+  const meta = resolveTruckVehicleMeta(
+    truck,
+    { timeUnit },
+    truckModeOverrides,
+    treatReefer,
+  );
   const stacked = block.stack > 0;
   const inset = geom.compact
     ? geom.cardInset
@@ -593,7 +646,7 @@ const ApptCard = memo(function ApptCard({
         : CARD_INSET;
   const height = geom.compact ? geom.cardH : featured && !stacked ? FEATURED_H : CARD_H;
 
-  const matchesFilter =
+  const matchesStatus =
     filter === "all" ||
     (filter === "late" && featured) ||
     (filter === "moved" && (block.changed || featured)) ||
@@ -601,10 +654,17 @@ const ApptCard = memo(function ApptCard({
     (filter === "dry" && !reefer) ||
     (filter === "priority" && truck.priority === 1);
 
+  const matchesVehicleMode =
+    vehicleModeFilter === "all" || meta.mode.id === vehicleModeFilter;
+
+  const matchesFilter = matchesStatus && matchesVehicleMode;
+
   return (
     <button
       type="button"
       data-truck={block.truckId}
+      data-vehicle-mode={meta.mode.id}
+      data-vehicle-badge={meta.shortBadgeVi}
       onClick={(e) => {
         e.stopPropagation();
         onSelect(block.truckId);
@@ -621,32 +681,48 @@ const ApptCard = memo(function ApptCard({
         !geom.compact && !featured && !reefer && "border-l-ok",
         !featured && block.changed && "bg-ok/10 ring-ok/35",
         selected && !featured && "ring-2 ring-accent",
+        vehicleModeFilter !== "all" && matchesVehicleMode && !featured && "ring-2 ring-accent",
         !matchesFilter && "opacity-25",
       )}
       style={{ left: `${block.left}%`, width: `${block.width}%`, top: top + inset, height }}
     >
       <span className="pointer-events-none flex h-full flex-col justify-between">
         <span className="flex items-center justify-between gap-1">
-          <span
-            className={cn(
-              "truncate font-mono font-semibold leading-none tracking-tight",
-              geom.compact ? "text-[10px]" : "text-[11px]",
-            )}
-          >
-            {truck.plate}
-          </span>
-          {!geom.compact && !stacked && block.width >= 14 ? (
+          <span className="flex min-w-0 items-center gap-1">
             <span
               className={cn(
-                "hidden shrink-0 rounded px-1 py-px font-mono text-[9px] font-semibold xl:inline-block",
+                "inline-flex shrink-0 items-center justify-center rounded",
+                geom.compact ? "size-3" : "size-4",
                 featured
-                  ? "bg-white/20 text-white"
-                  : reefer
-                    ? "bg-accent/12 text-accent"
-                    : "bg-ok/12 text-ok",
+                  ? "bg-white/25 text-white"
+                  : meta.mode.chipBg,
               )}
             >
-              {truck.hauler.split(" ")[0]}
+              <VehicleModeGlyph
+                modeId={meta.mode.id}
+                reefer={reefer}
+                className={geom.compact ? "size-2.5" : "size-3"}
+              />
+            </span>
+            <span
+              className={cn(
+                "truncate font-mono font-bold leading-none tracking-tight",
+                geom.compact ? "text-[10px]" : "text-[11px]",
+              )}
+            >
+              {truck.plate}
+            </span>
+          </span>
+
+          {!geom.compact && !stacked && block.width >= 15 ? (
+            <span
+              className={cn(
+                "hidden shrink-0 items-center gap-0.5 font-mono text-[9px] font-semibold xl:inline-flex",
+                featured ? "text-white" : "text-ok",
+              )}
+            >
+              <span className="size-1.5 rounded-full bg-current" />
+              {featured ? "k=0" : "SLA"}
             </span>
           ) : null}
         </span>
@@ -661,22 +737,19 @@ const ApptCard = memo(function ApptCard({
             >
               <span>{start}</span>
               <CargoMark cargo={truck.cargo} featured={featured} className="size-2.5" />
-              {featured ? (
-                <span className="rounded bg-white/20 px-1 py-px text-[9px] font-bold">
-                  k=0
-                </span>
-              ) : null}
             </span>
 
-            {!stacked && block.width >= 11 ? (
+            {!stacked || featured ? (
               <span
                 className={cn(
-                  "hidden items-center gap-0.5 font-mono text-[9px] font-semibold sm:inline-flex",
-                  featured ? "text-white" : "text-ok",
+                  "shrink-0 rounded px-1.5 py-0.5 font-sans text-[9px] font-bold leading-none",
+                  featured
+                    ? "bg-white/25 text-white"
+                    : meta.mode.chipBg,
                 )}
               >
-                <span className="size-1.5 rounded-full bg-current" />
-                {featured ? "Opt" : "SLA"}
+                {meta.shortBadgeVi}
+                {featured ? " · k=0" : ""}
               </span>
             ) : null}
           </span>
@@ -707,12 +780,21 @@ const LegendRow = memo(function LegendRow({
 }) {
   const filter = useBoardStore((s) => s.ganttFilter);
   const setFilter = useBoardStore((s) => s.setGanttFilter);
+  const vehicleModeFilter = useBoardStore((s) => s.vehicleModeFilter);
+  const setVehicleModeFilter = useBoardStore((s) => s.setVehicleModeFilter);
+  const truckModeOverrides = useBoardStore((s) => s.truckModeOverrides);
+
   if (tipTruck && tipLive) {
+    const tipMeta = resolveTruckVehicleMeta(tipTruck, { timeUnit }, truckModeOverrides);
     return (
       <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted">
-        <p className="font-mono tabular-nums text-fg">
-          {tipTruck.plate}
-          <span className="mx-2 text-muted">{tipTruck.hauler}</span>
+        <p className="inline-flex items-center gap-1.5 font-mono tabular-nums text-fg">
+          <span className={cn("inline-flex items-center gap-1 rounded px-1.5 py-0.5 font-sans text-[10px] font-bold", tipMeta.mode.chipBg)}>
+            <VehicleModeGlyph modeId={tipMeta.mode.id} reefer={tipTruck.cargo === "reefer"} className="size-3" />
+            {tipMeta.shortBadgeVi}
+          </span>
+          <span className="font-bold">{tipTruck.plate}</span>
+          <span className="mx-1 text-muted">· {tipTruck.hauler} · {tipMeta.driverName}</span>
           {formatWhen({ shiftStartMin: shiftStart, timeUnit }, tipLive.startMin)}–{formatWhen({ shiftStartMin: shiftStart, timeUnit }, tipLive.startMin + tipTruck.durationMin)}
           {tipOrig && tipOrig.dockId !== tipLive.dockId ? <span className="ml-2 text-warn">was {tipOrig.dockId.replace("D", "")}</span> : null}
         </p>
@@ -720,19 +802,56 @@ const LegendRow = memo(function LegendRow({
     );
   }
   return (
-    <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted">
-      <Legend icon={Icon.late} label="Late" className="text-bad" active={filter === "late"} onClick={() => setFilter("late")} />
-      <Legend icon={Icon.moved} label="Moved" className="text-warn" active={filter === "moved"} onClick={() => setFilter("moved")} />
-      <Legend icon={Icon.reefer} label="Reefer" className="text-accent" active={filter === "reefer"} onClick={() => setFilter("reefer")} />
-      <Legend icon={Icon.dry} label="Dry" className="text-ok" active={filter === "dry"} onClick={() => setFilter("dry")} />
-      <Legend icon={Icon.other} label="Other" className="text-accent" active={false} onClick={() => setFilter("all")} />
-      <Legend icon={Flag} label="Priority" active={filter === "priority"} onClick={() => setFilter("priority")} />
-      <LegendStats />
-      {dense ? (
-        <span className="ml-auto text-faint">
-          Zoomed {formatWhen({ shiftStartMin: shiftStart, timeUnit }, scaleStart)}–{formatWhen({ shiftStartMin: shiftStart, timeUnit }, scaleEnd)}
-        </span>
-      ) : null}
+    <div className="mt-3 space-y-2 text-xs text-muted">
+      <div className="flex flex-wrap items-center gap-1.5">
+        <Legend icon={Icon.late} label="Late" className="text-bad" active={filter === "late"} onClick={() => setFilter("late")} />
+        <Legend icon={Icon.moved} label="Moved" className="text-warn" active={filter === "moved"} onClick={() => setFilter("moved")} />
+        <Legend icon={Icon.reefer} label="Reefer" className="text-accent" active={filter === "reefer"} onClick={() => setFilter("reefer")} />
+        <Legend icon={Icon.dry} label="Dry" className="text-ok" active={filter === "dry"} onClick={() => setFilter("dry")} />
+        <Legend icon={Icon.other} label="Other" className="text-accent" active={filter === "all" && vehicleModeFilter === "all"} onClick={() => setFilter("all")} />
+        <Legend icon={Flag} label="Priority" active={filter === "priority"} onClick={() => setFilter("priority")} />
+
+        <span className="mx-1 h-4 w-px bg-line" />
+
+        {/* Quick Multi-Modal Vehicle Type Filter Pills on Gantt Board */}
+        {[
+          { id: "reefer-truck" as const, label: "Đầu kéo / Lạnh", icon: Truck },
+          { id: "barge" as const, label: "Sà lan", icon: Sailboat },
+          { id: "train" as const, label: "Tàu hỏa", icon: TrainFront },
+          { id: "aircraft" as const, label: "Air Cargo", icon: Plane },
+          { id: "agv-stacker" as const, label: "AGV Bãi", icon: Bot },
+          { id: "sts-rtg" as const, label: "Cẩu RTG", icon: Container },
+          { id: "van-drone" as const, label: "EV Van", icon: Zap },
+          { id: "ship" as const, label: "Tàu biển", icon: Anchor },
+        ].map((v) => {
+          const VIcon = v.icon;
+          const isActive = vehicleModeFilter === v.id;
+          return (
+            <button
+              key={v.id}
+              type="button"
+              data-filter-vehicle={v.id}
+              onClick={() => setVehicleModeFilter(v.id)}
+              className={cn(
+                "inline-flex h-7 items-center gap-1 rounded-full px-2.5 text-[11px] font-semibold transition",
+                isActive
+                  ? "bg-accent text-white shadow-2xs ring-1 ring-accent"
+                  : "bg-surface text-muted ring-1 ring-line hover:bg-raised hover:text-fg",
+              )}
+            >
+              <VIcon className="size-3" />
+              {v.label}
+            </button>
+          );
+        })}
+
+        <LegendStats />
+        {dense ? (
+          <span className="ml-auto text-faint">
+            Zoomed {formatWhen({ shiftStartMin: shiftStart, timeUnit }, scaleStart)}–{formatWhen({ shiftStartMin: shiftStart, timeUnit }, scaleEnd)}
+          </span>
+        ) : null}
+      </div>
     </div>
   );
 });

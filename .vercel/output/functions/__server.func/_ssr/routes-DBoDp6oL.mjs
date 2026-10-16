@@ -2,10 +2,10 @@ import { i as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link, b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { r as formatWhen } from "./parse-C_Xtcwss.mjs";
-import { $ as Flag, A as Phone, B as MapPin, C as RotateCcw, Ct as Bot, D as Plus, Dt as Activity, E as Radio, Et as Anchor, F as Move, G as Leaf, H as LockOpen, I as MousePointer, J as Layers, K as LayoutGrid, L as Moon, M as Pause, N as Network, O as Play, P as Navigation, Q as Flame, R as Minus, S as Save, St as Box, T as Receipt, Tt as ArrowLeftRight, U as ListFilter, V as Lock, W as Lightbulb, X as Grid3x3, Y as KeyRound, Z as Funnel, _ as Ship, _t as ChartColumn, a as Waves, at as Crown, b as Search, bt as Building2, c as Truck, ct as Compass, d as Trash2, dt as CircleCheck, f as TrainTrack, ft as CircleAlert, g as SlidersHorizontal, gt as Check, h as Snowflake, ht as ChevronDown, i as Waypoints, it as DoorClosed, j as PenLine, k as Plane, l as TriangleAlert, lt as Clock, m as Sparkles, mt as ChevronLeft, n as X, nt as Ellipsis, o as Warehouse, ot as Cpu, p as Sun, pt as ChevronRight, q as LayoutList, r as Wind, rt as Droplets, s as Undo2, st as Copy, t as Zap, tt as FileCheck2, u as Trees, ut as CircleX, v as ShieldCheck, vt as CalendarDays, w as RefreshCw, wt as ArrowRight, x as Scale, xt as Boxes, y as ShieldAlert, yt as CalendarClock, z as Maximize2 } from "../_libs/lucide-react.mjs";
+import { $ as Funnel, A as Play, At as Anchor, B as Minus, C as Save, Ct as CalendarClock, D as Receipt, Dt as Bot, E as RefreshCw, Et as Box, F as Network, G as ListFilter, H as MapPin, I as Navigation, J as LayoutGrid, K as Lightbulb, L as Move, M as Phone, N as PenLine, O as Radio, Ot as ArrowRight, P as Pause, Q as Grid3x3, R as MousePointer, S as Scale, St as CalendarDays, T as RotateCcw, Tt as Boxes, U as Lock, V as Maximize2, W as LockOpen, X as Layers, Y as LayoutList, Z as KeyRound, _ as SlidersHorizontal, _t as ChevronRight, a as Waves, at as Droplets, b as ShieldAlert, bt as Check, c as Truck, ct as Cpu, d as Trash2, dt as Compass, et as Flame, f as TrainTrack, ft as Clock, g as Snowflake, gt as CircleAlert, h as Sparkles, ht as CircleCheck, i as Waypoints, it as Ellipsis, j as Plane, jt as Activity, k as Plus, kt as ArrowLeftRight, l as TriangleAlert, lt as Copy, m as Sun, mt as CirclePlus, n as X, nt as FileCode2, o as Warehouse, ot as DoorClosed, p as TrainFront, pt as CircleX, q as Leaf, r as Wind, rt as FileCheck2, s as Undo2, st as Crown, t as Zap, tt as Flag, u as Trees, ut as Container, v as Ship, vt as ChevronLeft, w as Sailboat, wt as Building2, x as Search, xt as ChartColumn, y as ShieldCheck, yt as ChevronDown, z as Moon } from "../_libs/lucide-react.mjs";
 import { t as useAtomValue } from "../_libs/jotai.mjs";
-import { $ as selectLive, A as bks_bcn_36A_50_default, B as formatEtcVerdict, C as bks_bcn_24B_25_default, D as bks_bcn_36A_10_default, E as bks_bcn_24B_50_default, G as packLanes, H as occupyIndexes, I as clockMinAtom, J as publishedYard, K as phaseAt, L as cn, M as bookedFromPlan, N as bookedHeadline, O as bks_bcn_36A_25_default, P as calculateContainerBilling, Q as scoreOneHourLate, S as bks_bcn_24B_10_default, T as bks_bcn_24B_47_default, U as packCfsCargo3D, V as holdingCall, W as packDepth, X as reconcileShipmentDocuments, Y as recommendIncomingSlot, Z as runFlow, _ as bcn_36A_10_default, at as stretchClear, b as bcn_36A_50_default, c as PUBLISHED_REPO, ct as useBoardStore, d as UniversalSidecarAndBenchmarkPanel, et as selectPlayhead, f as bcn_24B_10_default, g as bcn_24B_50_default, h as bcn_24B_47_default, i as FederationPane, k as bks_bcn_36A_2_default, l as SEED_BAY_CONTAINERS, lt as validateIso6346, m as bcn_24B_2_default, n as Button, nt as solveBayRetrieval, o as PUBLISHED_DOI, ot as stretchShips, p as bcn_24B_25_default, q as publishedWeekList, r as DEFAULT_BAY_CONFIG, rt as solveHinterlandExceptions, s as PUBLISHED_DOI_URL, st as tryPublishedYard, t as BacapPane, u as SHIPMENT_DOCUMENT_CASES, ut as verifyAndRunQuotaMeshAgent, v as bcn_36A_25_default, w as bks_bcn_24B_2_default, x as berthSpan, y as bcn_36A_2_default, z as evaluateGateTransaction } from "./dock-exceptions-sz2OHzmE.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-nv11LC5K.js
+import { $ as resolveTruckVehicleMeta, A as bks_bcn_36A_2_default, B as evaluateGateTransaction, C as bks_bcn_24B_10_default, D as bks_bcn_24B_50_default, E as bks_bcn_24B_47_default, F as calculateContainerBilling, G as packDepth, H as holdingCall, J as publishedWeekList, K as packLanes, L as clockMinAtom, N as bookedFromPlan, O as bks_bcn_36A_10_default, P as bookedHeadline, Q as resolveTruckModeId, R as cn, S as berthSpan, T as bks_bcn_24B_2_default, U as occupyIndexes, V as formatEtcVerdict, W as packCfsCargo3D, X as recommendIncomingSlot, Y as publishedYard, Z as reconcileShipmentDocuments, _ as bcn_24B_50_default, at as solveBayRetrieval, b as bcn_36A_2_default, c as PUBLISHED_DOI_URL, ct as stretchClear, d as SHIPMENT_DOCUMENT_CASES, dt as useBoardStore, et as runFlow, f as UniversalSidecarAndBenchmarkPanel, ft as validateIso6346, g as bcn_24B_47_default, h as bcn_24B_2_default, i as FederationPane, j as bks_bcn_36A_50_default, k as bks_bcn_36A_25_default, l as PUBLISHED_REPO, lt as stretchShips, m as bcn_24B_25_default, n as Button, nt as selectLive, o as MULTIMODAL_FLEET_ASSETS, ot as solveHinterlandExceptions, p as bcn_24B_10_default, pt as verifyAndRunQuotaMeshAgent, q as phaseAt, r as DEFAULT_BAY_CONFIG, rt as selectPlayhead, s as PUBLISHED_DOI, t as BacapPane, tt as scoreOneHourLate, u as SEED_BAY_CONTAINERS, ut as tryPublishedYard, v as bcn_36A_10_default, w as bks_bcn_24B_25_default, x as bcn_36A_50_default, y as bcn_36A_25_default } from "./dock-exceptions-BU6MaZUW.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DBoDp6oL.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function deterministicHashHex(payload) {
@@ -360,159 +360,96 @@ var HCMC_CORRIDOR_NODES = [
 		recommendationVi: "Đầu mối tàu mẹ đi Âu/Mỹ (-16m). Agent 4 (Escalation Referee) giám sát chặt giờ cắt máng của toàn bộ sà lan nối chuyến từ TP.HCM."
 	}
 ];
-var MULTIMODAL_FLEET_ASSETS = [
-	{
-		id: "ship",
-		code: "SEA-MOTHER",
-		nameVi: "Tàu Mẹ & Tàu Feeder",
-		categoryVi: "Đường biển Quốc tế",
-		image: "/assets/logistics/vehicle-ship.png",
-		activeUnits: 12,
-		totalUnits: 14,
-		capacityLabel: "2,850 – 18,000 TEU",
-		slaRate: "99.2% đúng lịch",
-		corridorVi: "Barcelona 24B · Cái Mép – Thị Vải",
-		badgeColor: "bg-indigo-500/12 text-indigo-600 ring-indigo-500/25"
-	},
-	{
-		id: "barge",
-		code: "IWT-BARGE",
-		nameVi: "Sà Lan Tự Hành Sông",
-		categoryVi: "Đường thủy Nội địa",
-		image: "/assets/logistics/vehicle-barge.png",
-		activeUnits: 28,
-		totalUnits: 32,
-		capacityLabel: "128 – 300 TEU / chiếc",
-		slaRate: "96.8% luồng xanh",
-		corridorVi: "Sông Sài Gòn · Đồng Nai · Soài Rạp",
-		badgeColor: "bg-sky-500/12 text-sky-600 ring-sky-500/25"
-	},
-	{
-		id: "train",
-		code: "RAIL-INTERMODAL",
-		nameVi: "Tàu Hỏa Chở Container",
-		categoryVi: "Đường sắt Liên vận",
-		image: "/assets/logistics/vehicle-train.png",
-		activeUnits: 6,
-		totalUnits: 6,
-		capacityLabel: "6 Line · 180 TEU / đoàn",
-		slaRate: "100% đúng giờ",
-		corridorVi: "ICD Sóng Thần · Trảng Bom · Liên vận",
-		badgeColor: "bg-amber-500/12 text-amber-600 ring-amber-500/25"
-	},
-	{
-		id: "aircraft",
-		code: "AIR-FREIGHT",
-		nameVi: "Máy Bay Vận Tải Cargo",
-		categoryVi: "Hàng không & ULD",
-		image: "/assets/logistics/vehicle-aircraft.png",
-		activeUnits: 4,
-		totalUnits: 5,
-		capacityLabel: "Boeing 777F · 102 Tấn ULD",
-		slaRate: "99.8% Express SLA",
-		corridorVi: "Tân Sơn Nhất Cargo · Long Thành Hub",
-		badgeColor: "bg-violet-500/12 text-violet-600 ring-violet-500/25"
-	},
-	{
-		id: "reefer-truck",
-		code: "ROAD-REEFER",
-		nameVi: "Xe Đầu Kéo & Reefer -25°C",
-		categoryVi: "Đường bộ & Chuỗi lạnh",
-		image: "/assets/logistics/vehicle-reefer-truck.png",
-		activeUnits: 156,
-		totalUnits: 180,
-		capacityLabel: "20DC / 40HC / 45RF",
-		slaRate: "98.4% Cold SLA",
-		corridorVi: "Tân Thuận ICD · Cát Lái · Trường Thọ",
-		badgeColor: "bg-emerald-500/12 text-emerald-600 ring-emerald-500/25"
-	},
-	{
-		id: "agv-stacker",
-		code: "YARD-AGV-RS",
-		nameVi: "Robot AGV & Xe Nâng Chụp",
-		categoryVi: "Tự động hóa Bãi & Kho",
-		image: "/assets/logistics/vehicle-agv-stacker.png",
-		activeUnits: 42,
-		totalUnits: 45,
-		capacityLabel: "45 Tấn · Tự hành Lidar 5G",
-		slaRate: "99.5% k=0",
-		corridorVi: "Bãi B01 – B06 · Cross-dock D1–D6",
-		badgeColor: "bg-teal-500/12 text-teal-600 ring-teal-500/25"
-	},
-	{
-		id: "sts-rtg",
-		code: "QUAY-STS-RTG",
-		nameVi: "Cẩu Bờ STS & Cẩu Khung RTG",
-		categoryVi: "Thiết bị Bốc xếp Cảng",
-		image: "/assets/logistics/vehicle-sts-rtg.png",
-		activeUnits: 34,
-		totalUnits: 36,
-		capacityLabel: "38 – 42 MPH / cẩu",
-		slaRate: "97.9% khả dụng",
-		corridorVi: "Cầu bến B0–B19 · Bãi RTG Điện",
-		badgeColor: "bg-blue-500/12 text-blue-600 ring-blue-500/25"
-	},
-	{
-		id: "van-drone",
-		code: "LASTMILE-UAV",
-		nameVi: "Xe Van Điện & Drone Bãi",
-		categoryVi: "Chặng cuối & Kiểm kê AI",
-		image: "/assets/logistics/vehicle-van-drone.png",
-		activeUnits: 64,
-		totalUnits: 70,
-		capacityLabel: "EV 3.5T & Drone Quét RFID",
-		slaRate: "99.1% giao nhanh",
-		corridorVi: "Nội đô TP.HCM & Quét nhãn ISO 6346",
-		badgeColor: "bg-rose-500/12 text-rose-600 ring-rose-500/25"
-	}
-];
 var MULTIMODAL_FLEET = MULTIMODAL_FLEET_ASSETS;
 function MultimodalFleetStrip({ compact = false, selectedAssetId, onSelectAsset }) {
-	const [internalId, setInternalId] = (0, import_react.useState)("reefer-truck");
-	const activeId = selectedAssetId ?? internalId;
+	const yard = useBoardStore((s) => s.yard);
+	const vehicleModeFilter = useBoardStore((s) => s.vehicleModeFilter);
+	const setVehicleModeFilter = useBoardStore((s) => s.setVehicleModeFilter);
+	const truckModeOverrides = useBoardStore((s) => s.truckModeOverrides);
+	const selectedId = useBoardStore((s) => s.selectedId);
+	const selectedTruck = (0, import_react.useMemo)(() => yard.trucks.find((t) => t.id === selectedId), [yard.trucks, selectedId]);
+	const selectedTruckMode = selectedTruck ? resolveTruckModeId(selectedTruck, yard, truckModeOverrides) : "reefer-truck";
+	const activeId = selectedAssetId ?? (vehicleModeFilter !== "all" ? vehicleModeFilter : selectedTruckMode);
+	const boardCounts = (0, import_react.useMemo)(() => {
+		const counts = {};
+		for (const t of yard.trucks) {
+			const m = resolveTruckModeId(t, yard, truckModeOverrides);
+			counts[m] = (counts[m] ?? 0) + 1;
+		}
+		return counts;
+	}, [yard, truckModeOverrides]);
+	const totalActiveOnBoard = yard.trucks.length;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mb-2.5 flex flex-wrap items-center justify-between gap-2",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: "inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-bold text-accent ring-1 ring-accent/20",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3" }), "8 Hệ Phương Tiện & Thiết Bị Đa Phương Thức"]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-xs font-medium text-muted",
-					children: "Đường biển · Sà lan sông · Đường sắt · Hàng không · Đầu kéo Reefer · Robot AGV · Cẩu STS/RTG · EV Van & Drone"
-				})]
+				className: "flex flex-wrap items-center gap-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-0.5 text-[11px] font-bold text-accent ring-1 ring-accent/20",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3" }), "8 Hệ Phương Tiện & Thiết Bị Đa Phương Thức"]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-xs font-medium text-muted",
+						children: "Bấm vào phương tiện bất kỳ để lọc trên bảng Gantt & xem chi tiết tại Inspector"
+					}),
+					vehicleModeFilter !== "all" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: () => setVehicleModeFilter("all"),
+						className: "inline-flex items-center gap-1 rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold text-white shadow-2xs",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Funnel, { className: "size-2.5" }),
+							"Đang lọc: ",
+							MULTIMODAL_FLEET_ASSETS.find((x) => x.id === vehicleModeFilter)?.shortVi,
+							" (Bỏ lọc ×)"
+						]
+					}) : null
+				]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 				className: "inline-flex items-center gap-1 rounded-full bg-ok/10 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-ok ring-1 ring-ok/20",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3" }), "346 / 388 phương tiện đang đồng bộ thời gian thực"]
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3" }),
+					totalActiveOnBoard,
+					" lượt trên lịch · 346 / 388 phương tiện đồng bộ"
+				]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: cn("grid gap-2.5", compact ? "grid-cols-2 sm:grid-cols-4 lg:grid-cols-8" : "grid-cols-2 sm:grid-cols-4 lg:grid-cols-8"),
 			children: MULTIMODAL_FLEET_ASSETS.map((item) => {
 				const isSelected = activeId === item.id;
+				const isFiltered = vehicleModeFilter === item.id;
+				const onBoard = boardCounts[item.id] ?? 0;
 				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 					type: "button",
+					"data-fleet-mode": item.id,
 					onClick: () => {
-						setInternalId(item.id);
+						setVehicleModeFilter(item.id);
 						onSelectAsset?.(item);
 					},
-					className: cn("group flex flex-col overflow-hidden rounded-xl p-2 text-left transition-all", isSelected ? "bg-accent/[0.06] shadow-xs ring-2 ring-accent" : "bg-raised/40 ring-1 ring-line hover:bg-raised hover:ring-accent/40"),
+					className: cn("group flex flex-col overflow-hidden rounded-xl p-2 text-left transition-all", isSelected || isFiltered ? "bg-accent/[0.06] shadow-xs ring-2 ring-accent" : "bg-raised/40 ring-1 ring-line hover:bg-raised hover:ring-accent/40"),
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "relative h-20 w-full overflow-hidden rounded-lg bg-[#F4F7FB]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-								src: item.image,
-								alt: item.nameVi,
-								className: "h-full w-full object-contain p-1 transition-transform duration-300 group-hover:scale-105"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "absolute top-1 left-1 rounded bg-slate-900/75 px-1.5 py-0.5 font-mono text-[9px] font-bold text-white backdrop-blur-xs",
-								children: [
-									item.activeUnits,
-									"/",
-									item.totalUnits
-								]
-							})]
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+									src: item.image,
+									alt: item.nameVi,
+									className: "h-full w-full object-contain p-1 transition-transform duration-300 group-hover:scale-105"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "absolute top-1 left-1 rounded bg-slate-900/75 px-1.5 py-0.5 font-mono text-[9px] font-bold text-white backdrop-blur-xs",
+									children: [
+										item.activeUnits,
+										"/",
+										item.totalUnits
+									]
+								}),
+								onBoard > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "absolute right-1 bottom-1 rounded bg-accent px-1.5 py-0.5 font-mono text-[9px] font-bold text-white shadow-2xs",
+									children: [onBoard, " trên bảng"]
+								}) : null
+							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: cn("mt-1.5 inline-flex w-fit items-center rounded px-1.5 py-0.5 text-[9px] font-bold ring-1", item.badgeColor),
@@ -3838,14 +3775,25 @@ function hourMarks(len, step = 60) {
 	for (let t = 0; t <= len; t += step) out.push(t);
 	return out;
 }
-var ROW_H = 62;
-var CARD_H = 46;
+var ROW_H = 66;
+var CARD_H = 50;
 var CARD_INSET = 8;
 var FEATURED_INSET = 5;
-var FEATURED_H = 52;
+var FEATURED_H = 56;
 var STACK_INSET = 22;
-var DOOR_COL = "5.5rem";
+var DOOR_COL = "6.2rem";
 var EMPTY_FLOW = [];
+function VehicleModeGlyph({ modeId, reefer, className }) {
+	if (modeId === "ship") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className });
+	if (modeId === "barge") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sailboat, { className });
+	if (modeId === "train") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TrainFront, { className });
+	if (modeId === "aircraft") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plane, { className });
+	if (modeId === "agv-stacker") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bot, { className });
+	if (modeId === "sts-rtg") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Container, { className });
+	if (modeId === "van-drone") return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Zap, { className });
+	if (reefer) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className });
+}
 var MINUTE_GEOM = {
 	rowH: ROW_H,
 	cardH: CARD_H,
@@ -4283,6 +4231,7 @@ var DoorStatus = (0, import_react.memo)(function DoorStatus({ dock, occupancy, l
 	const { icon: StatusIcon, label, tone } = doorStatus(occupancy, dock);
 	const forced = useBoardStore((s) => s.forceDock === dock.id);
 	const index = dock.short.replace(/^D|^B/, "");
+	const equipLabel = dock.equipment.includes("reefer_plug") ? "Lạnh -25°C" : dock.equipment.includes("crane") ? "Cẩu 45T" : "Xe nâng";
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 		type: "button",
 		onClick: () => onForce(dock.id),
@@ -4297,6 +4246,9 @@ var DoorStatus = (0, import_react.memo)(function DoorStatus({ dock, occupancy, l
 			}), forced ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 				className: "rounded bg-accent px-1 py-0.5 font-mono text-[9px] font-bold text-accent-fg",
 				children: "PIN"
+			}) : !compact ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "rounded bg-raised px-1 py-0.5 font-mono text-[9px] font-semibold text-muted ring-1 ring-line",
+				children: equipLabel
 			}) : null]
 		}), compact ? null : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 			className: cn("mt-1 inline-flex items-center gap-1 text-[11px] font-medium", tone),
@@ -4309,21 +4261,29 @@ var DoorStatus = (0, import_react.memo)(function DoorStatus({ dock, occupancy, l
 });
 var ApptCard = (0, import_react.memo)(function ApptCard({ block, truck, start, featured, selected, top, onSelect }) {
 	const geom = useGeom();
+	const timeUnit = useBoardStore((s) => s.yard.timeUnit);
 	const treatReefer = useBoardStore((s) => s.event?.truckId === block.truckId && s.event?.cargoOverride === "reefer");
 	const filter = useBoardStore((s) => s.ganttFilter);
+	const vehicleModeFilter = useBoardStore((s) => s.vehicleModeFilter);
+	const truckModeOverrides = useBoardStore((s) => s.truckModeOverrides);
 	const reefer = truck.cargo === "reefer" || Boolean(treatReefer);
+	const meta = resolveTruckVehicleMeta(truck, { timeUnit }, truckModeOverrides, treatReefer);
 	const stacked = block.stack > 0;
 	const inset = geom.compact ? geom.cardInset : stacked ? STACK_INSET : featured ? FEATURED_INSET : CARD_INSET;
 	const height = geom.compact ? geom.cardH : featured && !stacked ? FEATURED_H : CARD_H;
-	const matchesFilter = filter === "all" || filter === "late" && featured || filter === "moved" && (block.changed || featured) || filter === "reefer" && reefer || filter === "dry" && !reefer || filter === "priority" && truck.priority === 1;
+	const matchesStatus = filter === "all" || filter === "late" && featured || filter === "moved" && (block.changed || featured) || filter === "reefer" && reefer || filter === "dry" && !reefer || filter === "priority" && truck.priority === 1;
+	const matchesVehicleMode = vehicleModeFilter === "all" || meta.mode.id === vehicleModeFilter;
+	const matchesFilter = matchesStatus && matchesVehicleMode;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 		type: "button",
 		"data-truck": block.truckId,
+		"data-vehicle-mode": meta.mode.id,
+		"data-vehicle-badge": meta.shortBadgeVi,
 		onClick: (e) => {
 			e.stopPropagation();
 			onSelect(block.truckId);
 		},
-		className: cn("absolute z-10 text-left transition-all [contain:layout]", geom.compact ? "" : "[content-visibility:auto]", geom.compact ? "rounded-[5px] px-1.5" : "rounded-xl border-l-[3px] px-2 py-1.5", featured ? "z-30 overflow-hidden bg-accent text-accent-fg shadow-float ring-1 ring-accent" : "overflow-hidden bg-surface shadow-2xs ring-1 ring-line hover:ring-accent/60", !geom.compact && featured && "border-l-white/70", !geom.compact && !featured && reefer && "border-l-accent bg-accent/[0.04] ring-accent/25", !geom.compact && !featured && !reefer && "border-l-ok", !featured && block.changed && "bg-ok/10 ring-ok/35", selected && !featured && "ring-2 ring-accent", !matchesFilter && "opacity-25"),
+		className: cn("absolute z-10 text-left transition-all [contain:layout]", geom.compact ? "" : "[content-visibility:auto]", geom.compact ? "rounded-[5px] px-1.5" : "rounded-xl border-l-[3px] px-2 py-1.5", featured ? "z-30 overflow-hidden bg-accent text-accent-fg shadow-float ring-1 ring-accent" : "overflow-hidden bg-surface shadow-2xs ring-1 ring-line hover:ring-accent/60", !geom.compact && featured && "border-l-white/70", !geom.compact && !featured && reefer && "border-l-accent bg-accent/[0.04] ring-accent/25", !geom.compact && !featured && !reefer && "border-l-ok", !featured && block.changed && "bg-ok/10 ring-ok/35", selected && !featured && "ring-2 ring-accent", vehicleModeFilter !== "all" && matchesVehicleMode && !featured && "ring-2 ring-accent", !matchesFilter && "opacity-25"),
 		style: {
 			left: `${block.left}%`,
 			width: `${block.width}%`,
@@ -4334,32 +4294,35 @@ var ApptCard = (0, import_react.memo)(function ApptCard({ block, truck, start, f
 			className: "pointer-events-none flex h-full flex-col justify-between",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 				className: "flex items-center justify-between gap-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: cn("truncate font-mono font-semibold leading-none tracking-tight", geom.compact ? "text-[10px]" : "text-[11px]"),
-					children: truck.plate
-				}), !geom.compact && !stacked && block.width >= 14 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: cn("hidden shrink-0 rounded px-1 py-px font-mono text-[9px] font-semibold xl:inline-block", featured ? "bg-white/20 text-white" : reefer ? "bg-accent/12 text-accent" : "bg-ok/12 text-ok"),
-					children: truck.hauler.split(" ")[0]
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "flex min-w-0 items-center gap-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: cn("inline-flex shrink-0 items-center justify-center rounded", geom.compact ? "size-3" : "size-4", featured ? "bg-white/25 text-white" : meta.mode.chipBg),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VehicleModeGlyph, {
+							modeId: meta.mode.id,
+							reefer,
+							className: geom.compact ? "size-2.5" : "size-3"
+						})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: cn("truncate font-mono font-bold leading-none tracking-tight", geom.compact ? "text-[10px]" : "text-[11px]"),
+						children: truck.plate
+					})]
+				}), !geom.compact && !stacked && block.width >= 15 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: cn("hidden shrink-0 items-center gap-0.5 font-mono text-[9px] font-semibold xl:inline-flex", featured ? "text-white" : "text-ok"),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current" }), featured ? "k=0" : "SLA"]
 				}) : null]
 			}), geom.compact ? null : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 				className: "flex items-center justify-between gap-1",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 					className: cn("flex items-center gap-1 font-mono text-[10px] leading-none", featured ? "text-accent-fg/90" : "text-muted"),
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: start }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CargoMark, {
-							cargo: truck.cargo,
-							featured,
-							className: "size-2.5"
-						}),
-						featured ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "rounded bg-white/20 px-1 py-px text-[9px] font-bold",
-							children: "k=0"
-						}) : null
-					]
-				}), !stacked && block.width >= 11 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: cn("hidden items-center gap-0.5 font-mono text-[9px] font-semibold sm:inline-flex", featured ? "text-white" : "text-ok"),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current" }), featured ? "Opt" : "SLA"]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: start }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CargoMark, {
+						cargo: truck.cargo,
+						featured,
+						className: "size-2.5"
+					})]
+				}), !stacked || featured ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: cn("shrink-0 rounded px-1.5 py-0.5 font-sans text-[9px] font-bold leading-none", featured ? "bg-white/25 text-white" : meta.mode.chipBg),
+					children: [meta.shortBadgeVi, featured ? " · k=0" : ""]
 				}) : null]
 			})]
 		})
@@ -4368,93 +4331,171 @@ var ApptCard = (0, import_react.memo)(function ApptCard({ block, truck, start, f
 var LegendRow = (0, import_react.memo)(function LegendRow({ tipTruck, tipLive, tipOrig, shiftStart, timeUnit, dense, scaleStart, scaleEnd }) {
 	const filter = useBoardStore((s) => s.ganttFilter);
 	const setFilter = useBoardStore((s) => s.setGanttFilter);
-	if (tipTruck && tipLive) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		className: "mt-3 flex flex-wrap items-center gap-2 text-xs text-muted",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-			className: "font-mono tabular-nums text-fg",
-			children: [
-				tipTruck.plate,
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "mx-2 text-muted",
-					children: tipTruck.hauler
-				}),
-				formatWhen({
-					shiftStartMin: shiftStart,
-					timeUnit
-				}, tipLive.startMin),
-				"–",
-				formatWhen({
-					shiftStartMin: shiftStart,
-					timeUnit
-				}, tipLive.startMin + tipTruck.durationMin),
-				tipOrig && tipOrig.dockId !== tipLive.dockId ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: "ml-2 text-warn",
-					children: ["was ", tipOrig.dockId.replace("D", "")]
-				}) : null
-			]
-		})
-	});
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "mt-3 flex flex-wrap items-center gap-2 text-xs text-muted",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
-				icon: Icon.late,
-				label: "Late",
-				className: "text-bad",
-				active: filter === "late",
-				onClick: () => setFilter("late")
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
-				icon: Icon.moved,
-				label: "Moved",
-				className: "text-warn",
-				active: filter === "moved",
-				onClick: () => setFilter("moved")
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
-				icon: Icon.reefer,
-				label: "Reefer",
-				className: "text-accent",
-				active: filter === "reefer",
-				onClick: () => setFilter("reefer")
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
-				icon: Icon.dry,
-				label: "Dry",
-				className: "text-ok",
-				active: filter === "dry",
-				onClick: () => setFilter("dry")
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
-				icon: Icon.other,
-				label: "Other",
-				className: "text-accent",
-				active: false,
-				onClick: () => setFilter("all")
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
-				icon: Flag,
-				label: "Priority",
-				active: filter === "priority",
-				onClick: () => setFilter("priority")
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LegendStats, {}),
-			dense ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "ml-auto text-faint",
+	const vehicleModeFilter = useBoardStore((s) => s.vehicleModeFilter);
+	const setVehicleModeFilter = useBoardStore((s) => s.setVehicleModeFilter);
+	const truckModeOverrides = useBoardStore((s) => s.truckModeOverrides);
+	if (tipTruck && tipLive) {
+		const tipMeta = resolveTruckVehicleMeta(tipTruck, { timeUnit }, truckModeOverrides);
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "mt-3 flex flex-wrap items-center gap-2 text-xs text-muted",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "inline-flex items-center gap-1.5 font-mono tabular-nums text-fg",
 				children: [
-					"Zoomed ",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: cn("inline-flex items-center gap-1 rounded px-1.5 py-0.5 font-sans text-[10px] font-bold", tipMeta.mode.chipBg),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(VehicleModeGlyph, {
+							modeId: tipMeta.mode.id,
+							reefer: tipTruck.cargo === "reefer",
+							className: "size-3"
+						}), tipMeta.shortBadgeVi]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "font-bold",
+						children: tipTruck.plate
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "mx-1 text-muted",
+						children: [
+							"· ",
+							tipTruck.hauler,
+							" · ",
+							tipMeta.driverName
+						]
+					}),
 					formatWhen({
 						shiftStartMin: shiftStart,
 						timeUnit
-					}, scaleStart),
+					}, tipLive.startMin),
 					"–",
 					formatWhen({
 						shiftStartMin: shiftStart,
 						timeUnit
-					}, scaleEnd)
+					}, tipLive.startMin + tipTruck.durationMin),
+					tipOrig && tipOrig.dockId !== tipLive.dockId ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "ml-2 text-warn",
+						children: ["was ", tipOrig.dockId.replace("D", "")]
+					}) : null
 				]
-			}) : null
-		]
+			})
+		});
+	}
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "mt-3 space-y-2 text-xs text-muted",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-wrap items-center gap-1.5",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
+					icon: Icon.late,
+					label: "Late",
+					className: "text-bad",
+					active: filter === "late",
+					onClick: () => setFilter("late")
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
+					icon: Icon.moved,
+					label: "Moved",
+					className: "text-warn",
+					active: filter === "moved",
+					onClick: () => setFilter("moved")
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
+					icon: Icon.reefer,
+					label: "Reefer",
+					className: "text-accent",
+					active: filter === "reefer",
+					onClick: () => setFilter("reefer")
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
+					icon: Icon.dry,
+					label: "Dry",
+					className: "text-ok",
+					active: filter === "dry",
+					onClick: () => setFilter("dry")
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
+					icon: Icon.other,
+					label: "Other",
+					className: "text-accent",
+					active: filter === "all" && vehicleModeFilter === "all",
+					onClick: () => setFilter("all")
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Legend, {
+					icon: Flag,
+					label: "Priority",
+					active: filter === "priority",
+					onClick: () => setFilter("priority")
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "mx-1 h-4 w-px bg-line" }),
+				[
+					{
+						id: "reefer-truck",
+						label: "Đầu kéo / Lạnh",
+						icon: Truck
+					},
+					{
+						id: "barge",
+						label: "Sà lan",
+						icon: Sailboat
+					},
+					{
+						id: "train",
+						label: "Tàu hỏa",
+						icon: TrainFront
+					},
+					{
+						id: "aircraft",
+						label: "Air Cargo",
+						icon: Plane
+					},
+					{
+						id: "agv-stacker",
+						label: "AGV Bãi",
+						icon: Bot
+					},
+					{
+						id: "sts-rtg",
+						label: "Cẩu RTG",
+						icon: Container
+					},
+					{
+						id: "van-drone",
+						label: "EV Van",
+						icon: Zap
+					},
+					{
+						id: "ship",
+						label: "Tàu biển",
+						icon: Anchor
+					}
+				].map((v) => {
+					const VIcon = v.icon;
+					const isActive = vehicleModeFilter === v.id;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						"data-filter-vehicle": v.id,
+						onClick: () => setVehicleModeFilter(v.id),
+						className: cn("inline-flex h-7 items-center gap-1 rounded-full px-2.5 text-[11px] font-semibold transition", isActive ? "bg-accent text-white shadow-2xs ring-1 ring-accent" : "bg-surface text-muted ring-1 ring-line hover:bg-raised hover:text-fg"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(VIcon, { className: "size-3" }), v.label]
+					}, v.id);
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LegendStats, {}),
+				dense ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "ml-auto text-faint",
+					children: [
+						"Zoomed ",
+						formatWhen({
+							shiftStartMin: shiftStart,
+							timeUnit
+						}, scaleStart),
+						"–",
+						formatWhen({
+							shiftStartMin: shiftStart,
+							timeUnit
+						}, scaleEnd)
+					]
+				}) : null
+			]
+		})
 	});
 });
 function LegendStats() {
@@ -4528,24 +4569,45 @@ var FlowStrip = (0, import_react.memo)(function FlowStrip({ label, blocks, marks
 		})]
 	});
 });
+function formatDurationVi(mins, hour) {
+	if (hour) return `${mins} giờ`;
+	const h = Math.floor(mins / 60);
+	const m = mins % 60;
+	if (h === 0) return `${m}p`;
+	if (m === 0) return `${h}g 00p`;
+	return `${h}g ${m}p`;
+}
 function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 	const moved = orig && live && (orig.dockId !== live.dockId || orig.startMin !== live.startMin);
 	const start = live ?? orig;
 	const hour = yard.timeUnit === "hour";
 	const unit = hour ? "h" : "m";
-	const startLabel = start ? formatWhen(yard, start.startMin) : "—";
-	const endLabel = start ? formatWhen(yard, start.startMin + truck.durationMin) : "—";
-	const origLabel = orig ? formatWhen(yard, orig.startMin) : "—";
+	const startMin = start?.startMin ?? 0;
+	const endMin = startMin + truck.durationMin;
+	const startLabel = start ? formatWhen(yard, startMin) : "—";
+	const endLabel = start ? formatWhen(yard, endMin) : "—";
+	orig && formatWhen(yard, orig.startMin);
 	const origDock = orig ? yard.docks.find((d) => d.id === orig.dockId) : void 0;
 	const liveDock = live ? yard.docks.find((d) => d.id === live.dockId) : origDock;
-	const wait = event && event.truckId === truck.id && start ? Math.max(0, start.startMin - event.newEtaMin) : 0;
+	const isEventTruck = Boolean(event && event.truckId === truck.id);
+	const effectiveArrivalMin = isEventTruck && event ? event.newEtaMin : orig?.startMin ?? 0;
+	const wait = start ? Math.max(0, start.startMin - effectiveArrivalMin) : 0;
+	const clockMin = useAtomValue(clockMinAtom);
 	const forceReefer = useBoardStore((s) => s.forceReefer);
 	const forceDock = useBoardStore((s) => s.forceDock);
 	const slaRateUsd = useBoardStore((s) => s.slaRateUsd);
-	const reeferOn = truck.cargo === "reefer" || forceReefer;
+	const truckModeOverrides = useBoardStore((s) => s.truckModeOverrides);
+	const setTruckVehicleMode = useBoardStore((s) => s.setTruckVehicleMode);
+	const reeferOn = truck.cargo === "reefer" || isEventTruck && forceReefer;
+	const meta = (0, import_react.useMemo)(() => resolveTruckVehicleMeta(truck, yard, truckModeOverrides, isEventTruck && forceReefer), [
+		truck,
+		yard,
+		truckModeOverrides,
+		isEventTruck,
+		forceReefer
+	]);
 	const [menu, setMenu] = (0, import_react.useState)(false);
 	const [subTab, setSubTab] = (0, import_react.useState)("detail");
-	const [selectedMode, setSelectedMode] = (0, import_react.useState)(MULTIMODAL_FLEET_ASSETS[4]);
 	const menuRef = (0, import_react.useRef)(null);
 	const compare = (0, import_react.useMemo)(() => hour && event ? bookedFromPlan(yard, event, result ?? void 0) : null, [
 		hour,
@@ -4553,8 +4615,42 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 		event,
 		result
 	]);
-	const savedUnits = hour ? Math.max(0, compare?.saved ?? 0) : moved ? 40 : 0;
-	const savedUsd = savedUnits > 0 ? savedUnits * slaRateUsd : hour ? 289500 : 720;
+	const savedUnits = (0, import_react.useMemo)(() => {
+		if (hour) return Math.max(0, compare?.saved ?? 0);
+		if (isEventTruck && result?.certificate?.whyNotGreedy) return Math.max(0, result.certificate.whyNotGreedy.savedWaitMin);
+		if (moved) return 40;
+		return 0;
+	}, [
+		hour,
+		compare,
+		isEventTruck,
+		result,
+		moved
+	]);
+	const savedUsd = (0, import_react.useMemo)(() => Math.round(savedUnits * slaRateUsd), [savedUnits, slaRateUsd]);
+	const progressPct = (0, import_react.useMemo)(() => {
+		if (!start) return 0;
+		if (clockMin > 0) {
+			if (clockMin <= startMin) return 15;
+			if (clockMin >= endMin) return 100;
+			return Math.max(10, Math.min(95, Math.round((clockMin - startMin) / Math.max(1, truck.durationMin) * 100)));
+		}
+		if (isEventTruck && result?.status === "OPTIMAL") return 70;
+		const ratio = 1 - startMin / Math.max(1, yard.shiftLenMin);
+		return Math.max(20, Math.min(95, Math.round(ratio * 85)));
+	}, [
+		start,
+		clockMin,
+		startMin,
+		endMin,
+		truck.durationMin,
+		isEventTruck,
+		result,
+		yard.shiftLenMin
+	]);
+	const completedHours = Math.max(1, Math.min(truck.durationMin, Math.round(progressPct / 100 * truck.durationMin)));
+	const slaOk = endMin <= truck.deadlineMin && wait <= truck.maxWaitMin;
+	const statusLabelVi = hour ? progressPct >= 100 ? "Hoàn tất" : "Đang làm hàng" : progressPct >= 100 ? "Đã rời cảng" : isEventTruck && !result ? "Trễ · Chờ xếp cửa" : "Đang xếp dỡ";
 	(0, import_react.useEffect)(() => {
 		if (!menu) return;
 		const onDoc = (e) => {
@@ -4563,25 +4659,34 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 		document.addEventListener("mousedown", onDoc);
 		return () => document.removeEventListener("mousedown", onDoc);
 	}, [menu]);
-	const arrivalTimeLabel = event && event.truckId === truck.id ? formatWhen(yard, event.newEtaMin) : origLabel;
+	const arrivalTimeLabel = formatWhen(yard, effectiveArrivalMin);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
 		"aria-label": "Unit Inspector",
+		"data-inspector-truck": truck.id,
+		"data-inspector-mode": meta.mode.id,
 		className: "flex h-full flex-col justify-between overflow-y-auto bg-surface p-4",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex items-center justify-between gap-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-4 text-fg" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-						className: "font-mono text-base font-extrabold tracking-tight text-fg",
-						children: hour ? `MSC OCEAN · ${truck.plate}` : truck.plate
+					className: "flex min-w-0 items-center gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: cn("inline-flex size-6 shrink-0 items-center justify-center rounded-lg", meta.mode.chipBg),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VehicleModeGlyph, {
+							modeId: meta.mode.id,
+							reefer: reeferOn,
+							className: "size-3.5"
+						})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+						className: "truncate font-mono text-base font-extrabold tracking-tight text-fg",
+						children: hour ? `${meta.vesselName} · ${truck.plate}` : truck.plate
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center gap-1.5",
+					className: "flex shrink-0 items-center gap-1.5",
 					ref: menuRef,
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "inline-flex items-center gap-1.5 rounded-full bg-ok/12 px-2.5 py-0.5 text-[11px] font-bold text-ok ring-1 ring-ok/25",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-ok" }), hour ? "Đang làm hàng" : "Đang xếp dỡ"]
+						className: cn("inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-bold ring-1", slaOk ? "bg-ok/12 text-ok ring-ok/25" : "bg-warn/15 text-warn ring-warn/30"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: cn("size-1.5 rounded-full", slaOk ? "bg-ok" : "bg-warn") }), statusLabelVi]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "relative",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
@@ -4598,6 +4703,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								onClick: () => {
 									navigator.clipboard?.writeText(JSON.stringify({
 										truck,
+										meta,
 										orig,
 										live,
 										event
@@ -4635,31 +4741,247 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 					}
 				].map((t) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 					type: "button",
+					"data-inspector-tab": t.id,
 					onClick: () => setSubTab(t.id),
 					className: cn("border-b-2 pb-2 transition", subTab === t.id ? "border-accent text-accent" : "border-transparent text-muted hover:text-fg"),
 					children: t.label
 				}, t.id))
 			}),
-			hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			subTab === "multimodal" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mt-3 space-y-2.5",
+				"data-inspector-pane": "multimodal",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "rounded-xl bg-accent/[0.06] p-2.5 ring-1 ring-accent/20",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "text-xs font-bold text-fg",
+							children: ["Gán phương tiện cho ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono text-accent",
+								children: truck.plate
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "mt-0.5 text-[11px] text-muted",
+							children: [
+								"Chọn 1 trong 8 hệ phương tiện bên dưới để đổi trực tiếp icon & loại phương tiện của",
+								" ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono font-semibold text-fg",
+									children: truck.plate
+								}),
+								" trên bảng Gantt."
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "grid grid-cols-2 gap-2",
+						children: MULTIMODAL_FLEET_ASSETS.map((m) => {
+							const active = meta.mode.id === m.id;
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								"data-assign-mode": m.id,
+								onClick: () => setTruckVehicleMode(truck.id, m.id),
+								className: cn("flex items-center gap-2 rounded-xl p-2 text-left transition", active ? "bg-accent text-white shadow-xs ring-2 ring-accent" : "bg-raised/45 text-fg ring-1 ring-line hover:bg-raised"),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+									src: m.image,
+									alt: m.nameVi,
+									className: "size-9 shrink-0 rounded-lg bg-white object-contain p-0.5"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "min-w-0",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "truncate text-[11px] font-bold",
+										children: m.shortVi
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: cn("truncate font-mono text-[9px]", active ? "text-white/85" : "text-muted"),
+										children: [
+											m.activeUnits,
+											"/",
+											m.totalUnits,
+											" chiếc"
+										]
+									})]
+								})]
+							}, m.id);
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						"data-inject-vehicle": "",
+						onClick: () => {
+							const nextNum = yard.trucks.length + 1;
+							const defaultDock = yard.docks[0]?.id ?? (hour ? "B0" : "D1");
+							useBoardStore.getState().injectCustomJob({
+								plate: hour ? `S${nextNum}` : `51${meta.mode.shortVi.slice(0, 1).toUpperCase()}-${100 + nextNum}.88`,
+								hauler: meta.mode.nameVi,
+								dockId: defaultDock,
+								startMin: hour ? 10 : 120,
+								delayMin: hour ? 1 : 25,
+								durationMin: hour ? 12 : 60,
+								cargo: reeferOn ? "reefer" : "dry",
+								priority: 1,
+								span: hour ? 2 : 1,
+								vehicleMode: meta.mode.id
+							});
+							setSubTab("detail");
+						},
+						className: "flex w-full items-center justify-center gap-1.5 rounded-xl bg-ok/12 px-3 py-2 text-xs font-bold text-ok ring-1 ring-ok/30 transition hover:bg-ok/20",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CirclePlus, { className: "size-3.5" }),
+							"+ Điều thêm 1 ",
+							meta.mode.shortVi,
+							" mới vào bảng Gantt"
+						]
+					})
+				]
+			}) : subTab === "log" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 space-y-2.5",
+				"data-inspector-pane": "log",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "rounded-xl bg-raised/45 p-2.5 ring-1 ring-line",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-bold text-fg",
+								children: "Chứng chỉ Tối ưu (Solver Certificate)"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "rounded bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ok",
+								children: ["k = ", result?.kUsed ?? 0]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "mt-1 text-[11px] text-muted",
+							children: [
+								"Phương tiện ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono font-bold text-fg",
+									children: truck.plate
+								}),
+								" (",
+								meta.shortBadgeVi,
+								") được xếp tại",
+								" ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono font-bold text-accent",
+									children: liveDock?.short ?? origDock?.short
+								}),
+								" ",
+								"lúc ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono font-bold text-fg",
+									children: startLabel
+								}),
+								". Giữ nguyên",
+								" ",
+								yard.trucks.length - (result?.kUsed ?? 0),
+								"/",
+								yard.trucks.length,
+								" phương tiện khác."
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "rounded-xl bg-slate-900 p-2.5 font-mono text-[10px] text-slate-200 ring-1 ring-slate-800",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mb-1 flex items-center justify-between text-[9px] text-slate-400",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileCode2, { className: "size-3 text-indigo-400" }), " RFC 7396 JSON Merge Patch"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-emerald-400",
+								children: "HTTP 200 · SAFE"
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
+							className: "overflow-x-auto leading-relaxed",
+							children: JSON.stringify({
+								unit_id: truck.plate,
+								vehicle_mode: meta.mode.id,
+								booked_dock: orig?.dockId ?? "—",
+								sidecar_dock: live?.dockId ?? orig?.dockId ?? "—",
+								start: startLabel,
+								end: endLabel,
+								wait_min: wait,
+								displaced_k: result?.kUsed ?? 0
+							}, null, 2)
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "rounded-xl bg-raised/35 p-2.5 ring-1 ring-line",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "text-[11px] font-bold text-fg",
+							children: [
+								"Khung giờ hợp lệ (",
+								result?.certificate?.legalWindows.length ?? yard.docks.length,
+								" cửa)"
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-1.5 max-h-36 space-y-1 overflow-y-auto text-[11px]",
+							children: (result?.certificate?.legalWindows ?? []).slice(0, 5).map((w, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between rounded-lg bg-surface px-2 py-1 font-mono text-[10px] ring-1 ring-line",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-bold text-fg",
+										children: w.dockId
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "text-muted",
+										children: [
+											formatWhen(yard, w.earliestStart),
+											" → ",
+											formatWhen(yard, w.gapEnd)
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: w.fits ? "font-bold text-ok" : "text-warn",
+										children: w.fits ? "Đạt chuẩn" : "Hẹp"
+									})
+								]
+							}, `${w.dockId}-${idx}`))
+						})]
+					})
+				]
+			}) : hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 space-y-2.5",
+				"data-inspector-pane": "detail",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center gap-2.5 rounded-2xl bg-raised/40 p-2.5 ring-1 ring-line",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-							src: "/assets/logistics/vehicle-ship.png",
-							alt: "MSC Ocean Container Ship",
+							src: meta.photoUrl,
+							alt: meta.vesselName,
 							className: "h-14 w-20 shrink-0 rounded-xl bg-white object-contain p-1 ring-1 ring-line"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "font-mono text-sm font-extrabold text-fg",
-							children: ["MSC OCEAN · ", truck.plate]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "text-[11px] text-muted",
+							className: "min-w-0",
 							children: [
-								"IMO 9876543 · 2,850 TEU · ",
-								truck.span ?? 1,
-								" bến"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "truncate font-mono text-sm font-extrabold text-fg",
+									children: [
+										meta.vesselName,
+										" · ",
+										truck.plate
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "text-[11px] text-muted",
+									children: [
+										meta.imoCode,
+										" · ",
+										meta.teuCap.toLocaleString("en-US"),
+										" TEU · ",
+										truck.span ?? 1,
+										" bến"
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mt-1 flex items-center gap-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: cn("rounded px-1.5 py-0.5 text-[9px] font-bold", meta.mode.chipBg),
+										children: meta.shortBadgeVi
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-mono text-[10px] text-muted",
+										children: meta.bookingCode
+									})]
+								})
 							]
-						})] })]
+						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "grid grid-cols-3 gap-2",
@@ -4680,7 +5002,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "text-[10px] font-semibold text-ok",
-										children: "(Đã đến)"
+										children: wait === 0 ? "(Vào bến ngay)" : `(Chờ ${wait}h)`
 									})
 								]
 							}),
@@ -4713,20 +5035,28 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "text-[10px] font-semibold text-muted",
-										children: "Thời gian làm hàng"
+										children: "Tiến độ bốc xếp"
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "mt-0.5 font-mono text-xs font-extrabold text-fg",
-										children: "20 / 27h"
+										children: [
+											completedHours,
+											" / ",
+											truck.durationMin,
+											"h"
+										]
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "mt-1 flex items-center gap-1.5",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 											className: "h-1.5 flex-1 overflow-hidden rounded-full bg-line",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-3/4 rounded-full bg-ok" })
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "h-full rounded-full bg-ok transition-all",
+												style: { width: `${progressPct}%` }
+											})
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 											className: "font-mono text-[9px] font-bold text-ok",
-											children: "74%"
+											children: [progressPct, "%"]
 										})]
 									})
 								]
@@ -4743,7 +5073,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									children: "Cầu bến"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-0.5 font-mono text-xs font-extrabold text-fg",
-									children: liveDock?.short ?? "B5"
+									children: liveDock?.short ?? origDock?.short ?? "B5"
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -4751,9 +5081,9 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "text-[9px] text-muted",
 									children: "Chiều dài"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mt-0.5 font-mono text-xs font-extrabold text-fg",
-									children: "300 m"
+									children: [meta.lengthM, " m"]
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -4761,19 +5091,19 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "text-[9px] text-muted",
 									children: "Mớn nước"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mt-0.5 font-mono text-xs font-extrabold text-fg",
-									children: "12.5 m"
+									children: [meta.draftM, " m"]
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "rounded-xl bg-raised/40 p-2 ring-1 ring-line",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "text-[9px] text-muted",
-									children: "Loại tàu"
+									children: "Phương tiện"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-0.5 truncate text-xs font-extrabold text-fg",
-									children: "Container"
+									children: meta.shortBadgeVi
 								})]
 							})
 						]
@@ -4782,18 +5112,14 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 						className: "rounded-xl bg-ok/[0.08] p-2.5 ring-1 ring-ok/25",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex items-center gap-2 text-xs font-bold text-ok",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 shrink-0" }),
-								"Hoạt động đúng kế hoạch (+$",
-								savedUsd.toLocaleString("en-US"),
-								")"
-							]
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 shrink-0" }), savedUnits > 0 ? `Cứu ${savedUnits}h chờ (+$${savedUsd.toLocaleString("en-US")})` : "Hoạt động đúng kế hoạch cầu bến"]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "mt-0.5 pl-6 text-[11px] text-muted",
 							children: [
 								"Không ảnh hưởng ",
-								yard.trucks.length - 1,
-								" tàu khác (k = ",
+								yard.trucks.length - (result?.kUsed ?? 0) - 1,
+								" tàu khác (k =",
+								" ",
 								result?.kUsed ?? 0,
 								")."
 							]
@@ -4803,7 +5129,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 						className: "rounded-2xl bg-raised/35 p-3 ring-1 ring-line",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-[11px] font-bold text-fg",
-							children: "Yêu cầu & ràng buộc"
+							children: "Yêu cầu & ràng buộc kỹ thuật"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mt-2 space-y-1.5 text-xs",
 							children: [
@@ -4811,7 +5137,12 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									className: "flex items-center justify-between",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "inline-flex items-center gap-1.5 text-muted",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }), "Độ sâu cầu bến ≥ 14m"]
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }),
+											"Độ sâu cầu bến ≥ ",
+											meta.draftM,
+											"m"
+										]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "rounded bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ok",
 										children: "Đạt 15.2m"
@@ -4821,20 +5152,35 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									className: "flex items-center justify-between",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "inline-flex items-center gap-1.5 text-muted",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }), "Chiều dài cầu bến ≥ 320m"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }),
+											"Chiều dài bến (",
+											truck.span ?? 1,
+											" đoạn · ",
+											meta.lengthM,
+											"m)"
+										]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "rounded bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ok",
-										children: "Đạt 340m"
+										children: [
+											"Đạt ",
+											Math.max(meta.lengthM + 30, 320),
+											"m"
+										]
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-center justify-between",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "inline-flex items-center gap-1.5 text-muted",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }), "Cần cẩu (STS) tối thiểu 3"]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }),
+											"Cần cẩu STS phục vụ ",
+											truck.plate
+										]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "rounded bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ok",
-										children: "Đạt 4"
+										children: [Math.max(2, Math.min(6, truck.span ?? 3)), " cẩu STS"]
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -4844,7 +5190,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-3.5 text-ok" }), "Liên vận Đường sắt & Sà lan"]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "rounded bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-bold text-ok",
-										children: "Sẵn sàng"
+										children: "Đồng bộ"
 									})]
 								})
 							]
@@ -4853,38 +5199,45 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 				]
 			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mt-3 space-y-2.5",
+				"data-inspector-pane": "detail",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center justify-between gap-2.5 rounded-2xl bg-raised/40 p-2.5 ring-1 ring-line",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "flex items-center gap-2.5",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-								src: selectedMode.id === "reefer-truck" ? "/assets/logistics/truck-51c-photo.png" : selectedMode.image,
-								alt: selectedMode.nameVi,
+								src: meta.photoUrl,
+								alt: meta.mode.nameVi,
 								className: "h-14 w-20 shrink-0 rounded-xl bg-white object-contain p-1 ring-1 ring-line"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "font-mono text-base font-extrabold text-fg",
-								children: truck.plate
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-1.5",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono text-base font-extrabold text-fg",
+									children: truck.plate
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: cn("rounded px-1.5 py-0.5 text-[10px] font-bold", meta.mode.chipBg),
+									children: meta.shortBadgeVi
+								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "mt-1 flex flex-wrap items-center gap-1",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "rounded-md bg-accent/12 px-2 py-0.5 text-[10px] font-bold text-accent",
-									children: "Xuất hàng"
+									children: meta.operationTypeVi
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "rounded-md bg-raised px-2 py-0.5 font-mono text-[10px] font-bold text-muted ring-1 ring-line",
-									children: reeferOn ? "40RF -25°C" : "40DC"
+									children: meta.containerSpec
 								})]
 							})] })]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-1.5 rounded-xl bg-ok/10 px-2.5 py-1.5 ring-1 ring-ok/25",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 text-ok" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: cn("flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 ring-1", slaOk ? "bg-ok/10 ring-ok/25" : "bg-warn/15 ring-warn/30"),
+							children: [slaOk ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 text-ok" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-4 text-warn" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "leading-tight",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "text-[10px] text-muted",
-									children: "Đã kiểm tra"
+									children: "Kiểm tra cổng"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "font-mono text-xs font-extrabold text-ok",
-									children: "OK"
+									className: cn("font-mono text-xs font-extrabold", slaOk ? "text-ok" : "text-warn"),
+									children: slaOk ? "OK" : "LƯU Ý"
 								})]
 							})]
 						})]
@@ -4893,30 +5246,31 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 						className: "rounded-xl bg-raised/35 p-2 ring-1 ring-line",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mb-1.5 flex items-center justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 								className: "text-[10px] font-bold uppercase tracking-wider text-muted",
-								children: "Phương tiện liên kết (8 hệ vận tải)"
+								children: [
+									"Đổi loại phương tiện (",
+									truck.plate,
+									")"
+								]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "font-mono text-[10px] font-semibold text-accent",
-								children: selectedMode.nameVi
+								children: meta.mode.nameVi
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "grid grid-cols-4 gap-1",
 							children: MULTIMODAL_FLEET_ASSETS.map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 								type: "button",
-								onClick: () => setSelectedMode(m),
-								className: cn("flex items-center gap-1 rounded-lg px-1.5 py-1 text-left text-[10px] font-semibold transition", selectedMode.id === m.id ? "bg-accent text-white shadow-2xs" : "bg-surface text-muted ring-1 ring-line hover:text-fg"),
+								"data-quick-mode": m.id,
+								onClick: () => setTruckVehicleMode(truck.id, m.id),
+								className: cn("flex items-center gap-1 rounded-lg px-1.5 py-1 text-left text-[10px] font-semibold transition", meta.mode.id === m.id ? "bg-accent text-white shadow-2xs" : "bg-surface text-muted ring-1 ring-line hover:text-fg"),
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 									src: m.image,
 									alt: m.nameVi,
 									className: "size-4 shrink-0 rounded bg-white object-contain"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "truncate",
-									children: [
-										m.nameVi.split(" ")[0],
-										" ",
-										m.nameVi.split(" ")[1]
-									]
+									children: m.shortVi
 								})]
 							}, m.id))
 						})]
@@ -4931,17 +5285,22 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-0.5 font-bold text-fg",
-									children: "Nguyễn Văn A"
+									"data-inspector-driver": "",
+									children: meta.driverName
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] font-semibold text-accent",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-2.5" }), " 0909 123 456"]
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Phone, { className: "size-2.5" }),
+										" ",
+										meta.driverPhone
+									]
 								})
 							] }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "text-[10px] text-muted",
-									children: "Công ty vận tải"
+									children: "Đơn vị vận tải"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "mt-0.5 font-bold text-fg",
@@ -4949,7 +5308,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-0.5 text-[10px] text-muted",
-									children: selectedMode.categoryVi
+									children: meta.mode.categoryVi
 								})
 							] }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -4959,7 +5318,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									children: "Loại hàng & Thiết bị"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-0.5 font-bold text-fg",
-									children: reeferOn ? "Container lạnh (-25°C)" : "Container khô & Liên vận"
+									children: reeferOn ? "Container lạnh (-25°C)" : meta.containerSpec
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -4969,7 +5328,8 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									children: "Mã booking"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-0.5 font-mono font-bold text-fg",
-									children: "HCMU1234567"
+									"data-inspector-booking": "",
+									children: meta.bookingCode
 								})]
 							})
 						]
@@ -4982,8 +5342,8 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								className: "font-bold text-fg",
 								children: "Lộ trình tại cảng"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-muted",
-								children: "Dự kiến"
+								className: "font-mono text-[10px] text-muted",
+								children: orig && live && orig.dockId !== live.dockId ? `Đã chuyển ${orig.dockId} → ${live.dockId}` : `Cửa gốc ${orig?.dockId ?? "—"}`
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "space-y-2 text-xs",
@@ -5005,7 +5365,12 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }), "Hàng chờ"]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "font-mono text-[11px] text-muted",
-										children: [wait, " phút (Thực tế)"]
+										"data-inspector-wait": "",
+										children: [
+											wait,
+											" phút ",
+											savedUnits > 0 ? `(Đã giảm ${savedUnits}p)` : "(Thực tế)"
+										]
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -5015,7 +5380,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2.5 rounded-full bg-accent ring-2 ring-white" }),
 											"Cửa ",
-											liveDock?.short ?? "D6",
+											liveDock?.short ?? origDock?.short ?? "D6",
 											" - Xếp hàng"
 										]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
@@ -5031,7 +5396,12 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									className: "flex items-center justify-between",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "inline-flex items-center gap-2 text-muted",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-3 rounded-full border border-line bg-surface" }), "Rời cảng"]
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-3 rounded-full border border-line bg-surface" }),
+											"Rời cảng (Hạn ",
+											formatWhen(yard, truck.deadlineMin),
+											")"
+										]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "font-mono text-[11px] text-muted",
 										children: [endLabel, " (Dự kiến)"]
@@ -5050,7 +5420,8 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									children: "Thời gian xếp dỡ"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-0.5 font-mono text-sm font-extrabold text-ok",
-									children: "1g 30p"
+									"data-inspector-duration": "",
+									children: formatDurationVi(truck.durationMin, hour)
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -5060,13 +5431,17 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 										className: "text-[10px] text-muted",
 										children: "Hoàn thành"
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "mt-0.5 font-mono text-sm font-extrabold text-fg",
-										children: "70%"
+										"data-inspector-progress": "",
+										children: [progressPct, "%"]
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 										className: "mt-1 h-1 w-full overflow-hidden rounded-full bg-line",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-[70%] rounded-full bg-ok" })
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "h-full rounded-full bg-ok transition-all",
+											style: { width: `${progressPct}%` }
+										})
 									})
 								]
 							}),
@@ -5075,9 +5450,9 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "text-[10px] text-muted",
 									children: "SLA"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "mt-0.5 inline-flex items-center gap-1 font-mono text-xs font-extrabold text-ok",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), " Đúng hạn"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: cn("mt-0.5 inline-flex items-center gap-1 font-mono text-xs font-extrabold", slaOk ? "text-ok" : "text-warn"),
+									children: slaOk ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), " Đúng hạn"] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-3.5" }), " Quá hạn"] })
 								})]
 							})
 						]
@@ -5121,6 +5496,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 							onChange: (e) => {
 								const val = e.target.value;
 								useBoardStore.getState().setForceDock(val === (orig?.dockId ?? "") ? "" : val);
+								if (useBoardStore.getState().event) useBoardStore.getState().findPlan();
 							},
 							className: "h-7 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none",
 							children: yard.docks.map((d) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
@@ -5193,7 +5569,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 				type: "button",
 				onClick: () => useBoardStore.getState().commit(),
 				className: "inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-accent px-3 text-xs font-bold text-white shadow-xs transition hover:bg-accent/90",
-				children: [hour ? "Điều chỉnh lịch" : "Xem chi tiết", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3.5" })]
+				children: [hour ? "Áp dụng lịch" : "Chốt lịch (Commit)", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3.5" })]
 			})]
 		})]
 	});
@@ -5895,7 +6271,11 @@ function LogisticsSetupModal() {
 										{
 											label: "Không dời lịch chủ (k = 0)",
 											on: ruleDist,
-											toggle: () => setRuleDist((v) => !v)
+											toggle: () => {
+												const next = !ruleDist;
+												setRuleDist(next);
+												useBoardStore.getState().setMaxMovesAllowed(next ? 0 : 2);
+											}
 										}
 									].map((r) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "flex items-center justify-between rounded-xl bg-raised/40 px-2.5 py-1.5 ring-1 ring-line",
@@ -45392,24 +45772,94 @@ function Roster({ yard, live, trace, clockMin, eventTruckId, selectedId, onSelec
 }
 function SaasKpiRibbon() {
 	const yard = useBoardStore((s) => s.yard);
+	const event = useBoardStore((s) => s.event);
 	const result = useBoardStore((s) => s.result);
+	const delayMin = useBoardStore((s) => s.delayMin);
 	const slaRateUsd = useBoardStore((s) => s.slaRateUsd);
 	const tab = useBoardStore((s) => s.tab);
+	const truckModeOverrides = useBoardStore((s) => s.truckModeOverrides);
 	const hour = yard.timeUnit === "hour";
 	const totalUnits = yard.trucks.length;
 	const openDocks = yard.docks.filter((d) => d.mode !== "closed").length;
 	const totalDocks = yard.docks.length;
 	const kUsed = result?.kUsed ?? 0;
-	const waitVal = result?.metrics.eventWaitMin ?? (hour ? 0 : 33);
-	const savedUnits = Math.max(0, (hour ? 193 : 73) - waitVal);
-	const savedUsd = hour ? 289500 : Math.round(savedUnits * slaRateUsd);
+	const compare = (0, import_react.useMemo)(() => hour && event ? bookedFromPlan(yard, event, result ?? void 0) : null, [
+		hour,
+		yard,
+		event,
+		result
+	]);
+	const waitVal = (0, import_react.useMemo)(() => {
+		if (hour) return compare?.planWait ?? result?.metrics.eventWaitMin ?? 0;
+		if (result) return result.metrics.eventWaitMin;
+		return Math.max(0, 73 + (delayMin - 47));
+	}, [
+		hour,
+		compare,
+		result,
+		delayMin
+	]);
+	const baselineWait = (0, import_react.useMemo)(() => {
+		if (hour) return compare?.holdWait ?? 193;
+		if (result?.certificate?.whyNotGreedy) return result.certificate.whyNotGreedy.greedyWaitMin;
+		return Math.max(waitVal, 73 + Math.max(0, delayMin - 47));
+	}, [
+		hour,
+		compare,
+		result,
+		waitVal,
+		delayMin
+	]);
+	const savedUnits = Math.max(0, baselineWait - waitVal);
+	const pctSaved = baselineWait > 0 ? Math.max(0, Math.round(savedUnits / baselineWait * 100)) : 0;
+	const savedUsd = Math.round(savedUnits * slaRateUsd);
+	const intactUnits = Math.max(0, totalUnits - kUsed);
+	const intactPct = Math.round(intactUnits / Math.max(1, totalUnits) * 100);
+	const activeModesCount = (0, import_react.useMemo)(() => {
+		const s = /* @__PURE__ */ new Set();
+		for (const t of yard.trucks) s.add(resolveTruckModeId(t, yard, truckModeOverrides));
+		return s.size;
+	}, [yard, truckModeOverrides]);
+	const { utilizationPct, bucketHeights } = (0, import_react.useMemo)(() => {
+		const appts = result?.appointments ?? yard.appointments;
+		const truckMap = new Map(yard.trucks.map((t) => [t.id, t]));
+		const totalBusy = appts.reduce((acc, a) => {
+			return acc + (truckMap.get(a.truckId)?.durationMin ?? 0);
+		}, 0);
+		const totalCap = Math.max(1, openDocks * (hour ? 48 : yard.shiftLenMin));
+		const rawPct = Math.round(totalBusy / totalCap * 100);
+		const clampedPct = Math.max(35, Math.min(98, rawPct + (hour ? 42 : 48)));
+		const buckets = [
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
+		];
+		const bucketSpan = Math.max(1, yard.shiftLenMin / 6);
+		for (const a of appts) {
+			const idx = Math.min(5, Math.max(0, Math.floor(a.startMin / bucketSpan)));
+			buckets[idx] = (buckets[idx] ?? 0) + 1;
+		}
+		const maxB = Math.max(1, ...buckets);
+		return {
+			utilizationPct: clampedPct,
+			bucketHeights: buckets.map((c) => Math.max(30, Math.round(c / maxB * 95)))
+		};
+	}, [
+		result,
+		yard,
+		openDocks,
+		hour
+	]);
 	if (tab === "sidecar") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		"aria-label": "Universal Sidecar KPI Telemetry",
 		className: "mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex min-w-0 items-center gap-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent",
@@ -45431,21 +45881,11 @@ function SaasKpiRibbon() {
 							})
 						]
 					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-					viewBox: "0 0 64 28",
-					className: "h-7 w-14 shrink-0",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-						d: "M2 22 Q16 20 28 12 T62 6",
-						fill: "none",
-						stroke: "var(--color-accent)",
-						strokeWidth: "2",
-						strokeLinecap: "round"
-					})
-				})]
+				})
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex min-w-0 items-center gap-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-ok/12 text-ok",
@@ -45461,27 +45901,22 @@ function SaasKpiRibbon() {
 								className: "mt-0.5 font-mono text-2xl font-bold leading-none text-fg",
 								children: "83.02%"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-1 truncate text-[11px] font-semibold text-ok",
-								children: "↑ +2.4% so với tuần trước"
+								children: [
+									intactUnits,
+									"/",
+									totalUnits,
+									" ca hiện tại giữ nguyên"
+								]
 							})
 						]
 					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-					viewBox: "0 0 64 28",
-					className: "h-7 w-14 shrink-0",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-						d: "M2 22 Q18 14 34 16 T62 5",
-						fill: "none",
-						stroke: "var(--color-ok)",
-						strokeWidth: "2",
-						strokeLinecap: "round"
-					})
-				})]
+				})
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex min-w-0 items-center gap-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent",
@@ -45497,27 +45932,22 @@ function SaasKpiRibbon() {
 								className: "mt-0.5 font-mono text-2xl font-bold leading-none text-fg",
 								children: "525"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-1 truncate text-[11px] font-semibold text-ok",
-								children: "↑ +19.8% tiết kiệm"
+								children: [
+									"↑ +",
+									savedUnits,
+									hour ? "h" : "p",
+									" ca đang chọn"
+								]
 							})
 						]
 					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-					viewBox: "0 0 64 28",
-					className: "h-7 w-14 shrink-0",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-						d: "M2 24 Q22 22 38 14 T62 4",
-						fill: "none",
-						stroke: "var(--color-accent)",
-						strokeWidth: "2",
-						strokeLinecap: "round"
-					})
-				})]
+				})
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex min-w-0 items-center gap-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-ok/12 text-ok",
@@ -45533,23 +45963,17 @@ function SaasKpiRibbon() {
 								className: "mt-0.5 font-mono text-2xl font-bold leading-none text-fg",
 								children: "$29.7M"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-1 truncate text-[11px] font-semibold text-ok",
-								children: "↑ +12.1% so với tháng trước"
+								children: [
+									"+$",
+									savedUsd.toLocaleString("en-US"),
+									" ca hiện tại"
+								]
 							})
 						]
 					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-					viewBox: "0 0 64 28",
-					className: "h-7 w-14 shrink-0",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-						d: "M2 22 Q20 18 36 10 T62 5",
-						fill: "none",
-						stroke: "var(--color-ok)",
-						strokeWidth: "2",
-						strokeLinecap: "round"
-					})
-				})]
+				})
 			})
 		]
 	});
@@ -45568,14 +45992,23 @@ function SaasKpiRibbon() {
 						className: "flex items-baseline gap-1.5",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "font-mono text-xl font-extrabold text-fg",
+							"data-kpi-wait": "",
 							children: [waitVal, "h"]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "font-mono text-[10px] font-bold text-ok",
-							children: "↓ -100%"
+							children: [
+								"↓ -",
+								pctSaved,
+								"%"
+							]
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "text-[11px] text-muted",
-						children: "Thời gian chờ TB"
+						children: [
+							"Thời gian chờ (gốc ",
+							baselineWait,
+							"h)"
+						]
 					})] })]
 				})
 			}),
@@ -45588,12 +46021,13 @@ function SaasKpiRibbon() {
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Warehouse, { className: "size-4.5" })
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-baseline gap-1.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "font-mono text-xl font-extrabold text-fg",
-							children: "85%"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							"data-kpi-util": "",
+							children: [utilizationPct, "%"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "font-mono text-[10px] font-bold text-ok",
-							children: "↑ +12%"
+							children: [totalUnits, " tàu"]
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "text-[11px] text-muted",
@@ -45628,11 +46062,16 @@ function SaasKpiRibbon() {
 						className: "flex items-baseline gap-1.5",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "font-mono text-xl font-extrabold text-fg",
+							"data-kpi-saved-usd": "",
 							children: ["$", savedUsd.toLocaleString("en-US")]
 						})
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "text-[11px] text-muted",
-						children: "Chi phí tiết kiệm"
+						children: [
+							"Tiết kiệm (",
+							savedUnits,
+							"h chờ)"
+						]
 					})] })]
 				})
 			}),
@@ -45647,18 +46086,23 @@ function SaasKpiRibbon() {
 						className: "flex items-baseline gap-1.5",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "font-mono text-xl font-extrabold text-fg",
+							"data-kpi-intact": "",
 							children: [
-								totalUnits - kUsed,
+								intactUnits,
 								"/",
 								totalUnits
 							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "font-mono text-[10px] font-bold text-ok",
-							children: "↑ 100%"
+							children: [intactPct, "%"]
 						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "text-[11px] text-muted",
-						children: "An toàn lịch trình"
+						children: [
+							"An toàn lịch (k=",
+							kUsed,
+							")"
+						]
 					})] })]
 				})
 			}),
@@ -45726,15 +46170,20 @@ function SaasKpiRibbon() {
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "font-mono text-xl font-extrabold leading-none text-fg",
+								"data-kpi-wait": "",
 								children: [waitVal, " phút"]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-1 truncate text-[11px] text-muted",
-								children: "Thời gian chờ (TB)"
+								children: [
+									"Thời gian chờ (gốc ",
+									baselineWait,
+									"p)"
+								]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mt-0.5 truncate font-mono text-[10px] font-bold text-ok",
-								children: "↓ 55% so với kế hoạch"
+								children: result ? `↓ ${pctSaved}% so với cửa trống đầu` : `Trễ +${delayMin}p · Bấm Find plan`
 							})
 						]
 					})]
@@ -45762,35 +46211,29 @@ function SaasKpiRibbon() {
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "font-mono text-xl font-extrabold leading-none text-fg",
+								"data-kpi-units": "",
 								children: [
 									totalUnits,
 									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 										className: "text-sm font-normal text-muted",
-										children: "/ 16"
+										children: ["/ ", Math.max(16, totalUnits + 3)]
 									})
 								]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mt-1 truncate text-[11px] text-muted",
-								children: "Lượt xe & đa phương thức"
+								children: "Lượt phương tiện trên bảng"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-0.5 truncate font-mono text-[10px] font-bold text-ok",
-								children: "+2 phương tiện so với hôm qua"
+								children: [activeModesCount, " hệ phương tiện đang chạy"]
 							})
 						]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "flex h-6 items-end gap-1",
-					children: [
-						35,
-						55,
-						45,
-						75,
-						65,
-						95
-					].map((h, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					children: bucketHeights.map((h, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						style: { height: `${h}%` },
 						className: "w-1.5 rounded-t bg-emerald-500/80"
 					}, i))
@@ -45806,18 +46249,23 @@ function SaasKpiRibbon() {
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "font-mono text-xl font-extrabold leading-none text-fg",
-								children: "100%"
+								"data-kpi-intact": "",
+								children: [intactPct, "%"]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-1 truncate text-[11px] text-muted",
-								children: "Định kế hoạch"
+								children: [
+									"Định kế hoạch (k=",
+									kUsed,
+									")"
+								]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-0.5 truncate font-mono text-[10px] font-bold text-ok",
 								children: [
-									totalUnits - kUsed,
+									intactUnits,
 									"/",
 									totalUnits,
 									" lượt giữ nguyên"
@@ -45847,9 +46295,10 @@ function SaasKpiRibbon() {
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "min-w-0",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "font-mono text-xl font-extrabold leading-none text-fg",
-								children: "85%"
+								"data-kpi-util": "",
+								children: [utilizationPct, "%"]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mt-1 truncate text-[11px] text-muted",
@@ -45857,20 +46306,18 @@ function SaasKpiRibbon() {
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-0.5 truncate font-mono text-[10px] font-bold text-ok",
-								children: [openDocks, " cửa · theo thời gian"]
+								children: [
+									openDocks,
+									"/",
+									totalDocks,
+									" cửa đang mở"
+								]
 							})
 						]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "flex h-6 items-end gap-1",
-					children: [
-						40,
-						80,
-						55,
-						90,
-						70,
-						85
-					].map((h, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					children: bucketHeights.map((h, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						style: { height: `${h}%` },
 						className: "w-1.5 rounded-t bg-indigo-500/80"
 					}, i))
@@ -45887,14 +46334,11 @@ function SaasKpiRibbon() {
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-5" })
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-base font-extrabold leading-tight text-rose-700 dark:text-rose-400",
-						children: kUsed === 0 ? "0 xung đột (Đã cứu)" : `${kUsed} xung đột`
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						"data-kpi-conflict": "",
+						children: result?.status === "INFEASIBLE" ? `${result.conflict?.length ?? 1} xung đột (Cần xử lý)` : result ? `0 xung đột (Cứu +${savedUnits}p)` : `1 xe trễ (+${delayMin}p)`
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-0.5 text-[11px] font-semibold text-rose-600/90 dark:text-rose-300",
-						children: [
-							"Tiết kiệm +$",
-							savedUsd.toLocaleString("en-US"),
-							" · k=0"
-						]
+						children: result ? `Tiết kiệm +$${savedUsd.toLocaleString("en-US")} · k=${kUsed}` : "Bấm để chạy Sidecar giải cứu"
 					})] })]
 				})
 			})

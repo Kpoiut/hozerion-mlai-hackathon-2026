@@ -186,4 +186,70 @@ describe("board e2e", () => {
       await browser.close();
     }
   });
+
+  it("renders distinct vehicle icons & badges on Gantt cards and syncs Inspector + live mode overrides", async () => {
+    const browser = await chromium.launch({ headless: true }).catch(() => chromium.launch({ channel: "msedge", headless: true }));
+    try {
+      const page = await browser.newPage({ viewport: { width: 1600, height: 960 } });
+      await page.goto(URL, { waitUntil: "domcontentloaded", timeout: 15_000 });
+      await page.getByText("Staying on berth 0 waits 193h. The plan waits 0h on berth 5.").first().waitFor({ timeout: 15_000 });
+      await page.getByRole("button", { name: "ICD minute demo" }).click();
+      await page.getByRole("button", { name: "Find plan" }).click();
+      await page.getByText("Ready").waitFor({ timeout: 15_000 });
+
+      // 1. Verify Gantt cards have distinct vehicle modes and badges
+      const cardD = page.locator("[data-truck='D']");
+      assert.equal(await cardD.getAttribute("data-vehicle-mode"), "barge");
+      assert.equal(await cardD.getAttribute("data-vehicle-badge"), "Sà lan");
+
+      const cardP = page.locator("[data-truck='P']");
+      assert.equal(await cardP.getAttribute("data-vehicle-mode"), "train");
+      assert.equal(await cardP.getAttribute("data-vehicle-badge"), "Tàu hỏa");
+
+      // 2. Click on 51D-120.68 (D) on the Gantt board and verify Inspector updates dynamically (no hardcoded values)
+      await cardD.click();
+      assert.equal(await page.locator("[data-inspector-truck]").getAttribute("data-inspector-truck"), "D");
+      assert.equal(await page.locator("[data-inspector-driver]").innerText(), "Thuyền trưởng Võ Văn Kiệt");
+      assert.equal(await page.locator("[data-inspector-booking]").innerText(), "IWT-SG-12068");
+      assert.equal(await page.locator("[data-inspector-duration]").innerText(), "1g 10p");
+
+      // 3. Reassign D's vehicle mode in Inspector to "train" and verify Gantt card D updates live
+      await page.locator("[data-quick-mode='train']").click();
+      assert.equal(await cardD.getAttribute("data-vehicle-mode"), "train");
+      assert.equal(await cardD.getAttribute("data-vehicle-badge"), "Tàu hỏa");
+
+      // 4. Switch to Inspector "8 Phương tiện" tab and inject a new vehicle onto the live board
+      await page.locator("[data-inspector-tab='multimodal']").click();
+      await page.locator("[data-inject-vehicle]").click();
+      const kpiUnits = await page.locator("[data-kpi-units]").innerText();
+      assert.match(kpiUnits, /^14/);
+    } finally {
+      await browser.close();
+    }
+  });
+
+  it("filters Gantt by vehicle mode and mutates live facility doors via Self-Setup Studio", async () => {
+    const browser = await chromium.launch({ headless: true }).catch(() => chromium.launch({ channel: "msedge", headless: true }));
+    try {
+      const page = await browser.newPage({ viewport: { width: 1600, height: 960 } });
+      await page.goto(URL, { waitUntil: "domcontentloaded", timeout: 15_000 });
+      await page.getByText("Staying on berth 0 waits 193h. The plan waits 0h on berth 5.").first().waitFor({ timeout: 15_000 });
+      await page.getByRole("button", { name: "ICD minute demo" }).click();
+
+      // 1. Click Barge filter in Gantt legend and verify Inspector focuses on Barge D
+      await page.locator("[data-filter-vehicle='barge']").click();
+      assert.equal(await page.locator("[data-inspector-truck]").getAttribute("data-inspector-truck"), "D");
+
+      // 2. Open Self-Setup Studio, duplicate a door (6 -> 7 doors), and apply
+      await page.getByRole("button", { name: "Setup", exact: true }).click();
+      await page.getByRole("button", { name: /Nhân bản/ }).click();
+      await page.getByRole("button", { name: /Sẵn sàng cho mô phỏng/ }).click();
+
+      const body = await page.locator("body").innerText();
+      assert.match(body, /7\/7 cửa đang mở/);
+    } finally {
+      await browser.close();
+    }
+  });
 });
+

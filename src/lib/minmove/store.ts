@@ -10,6 +10,7 @@ import { blockedExampleYard, publishedYard } from "./published-week.ts";
 import { BASE_DELAY_MIN, EVENT_TRUCK_ID, createYard } from "./seed.ts";
 import type { Appointment, ConstraintId, DelayEvent, EtcReading, EtcSourceId, EtcVerdict, SolveResult, Yard } from "./types.ts";
 import { defaultNowMin } from "./windows.ts";
+import { resolveTruckModeId, type MultimodalModeId } from "./vehicle-modes.ts";
 
 export type Tab = "overview" | "board" | "roster" | "flow" | "mlai" | "sidecar" | "bacap" | "federation" | "docs" | "microtos";
 export type GanttFilter = "all" | "late" | "moved" | "reefer" | "dry" | "priority";
@@ -25,6 +26,7 @@ export interface CustomJobInput {
   cargo: "dry" | "reefer";
   priority: 1 | 2 | 3;
   span?: number;
+  vehicleMode?: MultimodalModeId;
 }
 
 export interface BoardState {
@@ -50,6 +52,8 @@ export interface BoardState {
   etc: EtcVerdict | null;
   setupOpen: boolean;
   ganttFilter: GanttFilter;
+  vehicleModeFilter: MultimodalModeId | "all";
+  truckModeOverrides: Record<string, MultimodalModeId>;
   slaRateUsd: number;
   maxMovesAllowed: 0 | 1 | 2;
   freezeWindowMin: number;
@@ -85,6 +89,8 @@ export interface BoardState {
   liveRoute: () => Promise<void>;
   setSetupOpen: (v: boolean) => void;
   setGanttFilter: (f: GanttFilter) => void;
+  setVehicleModeFilter: (m: MultimodalModeId | "all") => void;
+  setTruckVehicleMode: (truckId: string, mode: MultimodalModeId) => void;
   setSlaRateUsd: (n: number) => void;
   setMaxMovesAllowed: (k: 0 | 1 | 2) => void;
   setFreezeWindowMin: (n: number) => void;
@@ -120,6 +126,8 @@ function blankChrome() {
     etc: null as EtcVerdict | null,
     setupOpen: false,
     ganttFilter: "all" as GanttFilter,
+    vehicleModeFilter: "all" as MultimodalModeId | "all",
+    truckModeOverrides: {} as Record<string, MultimodalModeId>,
     slaRateUsd: 1500,
     maxMovesAllowed: 0 as 0 | 1 | 2,
     freezeWindowMin: 30,
@@ -599,7 +607,35 @@ export const useBoardStore = create<BoardState>((set, get) => ({
   },
 
   setSetupOpen: (v) => set({ setupOpen: v }),
-  setGanttFilter: (f) => set({ ganttFilter: get().ganttFilter === f ? "all" : f }),
+  setGanttFilter: (f) => set({ ganttFilter: get().ganttFilter === f ? "all" : f, vehicleModeFilter: "all" }),
+  setVehicleModeFilter: (m) => {
+    const cur = get();
+    const next = cur.vehicleModeFilter === m ? "all" : m;
+    if (next === "all") {
+      set({ vehicleModeFilter: "all" });
+      return;
+    }
+    const matchingTruck = cur.yard.trucks.find(
+      (t) => resolveTruckModeId(t, cur.yard, cur.truckModeOverrides) === next,
+    );
+    set({
+      vehicleModeFilter: next,
+      ganttFilter: "all",
+      ...(matchingTruck ? { selectedId: matchingTruck.id } : {}),
+    });
+  },
+  setTruckVehicleMode: (truckId, mode) => {
+    const cur = get();
+    const yard = cloneYard(cur.yard);
+    const t = yard.trucks.find((x) => x.id === truckId);
+    if (t) {
+      t.vehicleMode = mode;
+    }
+    set({
+      yard,
+      truckModeOverrides: { ...cur.truckModeOverrides, [truckId]: mode },
+    });
+  },
   setSlaRateUsd: (n) => set({ slaRateUsd: Math.max(1, Math.round(n)) }),
   setMaxMovesAllowed: (k) => {
     set({ maxMovesAllowed: k });

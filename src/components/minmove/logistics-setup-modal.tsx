@@ -599,7 +599,11 @@ export function LogisticsSetupModal() {
                   {
                     label: "Không dời lịch chủ (k = 0)",
                     on: ruleDist,
-                    toggle: () => setRuleDist((v) => !v),
+                    toggle: () => {
+                      const next = !ruleDist;
+                      setRuleDist(next);
+                      useBoardStore.getState().setMaxMovesAllowed(next ? 0 : 2);
+                    },
                   },
                 ].map((r) => (
                   <div
