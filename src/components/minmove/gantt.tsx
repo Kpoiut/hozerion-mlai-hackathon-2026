@@ -22,13 +22,13 @@ import { doorOccupancy, type Occupancy } from "@/lib/minmove/doors.ts";
 import type { Appointment, Dock, Truck as TruckT, Yard } from "@/lib/minmove/types.ts";
 import { cn } from "@/lib/utils.ts";
 
-const ROW_H = 80;
-const CARD_H = 56;
-const CARD_INSET = 12;
-const FEATURED_INSET = 8;
+const ROW_H = 62;
+const CARD_H = 46;
+const CARD_INSET = 8;
+const FEATURED_INSET = 5;
 const FEATURED_H = ROW_H - FEATURED_INSET * 2;
-const STACK_INSET = 28;
-const DOOR_COL = "5.75rem";
+const STACK_INSET = 22;
+const DOOR_COL = "5.5rem";
 const EMPTY_FLOW: FlowBlock[] = [];
 
 interface RowGeom {
@@ -469,14 +469,20 @@ const Track = memo(function Track({
       )}
       {showGhost && ghost && ghostLive && ghostTruck && ghostIndex >= 0 ? (
         <span
-          className="pointer-events-none absolute rounded-xl ring-1 ring-dashed ring-fg/25"
+          className="pointer-events-none absolute z-10 flex items-center justify-center overflow-hidden rounded-xl bg-warn/[0.06] px-2 ring-1 ring-dashed ring-warn/60"
           style={{
             top: ghostIndex * geom.rowH + geom.cardInset,
             height: geom.cardH,
             left: `${scale.toPct(ghost.startMin)}%`,
             width: `${Math.max(0, scale.toPct(ghost.startMin + ghostTruck.durationMin) - scale.toPct(ghost.startMin))}%`,
           }}
-        />
+        >
+          {!geom.compact ? (
+            <span className="truncate font-mono text-[10px] font-semibold text-warn">
+              Booked {ghost.dockId} → {ghostLive.dockId}
+            </span>
+          ) : null}
+        </span>
       ) : null}
       {blocks.map((b) => {
         const t = trucks.get(b.truckId);
@@ -529,16 +535,24 @@ const DoorStatus = memo(function DoorStatus({
       style={{ height: rowH }}
     >
       <span className="flex w-full items-center justify-between">
-        <span className={cn("font-semibold tabular-nums leading-none tracking-tight", compact ? "font-mono text-[11px]" : "text-2xl", forced && "text-accent")}>
-          {index}
+        <span
+          className={cn(
+            "font-mono font-bold tabular-nums leading-none tracking-tight",
+            compact ? "text-[11px]" : "text-base text-fg",
+            forced && "text-accent",
+          )}
+        >
+          {compact ? index : `D${index}`}
         </span>
         {forced ? (
-          <span className="rounded bg-accent px-1 py-0.5 font-mono text-[9px] font-bold text-accent-fg">PIN</span>
+          <span className="rounded bg-accent px-1 py-0.5 font-mono text-[9px] font-bold text-accent-fg">
+            PIN
+          </span>
         ) : null}
       </span>
       {compact ? null : (
-        <span className={cn("mt-1 inline-flex items-center gap-1 text-xs font-medium", tone)}>
-          <StatusIcon className="size-3.5" strokeWidth={1.9} />
+        <span className={cn("mt-1 inline-flex items-center gap-1 text-[11px] font-medium", tone)}>
+          <StatusIcon className="size-3" strokeWidth={2} />
           {label}
         </span>
       )}
@@ -564,11 +578,19 @@ const ApptCard = memo(function ApptCard({
   onSelect: (id: string) => void;
 }) {
   const geom = useGeom();
-  const treatReefer = useBoardStore((s) => s.event?.truckId === block.truckId && s.event?.cargoOverride === "reefer");
+  const treatReefer = useBoardStore(
+    (s) => s.event?.truckId === block.truckId && s.event?.cargoOverride === "reefer",
+  );
   const filter = useBoardStore((s) => s.ganttFilter);
   const reefer = truck.cargo === "reefer" || Boolean(treatReefer);
   const stacked = block.stack > 0;
-  const inset = geom.compact ? geom.cardInset : stacked ? STACK_INSET : featured ? FEATURED_INSET : CARD_INSET;
+  const inset = geom.compact
+    ? geom.cardInset
+    : stacked
+      ? STACK_INSET
+      : featured
+        ? FEATURED_INSET
+        : CARD_INSET;
   const height = geom.compact ? geom.cardH : featured && !stacked ? FEATURED_H : CARD_H;
 
   const matchesFilter =
@@ -590,37 +612,33 @@ const ApptCard = memo(function ApptCard({
       className={cn(
         "absolute z-10 text-left transition-all [contain:layout]",
         geom.compact ? "" : "[content-visibility:auto]",
-        geom.compact ? "rounded-md px-1" : "rounded-2xl px-3 py-2",
+        geom.compact ? "rounded-[5px] px-1.5" : "rounded-xl border-l-[3px] px-2 py-1.5",
         featured
-          ? "z-30 overflow-visible bg-accent text-accent-fg shadow-float ring-2 ring-accent"
+          ? "z-30 overflow-hidden bg-accent text-accent-fg shadow-float ring-1 ring-accent"
           : "overflow-hidden bg-surface shadow-2xs ring-1 ring-line hover:ring-accent/60",
+        !geom.compact && featured && "border-l-white/70",
+        !geom.compact && !featured && reefer && "border-l-accent bg-accent/[0.04] ring-accent/25",
+        !geom.compact && !featured && !reefer && "border-l-ok",
         !featured && block.changed && "bg-ok/10 ring-ok/35",
-        !featured && reefer && !block.changed && "bg-accent/[0.06] ring-accent/25",
         selected && !featured && "ring-2 ring-accent",
         !matchesFilter && "opacity-25",
       )}
       style={{ left: `${block.left}%`, width: `${block.width}%`, top: top + inset, height }}
     >
-      {featured ? (
-        <span className="pointer-events-none absolute top-0 left-1/2 z-40 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent ring-[3px] ring-surface" />
-      ) : null}
       <span className="pointer-events-none flex h-full flex-col justify-between">
-        <span className="flex items-center justify-between gap-1.5">
-          <span className="flex min-w-0 items-center gap-1.5">
-            {geom.compact ? null : <Truck className="size-3.5 shrink-0 opacity-80" />}
-            <span
-              className={cn(
-                "truncate font-semibold leading-none tracking-tight",
-                geom.compact ? "font-mono text-[10px]" : "text-xs sm:text-sm",
-              )}
-            >
-              {truck.plate}
-            </span>
+        <span className="flex items-center justify-between gap-1">
+          <span
+            className={cn(
+              "truncate font-mono font-semibold leading-none tracking-tight",
+              geom.compact ? "text-[10px]" : "text-[11px]",
+            )}
+          >
+            {truck.plate}
           </span>
-          {!geom.compact && !stacked && block.width >= 15 ? (
+          {!geom.compact && !stacked && block.width >= 14 ? (
             <span
               className={cn(
-                "hidden shrink-0 rounded-md px-1.5 py-0.5 font-mono text-[9px] font-bold sm:inline-block",
+                "hidden shrink-0 rounded px-1 py-px font-mono text-[9px] font-semibold xl:inline-block",
                 featured
                   ? "bg-white/20 text-white"
                   : reefer
@@ -637,28 +655,28 @@ const ApptCard = memo(function ApptCard({
           <span className="flex items-center justify-between gap-1">
             <span
               className={cn(
-                "flex items-center gap-1 font-mono text-[11px] leading-none",
+                "flex items-center gap-1 font-mono text-[10px] leading-none",
                 featured ? "text-accent-fg/90" : "text-muted",
               )}
             >
               <span>{start}</span>
-              <CargoMark cargo={truck.cargo} featured={featured} className="size-3" />
+              <CargoMark cargo={truck.cargo} featured={featured} className="size-2.5" />
               {featured ? (
-                <span className="rounded bg-white/20 px-1 py-0.5 text-[9px] font-bold">
-                  P{truck.priority}
+                <span className="rounded bg-white/20 px-1 py-px text-[9px] font-bold">
+                  k=0
                 </span>
               ) : null}
             </span>
 
-            {!stacked ? (
+            {!stacked && block.width >= 11 ? (
               <span
                 className={cn(
-                  "hidden items-center gap-1 font-mono text-[10px] font-bold sm:inline-flex",
+                  "hidden items-center gap-0.5 font-mono text-[9px] font-semibold sm:inline-flex",
                   featured ? "text-white" : "text-ok",
                 )}
               >
-                <span className="size-2 rounded-full bg-current" />
-                {featured ? "100%" : "90%"}
+                <span className="size-1.5 rounded-full bg-current" />
+                {featured ? "Opt" : "SLA"}
               </span>
             ) : null}
           </span>

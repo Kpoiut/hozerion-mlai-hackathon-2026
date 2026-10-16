@@ -600,15 +600,15 @@ function Main() {
     result && isScheduleTab && !(yard.timeUnit === "hour" && tab === "board");
 
   return (
-    <div className="min-h-0 min-w-0 flex-1 overflow-auto p-4 sm:p-5">
+    <div className="min-h-0 min-w-0 flex-1 overflow-auto p-3.5 sm:p-4">
       {tab === "board" ? (
-        <div className="mb-3.5">
+        <div className="mb-2.5">
           <SaasKpiRibbon />
         </div>
       ) : null}
       {yard.timeUnit === "hour" && tab === "board" ? <JobCard /> : null}
       {showTopDecisionBar ? (
-        <div className="mb-3 rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line">
+        <div className="mb-2.5 rounded-xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line">
           <DecisionBar
             result={result}
             yard={yard}

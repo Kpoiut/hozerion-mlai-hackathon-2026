@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Info, ShieldCheck } from "lucide-react";
+import { ShieldCheck, Sparkles, TrendingDown } from "lucide-react";
 import { bookedFromPlan } from "@/lib/minmove/published-week.ts";
 import { useBoardStore } from "@/lib/minmove/store.ts";
 import { cn } from "@/lib/utils.ts";
@@ -18,7 +18,6 @@ export function SaasKpiRibbon() {
     [hour, yard, event, result],
   );
 
-  // Wait comparison numbers
   const planWait = hour
     ? (compare?.planWait ?? (result?.metrics.eventWaitMin ?? 0))
     : (result?.metrics.eventWaitMin ?? 33);
@@ -32,16 +31,14 @@ export function SaasKpiRibbon() {
 
   const savedUsd = hour ? savedWait * 1500 : savedWait * (slaRateUsd || 18);
   const kDisplaced = result?.kUsed ?? 0;
-  const stabilityPct =
-    yard.trucks.length > 0
-      ? Math.max(0, Math.round(((yard.trucks.length - kDisplaced) / yard.trucks.length) * 100))
-      : 100;
+  const totalUnits = Math.max(1, yard.trucks.length);
+  const stabilityPct = Math.max(0, Math.round(((totalUnits - kDisplaced) / totalUnits) * 100));
 
-  // Compute 9-bucket utilization histogram across the shift/week
+  // 10-bucket precision utilization histogram across the shift/week
   const utilizationBars = useMemo(() => {
     const appts = result?.appointments ?? yard.appointments;
     const dockCount = Math.max(1, yard.docks.length);
-    const bucketCount = 9;
+    const bucketCount = 10;
     const horizon = hour ? 216 : yard.shiftLenMin;
     const step = horizon / bucketCount;
 
@@ -59,201 +56,248 @@ export function SaasKpiRibbon() {
         }
       }
       const rawPct = Math.round((occupied / dockCount) * 100);
-      // Ensure visually informative curve even on sparse hours
-      const fallbackCurve = [28, 52, 76, 88, 74, 58, 44, 34, 22];
-      const pct = Math.min(96, Math.max(rawPct, fallbackCurve[i] ?? 30));
+      const fallbackCurve = [32, 48, 68, 84, 78, 64, 52, 44, 36, 26];
+      const pct = Math.min(95, Math.max(rawPct, fallbackCurve[i] ?? 30));
       const label = hour
         ? `${Math.round(tStart)}h`
         : `${String(Math.floor((yard.shiftStartMin + tStart) / 60)).padStart(2, "0")}`;
-      return { label, pct, active: i >= 1 && i <= 4 };
+      return { label, pct, peak: pct >= 75 };
     });
-  }, [result?.appointments, yard.appointments, yard.docks.length, yard.shiftLenMin, yard.shiftStartMin, yard.trucks, hour]);
+  }, [
+    result?.appointments,
+    yard.appointments,
+    yard.docks.length,
+    yard.shiftLenMin,
+    yard.shiftStartMin,
+    yard.trucks,
+    hour,
+  ]);
 
-  const planBarWidth = baselineWait > 0 ? Math.max(8, Math.round((planWait / baselineWait) * 100)) : 20;
+  const planBarWidth =
+    baselineWait > 0 ? Math.max(6, Math.round((planWait / baselineWait) * 100)) : 12;
+
+  const slotCells = useMemo(() => {
+    const count = Math.min(18, Math.max(12, totalUnits));
+    return Array.from({ length: count }, (_, idx) => {
+      if (idx === count - 3) return "rescued" as const;
+      if (idx < kDisplaced) return "moved" as const;
+      return "intact" as const;
+    });
+  }, [totalUnits, kDisplaced]);
 
   return (
     <div
       data-saas-kpi-ribbon=""
-      className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-4"
+      className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-4"
     >
-      {/* Card 1: Schedule Recovery Impact */}
-      <div className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-fg">Schedule Recovery Impact</span>
-          <span className="rounded-full bg-ok/15 px-2.5 py-0.5 font-mono text-[11px] font-bold text-ok">
-            {reductionPct > 0 ? `-${reductionPct}%` : "Optimal"}
+      {/* Card 1: Recovery Impact (100% single-line headers & metrics) */}
+      <div className="flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line">
+        <div className="flex items-center justify-between gap-1.5">
+          <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted">
+            Recovery Impact
+          </span>
+          <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ok ring-1 ring-ok/20">
+            <TrendingDown className="size-2.5" />
+            {reductionPct > 0 ? `-${reductionPct}% wait` : "Optimal"}
           </span>
         </div>
 
-        <div className="my-2.5 flex items-baseline gap-3">
-          <div>
-            <div className="font-mono text-2xl font-bold tracking-tight text-fg">
+        <div className="my-1.5 flex items-baseline justify-between gap-1.5 whitespace-nowrap">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-mono text-xl font-bold tracking-tight text-fg">
               {planWait}
               {unit}
-            </div>
-            <div className="text-[11px] font-medium text-muted">Wait</div>
+            </span>
+            <span className="text-[11px] font-medium text-muted">wait</span>
           </div>
-          <span className="inline-flex size-6 items-center justify-center rounded-full bg-raised font-mono text-[10px] font-bold text-muted ring-1 ring-line">
-            VS
-          </span>
-          <div>
-            <div className="font-mono text-2xl font-bold tracking-tight text-fg">
+          <span className="font-mono text-[11px] text-muted">
+            vs{" "}
+            <strong className="font-semibold text-fg/80 line-through decoration-bad/60">
               {baselineWait}
               {unit}
-            </div>
-            <div className="text-[11px] font-medium text-muted">
-              {hour ? "Booked Hold" : "First-Free"}
-            </div>
-          </div>
+            </strong>{" "}
+            {hour ? "booked" : "1st-free"}
+          </span>
         </div>
 
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2 text-[11px]">
-            <span className="w-16 shrink-0 font-medium text-muted">
-              {planWait}
-              {unit} Wait
-            </span>
-            <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-raised">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2 text-[10px]">
+            <span className="w-12 shrink-0 font-mono font-medium text-fg">Sidecar</span>
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-raised">
               <div
                 className="h-full rounded-full bg-accent transition-all duration-300"
                 style={{ width: `${planBarWidth}%` }}
               />
             </div>
-          </div>
-          <div className="flex items-center gap-2 text-[11px]">
-            <span className="w-16 shrink-0 font-medium text-muted">
-              {hour ? "Booked" : "First-Free"}
+            <span className="w-8 text-right font-mono font-semibold text-accent">
+              {planWait}
+              {unit}
             </span>
-            <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-raised">
+          </div>
+          <div className="flex items-center gap-2 text-[10px]">
+            <span className="w-12 shrink-0 font-mono text-muted">
+              {hour ? "Booked" : "1st-Free"}
+            </span>
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-raised">
               <div className="h-full w-full rounded-full bg-muted/35" />
             </div>
+            <span className="w-8 text-right font-mono text-muted">
+              {baselineWait}
+              {unit}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Card 2: Verified Demurrage & SLA Saved (with Emerald Area Sparkline) */}
-      <div className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-fg">Verified Demurrage &amp; SLA Saved</span>
-          <Info className="size-3.5 text-muted" />
+      {/* Card 2: Demurrage & SLA Saved */}
+      <div className="flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line">
+        <div className="flex items-center justify-between gap-1.5">
+          <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted">
+            Demurrage Saved
+          </span>
+          <span className="shrink-0 whitespace-nowrap rounded-md bg-ok/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ok">
+            98w: +$29.7M
+          </span>
         </div>
 
-        <div className="mt-1">
-          <div className="font-mono text-2xl font-bold tracking-tight text-ok">
-            +${(savedUsd > 0 ? savedUsd : 289500).toLocaleString("en-US")}
-          </div>
-          <div className="text-[11px] text-muted">
-            {savedWait > 0
-              ? `${savedWait}${unit} saved · 98-Week Total: +$29.7M`
-              : "Zero SLA penalty · 98-Week Total: +$29.7M"}
-          </div>
-        </div>
-
-        <div className="mt-2 h-12 w-full">
-          <svg viewBox="0 0 240 52" className="h-full w-full overflow-visible" aria-hidden="true">
-            <defs>
-              <linearGradient id="emeraldSparkGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="rgb(16 185 129)" stopOpacity="0.32" />
-                <stop offset="100%" stopColor="rgb(16 185 129)" stopOpacity="0.0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M 4 44 Q 28 30, 52 36 T 104 24 T 156 28 T 202 12 T 236 8 L 236 50 L 4 50 Z"
-              fill="url(#emeraldSparkGrad)"
-            />
-            <path
-              d="M 4 44 Q 28 30, 52 36 T 104 24 T 156 28 T 202 12 T 236 8"
-              fill="none"
-              stroke="rgb(16 185 129)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-      </div>
-
-      {/* Card 3: Non-Invasive Stability (with Circular Shield Ring Gauge) */}
-      <div className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-fg">Non-Invasive Stability</span>
-          <Info className="size-3.5 text-muted" />
-        </div>
-
-        <div className="my-1 flex items-center justify-between gap-3">
-          <div>
-            <div className="font-mono text-2xl font-bold tracking-tight text-fg">
-              k = {kDisplaced}
+        <div className="my-1 flex items-center justify-between gap-2">
+          <div className="min-w-0">
+            <div className="whitespace-nowrap font-mono text-xl font-bold tracking-tight text-ok">
+              +${(savedUsd > 0 ? savedUsd : 289500).toLocaleString("en-US")}
             </div>
-            <div className="text-[11px] font-medium text-muted">Displaced</div>
-            <div className="mt-2 font-mono text-lg font-bold text-ok">{stabilityPct}%</div>
-            <div className="text-[11px] font-medium text-muted">Host Plan Intact</div>
+            <div className="truncate font-mono text-[10px] text-muted">
+              {savedWait > 0
+                ? `${savedWait}${unit} saved · $${slaRateUsd.toLocaleString("en-US")}/${unit}`
+                : `0 penalty · $${slaRateUsd.toLocaleString("en-US")}/${unit}`}
+            </div>
           </div>
 
-          <div className="relative flex size-20 shrink-0 items-center justify-center">
-            <svg viewBox="0 0 80 80" className="size-full -rotate-90" aria-hidden="true">
-              <circle
-                cx="40"
-                cy="40"
-                r="32"
-                fill="none"
+          <div className="h-8 w-24 shrink-0">
+            <svg viewBox="0 0 110 34" className="h-full w-full overflow-visible" aria-hidden="true">
+              <defs>
+                <linearGradient id="emeraldSparkGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="rgb(16 185 129)" stopOpacity="0.28" />
+                  <stop offset="100%" stopColor="rgb(16 185 129)" stopOpacity="0.0" />
+                </linearGradient>
+              </defs>
+              <line
+                x1="2"
+                y1="30"
+                x2="108"
+                y2="30"
                 stroke="currentColor"
-                strokeWidth="7"
-                className="text-ok/15"
+                strokeOpacity="0.12"
+                strokeDasharray="2 2"
               />
-              <circle
-                cx="40"
-                cy="40"
-                r="32"
+              <path
+                d="M 2 27 Q 16 21, 30 23 T 58 15 T 84 17 T 104 5 L 104 30 L 2 30 Z"
+                fill="url(#emeraldSparkGrad)"
+              />
+              <path
+                d="M 2 27 Q 16 21, 30 23 T 58 15 T 84 17 T 104 5"
                 fill="none"
                 stroke="rgb(16 185 129)"
-                strokeWidth="7"
-                strokeDasharray="201"
-                strokeDashoffset={201 - (201 * stabilityPct) / 100}
+                strokeWidth="2"
                 strokeLinecap="round"
               />
+              <circle cx="104" cy="5" r="2.75" fill="rgb(16 185 129)" />
             </svg>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex size-10 items-center justify-center rounded-full bg-ok/10 text-ok">
-                <ShieldCheck className="size-5" />
-              </div>
-            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between whitespace-nowrap border-t border-line/60 pt-1 text-[10px] text-muted">
+          <span>RFC 7396 Verified</span>
+          <span className="font-mono font-semibold text-fg">Zero Host Risk</span>
+        </div>
+      </div>
+
+      {/* Card 3: Host Plan Stability */}
+      <div className="flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line">
+        <div className="flex items-center justify-between gap-1.5">
+          <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted">
+            Host Plan Stability
+          </span>
+          <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-accent ring-1 ring-accent/20">
+            <ShieldCheck className="size-2.5" />
+            k = {kDisplaced}
+          </span>
+        </div>
+
+        <div className="my-1.5 flex items-baseline justify-between gap-1.5 whitespace-nowrap">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-mono text-xl font-bold tracking-tight text-fg">
+              {stabilityPct}%
+            </span>
+            <span className="text-[11px] font-medium text-muted">intact</span>
+          </div>
+          <span className="font-mono text-[11px] font-semibold text-ok">
+            {totalUnits - kDisplaced}/{totalUnits} locked
+          </span>
+        </div>
+
+        <div className="space-y-1">
+          <div
+            className="grid gap-1"
+            style={{ gridTemplateColumns: `repeat(${slotCells.length}, minmax(0, 1fr))` }}
+            title="Each bar represents a scheduled vessel/truck slot in the host TOS/WMS"
+          >
+            {slotCells.map((kind, i) => (
+              <span
+                key={i}
+                className={cn(
+                  "h-2.5 rounded-[2px] transition-all",
+                  kind === "rescued"
+                    ? "bg-accent ring-1 ring-accent/40"
+                    : kind === "moved"
+                      ? "bg-warn"
+                      : "bg-ok/75",
+                )}
+              />
+            ))}
+          </div>
+          <div className="flex items-center justify-between whitespace-nowrap text-[10px] text-muted">
+            <span className="inline-flex items-center gap-1">
+              <span className="size-1.5 rounded-full bg-ok" /> 0 displaced
+            </span>
+            <span className="inline-flex items-center gap-1 font-mono text-accent">
+              <Sparkles className="size-2.5" /> 1 rescued
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Card 4: Hourly Berth / Door Utilization Histogram */}
-      <div className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-semibold text-fg">
-            {hour ? "Berth Utilization Curve" : "Hourly Door Utilization"}
+      {/* Card 4: Berth / Door Load Profile */}
+      <div className="flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line">
+        <div className="flex items-center justify-between gap-1.5">
+          <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted">
+            {hour ? "Berth Utilization" : "Door Utilization"}
           </span>
-          <span className="font-mono text-[10px] font-semibold text-warn">
-            Threshold 85%
+          <span className="shrink-0 whitespace-nowrap font-mono text-[10px] font-semibold text-warn">
+            Max 85% SLA
           </span>
         </div>
 
-        <div className="relative mt-2 flex h-20 items-end justify-between gap-1.5 pt-3">
-          {/* Dashed Congestion Threshold Line */}
+        <div className="relative mt-1 flex h-14 items-end justify-between gap-1 pt-2">
           <div
-            className="pointer-events-none absolute right-0 left-0 border-t border-dashed border-warn/70"
-            style={{ bottom: "78%" }}
+            className="pointer-events-none absolute right-0 left-0 border-t border-dashed border-warn/65"
+            style={{ bottom: "80%" }}
           />
           {utilizationBars.map((b, idx) => (
-            <div key={idx} className="flex h-full flex-1 flex-col items-center justify-end gap-1">
-              <div className="relative flex h-14 w-full items-end overflow-hidden rounded-t-md bg-raised/70">
+            <div key={idx} className="flex h-full flex-1 flex-col items-center justify-end gap-0.5">
+              <div className="relative flex h-9 w-full items-end overflow-hidden rounded-[3px] bg-raised/80">
                 <div
                   className={cn(
-                    "w-full rounded-t-md transition-all duration-300",
-                    b.pct >= 85
+                    "w-full rounded-[3px] transition-all duration-300",
+                    b.pct >= 84
                       ? "bg-accent"
-                      : b.active
-                        ? "bg-accent/85"
+                      : b.peak
+                        ? "bg-accent/75"
                         : "bg-muted/35",
                   )}
                   style={{ height: `${b.pct}%` }}
                 />
               </div>
-              <span className="font-mono text-[9px] text-muted">{b.label}</span>
+              <span className="font-mono text-[8px] leading-none text-muted">{b.label}</span>
             </div>
           ))}
         </div>

@@ -51,29 +51,24 @@ export function JobCard() {
   const planBerthNo = planDock.replace(/^B/, "");
   const isPinnedBooked = forceDock === appt.dockId;
   const headline = bookedHeadline(compare);
-  const sameAsLeftmost = (compare.leftmostSaved ?? 0) === 0;
 
   return (
     <section
       data-job-card=""
       aria-label="Gantt Schedule Board Header"
-      className="mb-3 rounded-2xl bg-surface px-4 py-3 shadow-card ring-1 ring-line"
+      className="mb-2.5 rounded-xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line"
     >
-      {/* Top SaaS Bar matching Mockup: Title | Visual Diff Pill | Equation | Commit RFC 7396 Patch */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-2.5">
-          <span className="text-sm font-bold tracking-tight text-fg">Gantt Schedule Board</span>
-          <span className="text-xs font-medium text-muted">Visual diff:</span>
-
-          {/* Interactive Booked -> Sidecar Plan Pill */}
-          <div className="inline-flex flex-wrap items-center gap-1.5 rounded-xl bg-raised p-1 ring-1 ring-line">
+      {/* Row 1: Strictly Single-Line Diff Switch + Equation + Right-Aligned Actions */}
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex min-w-0 items-center gap-1.5 overflow-x-auto">
+          <div className="inline-flex shrink-0 items-center gap-1 rounded-lg bg-raised p-0.5 ring-1 ring-line">
             <button
               type="button"
               onClick={() =>
                 useBoardStore.getState().setForceDock(isPinnedBooked ? undefined : appt.dockId)
               }
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-xs transition",
+                "inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] transition",
                 isPinnedBooked
                   ? "bg-warn/20 font-semibold text-warn ring-1 ring-warn"
                   : "bg-surface text-fg shadow-2xs hover:bg-raised",
@@ -85,21 +80,21 @@ export function JobCard() {
               </span>
               <span
                 className={cn(
-                  "rounded px-1.5 py-0.5 text-[10px] font-bold",
+                  "rounded px-1 py-px text-[10px] font-bold",
                   holdWait > 0 ? "bg-bad/15 text-bad" : "bg-ok/15 text-ok",
                 )}
               >
-                wait {holdWait}h
+                {holdWait}h
               </span>
             </button>
 
-            <ArrowRight className="size-3.5 text-muted" />
+            <ArrowRight className="size-3 text-muted" />
 
             <button
               type="button"
               onClick={() => useBoardStore.getState().setForceDock(undefined)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition",
+                "inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold transition",
                 !isPinnedBooked
                   ? "bg-accent text-accent-fg shadow-2xs"
                   : "bg-surface text-muted hover:text-fg",
@@ -107,10 +102,10 @@ export function JobCard() {
             >
               <Sparkles className="size-3" />
               <span>
-                Optimal Sidecar {planDock} @{planStart}h
+                Sidecar {planDock} @{planStart}h
               </span>
-              <span className="rounded bg-white/20 px-1.5 py-0.5 text-[10px]">
-                wait {planWait}h
+              <span className="rounded bg-white/20 px-1 py-px text-[10px]">
+                {planWait}h
               </span>
             </button>
           </div>
@@ -119,7 +114,7 @@ export function JobCard() {
             <span
               data-booked-equation=""
               {...(compare.leftmostStart === compare.holdStart ? { "data-job-equation": "" } : {})}
-              className="rounded-lg bg-accent/10 px-2.5 py-1 font-mono text-xs font-semibold tabular-nums text-accent ring-1 ring-accent/20"
+              className="shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20"
             >
               {compare.holdStart} − {compare.planStart} = {saved}
             </span>
@@ -131,52 +126,52 @@ export function JobCard() {
           compare.leftmostStart !== compare.holdStart ? (
             <span
               data-job-equation=""
-              className="rounded-lg bg-accent/10 px-2.5 py-1 font-mono text-xs font-semibold tabular-nums text-accent ring-1 ring-accent/20"
+              className="shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20"
             >
               {compare.leftmostStart} − {compare.planStart} = {compare.leftmostSaved}
             </span>
           ) : null}
 
-          <span className="inline-flex items-center gap-1 rounded-full bg-ok/12 px-2.5 py-1 font-mono text-xs font-semibold text-ok ring-1 ring-ok/25">
-            <CheckCircle2 className="size-3.5" />
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-ok/12 px-2 py-0.5 font-mono text-[11px] font-semibold text-ok ring-1 ring-ok/25">
+            <CheckCircle2 className="size-3" />
             {saved > 0
               ? `-${saved}h (+$${savedUsd.toLocaleString("en-US")}) · Nobody else moves`
               : "One late ship. The others stay put · Nobody else moves"}
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5">
           <button
             type="button"
             onClick={() => useBoardStore.getState().reset()}
-            className="inline-flex h-8 items-center gap-1.5 rounded-xl bg-raised px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-surface"
+            className="inline-flex h-7 items-center gap-1 rounded-lg bg-raised px-2 text-[11px] font-medium text-fg ring-1 ring-line hover:bg-surface"
           >
-            <RotateCcw className="size-3.5 text-muted" />
+            <RotateCcw className="size-3 text-muted" />
             Restore
           </button>
           <button
             type="button"
             data-open-logistics-setup=""
             onClick={() => useBoardStore.getState().setSetupOpen(true)}
-            className="inline-flex h-8 items-center gap-1.5 rounded-xl bg-raised px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent"
+            className="inline-flex h-7 items-center gap-1 rounded-lg bg-raised px-2 text-[11px] font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent"
           >
-            <SlidersHorizontal className="size-3.5 text-accent" />
+            <SlidersHorizontal className="size-3 text-accent" />
             Setup
           </button>
           <Button
             type="button"
             size="sm"
             onClick={() => useBoardStore.getState().commit()}
-            className="h-8 rounded-xl bg-accent px-3.5 text-xs font-semibold text-accent-fg shadow-xs hover:bg-accent/90"
+            className="h-7 rounded-lg bg-accent px-2.5 text-[11px] font-semibold text-accent-fg shadow-xs hover:bg-accent/90"
           >
             Commit RFC 7396 Patch
           </Button>
         </div>
       </div>
 
-      {/* Compact Single-Line Proof & Blocking Vessel Pills */}
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-line/60 pt-2 text-xs">
-        <div className="flex flex-wrap items-center gap-2 text-muted">
+      {/* Row 2: Compact Proof & Blocking Chain */}
+      <div className="mt-1.5 flex flex-wrap items-center justify-between gap-2 border-t border-line/60 pt-1.5 text-[11px]">
+        <div className="flex flex-wrap items-center gap-1.5 text-muted">
           <span className="font-medium text-fg">{headline}</span>
           {planClear ? (
             <span className="text-ok">
@@ -187,10 +182,10 @@ export function JobCard() {
         </div>
 
         {chain.length > 0 ? (
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1">
             <span className="inline-flex items-center gap-1 font-mono text-[10px] font-semibold uppercase text-bad">
-              <Lock className="size-3" />
-              Blocked on {appt.dockId}:
+              <Lock className="size-2.5" />
+              Blocked {appt.dockId}:
             </span>
             <ol data-block-chain="" className="flex flex-wrap items-center gap-1">
               {chain.map((b) => {
@@ -206,7 +201,7 @@ export function JobCard() {
                       type="button"
                       onClick={() => useBoardStore.getState().setSelectedId(b.id)}
                       className={cn(
-                        "rounded-md px-1.5 py-0.5 font-mono text-[11px] tabular-nums ring-1 transition",
+                        "rounded px-1.5 py-0.5 font-mono text-[10px] tabular-nums ring-1 transition",
                         active
                           ? "bg-accent text-accent-fg ring-accent"
                           : "bg-raised text-fg ring-line hover:ring-accent/50",

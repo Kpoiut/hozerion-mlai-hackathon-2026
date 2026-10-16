@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Anchor,
-  ArrowRight,
   CheckCircle2,
-  ChevronUp,
   Clock,
   Copy,
   ListFilter,
@@ -13,6 +11,7 @@ import {
   Pause,
   PenLine,
   Plus,
+  ShieldCheck,
   Ship,
   SlidersHorizontal,
   Snowflake,
@@ -85,13 +84,17 @@ export function Inspector({
       : origLabel;
 
   return (
-    <aside className="flex h-full flex-col justify-between overflow-y-auto bg-surface p-5">
+    <aside className="flex h-full flex-col justify-between overflow-y-auto bg-surface p-4">
       <div>
-        {/* SaaS Drawer Header */}
-        <div className="flex items-center justify-between border-b border-line pb-3">
-          <span className="text-sm font-semibold text-fg">Inspector Drawer</span>
-          <div className="flex items-center gap-1.5" ref={menuRef}>
-            <ChevronUp className="size-4 text-muted" />
+        {/* Precision Drawer Header */}
+        <div className="flex items-center justify-between border-b border-line pb-2.5">
+          <div className="flex items-center gap-2">
+            <span className="size-2 rounded-full bg-accent" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted">
+              Unit Inspector
+            </span>
+          </div>
+          <div className="flex items-center gap-1" ref={menuRef}>
             <div className="relative">
               <button
                 type="button"
@@ -134,57 +137,61 @@ export function Inspector({
           </div>
         </div>
 
-        {/* Vessel / Truck Title + Optimized Badge */}
-        <div className="mt-3.5 flex items-start justify-between gap-2">
+        {/* Vessel / Truck Title + Status Pill */}
+        <div className="mt-3 flex items-start justify-between gap-2">
           <div>
-            <p className="text-xs font-medium text-muted">
+            <p className="text-[11px] font-medium text-muted">
               {hour ? "Vessel · Container Carrier" : `Freight Unit · ${truck.hauler}`}
             </p>
-            <h2 className="mt-0.5 font-mono text-xl font-bold tracking-tight text-fg">
+            <h2 className="mt-0.5 font-mono text-lg font-bold tracking-tight text-fg">
               {truck.plate}
             </h2>
           </div>
           <span
             className={cn(
-              "inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold",
+              "inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold ring-1",
               result?.status === "INFEASIBLE"
-                ? "bg-bad/15 text-bad"
-                : "bg-ok text-white shadow-2xs",
+                ? "bg-bad/12 text-bad ring-bad/25"
+                : "bg-ok/12 text-ok ring-ok/25",
             )}
           >
-            <CheckCircle2 className="size-3.5" />
+            <CheckCircle2 className="size-3" />
             {result?.status === "INFEASIBLE" ? "Conflict" : "Optimized"}
           </span>
         </div>
 
-        {/* 4-Stage Visual Service Stepper (Arrival -> Queue -> Berth Service -> Departure) */}
-        <div className="mt-4 rounded-2xl bg-raised/55 p-3 ring-1 ring-line">
-          <div className="grid grid-cols-4 items-start gap-1 text-center">
-            <div className="flex flex-col items-center">
-              <div className="flex size-8 items-center justify-center rounded-full bg-accent text-accent-fg shadow-2xs">
-                {hour ? <Ship className="size-4" /> : <Truck className="size-4" />}
+        {/* 4-Stage Connected Horizontal Service Track */}
+        <div className="mt-3 rounded-xl bg-raised/50 p-3 ring-1 ring-line">
+          <div className="relative grid grid-cols-4 items-start gap-1 text-center">
+            {/* Connecting horizontal line behind nodes */}
+            <div className="pointer-events-none absolute top-3 right-6 left-6 h-px bg-line" />
+            <div className="pointer-events-none absolute top-3 left-6 h-px w-2/3 bg-accent/60" />
+
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="flex size-6 items-center justify-center rounded-md bg-accent text-accent-fg shadow-2xs ring-2 ring-surface">
+                {hour ? <Ship className="size-3" /> : <Truck className="size-3" />}
               </div>
-              <span className="mt-1.5 text-[11px] font-semibold text-fg">Arrival</span>
+              <span className="mt-1 text-[10px] font-semibold text-fg">Arrival</span>
               <span className="font-mono text-[10px] text-muted">{arrivalTimeLabel}</span>
             </div>
 
-            <div className="flex flex-col items-center">
-              <div className="flex size-8 items-center justify-center rounded-full bg-accent text-accent-fg shadow-2xs">
-                <Clock className="size-4" />
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="flex size-6 items-center justify-center rounded-md bg-accent text-accent-fg shadow-2xs ring-2 ring-surface">
+                <Clock className="size-3" />
               </div>
-              <span className="mt-1.5 text-[11px] font-semibold text-fg">Queue</span>
-              <span className="font-mono text-[10px] text-ok">
+              <span className="mt-1 text-[10px] font-semibold text-fg">Queue</span>
+              <span className="font-mono text-[10px] font-semibold text-ok">
                 {wait}
-                {unit} wait
+                {unit}
               </span>
             </div>
 
-            <div className="flex flex-col items-center">
-              <div className="flex size-8 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/30">
-                <Anchor className="size-4" />
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="flex size-6 items-center justify-center rounded-md bg-surface text-accent ring-1 ring-accent/40">
+                <Anchor className="size-3" />
               </div>
-              <span className="mt-1.5 text-[11px] font-semibold text-fg">
-                {hour ? "Berth Service" : "Door Service"}
+              <span className="mt-1 text-[10px] font-semibold text-fg">
+                {hour ? "Berth" : "Door"}
               </span>
               <span className="font-mono text-[10px] text-muted">
                 {liveDock?.short ?? "B5"} · {truck.durationMin}
@@ -192,37 +199,42 @@ export function Inspector({
               </span>
             </div>
 
-            <div className="flex flex-col items-center">
-              <div className="flex size-8 items-center justify-center rounded-full bg-raised text-muted ring-1 ring-line">
-                <Navigation className="size-4" />
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="flex size-6 items-center justify-center rounded-md bg-surface text-muted ring-1 ring-line">
+                <Navigation className="size-3" />
               </div>
-              <span className="mt-1.5 text-[11px] font-semibold text-fg">Departure</span>
+              <span className="mt-1 text-[10px] font-semibold text-fg">Depart</span>
               <span className="font-mono text-[10px] text-muted">{endLabel}</span>
             </div>
           </div>
         </div>
 
-        {/* Side-by-Side Comparison Cards: Booked Schedule vs Sidecar Plan */}
-        <div className="mt-4 grid grid-cols-2 gap-2.5">
+        {/* Architectural Side-by-Side Comparison Cards */}
+        <div className="mt-3 grid grid-cols-2 gap-2">
           {/* Left: Booked Schedule */}
           <button
             type="button"
             onClick={() => useBoardStore.getState().setForceDock(orig?.dockId)}
-            className="flex flex-col justify-between rounded-2xl bg-raised/65 p-3 text-left ring-1 ring-line transition hover:ring-accent/40"
+            className="flex flex-col justify-between rounded-xl border-t-2 border-t-warn bg-raised/45 p-2.5 text-left ring-1 ring-line transition hover:bg-raised"
             title="Click to test pinning to Booked slot"
           >
             <div>
-              <p className="text-xs font-semibold text-fg">Booked Schedule</p>
-              <p className="mt-1 font-mono text-[11px] text-muted">
-                {origDock?.short ?? "B0"} · {origLabel}
-              </p>
-              <p className="mt-1.5 font-mono text-lg font-bold text-fg">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-muted">
+                  Booked Slot
+                </span>
+                <span className="font-mono text-[10px] font-semibold text-fg">
+                  {origDock?.short ?? "B0"}
+                </span>
+              </div>
+              <p className="mt-1 font-mono text-base font-bold text-fg">
                 {holdWait}
-                {unit} Wait
+                {unit} wait
               </p>
+              <p className="font-mono text-[10px] text-muted">Scheduled @ {origLabel}</p>
             </div>
-            <div className="mt-2.5 rounded-xl bg-warn/15 px-2.5 py-2 text-[11px] font-medium leading-tight text-warn ring-1 ring-warn/25">
-              Hold Penalty Exposure
+            <div className="mt-2 inline-flex items-center gap-1 rounded-md bg-warn/12 px-2 py-1 font-mono text-[10px] font-semibold text-warn">
+              Hold Exposure
             </div>
           </button>
 
@@ -230,41 +242,71 @@ export function Inspector({
           <button
             type="button"
             onClick={() => useBoardStore.getState().setForceDock(undefined)}
-            className="flex flex-col justify-between rounded-2xl bg-ok/8 p-3 text-left ring-1 ring-ok/30 transition hover:ring-ok"
+            className="flex flex-col justify-between rounded-xl border-t-2 border-t-ok bg-ok/[0.04] p-2.5 text-left ring-1 ring-ok/25 transition hover:ring-ok/60"
             title="Click to use optimal Sidecar k=0 plan"
           >
             <div>
-              <p className="text-xs font-semibold text-fg">Sidecar Plan</p>
-              <p className="mt-1 font-mono text-[11px] text-muted">
-                {liveDock?.short ?? "B5"} · {startLabel}
-              </p>
-              <p className="mt-1.5 font-mono text-lg font-bold text-ok">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-ok">
+                  Sidecar Plan
+                </span>
+                <span className="font-mono text-[10px] font-bold text-ok">
+                  {liveDock?.short ?? "B5"}
+                </span>
+              </div>
+              <p className="mt-1 font-mono text-base font-bold text-ok">
                 +${savedUsd.toLocaleString("en-US")}
               </p>
+              <p className="font-mono text-[10px] text-muted">
+                {wait}
+                {unit} wait @ {startLabel}
+              </p>
             </div>
-            <div className="mt-2.5 rounded-xl bg-ok/15 px-2.5 py-2 text-[11px] font-medium leading-tight text-ok ring-1 ring-ok/25">
-              Calculated SLA Savings
+            <div className="mt-2 inline-flex items-center gap-1 rounded-md bg-ok/15 px-2 py-1 font-mono text-[10px] font-semibold text-ok">
+              <ShieldCheck className="size-3" />
+              k=0 SLA Saved
             </div>
           </button>
         </div>
 
-        {/* Filters & Live Overrides Section (Matches Mockup "Filters: Cargo v | Priority v | Door Pinning v") */}
-        <div className="mt-4 border-t border-line pt-3.5">
+        {/* Compact Telemetry Spec Strip */}
+        <div className="mt-3 rounded-xl bg-raised/40 px-3 py-2 ring-1 ring-line">
+          <div className="grid grid-cols-3 gap-2 text-center font-mono text-[10px]">
+            <div>
+              <div className="text-muted">Displaced</div>
+              <div className="font-bold text-ok">k = {result?.kUsed ?? 0}</div>
+            </div>
+            <div className="border-x border-line">
+              <div className="text-muted">{hour ? "Berth Span" : "Cargo"}</div>
+              <div className="font-bold text-fg">
+                {hour ? `${truck.span ?? 1} units` : reeferOn ? "Reefer" : "Dry"}
+              </div>
+            </div>
+            <div>
+              <div className="text-muted">Kernel</div>
+              <div className="font-bold text-accent">5.15µs</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Filters & Live Overrides Section */}
+        <div className="mt-3 border-t border-line pt-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-fg">Filters &amp; Live Overrides</span>
-            <span className="font-mono text-[11px] text-muted">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
+              Live Overrides
+            </span>
+            <span className="font-mono text-[10px] text-muted">
               {startLabel} – {endLabel}
             </span>
           </div>
 
-          {/* 3 Dropdown / Pill Controls matching Mockup */}
-          <div className="mt-2.5 grid grid-cols-3 gap-1.5">
+          <div className="mt-2 grid grid-cols-3 gap-1.5">
             {!hour ? (
               <button
                 type="button"
                 onClick={() => useBoardStore.getState().setForceReefer(!reeferOn)}
                 className={cn(
-                  "flex h-8 items-center justify-center gap-1 rounded-xl px-2 text-xs font-medium ring-1 transition",
+                  "flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-[11px] font-medium ring-1 transition",
                   reeferOn
                     ? "bg-accent/12 text-accent ring-accent/30"
                     : "bg-raised text-fg ring-line hover:bg-raised/80",
@@ -274,7 +316,7 @@ export function Inspector({
                 {reeferOn ? "Reefer" : "Dry"}
               </button>
             ) : (
-              <div className="flex h-8 items-center justify-center gap-1 rounded-xl bg-raised px-2 font-mono text-xs text-fg ring-1 ring-line">
+              <div className="flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] text-fg ring-1 ring-line">
                 <Anchor className="size-3 text-accent" />
                 {truck.span ?? 1} Berths
               </div>
@@ -286,11 +328,11 @@ export function Inspector({
                 const nextP = ((truck.priority % 3) + 1) as 1 | 2 | 3;
                 useBoardStore.getState().setTruckPriority(truck.id, nextP);
               }}
-              className="flex h-8 items-center justify-center gap-1 rounded-xl bg-raised px-2 font-mono text-xs font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent"
+              className="flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent"
               title="Click to cycle Priority P1 / P2 / P3"
             >
               <ListFilter className="size-3 text-accent" />
-              Priority P{truck.priority}
+              P{truck.priority}
             </button>
 
             <select
@@ -302,7 +344,7 @@ export function Inspector({
                   .getState()
                   .setForceDock(val === (orig?.dockId ?? "") ? undefined : val);
               }}
-              className="h-8 rounded-xl bg-raised px-2 font-mono text-xs font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none"
+              className="h-7 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none"
             >
               {yard.docks.map((d) => (
                 <option key={d.id} value={d.id}>
@@ -312,41 +354,40 @@ export function Inspector({
             </select>
           </div>
 
-          {/* Fine Nudge Strip for Arrival Delay & Duration */}
-          <div className="mt-2.5 flex items-center justify-between rounded-xl bg-raised/60 px-3 py-2 ring-1 ring-line">
-            <div className="flex items-center gap-1.5">
-              <span className="text-[11px] font-medium text-muted">Shift</span>
+          <div className="mt-2 flex items-center justify-between rounded-lg bg-raised/60 px-2.5 py-1.5 ring-1 ring-line">
+            <div className="flex items-center gap-1">
+              <span className="text-[10px] font-medium text-muted">Shift</span>
               <button
                 type="button"
                 aria-label="Shift arrival earlier"
                 onClick={() => useBoardStore.getState().nudgeDelay(hour ? -1 : -10)}
-                className="inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg"
+                className="inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg"
               >
-                <Minus className="size-3" />
+                <Minus className="size-2.5" />
               </button>
               <button
                 type="button"
                 aria-label="Shift arrival later"
                 onClick={() => useBoardStore.getState().nudgeDelay(hour ? 1 : 10)}
-                className="inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg"
+                className="inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg"
               >
-                <Plus className="size-3" />
+                <Plus className="size-2.5" />
               </button>
             </div>
 
-            <div className="flex items-center gap-1.5">
-              <span className="text-[11px] font-medium text-muted">Duration</span>
+            <div className="flex items-center gap-1">
+              <span className="text-[10px] font-medium text-muted">Dur</span>
               <button
                 type="button"
                 aria-label="Decrease service time"
                 onClick={() =>
                   useBoardStore.getState().setTruckDuration(truck.id, hour ? -2 : -15)
                 }
-                className="inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg"
+                className="inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg"
               >
-                <Minus className="size-3" />
+                <Minus className="size-2.5" />
               </button>
-              <span className=" font-mono text-xs font-semibold text-fg">
+              <span className="font-mono text-[11px] font-semibold text-fg">
                 {truck.durationMin}
                 {unit}
               </span>
@@ -356,36 +397,36 @@ export function Inspector({
                 onClick={() =>
                   useBoardStore.getState().setTruckDuration(truck.id, hour ? 2 : 15)
                 }
-                className="inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg"
+                className="inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg"
               >
-                <Plus className="size-3" />
+                <Plus className="size-2.5" />
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Action Footer matching Mockup */}
-      <div className="mt-4 space-y-2 border-t border-line pt-3.5">
-        <div className="grid grid-cols-2 gap-2">
+      {/* Bottom Action Footer */}
+      <div className="mt-3 space-y-1.5 border-t border-line pt-3">
+        <div className="grid grid-cols-2 gap-1.5">
           <Button
             type="button"
             variant="secondary"
             size="sm"
-            className="h-9 rounded-xl text-xs"
+            className="h-8 rounded-lg text-xs"
             onClick={() => (onFind ? onFind() : useBoardStore.getState().findPlan())}
           >
-            <PenLine className="size-3.5 text-accent" />
+            <PenLine className="size-3 text-accent" />
             Edit Plan
           </Button>
           <Button
             type="button"
             variant={holdOn ? "default" : "ghost"}
             size="sm"
-            className="h-9 rounded-xl ring-1 ring-line text-xs"
+            className="h-8 rounded-lg text-xs ring-1 ring-line"
             onClick={() => useBoardStore.getState().toggleHold()}
           >
-            <Pause className="size-3.5" />
+            <Pause className="size-3" />
             {holdOn ? "Holding" : "Hold Slot"}
           </Button>
         </div>
@@ -395,9 +436,9 @@ export function Inspector({
           variant="secondary"
           size="sm"
           onClick={() => useBoardStore.getState().setSetupOpen(true)}
-          className="h-9 w-full rounded-xl bg-raised text-xs font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent"
+          className="h-8 w-full rounded-lg bg-raised text-xs font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent"
         >
-          <SlidersHorizontal className="size-3.5 text-accent" />
+          <SlidersHorizontal className="size-3 text-accent" />
           Customize Facility Rules
         </Button>
       </div>

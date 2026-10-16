@@ -369,16 +369,6 @@ var ChevronRight = createLucideIcon("chevron-right", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var ChevronUp = createLucideIcon("chevron-up", [["path", {
-	d: "m18 15-6-6-6 6",
-	key: "153udz"
-}]]);
-/**
-* @license lucide-react v0.510.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
 var CircleAlert = createLucideIcon("circle-alert", [
 	["circle", {
 		cx: "12",
@@ -638,28 +628,6 @@ var Flag = createLucideIcon("flag", [["path", {
 	y2: "15",
 	key: "1cm3nv"
 }]]);
-/**
-* @license lucide-react v0.510.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var Info = createLucideIcon("info", [
-	["circle", {
-		cx: "12",
-		cy: "12",
-		r: "10",
-		key: "1mglay"
-	}],
-	["path", {
-		d: "M12 16v-4",
-		key: "1dtifu"
-	}],
-	["path", {
-		d: "M12 8h.01",
-		key: "e9boi3"
-	}]
-]);
 /**
 * @license lucide-react v0.510.0 - ISC
 *
@@ -1340,6 +1308,19 @@ var Trash2 = createLucideIcon("trash-2", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var TrendingDown = createLucideIcon("trending-down", [["polyline", {
+	points: "22 17 13.5 8.5 8.5 13.5 2 7",
+	key: "1r2t7k"
+}], ["polyline", {
+	points: "16 17 22 17 22 11",
+	key: "11uiuu"
+}]]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var TriangleAlert = createLucideIcon("triangle-alert", [
 	["path", {
 		d: "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
@@ -1506,4 +1487,4 @@ var X = createLucideIcon("x", [["path", {
 	key: "d8bk6v"
 }]]);
 //#endregion
-export { CalendarClock as $, LockOpen as A, DoorClosed as B, Pause as C, Minus as D, Moon as E, Info as F, CircleCheck as G, Copy as H, Flag as I, ChevronRight as J, CircleAlert as K, FileCheck2 as L, Leaf as M, LayoutGrid as N, MapPin as O, LayoutList as P, CalendarDays as Q, Ellipsis as R, PenLine as S, Navigation as T, Clock as U, Cpu as V, CircleX as W, ChevronDown as X, ChevronLeft as Y, Check as Z, RefreshCw as _, Undo2 as a, Activity as at, Plus as b, Trash2 as c, Snowflake as d, Building2 as et, SlidersHorizontal as f, RotateCcw as g, ShieldAlert as h, UserCheck as i, Anchor as it, ListFilter as j, Lock as k, Sun as l, ShieldCheck as m, Waypoints as n, ArrowRight as nt, Truck as o, Ship as p, ChevronUp as q, Warehouse as r, ArrowLeftRight as rt, TriangleAlert as s, X as t, Boxes as tt, Sparkles as u, Receipt as v, Network as w, Play as x, Radio as y, Droplets as z };
+export { Building2 as $, Lock as A, DoorClosed as B, PenLine as C, Moon as D, Navigation as E, LayoutList as F, CircleCheck as G, Copy as H, Flag as I, ChevronLeft as J, CircleAlert as K, FileCheck2 as L, ListFilter as M, Leaf as N, Minus as O, LayoutGrid as P, CalendarClock as Q, Ellipsis as R, Play as S, Network as T, Clock as U, Cpu as V, CircleX as W, Check as X, ChevronDown as Y, CalendarDays as Z, RotateCcw as _, Undo2 as a, Radio as b, TrendingDown as c, Sparkles as d, Boxes as et, Snowflake as f, ShieldAlert as g, ShieldCheck as h, UserCheck as i, Activity as it, LockOpen as j, MapPin as k, Trash2 as l, Ship as m, Waypoints as n, ArrowLeftRight as nt, Truck as o, SlidersHorizontal as p, ChevronRight as q, Warehouse as r, Anchor as rt, TriangleAlert as s, X as t, ArrowRight as tt, Sun as u, RefreshCw as v, Pause as w, Plus as x, Receipt as y, Droplets as z };

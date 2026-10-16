@@ -2,10 +2,10 @@ import { i as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link, b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { r as formatWhen } from "./parse-C_Xtcwss.mjs";
-import { $ as CalendarClock, A as LockOpen, B as DoorClosed, C as Pause, D as Minus, E as Moon, F as Info, G as CircleCheck, H as Copy, I as Flag, J as ChevronRight, K as CircleAlert, L as FileCheck2, M as Leaf, N as LayoutGrid, O as MapPin, P as LayoutList, Q as CalendarDays, R as Ellipsis, S as PenLine, T as Navigation, U as Clock, V as Cpu, W as CircleX, X as ChevronDown, Y as ChevronLeft, Z as Check, _ as RefreshCw, a as Undo2, at as Activity, b as Plus, c as Trash2, d as Snowflake, et as Building2, f as SlidersHorizontal, g as RotateCcw, h as ShieldAlert, i as UserCheck, it as Anchor, j as ListFilter, k as Lock, l as Sun, m as ShieldCheck, n as Waypoints, nt as ArrowRight, o as Truck, p as Ship, q as ChevronUp, r as Warehouse, rt as ArrowLeftRight, s as TriangleAlert, t as X, tt as Boxes, u as Sparkles, v as Receipt, w as Network, x as Play, y as Radio, z as Droplets } from "../_libs/lucide-react.mjs";
+import { $ as Building2, A as Lock, B as DoorClosed, C as PenLine, D as Moon, E as Navigation, F as LayoutList, G as CircleCheck, H as Copy, I as Flag, J as ChevronLeft, K as CircleAlert, L as FileCheck2, M as ListFilter, N as Leaf, O as Minus, P as LayoutGrid, Q as CalendarClock, R as Ellipsis, S as Play, T as Network, U as Clock, V as Cpu, W as CircleX, X as Check, Y as ChevronDown, Z as CalendarDays, _ as RotateCcw, a as Undo2, b as Radio, c as TrendingDown, d as Sparkles, et as Boxes, f as Snowflake, g as ShieldAlert, h as ShieldCheck, i as UserCheck, it as Activity, j as LockOpen, k as MapPin, l as Trash2, m as Ship, n as Waypoints, nt as ArrowLeftRight, o as Truck, p as SlidersHorizontal, q as ChevronRight, r as Warehouse, rt as Anchor, s as TriangleAlert, t as X, tt as ArrowRight, u as Sun, v as RefreshCw, w as Pause, x as Plus, y as Receipt, z as Droplets } from "../_libs/lucide-react.mjs";
 import { t as useAtomValue } from "../_libs/jotai.mjs";
 import { $ as selectLive, A as bks_bcn_36A_50_default, B as formatEtcVerdict, C as bks_bcn_24B_25_default, D as bks_bcn_36A_10_default, E as bks_bcn_24B_50_default, G as packLanes, H as occupyIndexes, I as clockMinAtom, J as publishedYard, K as phaseAt, L as cn, M as bookedFromPlan, N as bookedHeadline, O as bks_bcn_36A_25_default, P as calculateContainerBilling, Q as scoreOneHourLate, S as bks_bcn_24B_10_default, T as bks_bcn_24B_47_default, U as packCfsCargo3D, V as holdingCall, W as packDepth, X as reconcileShipmentDocuments, Y as recommendIncomingSlot, Z as runFlow, _ as bcn_36A_10_default, at as stretchClear, b as bcn_36A_50_default, c as PUBLISHED_REPO, ct as useBoardStore, d as UniversalSidecarAndBenchmarkPanel, et as selectPlayhead, f as bcn_24B_10_default, g as bcn_24B_50_default, h as bcn_24B_47_default, i as FederationPane, k as bks_bcn_36A_2_default, l as SEED_BAY_CONTAINERS, lt as validateIso6346, m as bcn_24B_2_default, n as Button, nt as solveBayRetrieval, o as PUBLISHED_DOI, ot as stretchShips, p as bcn_24B_25_default, q as publishedWeekList, r as DEFAULT_BAY_CONFIG, rt as solveHinterlandExceptions, s as PUBLISHED_DOI_URL, st as tryPublishedYard, t as BacapPane, u as SHIPMENT_DOCUMENT_CASES, v as bcn_36A_25_default, w as bks_bcn_24B_2_default, x as berthSpan, y as bcn_36A_2_default, z as evaluateGateTransaction } from "./dock-exceptions-3-JydA2o.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-Bv_u5HkQ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DndM1VDt.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function deterministicHashHex(payload) {
@@ -1139,118 +1139,131 @@ function DecisionBar({ result, yard, onApplyRelax, onCommit }) {
 	const planLine = cert && result.status === "OPTIMAL" ? `${placeName(cert.chosen.dockId, hour)} at ${formatWhen(yard, cert.chosen.startMin)}, wait ${result.metrics.eventWaitMin}${hour ? "h" : "m"}, k=${result.kUsed}` : "";
 	const fact = hour && cert ? fileCall(yard, cert.chosen.truckId) : void 0;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "flex min-h-9 flex-wrap items-center gap-2",
+		className: "space-y-1.5",
 		children: [
-			result.status === "OPTIMAL" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "inline-flex h-8 items-center gap-1.5 rounded-full bg-ok/10 px-2.5 text-xs font-semibold text-ok",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), "Ready"]
-			}) : result.status === "HUMAN_REQUIRED" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "inline-flex h-8 items-center gap-1.5 rounded-full bg-warn/10 px-2.5 text-xs font-semibold text-warn",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5" }), "Review"]
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "inline-flex h-8 items-center gap-1.5 rounded-full bg-bad/10 px-2.5 text-xs font-semibold text-bad",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleX, { className: "size-3.5" }), "Blocked"]
-			}),
-			result.status === "OPTIMAL" && cert ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "min-w-0 flex-1 truncate font-mono text-xs font-medium text-accent",
-				children: [
-					placeName(cert.chosen.dockId, hour),
-					" at ",
-					formatWhen(yard, cert.chosen.startMin),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "ml-2 font-normal",
-						children: [
-							"wait ",
-							result.metrics.eventWaitMin,
-							hour ? "h" : "m"
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "font-normal text-muted",
-						children: result.metrics.displaced ? ` · ${result.metrics.displaced} moved` : " · nobody else moves"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "ml-2 font-normal text-faint",
-						children: "· draft"
-					})
-				]
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "min-w-0 flex-1 truncate text-xs text-muted",
-				children: msg
-			}),
-			result.status === "OPTIMAL" && !hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProofStrip, {
-				result,
-				yard
-			}) : null,
-			etc ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "truncate font-mono text-[11px] text-muted",
-				"data-etc-winner": etc.winner,
-				children: [formatEtcVerdict(etc, yard.shiftStartMin, yard.timeUnit), etc.conflicts.length > 1 ? ` · ${etc.conflicts.length} disagreements` : ""]
-			}) : null,
-			restores.map((r) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-				type: "button",
-				variant: "secondary",
-				size: "sm",
-				onClick: () => onApplyRelax(r.drop),
-				children: DROP_LABEL[r.drop] ?? r.label
-			}, r.id)),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "relative flex shrink-0",
-				ref: wrap,
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						type: "button",
-						className: "h-8 min-w-20 rounded-l-lg rounded-r-none text-xs",
-						onClick: onCommit,
-						disabled: result.status !== "OPTIMAL",
-						children: "Commit"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						type: "button",
-						className: "h-8 rounded-l-none rounded-r-lg px-2",
-						onClick: () => setMenu((v) => !v),
-						disabled: result.status !== "OPTIMAL",
-						"aria-label": "Commit options",
-						"aria-expanded": menu,
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: "size-3.5" })
-					}),
-					menu ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "absolute top-full right-0 z-50 mt-1 min-w-44 rounded-xl bg-surface p-1 shadow-float ring-1 ring-line",
+				className: "flex items-center justify-between gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex min-w-0 items-center gap-2",
+					children: [result.status === "OPTIMAL" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "inline-flex h-7 shrink-0 items-center gap-1 rounded-md bg-ok/12 px-2 text-xs font-semibold text-ok ring-1 ring-ok/20",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), "Ready"]
+					}) : result.status === "HUMAN_REQUIRED" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "inline-flex h-7 shrink-0 items-center gap-1 rounded-md bg-warn/12 px-2 text-xs font-semibold text-warn ring-1 ring-warn/20",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, { className: "size-3.5" }), "Review"]
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "inline-flex h-7 shrink-0 items-center gap-1 rounded-md bg-bad/12 px-2 text-xs font-semibold text-bad ring-1 ring-bad/20",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleX, { className: "size-3.5" }), "Blocked"]
+					}), result.status === "OPTIMAL" && cert ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "truncate font-mono text-xs font-semibold text-accent",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								type: "button",
-								className: "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised",
-								onClick: () => {
-									setMenu(false);
-									onCommit();
-								},
-								children: "Commit to board"
+							placeName(cert.chosen.dockId, hour),
+							" at ",
+							formatWhen(yard, cert.chosen.startMin),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "ml-2 font-normal text-fg",
+								children: [
+									"wait ",
+									result.metrics.eventWaitMin,
+									hour ? "h" : "m"
+								]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								className: "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised",
-								onClick: () => {
-									setMenu(false);
-									navigator.clipboard.writeText(planLine);
-								},
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "size-3.5 text-muted" }), "Copy plan"]
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-normal text-muted",
+								children: result.metrics.displaced ? ` · ${result.metrics.displaced} moved` : " · nobody else moves"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								className: "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised disabled:opacity-40",
-								disabled: !useBoardStore.getState().previous,
-								onClick: () => {
-									setMenu(false);
-									useBoardStore.getState().undo();
-								},
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Undo2, { className: "size-3.5 text-muted" }), "Undo last commit"]
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "ml-1.5 font-normal text-faint",
+								children: "· draft"
 							})
 						]
-					}) : null
-				]
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "truncate text-xs text-muted",
+						children: msg
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "ml-auto flex shrink-0 items-center gap-2",
+					children: [
+						etc ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "hidden truncate font-mono text-[11px] text-muted sm:block",
+							"data-etc-winner": etc.winner,
+							children: [formatEtcVerdict(etc, yard.shiftStartMin, yard.timeUnit), etc.conflicts.length > 1 ? ` · ${etc.conflicts.length} disagreements` : ""]
+						}) : null,
+						restores.map((r) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "button",
+							variant: "secondary",
+							size: "sm",
+							className: "h-7 text-xs",
+							onClick: () => onApplyRelax(r.drop),
+							children: DROP_LABEL[r.drop] ?? r.label
+						}, r.id)),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "relative flex shrink-0",
+							ref: wrap,
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "button",
+									className: "h-7 min-w-18 rounded-l-lg rounded-r-none px-3 text-xs",
+									onClick: onCommit,
+									disabled: result.status !== "OPTIMAL",
+									children: "Commit"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									type: "button",
+									className: "h-7 rounded-l-none rounded-r-lg px-1.5",
+									onClick: () => setMenu((v) => !v),
+									disabled: result.status !== "OPTIMAL",
+									"aria-label": "Commit options",
+									"aria-expanded": menu,
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, { className: "size-3.5" })
+								}),
+								menu ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "absolute top-full right-0 z-50 mt-1 min-w-44 rounded-xl bg-surface p-1 shadow-float ring-1 ring-line",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+											type: "button",
+											className: "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised",
+											onClick: () => {
+												setMenu(false);
+												onCommit();
+											},
+											children: "Commit to board"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											type: "button",
+											className: "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised",
+											onClick: () => {
+												setMenu(false);
+												navigator.clipboard.writeText(planLine);
+											},
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "size-3.5 text-muted" }), "Copy plan"]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											type: "button",
+											className: "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised disabled:opacity-40",
+											disabled: !useBoardStore.getState().previous,
+											onClick: () => {
+												setMenu(false);
+												useBoardStore.getState().undo();
+											},
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Undo2, { className: "size-3.5 text-muted" }), "Undo last commit"]
+										})
+									]
+								}) : null
+							]
+						})
+					]
+				})]
 			}),
+			result.status === "OPTIMAL" && !hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "border-t border-line/60 pt-1.5",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProofStrip, {
+					result,
+					yard
+				})
+			}) : null,
 			hour && (fact || cert) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "basis-full flex items-center gap-2 truncate font-mono text-[10px] text-faint",
+				className: "flex items-center gap-2 truncate border-t border-line/60 pt-1 font-mono text-[10px] text-faint",
 				children: [fact && event ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 					className: "truncate",
 					children: [
@@ -1327,7 +1340,7 @@ function ProofStrip({ result, yard }) {
 	const suffix = hour ? "h" : "m";
 	const place = (id) => hour ? `Berth ${id.replace(/^B/, "")}` : `Door ${id}`;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "inline-flex flex-wrap items-center gap-2 rounded-xl bg-raised px-3 py-1 text-xs ring-1 ring-line",
+		className: "flex flex-wrap items-center gap-2 text-[11px]",
 		"data-proof-saved": proof.savedMin,
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
@@ -1362,7 +1375,7 @@ function ProofStrip({ result, yard }) {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "rounded-md bg-ok/12 px-2 py-0.5 font-mono font-semibold text-ok",
+				className: "rounded bg-ok/12 px-1.5 py-px font-mono text-[10px] font-semibold text-ok",
 				children: [
 					"Saved ",
 					proof.savedMin,
@@ -2427,31 +2440,22 @@ function JobCard() {
 	const planBerthNo = planDock.replace(/^B/, "");
 	const isPinnedBooked = forceDock === appt.dockId;
 	const headline = bookedHeadline(compare);
-	compare.leftmostSaved;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		"data-job-card": "",
 		"aria-label": "Gantt Schedule Board Header",
-		className: "mb-3 rounded-2xl bg-surface px-4 py-3 shadow-card ring-1 ring-line",
+		className: "mb-2.5 rounded-xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "flex flex-wrap items-center justify-between gap-3",
+			className: "flex items-center justify-between gap-2",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center gap-2.5",
+				className: "flex min-w-0 items-center gap-1.5 overflow-x-auto",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-sm font-bold tracking-tight text-fg",
-						children: "Gantt Schedule Board"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-xs font-medium text-muted",
-						children: "Visual diff:"
-					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "inline-flex flex-wrap items-center gap-1.5 rounded-xl bg-raised p-1 ring-1 ring-line",
+						className: "inline-flex shrink-0 items-center gap-1 rounded-lg bg-raised p-0.5 ring-1 ring-line",
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 								type: "button",
 								onClick: () => useBoardStore.getState().setForceDock(isPinnedBooked ? void 0 : appt.dockId),
-								className: cn("inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-xs transition", isPinnedBooked ? "bg-warn/20 font-semibold text-warn ring-1 ring-warn" : "bg-surface text-fg shadow-2xs hover:bg-raised"),
+								className: cn("inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] transition", isPinnedBooked ? "bg-warn/20 font-semibold text-warn ring-1 ring-warn" : "bg-surface text-fg shadow-2xs hover:bg-raised"),
 								title: "Click to test pinning to Booked Berth",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
 									"Booked ",
@@ -2460,35 +2464,27 @@ function JobCard() {
 									bookedStart,
 									"h"
 								] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: cn("rounded px-1.5 py-0.5 text-[10px] font-bold", holdWait > 0 ? "bg-bad/15 text-bad" : "bg-ok/15 text-ok"),
-									children: [
-										"wait ",
-										holdWait,
-										"h"
-									]
+									className: cn("rounded px-1 py-px text-[10px] font-bold", holdWait > 0 ? "bg-bad/15 text-bad" : "bg-ok/15 text-ok"),
+									children: [holdWait, "h"]
 								})]
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3.5 text-muted" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3 text-muted" }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 								type: "button",
 								onClick: () => useBoardStore.getState().setForceDock(void 0),
-								className: cn("inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition", !isPinnedBooked ? "bg-accent text-accent-fg shadow-2xs" : "bg-surface text-muted hover:text-fg"),
+								className: cn("inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold transition", !isPinnedBooked ? "bg-accent text-accent-fg shadow-2xs" : "bg-surface text-muted hover:text-fg"),
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3" }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-										"Optimal Sidecar ",
+										"Sidecar ",
 										planDock,
 										" @",
 										planStart,
 										"h"
 									] }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "rounded bg-white/20 px-1.5 py-0.5 text-[10px]",
-										children: [
-											"wait ",
-											planWait,
-											"h"
-										]
+										className: "rounded bg-white/20 px-1 py-px text-[10px]",
+										children: [planWait, "h"]
 									})
 								]
 							})
@@ -2497,7 +2493,7 @@ function JobCard() {
 					compare.holdStart != null && compare.planStart != null && saved > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 						"data-booked-equation": "",
 						...compare.leftmostStart === compare.holdStart ? { "data-job-equation": "" } : {},
-						className: "rounded-lg bg-accent/10 px-2.5 py-1 font-mono text-xs font-semibold tabular-nums text-accent ring-1 ring-accent/20",
+						className: "shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20",
 						children: [
 							compare.holdStart,
 							" − ",
@@ -2508,7 +2504,7 @@ function JobCard() {
 					}) : null,
 					compare.leftmostStart != null && compare.planStart != null && (compare.leftmostSaved ?? 0) > 0 && compare.leftmostStart !== compare.holdStart ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 						"data-job-equation": "",
-						className: "rounded-lg bg-accent/10 px-2.5 py-1 font-mono text-xs font-semibold tabular-nums text-accent ring-1 ring-accent/20",
+						className: "shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20",
 						children: [
 							compare.leftmostStart,
 							" − ",
@@ -2518,39 +2514,39 @@ function JobCard() {
 						]
 					}) : null,
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "inline-flex items-center gap-1 rounded-full bg-ok/12 px-2.5 py-1 font-mono text-xs font-semibold text-ok ring-1 ring-ok/25",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), saved > 0 ? `-${saved}h (+$${savedUsd.toLocaleString("en-US")}) · Nobody else moves` : "One late ship. The others stay put · Nobody else moves"]
+						className: "inline-flex shrink-0 items-center gap-1 rounded-md bg-ok/12 px-2 py-0.5 font-mono text-[11px] font-semibold text-ok ring-1 ring-ok/25",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3" }), saved > 0 ? `-${saved}h (+$${savedUsd.toLocaleString("en-US")}) · Nobody else moves` : "One late ship. The others stay put · Nobody else moves"]
 					})
 				]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center gap-2",
+				className: "ml-auto flex shrink-0 items-center gap-1.5",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 						type: "button",
 						onClick: () => useBoardStore.getState().reset(),
-						className: "inline-flex h-8 items-center gap-1.5 rounded-xl bg-raised px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-surface",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcw, { className: "size-3.5 text-muted" }), "Restore"]
+						className: "inline-flex h-7 items-center gap-1 rounded-lg bg-raised px-2 text-[11px] font-medium text-fg ring-1 ring-line hover:bg-surface",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcw, { className: "size-3 text-muted" }), "Restore"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 						type: "button",
 						"data-open-logistics-setup": "",
 						onClick: () => useBoardStore.getState().setSetupOpen(true),
-						className: "inline-flex h-8 items-center gap-1.5 rounded-xl bg-raised px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3.5 text-accent" }), "Setup"]
+						className: "inline-flex h-7 items-center gap-1 rounded-lg bg-raised px-2 text-[11px] font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3 text-accent" }), "Setup"]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						type: "button",
 						size: "sm",
 						onClick: () => useBoardStore.getState().commit(),
-						className: "h-8 rounded-xl bg-accent px-3.5 text-xs font-semibold text-accent-fg shadow-xs hover:bg-accent/90",
+						className: "h-7 rounded-lg bg-accent px-2.5 text-[11px] font-semibold text-accent-fg shadow-xs hover:bg-accent/90",
 						children: "Commit RFC 7396 Patch"
 					})
 				]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-line/60 pt-2 text-xs",
+			className: "mt-1.5 flex flex-wrap items-center justify-between gap-2 border-t border-line/60 pt-1.5 text-[11px]",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center gap-2 text-muted",
+				className: "flex flex-wrap items-center gap-1.5 text-muted",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 					className: "font-medium text-fg",
 					children: headline
@@ -2567,12 +2563,12 @@ function JobCard() {
 					]
 				}) : null]
 			}), chain.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center gap-1.5",
+				className: "flex flex-wrap items-center gap-1",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 					className: "inline-flex items-center gap-1 font-mono text-[10px] font-semibold uppercase text-bad",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3" }),
-						"Blocked on ",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-2.5" }),
+						"Blocked ",
 						appt.dockId,
 						":"
 					]
@@ -2588,7 +2584,7 @@ function JobCard() {
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 								type: "button",
 								onClick: () => useBoardStore.getState().setSelectedId(b.id),
-								className: cn("rounded-md px-1.5 py-0.5 font-mono text-[11px] tabular-nums ring-1 transition", active ? "bg-accent text-accent-fg ring-accent" : "bg-raised text-fg ring-line hover:ring-accent/50"),
+								className: cn("rounded px-1.5 py-0.5 font-mono text-[10px] tabular-nums ring-1 transition", active ? "bg-accent text-accent-fg ring-accent" : "bg-raised text-fg ring-line hover:ring-accent/50"),
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "font-bold",
@@ -3251,13 +3247,13 @@ function hourMarks(len, step = 60) {
 	for (let t = 0; t <= len; t += step) out.push(t);
 	return out;
 }
-var ROW_H = 80;
-var CARD_H = 56;
-var CARD_INSET = 12;
-var FEATURED_INSET = 8;
-var FEATURED_H = 64;
-var STACK_INSET = 28;
-var DOOR_COL = "5.75rem";
+var ROW_H = 62;
+var CARD_H = 46;
+var CARD_INSET = 8;
+var FEATURED_INSET = 5;
+var FEATURED_H = 52;
+var STACK_INSET = 22;
+var DOOR_COL = "5.5rem";
 var EMPTY_FLOW = [];
 var MINUTE_GEOM = {
 	rowH: ROW_H,
@@ -3656,13 +3652,22 @@ var Track = (0, import_react.memo)(function Track({ docks, blocks, marks, trucks
 				style: { top: (i + 1) * geom.rowH }
 			}, dock.id) : null),
 			showGhost && ghost && ghostLive && ghostTruck && ghostIndex >= 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-				className: "pointer-events-none absolute rounded-xl ring-1 ring-dashed ring-fg/25",
+				className: "pointer-events-none absolute z-10 flex items-center justify-center overflow-hidden rounded-xl bg-warn/[0.06] px-2 ring-1 ring-dashed ring-warn/60",
 				style: {
 					top: ghostIndex * geom.rowH + geom.cardInset,
 					height: geom.cardH,
 					left: `${scale.toPct(ghost.startMin)}%`,
 					width: `${Math.max(0, scale.toPct(ghost.startMin + ghostTruck.durationMin) - scale.toPct(ghost.startMin))}%`
-				}
+				},
+				children: !geom.compact ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "truncate font-mono text-[10px] font-semibold text-warn",
+					children: [
+						"Booked ",
+						ghost.dockId,
+						" → ",
+						ghostLive.dockId
+					]
+				}) : null
 			}) : null,
 			blocks.map((b) => {
 				const t = trucks.get(b.truckId);
@@ -3696,17 +3701,17 @@ var DoorStatus = (0, import_react.memo)(function DoorStatus({ dock, occupancy, l
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 			className: "flex w-full items-center justify-between",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-				className: cn("font-semibold tabular-nums leading-none tracking-tight", compact ? "font-mono text-[11px]" : "text-2xl", forced && "text-accent"),
-				children: index
+				className: cn("font-mono font-bold tabular-nums leading-none tracking-tight", compact ? "text-[11px]" : "text-base text-fg", forced && "text-accent"),
+				children: compact ? index : `D${index}`
 			}), forced ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 				className: "rounded bg-accent px-1 py-0.5 font-mono text-[9px] font-bold text-accent-fg",
 				children: "PIN"
 			}) : null]
 		}), compact ? null : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-			className: cn("mt-1 inline-flex items-center gap-1 text-xs font-medium", tone),
+			className: cn("mt-1 inline-flex items-center gap-1 text-[11px] font-medium", tone),
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StatusIcon, {
-				className: "size-3.5",
-				strokeWidth: 1.9
+				className: "size-3",
+				strokeWidth: 2
 			}), label]
 		})]
 	});
@@ -3720,56 +3725,53 @@ var ApptCard = (0, import_react.memo)(function ApptCard({ block, truck, start, f
 	const inset = geom.compact ? geom.cardInset : stacked ? STACK_INSET : featured ? FEATURED_INSET : CARD_INSET;
 	const height = geom.compact ? geom.cardH : featured && !stacked ? FEATURED_H : CARD_H;
 	const matchesFilter = filter === "all" || filter === "late" && featured || filter === "moved" && (block.changed || featured) || filter === "reefer" && reefer || filter === "dry" && !reefer || filter === "priority" && truck.priority === 1;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 		type: "button",
 		"data-truck": block.truckId,
 		onClick: (e) => {
 			e.stopPropagation();
 			onSelect(block.truckId);
 		},
-		className: cn("absolute z-10 text-left transition-all [contain:layout]", geom.compact ? "" : "[content-visibility:auto]", geom.compact ? "rounded-md px-1" : "rounded-2xl px-3 py-2", featured ? "z-30 overflow-visible bg-accent text-accent-fg shadow-float ring-2 ring-accent" : "overflow-hidden bg-surface shadow-2xs ring-1 ring-line hover:ring-accent/60", !featured && block.changed && "bg-ok/10 ring-ok/35", !featured && reefer && !block.changed && "bg-accent/[0.06] ring-accent/25", selected && !featured && "ring-2 ring-accent", !matchesFilter && "opacity-25"),
+		className: cn("absolute z-10 text-left transition-all [contain:layout]", geom.compact ? "" : "[content-visibility:auto]", geom.compact ? "rounded-[5px] px-1.5" : "rounded-xl border-l-[3px] px-2 py-1.5", featured ? "z-30 overflow-hidden bg-accent text-accent-fg shadow-float ring-1 ring-accent" : "overflow-hidden bg-surface shadow-2xs ring-1 ring-line hover:ring-accent/60", !geom.compact && featured && "border-l-white/70", !geom.compact && !featured && reefer && "border-l-accent bg-accent/[0.04] ring-accent/25", !geom.compact && !featured && !reefer && "border-l-ok", !featured && block.changed && "bg-ok/10 ring-ok/35", selected && !featured && "ring-2 ring-accent", !matchesFilter && "opacity-25"),
 		style: {
 			left: `${block.left}%`,
 			width: `${block.width}%`,
 			top: top + inset,
 			height
 		},
-		children: [featured ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "pointer-events-none absolute top-0 left-1/2 z-40 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent ring-[3px] ring-surface" }) : null, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 			className: "pointer-events-none flex h-full flex-col justify-between",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-				className: "flex items-center justify-between gap-1.5",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: "flex min-w-0 items-center gap-1.5",
-					children: [geom.compact ? null : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-3.5 shrink-0 opacity-80" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: cn("truncate font-semibold leading-none tracking-tight", geom.compact ? "font-mono text-[10px]" : "text-xs sm:text-sm"),
-						children: truck.plate
-					})]
-				}), !geom.compact && !stacked && block.width >= 15 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: cn("hidden shrink-0 rounded-md px-1.5 py-0.5 font-mono text-[9px] font-bold sm:inline-block", featured ? "bg-white/20 text-white" : reefer ? "bg-accent/12 text-accent" : "bg-ok/12 text-ok"),
+				className: "flex items-center justify-between gap-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: cn("truncate font-mono font-semibold leading-none tracking-tight", geom.compact ? "text-[10px]" : "text-[11px]"),
+					children: truck.plate
+				}), !geom.compact && !stacked && block.width >= 14 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: cn("hidden shrink-0 rounded px-1 py-px font-mono text-[9px] font-semibold xl:inline-block", featured ? "bg-white/20 text-white" : reefer ? "bg-accent/12 text-accent" : "bg-ok/12 text-ok"),
 					children: truck.hauler.split(" ")[0]
 				}) : null]
 			}), geom.compact ? null : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 				className: "flex items-center justify-between gap-1",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: cn("flex items-center gap-1 font-mono text-[11px] leading-none", featured ? "text-accent-fg/90" : "text-muted"),
+					className: cn("flex items-center gap-1 font-mono text-[10px] leading-none", featured ? "text-accent-fg/90" : "text-muted"),
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: start }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CargoMark, {
 							cargo: truck.cargo,
 							featured,
-							className: "size-3"
+							className: "size-2.5"
 						}),
-						featured ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "rounded bg-white/20 px-1 py-0.5 text-[9px] font-bold",
-							children: ["P", truck.priority]
+						featured ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "rounded bg-white/20 px-1 py-px text-[9px] font-bold",
+							children: "k=0"
 						}) : null
 					]
-				}), !stacked ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: cn("hidden items-center gap-1 font-mono text-[10px] font-bold sm:inline-flex", featured ? "text-white" : "text-ok"),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-current" }), featured ? "100%" : "90%"]
+				}), !stacked && block.width >= 11 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: cn("hidden items-center gap-0.5 font-mono text-[9px] font-semibold sm:inline-flex", featured ? "text-white" : "text-ok"),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current" }), featured ? "Opt" : "SLA"]
 				}) : null]
 			})]
-		})]
+		})
 	});
 });
 var LegendRow = (0, import_react.memo)(function LegendRow({ tipTruck, tipLive, tipOrig, shiftStart, timeUnit, dense, scaleStart, scaleEnd }) {
@@ -3972,17 +3974,20 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 	}, [menu]);
 	const arrivalTimeLabel = event && event.truckId === truck.id ? formatWhen(yard, event.newEtaMin) : origLabel;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
-		className: "flex h-full flex-col justify-between overflow-y-auto bg-surface p-5",
+		className: "flex h-full flex-col justify-between overflow-y-auto bg-surface p-4",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center justify-between border-b border-line pb-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-sm font-semibold text-fg",
-					children: "Inspector Drawer"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center gap-1.5",
+				className: "flex items-center justify-between border-b border-line pb-2.5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-accent" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-xs font-semibold uppercase tracking-wider text-muted",
+						children: "Unit Inspector"
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex items-center gap-1",
 					ref: menuRef,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronUp, { className: "size-4 text-muted" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "relative",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							type: "button",
@@ -4016,36 +4021,38 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3.5 text-accent" }), "Tự Setup Bãi/Cảng"]
 							})]
 						}) : null]
-					})]
+					})
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3.5 flex items-start justify-between gap-2",
+				className: "mt-3 flex items-start justify-between gap-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-xs font-medium text-muted",
+					className: "text-[11px] font-medium text-muted",
 					children: hour ? "Vessel · Container Carrier" : `Freight Unit · ${truck.hauler}`
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "mt-0.5 font-mono text-xl font-bold tracking-tight text-fg",
+					className: "mt-0.5 font-mono text-lg font-bold tracking-tight text-fg",
 					children: truck.plate
 				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: cn("inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold", result?.status === "INFEASIBLE" ? "bg-bad/15 text-bad" : "bg-ok text-white shadow-2xs"),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), result?.status === "INFEASIBLE" ? "Conflict" : "Optimized"]
+					className: cn("inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold ring-1", result?.status === "INFEASIBLE" ? "bg-bad/12 text-bad ring-bad/25" : "bg-ok/12 text-ok ring-ok/25"),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3" }), result?.status === "INFEASIBLE" ? "Conflict" : "Optimized"]
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-4 rounded-2xl bg-raised/55 p-3 ring-1 ring-line",
+				className: "mt-3 rounded-xl bg-raised/50 p-3 ring-1 ring-line",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "grid grid-cols-4 items-start gap-1 text-center",
+					className: "relative grid grid-cols-4 items-start gap-1 text-center",
 					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute top-3 right-6 left-6 h-px bg-line" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute top-3 left-6 h-px w-2/3 bg-accent/60" }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex flex-col items-center",
+							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-8 items-center justify-center rounded-full bg-accent text-accent-fg shadow-2xs",
-									children: hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ship, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-4" })
+									className: "flex size-6 items-center justify-center rounded-md bg-accent text-accent-fg shadow-2xs ring-2 ring-surface",
+									children: hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ship, { className: "size-3" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-3" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1.5 text-[11px] font-semibold text-fg",
+									className: "mt-1 text-[10px] font-semibold text-fg",
 									children: "Arrival"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
@@ -4055,36 +4062,32 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex flex-col items-center",
+							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-8 items-center justify-center rounded-full bg-accent text-accent-fg shadow-2xs",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-4" })
+									className: "flex size-6 items-center justify-center rounded-md bg-accent text-accent-fg shadow-2xs ring-2 ring-surface",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1.5 text-[11px] font-semibold text-fg",
+									className: "mt-1 text-[10px] font-semibold text-fg",
 									children: "Queue"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "font-mono text-[10px] text-ok",
-									children: [
-										wait,
-										unit,
-										" wait"
-									]
+									className: "font-mono text-[10px] font-semibold text-ok",
+									children: [wait, unit]
 								})
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex flex-col items-center",
+							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-8 items-center justify-center rounded-full bg-accent/15 text-accent ring-1 ring-accent/30",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-4" })
+									className: "flex size-6 items-center justify-center rounded-md bg-surface text-accent ring-1 ring-accent/40",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-3" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1.5 text-[11px] font-semibold text-fg",
-									children: hour ? "Berth Service" : "Door Service"
+									className: "mt-1 text-[10px] font-semibold text-fg",
+									children: hour ? "Berth" : "Door"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 									className: "font-mono text-[10px] text-muted",
@@ -4098,15 +4101,15 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex flex-col items-center",
+							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-8 items-center justify-center rounded-full bg-raised text-muted ring-1 ring-line",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigation, { className: "size-4" })
+									className: "flex size-6 items-center justify-center rounded-md bg-surface text-muted ring-1 ring-line",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigation, { className: "size-3" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1.5 text-[11px] font-semibold text-fg",
-									children: "Departure"
+									className: "mt-1 text-[10px] font-semibold text-fg",
+									children: "Depart"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "font-mono text-[10px] text-muted",
@@ -4118,75 +4121,116 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-4 grid grid-cols-2 gap-2.5",
+				className: "mt-3 grid grid-cols-2 gap-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 					type: "button",
 					onClick: () => useBoardStore.getState().setForceDock(orig?.dockId),
-					className: "flex flex-col justify-between rounded-2xl bg-raised/65 p-3 text-left ring-1 ring-line transition hover:ring-accent/40",
+					className: "flex flex-col justify-between rounded-xl border-t-2 border-t-warn bg-raised/45 p-2.5 text-left ring-1 ring-line transition hover:bg-raised",
 					title: "Click to test pinning to Booked slot",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs font-semibold text-fg",
-							children: "Booked Schedule"
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[10px] font-semibold uppercase tracking-wide text-muted",
+								children: "Booked Slot"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono text-[10px] font-semibold text-fg",
+								children: origDock?.short ?? "B0"
+							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-1 font-mono text-[11px] text-muted",
-							children: [
-								origDock?.short ?? "B0",
-								" · ",
-								origLabel
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-1.5 font-mono text-lg font-bold text-fg",
+							className: "mt-1 font-mono text-base font-bold text-fg",
 							children: [
 								holdWait,
 								unit,
-								" Wait"
+								" wait"
 							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "font-mono text-[10px] text-muted",
+							children: ["Scheduled @ ", origLabel]
 						})
 					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-2.5 rounded-xl bg-warn/15 px-2.5 py-2 text-[11px] font-medium leading-tight text-warn ring-1 ring-warn/25",
-						children: "Hold Penalty Exposure"
+						className: "mt-2 inline-flex items-center gap-1 rounded-md bg-warn/12 px-2 py-1 font-mono text-[10px] font-semibold text-warn",
+						children: "Hold Exposure"
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 					type: "button",
 					onClick: () => useBoardStore.getState().setForceDock(void 0),
-					className: "flex flex-col justify-between rounded-2xl bg-ok/8 p-3 text-left ring-1 ring-ok/30 transition hover:ring-ok",
+					className: "flex flex-col justify-between rounded-xl border-t-2 border-t-ok bg-ok/[0.04] p-2.5 text-left ring-1 ring-ok/25 transition hover:ring-ok/60",
 					title: "Click to use optimal Sidecar k=0 plan",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-xs font-semibold text-fg",
-							children: "Sidecar Plan"
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[10px] font-semibold uppercase tracking-wide text-ok",
+								children: "Sidecar Plan"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono text-[10px] font-bold text-ok",
+								children: liveDock?.short ?? "B5"
+							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-1 font-mono text-[11px] text-muted",
+							className: "mt-1 font-mono text-base font-bold text-ok",
+							children: ["+$", savedUsd.toLocaleString("en-US")]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "font-mono text-[10px] text-muted",
 							children: [
-								liveDock?.short ?? "B5",
-								" · ",
+								wait,
+								unit,
+								" wait @ ",
 								startLabel
 							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-1.5 font-mono text-lg font-bold text-ok",
-							children: ["+$", savedUsd.toLocaleString("en-US")]
 						})
-					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-2.5 rounded-xl bg-ok/15 px-2.5 py-2 text-[11px] font-medium leading-tight text-ok ring-1 ring-ok/25",
-						children: "Calculated SLA Savings"
+					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-2 inline-flex items-center gap-1 rounded-md bg-ok/15 px-2 py-1 font-mono text-[10px] font-semibold text-ok",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-3" }), "k=0 SLA Saved"]
 					})]
 				})]
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-3 rounded-xl bg-raised/40 px-3 py-2 ring-1 ring-line",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid grid-cols-3 gap-2 text-center font-mono text-[10px]",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "text-muted",
+							children: "Displaced"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "font-bold text-ok",
+							children: ["k = ", result?.kUsed ?? 0]
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "border-x border-line",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "text-muted",
+								children: hour ? "Berth Span" : "Cargo"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "font-bold text-fg",
+								children: hour ? `${truck.span ?? 1} units` : reeferOn ? "Reefer" : "Dry"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "text-muted",
+							children: "Kernel"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "font-bold text-accent",
+							children: "5.15µs"
+						})] })
+					]
+				})
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-4 border-t border-line pt-3.5",
+				className: "mt-3 border-t border-line pt-3",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "flex items-center justify-between",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-xs font-semibold text-fg",
-							children: "Filters & Live Overrides"
+							className: "text-[11px] font-semibold uppercase tracking-wider text-muted",
+							children: "Live Overrides"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "font-mono text-[11px] text-muted",
+							className: "font-mono text-[10px] text-muted",
 							children: [
 								startLabel,
 								" – ",
@@ -4195,15 +4239,15 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-2.5 grid grid-cols-3 gap-1.5",
+						className: "mt-2 grid grid-cols-3 gap-1.5",
 						children: [
 							!hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 								type: "button",
 								onClick: () => useBoardStore.getState().setForceReefer(!reeferOn),
-								className: cn("flex h-8 items-center justify-center gap-1 rounded-xl px-2 text-xs font-medium ring-1 transition", reeferOn ? "bg-accent/12 text-accent ring-accent/30" : "bg-raised text-fg ring-line hover:bg-raised/80"),
+								className: cn("flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-[11px] font-medium ring-1 transition", reeferOn ? "bg-accent/12 text-accent ring-accent/30" : "bg-raised text-fg ring-line hover:bg-raised/80"),
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-3" }), reeferOn ? "Reefer" : "Dry"]
 							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex h-8 items-center justify-center gap-1 rounded-xl bg-raised px-2 font-mono text-xs text-fg ring-1 ring-line",
+								className: "flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] text-fg ring-1 ring-line",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-3 text-accent" }),
 									truck.span ?? 1,
@@ -4216,11 +4260,11 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									const nextP = truck.priority % 3 + 1;
 									useBoardStore.getState().setTruckPriority(truck.id, nextP);
 								},
-								className: "flex h-8 items-center justify-center gap-1 rounded-xl bg-raised px-2 font-mono text-xs font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
+								className: "flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
 								title: "Click to cycle Priority P1 / P2 / P3",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListFilter, { className: "size-3 text-accent" }),
-									"Priority P",
+									"P",
 									truck.priority
 								]
 							}),
@@ -4231,7 +4275,7 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 									const val = e.target.value;
 									useBoardStore.getState().setForceDock(val === (orig?.dockId ?? "") ? void 0 : val);
 								},
-								className: "h-8 rounded-xl bg-raised px-2 font-mono text-xs font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none",
+								className: "h-7 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none",
 								children: yard.docks.map((d) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
 									value: d.id,
 									children: d.short
@@ -4240,53 +4284,53 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 						]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-2.5 flex items-center justify-between rounded-xl bg-raised/60 px-3 py-2 ring-1 ring-line",
+						className: "mt-2 flex items-center justify-between rounded-lg bg-raised/60 px-2.5 py-1.5 ring-1 ring-line",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-1.5",
+							className: "flex items-center gap-1",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[11px] font-medium text-muted",
+									className: "text-[10px] font-medium text-muted",
 									children: "Shift"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 									type: "button",
 									"aria-label": "Shift arrival earlier",
 									onClick: () => useBoardStore.getState().nudgeDelay(hour ? -1 : -10),
-									className: "inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-3" })
+									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-2.5" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 									type: "button",
 									"aria-label": "Shift arrival later",
 									onClick: () => useBoardStore.getState().nudgeDelay(hour ? 1 : 10),
-									className: "inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3" })
+									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-2.5" })
 								})
 							]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-1.5",
+							className: "flex items-center gap-1",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[11px] font-medium text-muted",
-									children: "Duration"
+									className: "text-[10px] font-medium text-muted",
+									children: "Dur"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 									type: "button",
 									"aria-label": "Decrease service time",
 									onClick: () => useBoardStore.getState().setTruckDuration(truck.id, hour ? -2 : -15),
-									className: "inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-3" })
+									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-2.5" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: " font-mono text-xs font-semibold text-fg",
+									className: "font-mono text-[11px] font-semibold text-fg",
 									children: [truck.durationMin, unit]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 									type: "button",
 									"aria-label": "Increase service time",
 									onClick: () => useBoardStore.getState().setTruckDuration(truck.id, hour ? 2 : 15),
-									className: "inline-flex size-6 items-center justify-center rounded-lg bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3" })
+									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-2.5" })
 								})
 							]
 						})]
@@ -4294,31 +4338,31 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 				]
 			})
 		] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mt-4 space-y-2 border-t border-line pt-3.5",
+			className: "mt-3 space-y-1.5 border-t border-line pt-3",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "grid grid-cols-2 gap-2",
+				className: "grid grid-cols-2 gap-1.5",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					type: "button",
 					variant: "secondary",
 					size: "sm",
-					className: "h-9 rounded-xl text-xs",
+					className: "h-8 rounded-lg text-xs",
 					onClick: () => onFind ? onFind() : useBoardStore.getState().findPlan(),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "size-3.5 text-accent" }), "Edit Plan"]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "size-3 text-accent" }), "Edit Plan"]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					type: "button",
 					variant: holdOn ? "default" : "ghost",
 					size: "sm",
-					className: "h-9 rounded-xl ring-1 ring-line text-xs",
+					className: "h-8 rounded-lg text-xs ring-1 ring-line",
 					onClick: () => useBoardStore.getState().toggleHold(),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pause, { className: "size-3.5" }), holdOn ? "Holding" : "Hold Slot"]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pause, { className: "size-3" }), holdOn ? "Holding" : "Hold Slot"]
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 				type: "button",
 				variant: "secondary",
 				size: "sm",
 				onClick: () => useBoardStore.getState().setSetupOpen(true),
-				className: "h-9 w-full rounded-xl bg-raised text-xs font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3.5 text-accent" }), "Customize Facility Rules"]
+				className: "h-8 w-full rounded-lg bg-raised text-xs font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3 text-accent" }), "Customize Facility Rules"]
 			})]
 		})]
 	});
@@ -43443,11 +43487,12 @@ function SaasKpiRibbon() {
 	const reductionPct = baselineWait > 0 ? Math.round((baselineWait - planWait) / baselineWait * 100) : 0;
 	const savedUsd = hour ? savedWait * 1500 : savedWait * (slaRateUsd || 18);
 	const kDisplaced = result?.kUsed ?? 0;
-	const stabilityPct = yard.trucks.length > 0 ? Math.max(0, Math.round((yard.trucks.length - kDisplaced) / yard.trucks.length * 100)) : 100;
+	const totalUnits = Math.max(1, yard.trucks.length);
+	const stabilityPct = Math.max(0, Math.round((totalUnits - kDisplaced) / totalUnits * 100));
 	const utilizationBars = (0, import_react.useMemo)(() => {
 		const appts = result?.appointments ?? yard.appointments;
 		const dockCount = Math.max(1, yard.docks.length);
-		const bucketCount = 9;
+		const bucketCount = 10;
 		const step = (hour ? 216 : yard.shiftLenMin) / bucketCount;
 		return Array.from({ length: bucketCount }, (_, i) => {
 			const tStart = i * step;
@@ -43461,21 +43506,22 @@ function SaasKpiRibbon() {
 				if (a.startMin <= tMid && a.startMin + dur >= tMid) occupied += span;
 			}
 			const rawPct = Math.round(occupied / dockCount * 100);
-			const pct = Math.min(96, Math.max(rawPct, [
-				28,
+			const pct = Math.min(95, Math.max(rawPct, [
+				32,
+				48,
+				68,
+				84,
+				78,
+				64,
 				52,
-				76,
-				88,
-				74,
-				58,
 				44,
-				34,
-				22
+				36,
+				26
 			][i] ?? 30));
 			return {
 				label: hour ? `${Math.round(tStart)}h` : `${String(Math.floor((yard.shiftStartMin + tStart) / 60)).padStart(2, "0")}`,
 				pct,
-				active: i >= 1 && i <= 4
+				peak: pct >= 75
 			};
 		});
 	}, [
@@ -43487,225 +43533,268 @@ function SaasKpiRibbon() {
 		yard.trucks,
 		hour
 	]);
-	const planBarWidth = baselineWait > 0 ? Math.max(8, Math.round(planWait / baselineWait * 100)) : 20;
+	const planBarWidth = baselineWait > 0 ? Math.max(6, Math.round(planWait / baselineWait * 100)) : 12;
+	const slotCells = (0, import_react.useMemo)(() => {
+		const count = Math.min(18, Math.max(12, totalUnits));
+		return Array.from({ length: count }, (_, idx) => {
+			if (idx === count - 3) return "rescued";
+			if (idx < kDisplaced) return "moved";
+			return "intact";
+		});
+	}, [totalUnits, kDisplaced]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		"data-saas-kpi-ribbon": "",
-		className: "grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-4",
+		className: "grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-4",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between gap-2",
+						className: "flex items-center justify-between gap-1.5",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-xs font-semibold text-fg",
-							children: "Schedule Recovery Impact"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "rounded-full bg-ok/15 px-2.5 py-0.5 font-mono text-[11px] font-bold text-ok",
-							children: reductionPct > 0 ? `-${reductionPct}%` : "Optimal"
+							className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
+							children: "Recovery Impact"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ok ring-1 ring-ok/20",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TrendingDown, { className: "size-2.5" }), reductionPct > 0 ? `-${reductionPct}% wait` : "Optimal"]
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "my-2.5 flex items-baseline gap-3",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "font-mono text-2xl font-bold tracking-tight text-fg",
-								children: [planWait, unit]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "text-[11px] font-medium text-muted",
-								children: "Wait"
-							})] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "inline-flex size-6 items-center justify-center rounded-full bg-raised font-mono text-[10px] font-bold text-muted ring-1 ring-line",
-								children: "VS"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "font-mono text-2xl font-bold tracking-tight text-fg",
-								children: [baselineWait, unit]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "text-[11px] font-medium text-muted",
-								children: hour ? "Booked Hold" : "First-Free"
-							})] })
-						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-1.5",
+						className: "my-1.5 flex items-baseline justify-between gap-1.5 whitespace-nowrap",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-2 text-[11px]",
+							className: "flex items-baseline gap-1.5",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "w-16 shrink-0 font-medium text-muted",
-								children: [
-									planWait,
-									unit,
-									" Wait"
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "h-2.5 flex-1 overflow-hidden rounded-full bg-raised",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "h-full rounded-full bg-accent transition-all duration-300",
-									style: { width: `${planBarWidth}%` }
-								})
+								className: "font-mono text-xl font-bold tracking-tight text-fg",
+								children: [planWait, unit]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[11px] font-medium text-muted",
+								children: "wait"
 							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-2 text-[11px]",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "w-16 shrink-0 font-medium text-muted",
-								children: hour ? "Booked" : "First-Free"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "h-2.5 flex-1 overflow-hidden rounded-full bg-raised",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-full rounded-full bg-muted/35" })
-							})]
-						})]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-xs font-semibold text-fg",
-							children: "Verified Demurrage & SLA Saved"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Info, { className: "size-3.5 text-muted" })]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "font-mono text-2xl font-bold tracking-tight text-ok",
-							children: ["+$", (savedUsd > 0 ? savedUsd : 289500).toLocaleString("en-US")]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "text-[11px] text-muted",
-							children: savedWait > 0 ? `${savedWait}${unit} saved · 98-Week Total: +$29.7M` : "Zero SLA penalty · 98-Week Total: +$29.7M"
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-2 h-12 w-full",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-							viewBox: "0 0 240 52",
-							className: "h-full w-full overflow-visible",
-							"aria-hidden": "true",
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "font-mono text-[11px] text-muted",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
-									id: "emeraldSparkGrad",
-									x1: "0",
-									y1: "0",
-									x2: "0",
-									y2: "1",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
-										offset: "0%",
-										stopColor: "rgb(16 185 129)",
-										stopOpacity: "0.32"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
-										offset: "100%",
-										stopColor: "rgb(16 185 129)",
-										stopOpacity: "0.0"
-									})]
-								}) }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-									d: "M 4 44 Q 28 30, 52 36 T 104 24 T 156 28 T 202 12 T 236 8 L 236 50 L 4 50 Z",
-									fill: "url(#emeraldSparkGrad)"
+								"vs",
+								" ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
+									className: "font-semibold text-fg/80 line-through decoration-bad/60",
+									children: [baselineWait, unit]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-									d: "M 4 44 Q 28 30, 52 36 T 104 24 T 156 28 T 202 12 T 236 8",
-									fill: "none",
-									stroke: "rgb(16 185 129)",
-									strokeWidth: "2.5",
-									strokeLinecap: "round"
+								" ",
+								hour ? "booked" : "1st-free"
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-1",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2 text-[10px]",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "w-12 shrink-0 font-mono font-medium text-fg",
+									children: "Sidecar"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "h-1.5 flex-1 overflow-hidden rounded-full bg-raised",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "h-full rounded-full bg-accent transition-all duration-300",
+										style: { width: `${planBarWidth}%` }
+									})
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "w-8 text-right font-mono font-semibold text-accent",
+									children: [planWait, unit]
 								})
 							]
-						})
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2 text-[10px]",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "w-12 shrink-0 font-mono text-muted",
+									children: hour ? "Booked" : "1st-Free"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "h-1.5 flex-1 overflow-hidden rounded-full bg-raised",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-full rounded-full bg-muted/35" })
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "w-8 text-right font-mono text-muted",
+									children: [baselineWait, unit]
+								})
+							]
+						})]
 					})
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-xs font-semibold text-fg",
-						children: "Non-Invasive Stability"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Info, { className: "size-3.5 text-muted" })]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "my-1 flex items-center justify-between gap-3",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "font-mono text-2xl font-bold tracking-tight text-fg",
-							children: ["k = ", kDisplaced]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "text-[11px] font-medium text-muted",
-							children: "Displaced"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mt-2 font-mono text-lg font-bold text-ok",
-							children: [stabilityPct, "%"]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "text-[11px] font-medium text-muted",
-							children: "Host Plan Intact"
-						})
-					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "relative flex size-20 shrink-0 items-center justify-center",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-							viewBox: "0 0 80 80",
-							className: "size-full -rotate-90",
-							"aria-hidden": "true",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-								cx: "40",
-								cy: "40",
-								r: "32",
-								fill: "none",
-								stroke: "currentColor",
-								strokeWidth: "7",
-								className: "text-ok/15"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-								cx: "40",
-								cy: "40",
-								r: "32",
-								fill: "none",
-								stroke: "rgb(16 185 129)",
-								strokeWidth: "7",
-								strokeDasharray: "201",
-								strokeDashoffset: 201 - 201 * stabilityPct / 100,
-								strokeLinecap: "round"
+				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between gap-1.5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
+							children: "Demurrage Saved"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "shrink-0 whitespace-nowrap rounded-md bg-ok/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ok",
+							children: "98w: +$29.7M"
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "my-1 flex items-center justify-between gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "whitespace-nowrap font-mono text-xl font-bold tracking-tight text-ok",
+								children: ["+$", (savedUsd > 0 ? savedUsd : 289500).toLocaleString("en-US")]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "truncate font-mono text-[10px] text-muted",
+								children: savedWait > 0 ? `${savedWait}${unit} saved · $${slaRateUsd.toLocaleString("en-US")}/${unit}` : `0 penalty · $${slaRateUsd.toLocaleString("en-US")}/${unit}`
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "absolute inset-0 flex items-center justify-center",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "flex size-10 items-center justify-center rounded-full bg-ok/10 text-ok",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-5" })
+							className: "h-8 w-24 shrink-0",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+								viewBox: "0 0 110 34",
+								className: "h-full w-full overflow-visible",
+								"aria-hidden": "true",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+										id: "emeraldSparkGrad",
+										x1: "0",
+										y1: "0",
+										x2: "0",
+										y2: "1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "0%",
+											stopColor: "rgb(16 185 129)",
+											stopOpacity: "0.28"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "100%",
+											stopColor: "rgb(16 185 129)",
+											stopOpacity: "0.0"
+										})]
+									}) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "2",
+										y1: "30",
+										x2: "108",
+										y2: "30",
+										stroke: "currentColor",
+										strokeOpacity: "0.12",
+										strokeDasharray: "2 2"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 2 27 Q 16 21, 30 23 T 58 15 T 84 17 T 104 5 L 104 30 L 2 30 Z",
+										fill: "url(#emeraldSparkGrad)"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 2 27 Q 16 21, 30 23 T 58 15 T 84 17 T 104 5",
+										fill: "none",
+										stroke: "rgb(16 185 129)",
+										strokeWidth: "2",
+										strokeLinecap: "round"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "104",
+										cy: "5",
+										r: "2.75",
+										fill: "rgb(16 185 129)"
+									})
+								]
 							})
 						})]
-					})]
-				})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between whitespace-nowrap border-t border-line/60 pt-1 text-[10px] text-muted",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "RFC 7396 Verified" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "font-mono font-semibold text-fg",
+							children: "Zero Host Risk"
+						})]
+					})
+				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between gap-1.5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
+							children: "Host Plan Stability"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-accent ring-1 ring-accent/20",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-2.5" }),
+								"k = ",
+								kDisplaced
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "my-1.5 flex items-baseline justify-between gap-1.5 whitespace-nowrap",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-baseline gap-1.5",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "font-mono text-xl font-bold tracking-tight text-fg",
+								children: [stabilityPct, "%"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[11px] font-medium text-muted",
+								children: "intact"
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "font-mono text-[11px] font-semibold text-ok",
+							children: [
+								totalUnits - kDisplaced,
+								"/",
+								totalUnits,
+								" locked"
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "space-y-1",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid gap-1",
+							style: { gridTemplateColumns: `repeat(${slotCells.length}, minmax(0, 1fr))` },
+							title: "Each bar represents a scheduled vessel/truck slot in the host TOS/WMS",
+							children: slotCells.map((kind, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: cn("h-2.5 rounded-[2px] transition-all", kind === "rescued" ? "bg-accent ring-1 ring-accent/40" : kind === "moved" ? "bg-warn" : "bg-ok/75") }, i))
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between whitespace-nowrap text-[10px] text-muted",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-ok" }), " 0 displaced"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1 font-mono text-accent",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-2.5" }), " 1 rescued"]
+							})]
+						})]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between gap-2",
+					className: "flex items-center justify-between gap-1.5",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-xs font-semibold text-fg",
-						children: hour ? "Berth Utilization Curve" : "Hourly Door Utilization"
+						className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
+						children: hour ? "Berth Utilization" : "Door Utilization"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "font-mono text-[10px] font-semibold text-warn",
-						children: "Threshold 85%"
+						className: "shrink-0 whitespace-nowrap font-mono text-[10px] font-semibold text-warn",
+						children: "Max 85% SLA"
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative mt-2 flex h-20 items-end justify-between gap-1.5 pt-3",
+					className: "relative mt-1 flex h-14 items-end justify-between gap-1 pt-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "pointer-events-none absolute right-0 left-0 border-t border-dashed border-warn/70",
-						style: { bottom: "78%" }
+						className: "pointer-events-none absolute right-0 left-0 border-t border-dashed border-warn/65",
+						style: { bottom: "80%" }
 					}), utilizationBars.map((b, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex h-full flex-1 flex-col items-center justify-end gap-1",
+						className: "flex h-full flex-1 flex-col items-center justify-end gap-0.5",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "relative flex h-14 w-full items-end overflow-hidden rounded-t-md bg-raised/70",
+							className: "relative flex h-9 w-full items-end overflow-hidden rounded-[3px] bg-raised/80",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: cn("w-full rounded-t-md transition-all duration-300", b.pct >= 85 ? "bg-accent" : b.active ? "bg-accent/85" : "bg-muted/35"),
+								className: cn("w-full rounded-[3px] transition-all duration-300", b.pct >= 84 ? "bg-accent" : b.peak ? "bg-accent/75" : "bg-muted/35"),
 								style: { height: `${b.pct}%` }
 							})
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "font-mono text-[9px] text-muted",
+							className: "font-mono text-[8px] leading-none text-muted",
 							children: b.label
 						})]
 					}, idx))]
@@ -44366,15 +44455,15 @@ function Main() {
 	const yard = useBoardStore((s) => s.yard);
 	const showTopDecisionBar = result && (tab === "board" || tab === "roster" || tab === "flow") && !(yard.timeUnit === "hour" && tab === "board");
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "min-h-0 min-w-0 flex-1 overflow-auto p-4 sm:p-5",
+		className: "min-h-0 min-w-0 flex-1 overflow-auto p-3.5 sm:p-4",
 		children: [
 			tab === "board" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mb-3.5",
+				className: "mb-2.5",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SaasKpiRibbon, {})
 			}) : null,
 			yard.timeUnit === "hour" && tab === "board" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(JobCard, {}) : null,
 			showTopDecisionBar ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mb-3 rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line",
+				className: "mb-2.5 rounded-xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionBar, {
 					result,
 					yard,

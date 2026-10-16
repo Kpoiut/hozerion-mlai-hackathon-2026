@@ -57,106 +57,124 @@ export function DecisionBar({
   const fact = hour && cert ? fileCall(yard, cert.chosen.truckId) : undefined;
 
   return (
-    <div className="flex min-h-9 flex-wrap items-center gap-2">
-      {result.status === "OPTIMAL" ? (
-        <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-ok/10 px-2.5 text-xs font-semibold text-ok">
-          <CheckCircle2 className="size-3.5" />
-          Ready
-        </span>
-      ) : result.status === "HUMAN_REQUIRED" ? (
-        <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-warn/10 px-2.5 text-xs font-semibold text-warn">
-          <CircleAlert className="size-3.5" />
-          Review
-        </span>
-      ) : (
-        <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-bad/10 px-2.5 text-xs font-semibold text-bad">
-          <CircleX className="size-3.5" />
-          Blocked
-        </span>
-      )}
-      {result.status === "OPTIMAL" && cert ? (
-        <p className="min-w-0 flex-1 truncate font-mono text-xs font-medium text-accent">
-          {placeName(cert.chosen.dockId, hour)} at {formatWhen(yard, cert.chosen.startMin)}
-          <span className="ml-2 font-normal">wait {result.metrics.eventWaitMin}{hour ? "h" : "m"}</span>
-          <span className="font-normal text-muted">
-            {result.metrics.displaced ? ` · ${result.metrics.displaced} moved` : " · nobody else moves"}
-          </span>
-          <span className="ml-2 font-normal text-faint">· draft</span>
-        </p>
-      ) : (
-        <p className="min-w-0 flex-1 truncate text-xs text-muted">{msg}</p>
-      )}
-      {result.status === "OPTIMAL" && !hour ? <ProofStrip result={result} yard={yard} /> : null}
-      {etc ? (
-        <p className="truncate font-mono text-[11px] text-muted" data-etc-winner={etc.winner}>
-          {formatEtcVerdict(etc, yard.shiftStartMin, yard.timeUnit)}
-          {etc.conflicts.length > 1 ? ` · ${etc.conflicts.length} disagreements` : ""}
-        </p>
-      ) : null}
-      {restores.map((r) => (
-        <Button key={r.id} type="button" variant="secondary" size="sm" onClick={() => onApplyRelax(r.drop)}>
-          {DROP_LABEL[r.drop] ?? r.label}
-        </Button>
-      ))}
-      <div className="relative flex shrink-0" ref={wrap}>
-        <Button
-          type="button"
-          className="h-8 min-w-20 rounded-l-lg rounded-r-none text-xs"
-          onClick={onCommit}
-          disabled={result.status !== "OPTIMAL"}
-        >
-          Commit
-        </Button>
-        <Button
-          type="button"
-          className="h-8 rounded-l-none rounded-r-lg px-2"
-          onClick={() => setMenu((v) => !v)}
-          disabled={result.status !== "OPTIMAL"}
-          aria-label="Commit options"
-          aria-expanded={menu}
-        >
-          <ChevronDown className="size-3.5" />
-        </Button>
-        {menu ? (
-          <div className="absolute top-full right-0 z-50 mt-1 min-w-44 rounded-xl bg-surface p-1 shadow-float ring-1 ring-line">
-            <button
+    <div className="space-y-1.5">
+      {/* Row 1: Status + Chosen Slot + Arbiter Clock + Right-Aligned Commit */}
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex min-w-0 items-center gap-2">
+          {result.status === "OPTIMAL" ? (
+            <span className="inline-flex h-7 shrink-0 items-center gap-1 rounded-md bg-ok/12 px-2 text-xs font-semibold text-ok ring-1 ring-ok/20">
+              <CheckCircle2 className="size-3.5" />
+              Ready
+            </span>
+          ) : result.status === "HUMAN_REQUIRED" ? (
+            <span className="inline-flex h-7 shrink-0 items-center gap-1 rounded-md bg-warn/12 px-2 text-xs font-semibold text-warn ring-1 ring-warn/20">
+              <CircleAlert className="size-3.5" />
+              Review
+            </span>
+          ) : (
+            <span className="inline-flex h-7 shrink-0 items-center gap-1 rounded-md bg-bad/12 px-2 text-xs font-semibold text-bad ring-1 ring-bad/20">
+              <CircleX className="size-3.5" />
+              Blocked
+            </span>
+          )}
+          {result.status === "OPTIMAL" && cert ? (
+            <p className="truncate font-mono text-xs font-semibold text-accent">
+              {placeName(cert.chosen.dockId, hour)} at {formatWhen(yard, cert.chosen.startMin)}
+              <span className="ml-2 font-normal text-fg">
+                wait {result.metrics.eventWaitMin}
+                {hour ? "h" : "m"}
+              </span>
+              <span className="font-normal text-muted">
+                {result.metrics.displaced ? ` · ${result.metrics.displaced} moved` : " · nobody else moves"}
+              </span>
+              <span className="ml-1.5 font-normal text-faint">· draft</span>
+            </p>
+          ) : (
+            <p className="truncate text-xs text-muted">{msg}</p>
+          )}
+        </div>
+
+        <div className="ml-auto flex shrink-0 items-center gap-2">
+          {etc ? (
+            <p className="hidden truncate font-mono text-[11px] text-muted sm:block" data-etc-winner={etc.winner}>
+              {formatEtcVerdict(etc, yard.shiftStartMin, yard.timeUnit)}
+              {etc.conflicts.length > 1 ? ` · ${etc.conflicts.length} disagreements` : ""}
+            </p>
+          ) : null}
+          {restores.map((r) => (
+            <Button key={r.id} type="button" variant="secondary" size="sm" className="h-7 text-xs" onClick={() => onApplyRelax(r.drop)}>
+              {DROP_LABEL[r.drop] ?? r.label}
+            </Button>
+          ))}
+          <div className="relative flex shrink-0" ref={wrap}>
+            <Button
               type="button"
-              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised"
-              onClick={() => {
-                setMenu(false);
-                onCommit();
-              }}
+              className="h-7 min-w-18 rounded-l-lg rounded-r-none px-3 text-xs"
+              onClick={onCommit}
+              disabled={result.status !== "OPTIMAL"}
             >
-              Commit to board
-            </button>
-            <button
+              Commit
+            </Button>
+            <Button
               type="button"
-              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised"
-              onClick={() => {
-                setMenu(false);
-                void navigator.clipboard.writeText(planLine);
-              }}
+              className="h-7 rounded-l-none rounded-r-lg px-1.5"
+              onClick={() => setMenu((v) => !v)}
+              disabled={result.status !== "OPTIMAL"}
+              aria-label="Commit options"
+              aria-expanded={menu}
             >
-              <Copy className="size-3.5 text-muted" />
-              Copy plan
-            </button>
-            <button
-              type="button"
-              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised disabled:opacity-40"
-              disabled={!useBoardStore.getState().previous}
-              onClick={() => {
-                setMenu(false);
-                useBoardStore.getState().undo();
-              }}
-            >
-              <Undo2 className="size-3.5 text-muted" />
-              Undo last commit
-            </button>
+              <ChevronDown className="size-3.5" />
+            </Button>
+            {menu ? (
+              <div className="absolute top-full right-0 z-50 mt-1 min-w-44 rounded-xl bg-surface p-1 shadow-float ring-1 ring-line">
+                <button
+                  type="button"
+                  className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised"
+                  onClick={() => {
+                    setMenu(false);
+                    onCommit();
+                  }}
+                >
+                  Commit to board
+                </button>
+                <button
+                  type="button"
+                  className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised"
+                  onClick={() => {
+                    setMenu(false);
+                    void navigator.clipboard.writeText(planLine);
+                  }}
+                >
+                  <Copy className="size-3.5 text-muted" />
+                  Copy plan
+                </button>
+                <button
+                  type="button"
+                  className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-raised disabled:opacity-40"
+                  disabled={!useBoardStore.getState().previous}
+                  onClick={() => {
+                    setMenu(false);
+                    useBoardStore.getState().undo();
+                  }}
+                >
+                  <Undo2 className="size-3.5 text-muted" />
+                  Undo last commit
+                </button>
+              </div>
+            ) : null}
           </div>
-        ) : null}
+        </div>
       </div>
+
+      {/* Row 2: ProofStrip (Minute mode) or File Audit (Hour mode) */}
+      {result.status === "OPTIMAL" && !hour ? (
+        <div className="border-t border-line/60 pt-1.5">
+          <ProofStrip result={result} yard={yard} />
+        </div>
+      ) : null}
+
       {hour && (fact || cert) ? (
-        <div className="basis-full flex items-center gap-2 truncate font-mono text-[10px] text-faint">
+        <div className="flex items-center gap-2 truncate border-t border-line/60 pt-1 font-mono text-[10px] text-faint">
           {fact && event ? (
             <span className="truncate">
               {fact.id} in the file: arrives {fact.arrival}h, moors {fact.moor}h on berth {fact.berth}, occupies {fact.len} berths, works {fact.handling}h. This probe arrives at {event.newEtaMin}h.
@@ -213,7 +231,7 @@ function ProofStrip({ result, yard }: { result: SolveResult; yard: Yard }) {
   const place = (id: string) => (hour ? `Berth ${id.replace(/^B/, "")}` : `Door ${id}`);
   return (
     <div
-      className="inline-flex flex-wrap items-center gap-2 rounded-xl bg-raised px-3 py-1 text-xs ring-1 ring-line"
+      className="flex flex-wrap items-center gap-2 text-[11px]"
       data-proof-saved={proof.savedMin}
     >
       <span className="font-semibold text-fg">{proof.headline}</span>
@@ -224,7 +242,7 @@ function ProofStrip({ result, yard }: { result: SolveResult; yard: Yard }) {
       <span className="font-mono text-accent">
         This plan <strong>{proof.waitMin}{suffix}</strong> ({place(proof.dock)})
       </span>
-      <span className="rounded-md bg-ok/12 px-2 py-0.5 font-mono font-semibold text-ok">
+      <span className="rounded bg-ok/12 px-1.5 py-px font-mono text-[10px] font-semibold text-ok">
         Saved {proof.savedMin}{suffix} · {proof.moved === 0 ? "nobody else moves" : `${proof.moved} moved`}
       </span>
     </div>
