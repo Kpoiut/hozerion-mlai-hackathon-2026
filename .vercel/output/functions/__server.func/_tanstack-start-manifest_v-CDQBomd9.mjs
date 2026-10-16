@@ -1,24 +1,24 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-C_kz9Wsu.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-CDQBomd9.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "D:/mlaihackathon/src/routes/__root.tsx",
 		children: ["/", "/design"],
-		preloads: ["/assets/index-DdCGbH5I.js"],
+		preloads: ["/assets/index-VJ59NFnG.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DdCGbH5I.js"
+			src: "/assets/index-VJ59NFnG.js"
 		} }]
 	},
 	"/": {
 		filePath: "D:/mlaihackathon/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-BiRyuH40.js", "/assets/dock-exceptions-Bf_OJRgw.js"]
+		preloads: ["/assets/routes-DZXE0PN0.js", "/assets/dock-exceptions-CZi8SOem.js"]
 	},
 	"/design": {
 		filePath: "D:/mlaihackathon/src/routes/design.tsx",
 		children: void 0,
-		preloads: ["/assets/design-BhZ98RoP.js", "/assets/dock-exceptions-Bf_OJRgw.js"]
+		preloads: ["/assets/design-WHmQE7n0.js", "/assets/dock-exceptions-CZi8SOem.js"]
 	}
 } });
 //#endregion

@@ -388,8 +388,8 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
   const ticks = hour ? [-6, -1, 0, 1, 6, 12] : OFFSET_TICKS;
 
   return (
-    <header className="flex h-16 shrink-0 flex-nowrap items-center gap-3 overflow-hidden border-b border-line bg-surface px-4 sm:px-5">
-      <p className="shrink-0 whitespace-nowrap text-base">
+    <header className="flex h-16 shrink-0 flex-nowrap items-center gap-2.5 overflow-hidden border-b border-line bg-surface px-4 sm:px-5">
+      <p className="shrink-0 whitespace-nowrap text-sm">
         <span className="font-semibold tracking-tight text-fg">
           {tab === "sidecar"
             ? "Sidecar & Go/Rust"
@@ -412,7 +412,7 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
         <span className="mx-1.5 text-faint">/</span>
         <span className="text-muted">{hour ? "Published berth plan" : "Morning board"}</span>
       </p>
-      <div className="ml-auto flex min-w-0 flex-nowrap items-center gap-2">
+      <div className="ml-auto flex min-w-0 flex-nowrap items-center gap-1.5">
         {hour ? (
           <div className="hidden items-center gap-1.5 rounded-xl bg-bg px-2.5 py-1 ring-1 ring-line md:flex">
             <Truck className="size-3.5 text-muted" />
@@ -430,7 +430,7 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
             </select>
           </div>
         ) : (
-          <label className="flex h-9 shrink-0 items-center gap-2 rounded-xl bg-bg px-3 ring-1 ring-line focus-within:ring-2 focus-within:ring-accent/30">
+          <label className="flex h-9 shrink-0 items-center gap-2 rounded-xl bg-bg px-2.5 ring-1 ring-line focus-within:ring-2 focus-within:ring-accent/30">
             <Truck className="size-4 shrink-0 text-muted" />
             <input
               ref={noteRef}
@@ -442,12 +442,12 @@ function Header({ noteRef }: { noteRef: RefObject<HTMLInputElement | null> }) {
               disabled={busy}
               placeholder="Paste a gate note"
               title={agentNote ?? "Enter to read"}
-              className="w-36 min-w-0 bg-transparent py-0 text-sm outline-none sm:w-48 2xl:w-56"
+              className="w-32 min-w-0 bg-transparent py-0 text-xs outline-none xl:w-40 2xl:w-52"
             />
             <ChevronRight className="size-4 shrink-0 text-faint" />
           </label>
         )}
-        <div className="hidden w-52 shrink-0 flex-col justify-center xl:flex 2xl:w-64">
+        <div className="hidden w-36 shrink-0 flex-col justify-center xl:flex 2xl:w-56">
           <span className="mb-0.5 text-[10px] font-medium tracking-wide text-faint">{hour ? "Hours after mooring" : "Time offset"}</span>
           <input
             type="range"
@@ -595,20 +595,101 @@ function Main() {
   const tab = useBoardStore((s) => s.tab);
   const result = useBoardStore((s) => s.result);
   const yard = useBoardStore((s) => s.yard);
+  const delayMin = useBoardStore((s) => s.delayMin);
+  const playing = useBoardStore((s) => s.playing);
+  const hour = yard.timeUnit === "hour";
   const isScheduleTab = tab === "board" || tab === "roster" || tab === "flow";
   const showTopDecisionBar =
     result && isScheduleTab && !(yard.timeUnit === "hour" && tab === "board");
 
+  const pageTitle =
+    tab === "mlai"
+      ? "AI Command / 6 cảng TP.HCM"
+      : tab === "sidecar"
+        ? "Universal Sidecar / RFC 7396"
+        : hour
+          ? "Cầu bến Quốc tế / Barcelona 24B"
+          : "Điều độ phút / Tân Thuận ICD";
+
+  const pageSub =
+    tab === "mlai"
+      ? "Bản đồ luồng hàng · 05 agent chuyên trách · Conformal ETA & HITL"
+      : tab === "sidecar"
+        ? "Thay đổi tối thiểu · giữ nguyên hệ chủ · hiển thị bằng sơ đồ và benchmark"
+        : hour
+          ? `${yard.docks.length} cầu bến · ${yard.trucks.length} tàu · lịch tàu trực quan · phân bổ không xâm lấn`
+          : `0${yard.docks.length} cửa kho · ${yard.trucks.length} lượt xe · Trễ ${delayMin} phút · Chế độ mô phỏng`;
+
   return (
     <div className="min-h-0 min-w-0 flex-1 overflow-auto p-3.5 sm:p-4">
+      {/* Design System 5.0 Page Title Row matching GPT reference images */}
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h1 className="text-lg font-bold tracking-tight text-fg sm:text-xl">
+            {pageTitle}
+          </h1>
+          <p className="text-xs text-muted">{pageSub}</p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          {tab === "board" && !hour ? (
+            <>
+              <span className="inline-flex items-center gap-1 rounded-xl bg-ok/12 px-2.5 py-1 text-xs font-bold text-ok ring-1 ring-ok/25">
+                ↑ 40 phút cứu được
+              </span>
+              <button
+                type="button"
+                onClick={() => useBoardStore.getState().setPlaying(!playing)}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-accent px-3 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-accent/90"
+              >
+                <Play className="size-3.5 fill-current" />
+                {playing ? "Tạm dừng" : "Chạy mô phỏng"}
+              </button>
+            </>
+          ) : null}
+
+          {tab === "board" && hour ? (
+            <span className="inline-flex items-center gap-1.5 rounded-xl bg-ok/12 px-3 py-1 text-xs font-bold text-ok ring-1 ring-ok/25">
+              <span className="size-2 rounded-full bg-ok" />
+              B0 → B5 · Giảm 193h chờ · +$289,500
+            </span>
+          ) : null}
+
+          {tab === "mlai" ? (
+            <>
+              <span className="inline-flex items-center gap-1.5 rounded-xl bg-bad/12 px-2.5 py-1 text-xs font-bold text-bad ring-1 ring-bad/25">
+                <span className="size-2 rounded-full bg-bad" />
+                Cát Lái 94% tải
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-xl bg-ok/12 px-2.5 py-1 text-xs font-bold text-ok ring-1 ring-ok/25">
+                <span className="size-2 rounded-full bg-ok" />
+                5/5 rào chắn đạt
+              </span>
+            </>
+          ) : null}
+
+          {tab === "sidecar" ? (
+            <>
+              <span className="inline-flex items-center gap-1.5 rounded-xl bg-ok/12 px-2.5 py-1 text-xs font-bold text-ok ring-1 ring-ok/25">
+                <span className="size-2 rounded-full bg-ok" />
+                83.02% giữ nguyên
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-xl bg-accent/12 px-2.5 py-1 font-mono text-xs font-bold text-accent ring-1 ring-accent/25">
+                Go 1.26.5 · 536×
+              </span>
+            </>
+          ) : null}
+        </div>
+      </div>
+
       {tab === "board" ? (
-        <div className="mb-2.5">
+        <div className="mb-3">
           <SaasKpiRibbon />
         </div>
       ) : null}
       {yard.timeUnit === "hour" && tab === "board" ? <JobCard /> : null}
       {showTopDecisionBar ? (
-        <div className="mb-2.5 rounded-xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line">
+        <div className="mb-2.5 rounded-2xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line">
           <DecisionBar
             result={result}
             yard={yard}

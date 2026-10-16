@@ -4,13 +4,13 @@ import { b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].
 import { n as TSS_SERVER_FUNCTION, r as getServerFnById, t as createServerFn } from "./ssr.mjs";
 import { i as parseEvent, n as createYard, t as clockLabel } from "./parse-C_Xtcwss.mjs";
 import { a as string, i as object, r as number, t as _enum } from "../_libs/zod.mjs";
-import { H as Copy, V as Cpu, d as Sparkles, m as Ship, tt as ArrowRight } from "../_libs/lucide-react.mjs";
+import { G as CircleCheck, H as Copy, I as FileCode2, P as Layers, V as Cpu, p as Ship, u as Sparkles } from "../_libs/lucide-react.mjs";
 import { t as Slot } from "../_libs/radix-ui__react-slot.mjs";
 import { n as clsx, t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { n as atom, r as getDefaultStore } from "../_libs/jotai.mjs";
 import { t as create } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-3-JydA2o.js
+//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-BUX1_rU9.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -10055,6 +10055,7 @@ function UniversalSidecarAndBenchmarkPanel() {
 	const [customDelay, setCustomDelay] = (0, import_react.useState)(null);
 	const [customTargetId, setCustomTargetId] = (0, import_react.useState)(null);
 	const [patchView, setPatchView] = (0, import_react.useState)("rfc7396");
+	const [showRawJson, setShowRawJson] = (0, import_react.useState)(false);
 	const [benchRunCount, setBenchRunCount] = (0, import_react.useState)(1);
 	const [scaleMult, setScaleMult] = (0, import_react.useState)(1);
 	const [copiedPatch, setCopiedPatch] = (0, import_react.useState)(false);
@@ -10082,205 +10083,496 @@ function UniversalSidecarAndBenchmarkPanel() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "space-y-4",
 		"data-testid": "universal-sidecar-benchmark-panel",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4",
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-wrap items-center justify-between gap-3 border-b border-line pb-3",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-wrap items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "inline-flex items-center gap-1.5 rounded-xl bg-accent/10 px-3 py-1 font-mono text-xs font-semibold text-accent ring-1 ring-accent/25",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Cpu, { className: "size-3.5" }), "Universal Non-Invasive Sidecar"]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "rounded-xl bg-ok/10 px-2.5 py-1 font-mono text-xs font-semibold text-ok ring-1 ring-ok/25",
-							children: [
-								pnl.pairedWeeksCount,
-								" Weeks · ",
-								pnl.totalArrivalProbes.toLocaleString("en-US"),
-								" Calls · +$",
-								pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")
-							]
-						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-wrap gap-1.5",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "button",
-								size: "sm",
-								variant: "secondary",
-								className: "h-8 rounded-xl text-xs",
-								onClick: () => {
-									if (activeHost.id === "host-maritime-quay") {
-										setCustomTargetId("S11");
-										setCustomDelay(0);
-									} else setCustomDelay(0);
-								},
-								children: "Zero-Touch NO_OP (83.02%)"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "button",
-								size: "sm",
-								className: "h-8 rounded-xl text-xs",
-								onClick: () => {
-									setCustomTargetId(activeHost.defaultTargetId);
-									setCustomDelay(activeHost.defaultDelayDelta);
-								},
-								children: "Minimal Patch k=0 (16.98%)"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-								type: "button",
-								size: "sm",
-								variant: "ghost",
-								className: "h-8 rounded-xl text-xs ring-1 ring-line",
-								onClick: () => useBoardStore.getState().setSetupOpen(true),
-								children: "Tự Setup Bãi/Cảng"
-							})
-						]
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mt-3.5 grid grid-cols-2 gap-3 sm:grid-cols-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-raised/60 p-3 ring-1 ring-line",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[10px] font-semibold uppercase tracking-wider text-muted",
-									children: "Empirical Corpus"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-bold tabular-nums text-fg",
-									children: [
-										pnl.pairedWeeksCount,
-										"w · ",
-										pnl.totalArrivalProbes.toLocaleString("en-US")
-									]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-0.5 font-mono text-[11px] text-muted",
-									children: "100% legal · 0 violations"
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-raised/60 p-3 ring-1 ring-line",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[10px] font-semibold uppercase tracking-wider text-muted",
-									children: "NO_OP Preservation"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-bold tabular-nums text-ok",
-									children: [pnl.uncontestedCount.toLocaleString("en-US"), " (83.02%)"]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-0.5 font-mono text-[11px] text-muted",
-									children: "0 host TOS mutations"
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-raised/60 p-3 ring-1 ring-line",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[10px] font-semibold uppercase tracking-wider text-muted",
-									children: "Rescued Calls (k=0)"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-bold tabular-nums text-accent",
-									children: [
-										pnl.contestedCount,
-										" · ",
-										pnl.totalShipHoursSaved.toLocaleString("en-US"),
-										"h"
-									]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-0.5 font-mono text-[11px] text-muted",
-									children: "0 other ships displaced"
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-ok/10 p-3 ring-1 ring-ok/25",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-[10px] font-semibold uppercase tracking-wider text-ok",
-									children: "Verified Net P&L"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "mt-1 font-mono text-lg font-bold tabular-nums text-ok",
-									children: ["+$", pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-0.5 font-mono text-[11px] text-muted",
-									children: "$1,500/h demurrage"
-								})
-							]
-						})
-					]
-				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "mt-3.5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4",
-					children: UNIVERSAL_HOST_PROFILES.map((h) => {
-						const selected = h.id === activeHost.id;
-						const label = h.domain === "MARITIME_CONTAINER_QUAY" ? "Maritime Container TOS" : h.domain === "INLAND_BARGE_ICD" ? "Inland Barge & ICD" : h.domain === "WAREHOUSE_DOCK_WMS" ? "Warehouse Dock WMS" : "Cold Chain Reefer -25°C";
-						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-							type: "button",
-							"data-testid": `sidecar-profile-${h.domain}`,
-							onClick: () => {
-								setHostId(h.id);
-								setCustomDelay(null);
-								setCustomTargetId(null);
-							},
-							className: cn("flex items-center justify-between rounded-xl px-3.5 py-2.5 text-left ring-1 transition", selected ? "bg-accent text-accent-fg ring-accent shadow-xs" : "bg-raised/60 text-fg ring-line hover:bg-raised"),
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-xs font-semibold",
-								children: label
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "font-mono text-xs font-semibold opacity-90",
-								children: [
-									"$",
-									h.costPerWaitUnitUsd,
-									"/",
-									h.timeUnitLabel
-								]
-							})]
-						}, h.id);
+					className: "flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex size-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/20",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layers, { className: "size-5" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: "CORPUS THỰC NGHIỆM"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 font-mono text-2xl font-bold text-fg",
+								children: pnl.totalArrivalProbes.toLocaleString("en-US")
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-[11px] font-semibold text-ok",
+								children: [pnl.pairedWeeksCount, " tuần · 100% hợp lệ"]
+							})
+						] })]
 					})
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mt-3.5 grid gap-4 rounded-xl bg-raised/40 p-3.5 ring-1 ring-line lg:grid-cols-12",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-3 lg:col-span-5",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-								className: "block text-[11px] font-medium text-muted",
-								children: "Host System Profile"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-								"data-testid": "host-profile-select",
-								value: activeHost.id,
-								onChange: (e) => {
-									setHostId(e.target.value);
-									setCustomDelay(null);
-									setCustomTargetId(null);
-								},
-								className: "mt-1 block h-9 w-full rounded-xl bg-surface px-3 text-xs font-semibold text-fg ring-1 ring-line",
-								children: UNIVERSAL_HOST_PROFILES.map((h) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: h.id,
-									children: h.name
-								}, h.id))
-							})] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid grid-cols-2 gap-2.5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-									className: "block text-[11px] font-medium text-muted",
-									children: "Late Call / Vehicle"
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex size-11 shrink-0 items-center justify-center rounded-2xl bg-ok/12 text-ok ring-1 ring-ok/25",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-5" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: "KHÔNG TÁC ĐỘNG TOS"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 font-mono text-2xl font-bold text-fg",
+								children: "83.02%"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-[11px] font-semibold text-ok",
+								children: [pnl.uncontestedCount.toLocaleString("en-US"), " ca giữ nguyên"]
+							})
+						] })]
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex size-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/20",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Cpu, { className: "size-5" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: "CA GIẢI CỨU"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 font-mono text-2xl font-bold text-fg",
+								children: pnl.contestedCount
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-[11px] font-semibold text-ok",
+								children: [pnl.totalShipHoursSaved.toLocaleString("en-US"), " giờ chờ giảm"]
+							})
+						] })]
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex size-11 shrink-0 items-center justify-center rounded-2xl bg-ok/12 text-ok ring-1 ring-ok/25",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-5" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: "LỢI ÍCH XÁC MINH"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 font-mono text-2xl font-bold text-ok",
+								children: "$29.7M"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-[11px] font-medium text-muted",
+								children: ["+$", pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")]
+							})
+						] })]
+					})
+				})
+			]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid grid-cols-1 gap-4 xl:grid-cols-[1fr_360px]",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "space-y-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+					className: "rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center justify-between gap-2 pb-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-bold text-fg",
+								children: "Luồng kết nối không xâm lấn"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "text-xs text-muted",
+								children: [
+									"Giữ nguyên hệ thống chủ (",
+									activeHost.incumbentSystem,
+									") · Chỉ gửi bản vá RFC 7396 khi có lợi ích"
+								]
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "flex flex-wrap gap-1.5",
+								children: UNIVERSAL_HOST_PROFILES.map((h) => {
+									const selected = h.id === activeHost.id;
+									const label = h.domain === "MARITIME_CONTAINER_QUAY" ? "Cảng biển" : h.domain === "INLAND_BARGE_ICD" ? "ICD / Sà lan" : h.domain === "WAREHOUSE_DOCK_WMS" ? "Kho WMS" : "Kho lạnh";
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										"data-testid": `sidecar-profile-${h.domain}`,
+										onClick: () => {
+											setHostId(h.id);
+											setCustomDelay(null);
+											setCustomTargetId(null);
+										},
+										className: cn("rounded-xl px-3 py-1.5 text-xs font-semibold ring-1 transition", selected ? "bg-accent text-white ring-accent shadow-xs" : "bg-raised/60 text-fg ring-line hover:bg-raised"),
+										children: label
+									}, h.id);
+								})
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "overflow-hidden rounded-2xl border border-indigo-200/70 bg-gradient-to-r from-slate-50 via-indigo-50/40 to-emerald-50/40 p-3 dark:border-indigo-900/50 dark:from-slate-900 dark:via-indigo-950/30 dark:to-slate-900",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+								viewBox: "0 0 820 175",
+								className: "h-38 w-full sm:h-42",
+								preserveAspectRatio: "xMidYMid meet",
+								"aria-hidden": "true",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 244 88 L 308 88",
+										fill: "none",
+										stroke: "#6366f1",
+										strokeWidth: "2.8",
+										strokeDasharray: "6 4"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "248",
+										y: "62",
+										width: "56",
+										height: "18",
+										rx: "6",
+										fill: "#e0e7ff"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "255",
+										y: "74",
+										fill: "#4338ca",
+										fontSize: "8.5",
+										fontWeight: "700",
+										children: "1 · Mô phỏng"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 512 88 L 576 88",
+										fill: "none",
+										stroke: "#10b981",
+										strokeWidth: "2.8",
+										strokeDasharray: "6 4"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "515",
+										y: "62",
+										width: "58",
+										height: "18",
+										rx: "6",
+										fill: "#dcfce7"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "521",
+										y: "74",
+										fill: "#047857",
+										fontSize: "8.5",
+										fontWeight: "700",
+										children: "2 · Bản vá"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+										transform: "translate(18, 22)",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "0",
+												y: "0",
+												width: "224",
+												height: "132",
+												rx: "18",
+												fill: "#ffffff",
+												stroke: "#cbd5e1",
+												strokeWidth: "1.8"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "16",
+												y: "16",
+												width: "42",
+												height: "42",
+												rx: "12",
+												fill: "#f1f5f9"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "26",
+												y: "25",
+												width: "22",
+												height: "6",
+												rx: "1.5",
+												fill: "#475569"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "26",
+												y: "34",
+												width: "22",
+												height: "6",
+												rx: "1.5",
+												fill: "#475569"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "26",
+												y: "43",
+												width: "22",
+												height: "6",
+												rx: "1.5",
+												fill: "#475569"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "68",
+												y: "32",
+												fill: "#0f172a",
+												fontSize: "13",
+												fontWeight: "800",
+												children: "HOST TOS"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "68",
+												y: "48",
+												fill: "#64748b",
+												fontSize: "10",
+												fontWeight: "600",
+												children: activeHost.incumbentSystem.slice(0, 22)
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "16",
+												y: "72",
+												width: "192",
+												height: "22",
+												rx: "6",
+												fill: "#f8fafc"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+												x: "26",
+												y: "86",
+												fill: "#334155",
+												fontSize: "9.5",
+												fontWeight: "700",
+												fontFamily: "monospace",
+												children: [
+													"Lịch gốc: ",
+													bookedRes,
+													" @ ",
+													bookedSt,
+													activeHost.timeUnitLabel === "hour" ? "h" : "m",
+													" (Chờ ",
+													pluginExec.hostPlanWait,
+													activeHost.timeUnitLabel === "hour" ? "h" : "m",
+													")"
+												]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "16",
+												y: "100",
+												width: "116",
+												height: "20",
+												rx: "6",
+												fill: "#dcfce7"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "26",
+												y: "113",
+												fill: "#047857",
+												fontSize: "9",
+												fontWeight: "800",
+												fontFamily: "monospace",
+												children: "● BẢO TOÀN 100%"
+											})
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+										transform: "translate(310, 16)",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "0",
+												y: "0",
+												width: "200",
+												height: "144",
+												rx: "20",
+												fill: "#eef2ff",
+												stroke: "#4f46e5",
+												strokeWidth: "2.4"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+												cx: "100",
+												cy: "48",
+												r: "24",
+												fill: "#4f46e5"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "84",
+												y: "53",
+												fill: "#ffffff",
+												fontSize: "12",
+												fontWeight: "800",
+												fontFamily: "monospace",
+												children: "k=0"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "100",
+												y: "92",
+												textAnchor: "middle",
+												fill: "#1e1b4b",
+												fontSize: "13",
+												fontWeight: "800",
+												children: "SIDECAR"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "100",
+												y: "108",
+												textAnchor: "middle",
+												fill: "#4f46e5",
+												fontSize: "9.5",
+												fontWeight: "700",
+												children: "TÌM LỊCH TỐI ƯU · 5.15µs"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "24",
+												y: "116",
+												width: "152",
+												height: "18",
+												rx: "6",
+												fill: "#4f46e5"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "100",
+												y: "128",
+												textAnchor: "middle",
+												fill: "#ffffff",
+												fontSize: "8.5",
+												fontWeight: "700",
+												fontFamily: "monospace",
+												children: "NON-DESTRUCTIVE ENGINE"
+											})
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+										transform: "translate(578, 22)",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "0",
+												y: "0",
+												width: "224",
+												height: "132",
+												rx: "18",
+												fill: "#ffffff",
+												stroke: "#10b981",
+												strokeWidth: "2"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "16",
+												y: "16",
+												width: "42",
+												height: "42",
+												rx: "12",
+												fill: "#dcfce7"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+												cx: "37",
+												cy: "37",
+												r: "11",
+												fill: "#10b981"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+												d: "M 32 37 L 36 41 L 43 33",
+												fill: "none",
+												stroke: "#ffffff",
+												strokeWidth: "2.2"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "68",
+												y: "32",
+												fill: "#0f172a",
+												fontSize: "13",
+												fontWeight: "800",
+												children: "SAFE PATCH"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+												x: "68",
+												y: "48",
+												fill: "#059669",
+												fontSize: "10",
+												fontWeight: "700",
+												fontFamily: "monospace",
+												children: ["RFC 7396 · ", pluginExec.pluginDecision]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "16",
+												y: "72",
+												width: "192",
+												height: "22",
+												rx: "6",
+												fill: "#ecfdf5"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+												x: "26",
+												y: "86",
+												fill: "#065f46",
+												fontSize: "9.5",
+												fontWeight: "700",
+												fontFamily: "monospace",
+												children: [
+													"Đích: ",
+													patchedRes,
+													" @ ",
+													patchedSt,
+													activeHost.timeUnitLabel === "hour" ? "h" : "m",
+													" (+$",
+													pluginExec.netEconomicGainUsd.toLocaleString("en-US"),
+													")"
+												]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "16",
+												y: "100",
+												width: "158",
+												height: "20",
+												rx: "6",
+												fill: "#f1f5f9"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+												x: "24",
+												y: "113",
+												fill: "#334155",
+												fontSize: "8.5",
+												fontWeight: "800",
+												fontFamily: "monospace",
+												children: [
+													"k = ",
+													pluginExec.otherJobsMoved,
+													" · ROLLBACK READY"
+												]
+											})
+										]
+									})
+								]
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+									className: "block text-[10px] font-bold uppercase text-muted",
+									children: "Hệ thống TOS / WMS chủ"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+									"data-testid": "host-profile-select",
+									value: activeHost.id,
+									onChange: (e) => {
+										setHostId(e.target.value);
+										setCustomDelay(null);
+										setCustomTargetId(null);
+									},
+									className: "mt-1 h-8 w-full rounded-xl bg-raised px-2.5 text-xs font-semibold text-fg ring-1 ring-line",
+									children: UNIVERSAL_HOST_PROFILES.map((h) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+										value: h.id,
+										children: h.name
+									}, h.id))
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+									className: "block text-[10px] font-bold uppercase text-muted",
+									children: "Chuyến tàu / xe trễ"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
 									value: effectiveTargetId,
 									onChange: (e) => setCustomTargetId(e.target.value),
-									className: "mt-1 block h-9 w-full rounded-xl bg-surface px-2.5 font-mono text-xs font-semibold text-fg ring-1 ring-line",
+									className: "mt-1 h-8 w-full rounded-xl bg-raised px-2.5 font-mono text-xs font-semibold text-fg ring-1 ring-line",
 									children: activeHost.yard.appointments.slice(0, 12).map((a) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
 										value: a.truckId,
 										children: [
@@ -10292,279 +10584,400 @@ function UniversalSidecarAndBenchmarkPanel() {
 											")"
 										]
 									}, a.truckId))
-								})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "rounded-xl bg-surface px-3 py-1.5 ring-1 ring-line",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex justify-between font-mono text-[11px] text-muted",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "ETA Delay" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
-											className: "text-accent",
+								})] }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex justify-between text-[10px] font-bold uppercase text-muted",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Độ trễ ETA" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "font-mono text-accent",
+										children: [
+											"+",
+											effectiveDelay,
+											" ",
+											activeHost.timeUnitLabel
+										]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+									type: "range",
+									min: 0,
+									max: activeHost.timeUnitLabel === "hour" ? 12 : 120,
+									step: activeHost.timeUnitLabel === "hour" ? 1 : 5,
+									value: effectiveDelay,
+									onChange: (e) => setCustomDelay(Number(e.target.value)),
+									className: "mt-2 w-full accent-accent"
+								})] })
+							]
+						}),
+						showRawJson ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-3 rounded-xl bg-raised/60 p-3 ring-1 ring-line",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mb-2 flex items-center justify-between",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => setPatchView("rfc7396"),
+										className: cn("rounded-lg px-2.5 py-1 font-mono text-xs font-semibold", patchView === "rfc7396" ? "bg-accent text-white" : "bg-surface text-muted ring-1 ring-line"),
+										children: "RFC 7396 Merge Patch"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+										type: "button",
+										onClick: () => setPatchView("native"),
+										className: cn("rounded-lg px-2.5 py-1 font-mono text-xs font-semibold", patchView === "native" ? "bg-accent text-white" : "bg-surface text-muted ring-1 ring-line"),
+										children: "Native Adapter"
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => {
+										navigator.clipboard.writeText(activePatchPayload);
+										setCopiedPatch(true);
+										setTimeout(() => setCopiedPatch(false), 1500);
+									},
+									className: "inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 font-mono text-xs text-fg ring-1 ring-line",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "size-3" }), copiedPatch ? "Copied" : "Copy"]
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
+								className: "max-h-36 overflow-auto rounded-lg bg-surface p-2.5 font-mono text-[11px] text-fg ring-1 ring-line",
+								children: activePatchPayload
+							})]
+						}) : null
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+					className: "rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center justify-between gap-2 pb-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+								className: "text-base font-bold text-fg",
+								children: [
+									"Benchmark kernel · ",
+									(3092 * scaleMult).toLocaleString("en-US"),
+									" lần chạy"
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-muted",
+								children: "So sánh thực nghiệm đa ngôn ngữ trên toàn bộ tập dữ liệu 98 tuần"
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-1.5",
+								children: [[
+									1,
+									5,
+									10
+								].map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => setScaleMult(m),
+									className: cn("h-7 rounded-xl px-2.5 font-mono text-xs font-semibold ring-1 transition", scaleMult === m ? "bg-accent text-white ring-accent" : "bg-raised/70 text-muted ring-line hover:text-fg"),
+									children: [m, "×"]
+								}, m)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									type: "button",
+									size: "sm",
+									variant: "secondary",
+									className: "h-7 rounded-xl text-xs",
+									"data-testid": "rerun-live-benchmark-btn",
+									onClick: () => setBenchRunCount((c) => c + 1),
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3 text-accent" }),
+										"Chạy lại (",
+										benchReport.totalBenchmarkWallMs,
+										"ms)"
+									]
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "space-y-2.5",
+							children: [
+								{
+									lang: "Go 1.26.5",
+									width: "96%",
+									color: "bg-emerald-500 text-white",
+									detail: `${(15.94 * scaleMult).toFixed(2)}ms · 5.15µs/lần`,
+									ratio: "536×",
+									ratioColor: "text-emerald-600 dark:text-emerald-400"
+								},
+								{
+									lang: "Rust WASM",
+									width: "76%",
+									color: "bg-indigo-600 text-white",
+									detail: `${(27.38 * scaleMult).toFixed(2)}ms · 8.85µs/lần`,
+									ratio: "312×",
+									ratioColor: "text-indigo-600 dark:text-indigo-400"
+								},
+								{
+									lang: "V8 Zero-Alloc",
+									width: "34%",
+									color: "bg-sky-500 text-white",
+									detail: `${(305.1 * scaleMult).toFixed(1)}ms`,
+									ratio: "28×",
+									ratioColor: "text-sky-600 dark:text-sky-400"
+								},
+								{
+									lang: "JS baseline",
+									width: "14%",
+									color: "bg-slate-300 text-slate-800 dark:bg-slate-700 dark:text-slate-200",
+									detail: `${(8543 * scaleMult).toLocaleString("en-US")}ms`,
+									ratio: "1×",
+									ratioColor: "text-muted"
+								}
+							].map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-[100px_1fr_56px] items-center gap-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-mono text-xs font-bold text-fg",
+										children: row.lang
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "h-7 w-full overflow-hidden rounded-xl bg-raised p-0.5 ring-1 ring-line",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: cn("flex h-full items-center rounded-lg px-2.5 font-mono text-[11px] font-bold transition-all", row.color),
+											style: { width: row.width },
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+												className: "truncate",
+												children: row.detail
+											})
+										})
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: cn("text-right font-mono text-sm font-extrabold", row.ratioColor),
+										children: row.ratio
+									})
+								]
+							}, row.lang))
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-3.5 overflow-x-auto border-t border-line pt-3",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
+								className: "w-full border-collapse text-left font-mono text-[11px]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+									className: "border-b border-line bg-raised/50 text-[10px] uppercase text-muted",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-2.5 py-1.5",
+											children: "Kernel"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-2.5 py-1.5 text-right",
+											children: "JS Heap"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-2.5 py-1.5 text-right",
+											children: "Go / Rust"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-2.5 py-1.5 text-right",
+											children: "FFI Cost"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-2.5 py-1.5 text-right",
+											children: "Speedup"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+											className: "px-2.5 py-1.5 text-right",
+											children: "Verdict"
+										})
+									]
+								}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
+									className: "divide-y divide-line/60",
+									children: benchReport.kernels.map((k) => {
+										const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
+										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+											className: "hover:bg-raised/30",
 											children: [
-												"+",
-												effectiveDelay,
-												" ",
-												activeHost.timeUnitLabel
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+													className: "px-2.5 py-1.5 font-sans font-semibold text-fg",
+													children: k.kernelName
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+													className: "px-2.5 py-1.5 text-right text-muted",
+													children: [(k.baselineV8Ms * scaleMult).toFixed(2), "ms"]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+													className: "px-2.5 py-1.5 text-right font-bold text-fg",
+													children: [(k.nativeRustOrGoMs * scaleMult).toFixed(2), "ms"]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+													className: "px-2.5 py-1.5 text-right text-muted",
+													children: [(k.ffiOverheadMs * scaleMult).toFixed(2), "ms"]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+													className: "px-2.5 py-1.5 text-right font-bold text-ok",
+													children: [k.nativeSpeedupVsBaseline, "×"]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+													className: "px-2.5 py-1.5 text-right",
+													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+														className: cn("rounded px-1.5 py-0.5 text-[10px] font-bold", approved ? "bg-ok/10 text-ok" : "bg-warn/15 text-warn"),
+														children: approved ? "DEPLOYED" : "REJECTED_FFI"
+													})
+												})
 											]
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "range",
-										min: 0,
-										max: activeHost.timeUnitLabel === "hour" ? 12 : 120,
-										step: activeHost.timeUnitLabel === "hour" ? 1 : 5,
-										value: effectiveDelay,
-										onChange: (e) => setCustomDelay(Number(e.target.value)),
-										className: "mt-1 w-full accent-accent"
+										}, k.id);
+									})
+								})]
+							})
+						})
+					]
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "text-base font-bold text-fg",
+							children: "Đảm bảo an toàn"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1 rounded-full bg-ok/12 px-2.5 py-0.5 text-xs font-bold text-ok",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-ok" }), "Đã kiểm chứng"]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-4 flex flex-col items-center rounded-2xl bg-raised/45 p-4 text-center ring-1 ring-line",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "relative flex size-36 items-center justify-center",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+									viewBox: "0 0 36 36",
+									className: "size-36 -rotate-90",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "18",
+										cy: "18",
+										r: "15",
+										fill: "none",
+										stroke: "#4f46e5",
+										strokeWidth: "3.8"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "18",
+										cy: "18",
+										r: "15",
+										fill: "none",
+										stroke: "#10b981",
+										strokeWidth: "3.8",
+										strokeDasharray: "83 100",
+										strokeLinecap: "round"
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "absolute flex flex-col items-center",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-mono text-2xl font-extrabold text-fg",
+										children: "83.02%"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-[11px] font-semibold text-muted",
+										children: "không tác động"
 									})]
 								})]
 							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-2.5 text-xs font-bold text-fg",
+								children: "0 lịch chủ bị ghi đè · 100% có thể hoàn tác"
+							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-2.5",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex-1 rounded-xl bg-surface p-2.5 ring-1 ring-line",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-[10px] font-semibold uppercase text-muted",
-												children: "Host Booked"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "mt-0.5 font-mono text-base font-bold text-fg",
-												children: [
-													bookedRes,
-													" @",
-													bookedSt,
-													activeHost.timeUnitLabel === "hour" ? "h" : "m"
-												]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "font-mono text-[11px] text-bad",
-												children: [
-													"Wait: ",
-													pluginExec.hostPlanWait,
-													" ",
-													activeHost.timeUnitLabel
-												]
-											})
-										]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-4 shrink-0 text-accent" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex-1 rounded-xl bg-accent/10 p-2.5 ring-1 ring-accent/30",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "text-[10px] font-semibold uppercase text-accent",
-												children: [
-													"Sidecar Patch (k=",
-													pluginExec.otherJobsMoved,
-													")"
-												]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "mt-0.5 font-mono text-base font-bold text-fg",
-												children: [
-													patchedRes,
-													" @",
-													patchedSt,
-													activeHost.timeUnitLabel === "hour" ? "h" : "m"
-												]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "font-mono text-[11px] font-semibold text-ok",
-												children: [
-													"Wait: ",
-													pluginExec.pluginPlanWait,
-													" · +$",
-													pluginExec.netEconomicGainUsd.toLocaleString("en-US")
-												]
-											})
-										]
-									})
-								]
+								className: "mt-2 flex items-center gap-3 text-[11px]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "inline-flex items-center gap-1 text-ok font-semibold",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-ok" }), " 83.02% NO_OP"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "inline-flex items-center gap-1 text-accent font-semibold",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-accent" }), " 16.98% Patch k=0"]
+								})]
 							})
 						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-col justify-between lg:col-span-7",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mb-2 flex flex-wrap items-center justify-between gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex gap-1.5",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-										type: "button",
-										onClick: () => setPatchView("rfc7396"),
-										className: cn("rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition", patchView === "rfc7396" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line"),
-										children: "RFC 7396 Merge Patch"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-										type: "button",
-										onClick: () => setPatchView("native"),
-										className: cn("rounded-lg px-2.5 py-1 font-mono text-xs font-semibold transition", patchView === "native" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line"),
-										children: [activeHost.incumbentSystem.split("/")[0]?.trim(), " Adapter"]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-										type: "button",
-										onClick: () => {
-											navigator.clipboard.writeText(activePatchPayload);
-											setCopiedPatch(true);
-											setTimeout(() => setCopiedPatch(false), 1500);
-										},
-										className: "inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 font-mono text-xs text-fg ring-1 ring-line hover:bg-raised",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "size-3" }), copiedPatch ? "Copied" : "Copy"]
-									})
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "rounded-lg bg-ok/10 px-2.5 py-1 font-mono text-xs font-semibold text-ok",
-								children: [
-									pluginExec.pluginDecision,
-									" · Saved ",
-									pluginExec.waitSaved,
-									activeHost.timeUnitLabel
-								]
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
-							className: "max-h-40 flex-1 overflow-auto rounded-xl bg-surface p-3 font-mono text-[11px] leading-relaxed text-fg ring-1 ring-line",
-							children: activePatchPayload
-						})]
-					})]
-				})
-			]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center justify-between gap-2 pb-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-4 text-accent" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-						className: "text-sm font-semibold text-fg",
-						children: "Multi-Language Kernel Benchmark (Go 1.26.5 Native 536× · Rust #![no_std] WASM · V8 Zero-Alloc)"
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center gap-1.5",
-					children: [[
-						1,
-						5,
-						10
-					].map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						onClick: () => setScaleMult(m),
-						className: cn("h-8 rounded-xl px-2.5 font-mono text-xs font-semibold ring-1 transition", scaleMult === m ? "bg-accent text-accent-fg ring-accent" : "bg-raised/70 text-muted ring-line hover:text-fg"),
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-4 space-y-2.5",
 						children: [
-							m,
-							"× (",
-							(3092 * m).toLocaleString("en-US"),
-							" calls)"
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: "PHẠM VI THAY ĐỔI RFC 7396"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl bg-raised/50 p-2.5 ring-1 ring-line",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between text-xs",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-semibold text-muted",
+										children: "ĐỔI VỊ TRÍ BẾN"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "font-mono font-bold text-accent",
+										children: [
+											bookedRes,
+											" → ",
+											patchedRes,
+											" @ ",
+											patchedSt,
+											activeHost.timeUnitLabel === "hour" ? "h" : "m"
+										]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-1/4 rounded-full bg-accent" })
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl bg-raised/50 p-2.5 ring-1 ring-line",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between text-xs",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-semibold text-muted",
+										children: "CẬP NHẬT ETA"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "font-mono font-bold text-ok",
+										children: [
+											"1 tàu duy nhất (",
+											pluginExec.targetJobId,
+											")"
+										]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-1/6 rounded-full bg-ok" })
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "rounded-xl bg-raised/50 p-2.5 ring-1 ring-line",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center justify-between text-xs",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-semibold text-muted",
+										children: "GIỮ NGUYÊN TOS"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "font-mono font-bold text-ok",
+										children: ["k = ", pluginExec.otherJobsMoved]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-full rounded-full bg-ok" })
+								})]
+							})
 						]
-					}, m)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-4 space-y-2 border-t border-line pt-3 text-xs",
+						children: [
+							"Không ghi đè cơ sở dữ liệu gốc",
+							"Tự động hoàn tác nếu phát sinh xung đột",
+							"Tương thích Navis N4, TOPOVN, SGP-TOS",
+							"Độ trễ xử lý dưới 1 mili-giây"
+						].map((line) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2 text-fg",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4 shrink-0 text-ok" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: line })]
+						}, line))
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-4 grid grid-cols-2 gap-2 border-t border-line pt-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						type: "button",
+						variant: "secondary",
+						size: "sm",
+						className: "h-9 rounded-xl bg-raised text-xs font-semibold text-fg ring-1 ring-line",
+						onClick: () => setShowRawJson((v) => !v),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileCode2, { className: "size-3.5 text-accent" }), showRawJson ? "Ẩn bản vá JSON" : "Xem bản vá trực quan"]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						type: "button",
 						size: "sm",
-						variant: "secondary",
-						className: "h-8 rounded-xl text-xs",
-						"data-testid": "rerun-live-benchmark-btn",
-						onClick: () => setBenchRunCount((c) => c + 1),
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 text-accent" }),
-							"Re-run (",
-							benchReport.totalBenchmarkWallMs,
-							"ms)"
-						]
+						className: "h-9 rounded-xl bg-ok text-xs font-bold text-white shadow-xs hover:bg-ok/90",
+						onClick: () => useBoardStore.getState().commit(),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), "Phê duyệt & đồng bộ"]
 					})]
 				})]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "overflow-x-auto",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
-					className: "w-full border-collapse text-left font-mono text-xs",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
-						className: "border-b border-line bg-raised/50 text-[10px] uppercase text-muted",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-3 py-2",
-								children: "Kernel"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-3 py-2",
-								children: "Visual Speedup Ratio"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-3 py-2 text-right",
-								children: "JS Heap"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-3 py-2 text-right",
-								children: "V8 Zero-Alloc"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-3 py-2 text-right",
-								children: "Go / Rust"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-3 py-2 text-right",
-								children: "FFI Cost"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-								className: "px-3 py-2 text-right",
-								children: "Verdict"
-							})
-						]
-					}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
-						className: "divide-y divide-line/70",
-						children: benchReport.kernels.map((k) => {
-							const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
-							const pct = approved ? Math.min(100, Math.max(18, Math.round(Math.log10(Math.max(2, k.nativeSpeedupVsBaseline)) * 36))) : 10;
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
-								className: "hover:bg-raised/40",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										className: "px-3 py-2.5 font-sans text-xs font-semibold text-fg",
-										children: k.kernelName
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										className: "w-64 px-3 py-2.5",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center gap-2",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												className: "h-2 flex-1 overflow-hidden rounded-full bg-raised ring-1 ring-line",
-												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-													className: cn("h-full rounded-full transition-all", approved ? "bg-ok" : "bg-warn"),
-													style: { width: `${pct}%` }
-												})
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: cn("w-14 text-right font-bold", approved ? "text-ok" : "text-warn"),
-												children: [k.nativeSpeedupVsBaseline, "×"]
-											})]
-										})
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-3 py-2.5 text-right text-muted",
-										children: [(k.baselineV8Ms * scaleMult).toFixed(2), " ms"]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-3 py-2.5 text-right text-fg",
-										children: [
-											(k.optimizedV8Ms * scaleMult).toFixed(2),
-											" ms (",
-											k.v8SpeedupRatio,
-											"×)"
-										]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-3 py-2.5 text-right font-bold text-fg",
-										children: [(k.nativeRustOrGoMs * scaleMult).toFixed(2), " ms"]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-3 py-2.5 text-right text-muted",
-										children: [(k.ffiOverheadMs * scaleMult).toFixed(2), " ms"]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										className: "px-3 py-2.5 text-right",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: cn("rounded-md px-2 py-0.5 text-[10px] font-bold", approved ? "bg-ok/10 text-ok" : "bg-warn/15 text-warn"),
-											children: approved ? "DEPLOYED" : "REJECTED_FFI"
-										})
-									})
-								]
-							}, k.id);
-						})
-					})]
-				})
 			})]
 		})]
 	});

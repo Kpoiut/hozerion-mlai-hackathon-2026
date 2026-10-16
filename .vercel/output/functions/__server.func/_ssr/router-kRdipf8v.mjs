@@ -2,9 +2,9 @@ import { i as __toESM, n as __exportAll } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { b as require_jsx_runtime, f as createRouter, g as createRootRoute, h as createFileRoute, l as Scripts, m as lazyRouteComponent, p as Outlet, u as HeadContent, y as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as string, i as object, n as literal, o as union, r as number } from "../_libs/zod.mjs";
-import { s as TriangleAlert } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CFLkxv_P.js
-var router_CFLkxv_P_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+import { o as TriangleAlert } from "../_libs/lucide-react.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/router-kRdipf8v.js
+var router_kRdipf8v_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function AppErrorComponent({ error }) {
@@ -273,7 +273,7 @@ function PreviewHostBridge() {
 	}, [router]);
 	return null;
 }
-var styles_default = "/assets/styles-BaZ6xKGZ.css";
+var styles_default = "/assets/styles-CRDCpmgW.css";
 var Route$2 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -359,9 +359,9 @@ var Route$2 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$1 = () => import("./routes-DndM1VDt.mjs");
+var $$splitComponentImporter$1 = () => import("./routes-DHH81uuv.mjs");
 var Route$1 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./design-TPWeNZO_.mjs");
+var $$splitComponentImporter = () => import("./design-UDNL0V_j.mjs");
 var Route = createFileRoute("/design")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$1.update({
@@ -383,4 +383,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { getRouter, router_CFLkxv_P_exports as t };
+export { getRouter, router_kRdipf8v_exports as t };

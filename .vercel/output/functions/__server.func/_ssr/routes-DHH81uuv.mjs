@@ -2,10 +2,10 @@ import { i as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link, b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { r as formatWhen } from "./parse-C_Xtcwss.mjs";
-import { $ as Building2, A as Lock, B as DoorClosed, C as PenLine, D as Moon, E as Navigation, F as LayoutList, G as CircleCheck, H as Copy, I as Flag, J as ChevronLeft, K as CircleAlert, L as FileCheck2, M as ListFilter, N as Leaf, O as Minus, P as LayoutGrid, Q as CalendarClock, R as Ellipsis, S as Play, T as Network, U as Clock, V as Cpu, W as CircleX, X as Check, Y as ChevronDown, Z as CalendarDays, _ as RotateCcw, a as Undo2, b as Radio, c as TrendingDown, d as Sparkles, et as Boxes, f as Snowflake, g as ShieldAlert, h as ShieldCheck, i as UserCheck, it as Activity, j as LockOpen, k as MapPin, l as Trash2, m as Ship, n as Waypoints, nt as ArrowLeftRight, o as Truck, p as SlidersHorizontal, q as ChevronRight, r as Warehouse, rt as Anchor, s as TriangleAlert, t as X, tt as ArrowRight, u as Sun, v as RefreshCw, w as Pause, x as Plus, y as Receipt, z as Droplets } from "../_libs/lucide-react.mjs";
+import { $ as CalendarClock, A as ListFilter, B as DoorClosed, C as Network, D as MapPin, E as Minus, F as Flag, G as CircleCheck, H as Copy, J as ChevronLeft, K as CircleAlert, L as FileCheck2, M as LayoutGrid, N as LayoutList, O as Lock, Q as CalendarDays, R as Ellipsis, S as Pause, T as Moon, U as Clock, V as Cpu, W as CircleX, X as Check, Y as ChevronDown, Z as ChartColumn, _ as Receipt, a as Truck, b as Play, c as TrainTrack, d as Snowflake, et as Building2, f as SlidersHorizontal, g as RefreshCw, h as RotateCcw, i as Undo2, j as Leaf, k as LockOpen, l as Sun, m as ShieldCheck, n as Waypoints, nt as ArrowLeftRight, o as TriangleAlert, p as Ship, q as ChevronRight, r as Warehouse, rt as Anchor, s as Trash2, t as X, tt as Boxes, u as Sparkles, v as Radio, w as Navigation, x as PenLine, y as Plus, z as Droplets } from "../_libs/lucide-react.mjs";
 import { t as useAtomValue } from "../_libs/jotai.mjs";
-import { $ as selectLive, A as bks_bcn_36A_50_default, B as formatEtcVerdict, C as bks_bcn_24B_25_default, D as bks_bcn_36A_10_default, E as bks_bcn_24B_50_default, G as packLanes, H as occupyIndexes, I as clockMinAtom, J as publishedYard, K as phaseAt, L as cn, M as bookedFromPlan, N as bookedHeadline, O as bks_bcn_36A_25_default, P as calculateContainerBilling, Q as scoreOneHourLate, S as bks_bcn_24B_10_default, T as bks_bcn_24B_47_default, U as packCfsCargo3D, V as holdingCall, W as packDepth, X as reconcileShipmentDocuments, Y as recommendIncomingSlot, Z as runFlow, _ as bcn_36A_10_default, at as stretchClear, b as bcn_36A_50_default, c as PUBLISHED_REPO, ct as useBoardStore, d as UniversalSidecarAndBenchmarkPanel, et as selectPlayhead, f as bcn_24B_10_default, g as bcn_24B_50_default, h as bcn_24B_47_default, i as FederationPane, k as bks_bcn_36A_2_default, l as SEED_BAY_CONTAINERS, lt as validateIso6346, m as bcn_24B_2_default, n as Button, nt as solveBayRetrieval, o as PUBLISHED_DOI, ot as stretchShips, p as bcn_24B_25_default, q as publishedWeekList, r as DEFAULT_BAY_CONFIG, rt as solveHinterlandExceptions, s as PUBLISHED_DOI_URL, st as tryPublishedYard, t as BacapPane, u as SHIPMENT_DOCUMENT_CASES, v as bcn_36A_25_default, w as bks_bcn_24B_2_default, x as berthSpan, y as bcn_36A_2_default, z as evaluateGateTransaction } from "./dock-exceptions-3-JydA2o.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DndM1VDt.js
+import { $ as selectLive, A as bks_bcn_36A_50_default, B as formatEtcVerdict, C as bks_bcn_24B_25_default, D as bks_bcn_36A_10_default, E as bks_bcn_24B_50_default, G as packLanes, H as occupyIndexes, I as clockMinAtom, J as publishedYard, K as phaseAt, L as cn, M as bookedFromPlan, N as bookedHeadline, O as bks_bcn_36A_25_default, P as calculateContainerBilling, Q as scoreOneHourLate, S as bks_bcn_24B_10_default, T as bks_bcn_24B_47_default, U as packCfsCargo3D, V as holdingCall, W as packDepth, X as reconcileShipmentDocuments, Y as recommendIncomingSlot, Z as runFlow, _ as bcn_36A_10_default, at as stretchClear, b as bcn_36A_50_default, c as PUBLISHED_REPO, ct as useBoardStore, d as UniversalSidecarAndBenchmarkPanel, et as selectPlayhead, f as bcn_24B_10_default, g as bcn_24B_50_default, h as bcn_24B_47_default, i as FederationPane, k as bks_bcn_36A_2_default, l as SEED_BAY_CONTAINERS, lt as validateIso6346, m as bcn_24B_2_default, n as Button, nt as solveBayRetrieval, o as PUBLISHED_DOI, ot as stretchShips, p as bcn_24B_25_default, q as publishedWeekList, r as DEFAULT_BAY_CONFIG, rt as solveHinterlandExceptions, s as PUBLISHED_DOI_URL, st as tryPublishedYard, t as BacapPane, u as SHIPMENT_DOCUMENT_CASES, v as bcn_36A_25_default, w as bks_bcn_24B_2_default, x as berthSpan, y as bcn_36A_2_default, z as evaluateGateTransaction } from "./dock-exceptions-BUX1_rU9.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DHH81uuv.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function deterministicHashHex(payload) {
@@ -360,88 +360,58 @@ var HCMC_CORRIDOR_NODES = [
 		recommendationVi: "Đầu mối tàu mẹ đi Âu/Mỹ (-16m). Agent 4 (Escalation Referee) giám sát chặt giờ cắt máng của toàn bộ sà lan nối chuyến từ TP.HCM."
 	}
 ];
-var HCMC_CORRIDOR_EDGES = [
-	{
-		id: "E_TRUONGTHO_CATLAI",
-		from: "ICD_TRUONG_THO",
-		to: "PORT_CAT_LAI",
-		corridorName: "Xa Lộ Hà Nội -> Vành Đai 2 -> Nguyễn Thị Định (VETC)",
-		mode: "HIGHWAY_VETC",
-		distanceKm: 14.5,
-		travelMinutes: 68,
-		trafficState: "RED_BOTTLENECK",
-		activeDivert: false
+var MAP_COORDS = {
+	ICD_TRUONG_THO: {
+		x: 245,
+		y: 68,
+		shortName: "Trường Thọ",
+		sub: "ICD · SGP-TOS"
 	},
-	{
-		id: "E_TRUONGTHO_SPITC",
-		from: "ICD_TRUONG_THO",
-		to: "PORT_SP_ITC",
-		corridorName: "Sông Rạch Chiếc – Đồng Nai (Sà lan ICD)",
-		mode: "WATERWAY_BARGE",
-		distanceKm: 11.2,
-		travelMinutes: 34,
-		trafficState: "GREEN_FREE",
-		activeDivert: true
+	PORT_TAN_THUAN: {
+		x: 185,
+		y: 182,
+		shortName: "Tân Thuận ICD",
+		sub: "SGP-TOS · VTOS"
 	},
-	{
-		id: "E_CATLAI_TANTHUAN",
-		from: "PORT_CAT_LAI",
-		to: "PORT_TAN_THUAN",
-		corridorName: "Luồng Sông Sài Gòn (Sà lan & Tàu Feeder chia tải k=0)",
-		mode: "WATERWAY_BARGE",
-		distanceKm: 16,
-		travelMinutes: 42,
-		trafficState: "GREEN_FREE",
-		activeDivert: true
+	PORT_SP_ITC: {
+		x: 405,
+		y: 112,
+		shortName: "SP-ITC",
+		sub: "VTOS · Quốc tế"
 	},
-	{
-		id: "E_CATLAI_HIEPPHUOC",
-		from: "PORT_CAT_LAI",
-		to: "PORT_HIEP_PHUOC",
-		corridorName: "Luồng Nhà Bè – Soài Rạp (Divert liên thông DCSA)",
-		mode: "WATERWAY_BARGE",
-		distanceKm: 24,
-		travelMinutes: 55,
-		trafficState: "GREEN_FREE",
-		activeDivert: true
+	PORT_CAT_LAI: {
+		x: 495,
+		y: 194,
+		shortName: "Cát Lái",
+		sub: "TOPX · TOPOVN · ePort"
 	},
-	{
-		id: "E_CATLAI_CAIMEP",
-		from: "PORT_CAT_LAI",
-		to: "HUB_CAI_MEP",
-		corridorName: "Tuyến Sà lan Cao tốc Cát Lái – Cái Mép (Transshipment)",
-		mode: "WATERWAY_BARGE",
-		distanceKm: 62,
-		travelMinutes: 185,
-		trafficState: "AMBER_BUSY",
-		activeDivert: false
+	PORT_HIEP_PHUOC: {
+		x: 295,
+		y: 278,
+		shortName: "Hiệp Phước",
+		sub: "SGP-TOS · Soài Rạp"
 	},
-	{
-		id: "E_HIEPPHUOC_CAIMEP",
-		from: "PORT_HIEP_PHUOC",
-		to: "HUB_CAI_MEP",
-		corridorName: "Luồng Hàng hải Soài Rạp – Cái Mép",
-		mode: "WATERWAY_BARGE",
-		distanceKm: 48,
-		travelMinutes: 140,
-		trafficState: "GREEN_FREE",
-		activeDivert: true
+	HUB_CAI_MEP: {
+		x: 645,
+		y: 274,
+		shortName: "Cái Mép",
+		sub: "Cảng nước sâu"
 	}
-];
+};
 function MlaiHackathonCommandCenter() {
 	const yard = useBoardStore((s) => s.yard);
 	const event = useBoardStore((s) => s.event);
 	const result = useBoardStore((s) => s.result);
 	const selectedId = useBoardStore((s) => s.selectedId);
 	const [stressMode, setStressMode] = (0, import_react.useState)("NORMAL");
-	const [selectedPortId, setSelectedPortId] = (0, import_react.useState)("VNCLI");
+	const [selectedPortId, setSelectedPortId] = (0, import_react.useState)("PORT_CAT_LAI");
 	const [divertedPorts, setDivertedPorts] = (0, import_react.useState)({});
 	const [selectedAgentIdx, setSelectedAgentIdx] = (0, import_react.useState)(2);
 	const [overriddenGuards, setOverriddenGuards] = (0, import_react.useState)({});
-	const [operatorName, setOperatorName] = (0, import_react.useState)("Nguyễn Minh Quân · Senior Dispatcher");
+	const [operatorName, setOperatorName] = (0, import_react.useState)("Nguyễn Minh Quân · Điều độ viên trưởng");
 	const [customAuditChain, setCustomAuditChain] = (0, import_react.useState)([]);
 	const [copiedAudit, setCopiedAudit] = (0, import_react.useState)(false);
-	const unit = yard.timeUnit === "hour" ? "h" : "min";
+	const unit = yard.timeUnit === "hour" ? "h" : "m";
 	const truck = yard.trucks.find((t) => t.id === selectedId) ?? yard.trucks[0];
 	const orig = yard.appointments.find((a) => a.truckId === truck.id);
 	const live = result?.appointments.find((a) => a.truckId === truck.id) ?? orig;
@@ -475,14 +445,13 @@ function MlaiHackathonCommandCenter() {
 	const fullAuditChain = (0, import_react.useMemo)(() => [pipeline.initialAuditBlock, ...customAuditChain], [pipeline.initialAuditBlock, customAuditChain]);
 	const activeStep = pipeline.agents[selectedAgentIdx] ?? pipeline.agents[0];
 	const totalPipelineMs = Number(pipeline.agents.reduce((acc, a) => acc + a.latencyMs, 0).toFixed(2));
-	const requiresHumanSignOff = pipeline.tier === "TIER_2_HITL_ESCALATION_REFEREE";
 	const handleDivert = () => {
 		setDivertedPorts((prev) => ({
 			...prev,
-			VNCLI: (prev.VNCLI ?? 0) - 18,
-			VNICD: (prev.VNICD ?? 0) - 12,
-			VNHPH: (prev.VNHPH ?? 0) + 14,
-			VNITC: (prev.VNITC ?? 0) + 10
+			PORT_CAT_LAI: (prev.PORT_CAT_LAI ?? 0) - 18,
+			ICD_TRUONG_THO: (prev.ICD_TRUONG_THO ?? 0) - 12,
+			PORT_HIEP_PHUOC: (prev.PORT_HIEP_PHUOC ?? 0) + 14,
+			PORT_SP_ITC: (prev.PORT_SP_ITC ?? 0) + 10
 		}));
 	};
 	const handleHitlAction = (decision) => {
@@ -495,185 +464,376 @@ function MlaiHackathonCommandCenter() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		"data-mlai-command-center": "",
 		className: "space-y-4",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3 shadow-card ring-1 ring-line",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-wrap items-center gap-2",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "inline-flex items-center gap-1.5 rounded-xl bg-accent/10 px-3 py-1 font-mono text-xs font-semibold text-accent ring-1 ring-accent/25",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5" }), "AI Agent & Guardrails"]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: cn("rounded-xl px-2.5 py-1 font-mono text-xs font-semibold ring-1", requiresHumanSignOff ? "bg-warn/10 text-warn ring-warn/30" : "bg-ok/10 text-ok ring-ok/25"),
-							children: pipeline.tier
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "font-mono text-xs text-muted",
-							children: [
-								pipeline.conformal.q50Median,
-								unit,
-								" ([Q10=",
-								pipeline.conformal.q10Optimistic,
-								unit,
-								", Q90=",
-								pipeline.conformal.q90Conservative,
-								unit,
-								"]) · Conf ",
-								pipeline.conformal.confidencePct,
-								"%"
-							]
-						})
-					]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-wrap items-center gap-1.5",
-					children: [[
-						{
-							id: "NORMAL",
-							label: "Auto k=0 (Standard)"
-						},
-						{
-							id: "LOW_CONFIDENCE_STORM",
-							label: "Storm (<85% Conf → HITL)"
-						},
-						{
-							id: "TRANSSHIPMENT_CRITICAL",
-							label: "Cut-off Risk (G4 → HITL)"
-						}
-					].map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						type: "button",
-						onClick: () => setStressMode(m.id),
-						className: cn("h-8 rounded-xl px-3 text-xs font-medium ring-1 transition", stressMode === m.id ? "bg-accent text-accent-fg ring-accent shadow-xs" : "bg-raised/70 text-muted ring-line hover:text-fg"),
-						children: m.label
-					}, m.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						onClick: () => useBoardStore.getState().setSetupOpen(true),
-						className: "inline-flex h-8 items-center gap-1.5 rounded-xl bg-raised px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3.5 text-accent" }), "Setup"]
-					})]
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "grid gap-4 lg:grid-cols-12",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line lg:col-span-7",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex flex-wrap items-center justify-between gap-2 pb-3",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-2",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid grid-cols-1 gap-4 xl:grid-cols-[1fr_360px]",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex flex-wrap items-center justify-between gap-2 pb-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center gap-2",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-bold text-fg",
+								children: "Mạng lưới cảng TP.HCM"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1.5 rounded-full bg-ok/12 px-2.5 py-0.5 font-mono text-xs font-semibold text-ok",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigation, { className: "size-4 text-accent" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-										className: "text-sm font-semibold text-fg",
-										children: "HCMC Port & VETC Corridor Network"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "rounded-lg bg-raised px-2 py-0.5 font-mono text-[11px] text-muted ring-1 ring-line",
-										children: [
-											"Avg Load: ",
-											corridorDensityPct,
-											"%"
-										]
-									})
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-ok" }),
+									"Tải bình quân ",
+									corridorDensityPct,
+									"%"
 								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center gap-1.5",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									type: "button",
-									size: "sm",
-									variant: "secondary",
-									className: "h-8 rounded-xl text-xs",
-									onClick: handleDivert,
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3.5 text-accent" }), "Divert Load (k=0)"]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									type: "button",
-									size: "sm",
-									variant: "ghost",
-									className: "h-8 rounded-xl text-xs",
-									onClick: () => setDivertedPorts({}),
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-3.5" })
-								})]
 							})]
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "grid grid-cols-2 gap-2.5 sm:grid-cols-3",
-							children: portLoads.map((node) => {
-								const active = node.id === selectedPortId;
-								const high = node.utilizationPct >= 85;
-								const med = node.utilizationPct >= 70 && node.utilizationPct < 85;
-								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-									type: "button",
-									onClick: () => setSelectedPortId(node.id),
-									className: cn("flex flex-col justify-between rounded-xl p-3 text-left ring-1 transition", active ? "bg-accent/10 ring-2 ring-accent" : "bg-raised/50 ring-line hover:bg-raised"),
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center gap-1.5",
+							children: [[
+								{
+									id: "NORMAL",
+									label: "Tự động k = 0"
+								},
+								{
+									id: "LOW_CONFIDENCE_STORM",
+									label: "Bão / Độ tin cậy thấp"
+								},
+								{
+									id: "TRANSSHIPMENT_CRITICAL",
+									label: "Nguy cơ trễ chuyến"
+								}
+							].map((m) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								onClick: () => setStressMode(m.id),
+								className: cn("h-7 rounded-xl px-2.5 text-xs font-semibold ring-1 transition", stressMode === m.id ? "bg-accent text-white ring-accent shadow-xs" : "bg-raised/70 text-muted ring-line hover:text-fg"),
+								children: m.label
+							}, m.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								type: "button",
+								size: "sm",
+								variant: "secondary",
+								className: "h-7 rounded-xl text-xs",
+								onClick: handleDivert,
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3 text-accent" }), "Điều tiết luồng"]
+							})]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "relative overflow-hidden rounded-2xl border border-slate-800 bg-[#0B1221] p-3 text-white shadow-inner",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "pointer-events-none relative z-10 flex flex-wrap items-center justify-between gap-2 text-[10px]",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono font-bold tracking-wider text-slate-400",
+									children: "TP. HỒ CHÍ MINH · HÀNH LANG HÀNG HẢI & SÀ LAN VETC"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-3 font-medium",
 									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-center justify-between",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "font-mono text-[11px] font-bold text-muted",
-												children: node.id
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: cn("rounded-full px-2 py-0.5 font-mono text-[11px] font-bold", high ? "bg-bad/15 text-bad" : med ? "bg-warn/15 text-warn" : "bg-ok/15 text-ok"),
-												children: [node.utilizationPct, "%"]
-											})]
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "inline-flex items-center gap-1 text-emerald-400",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-emerald-400" }), " Ổn định (<70%)"]
 										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-											className: "mt-1.5 truncate text-xs font-semibold text-fg",
-											children: node.name
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "inline-flex items-center gap-1 text-amber-400",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-amber-400" }), " Cao (70–85%)"]
 										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "mt-2 h-1.5 w-full overflow-hidden rounded-full bg-line/60",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-												className: cn("h-full rounded-full transition-all", high ? "bg-bad" : med ? "bg-warn" : "bg-ok"),
-												style: { width: `${node.utilizationPct}%` }
-											})
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "mt-2 flex items-center justify-between font-mono text-[11px] text-muted",
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-												"Wait ",
-												node.queueWaitHours,
-												"h"
-											] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [node.vetcFlowPerHour, "/h"] })]
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: "inline-flex items-center gap-1 text-rose-400",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-rose-400" }), " Quá tải (>85%)"]
 										})
 									]
-								}, node.id);
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mt-3 rounded-xl bg-raised/60 p-3 ring-1 ring-line",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex flex-wrap items-center justify-between gap-2",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "text-xs font-semibold text-fg",
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+								viewBox: "0 0 780 340",
+								className: "mt-1 h-72 w-full sm:h-80",
+								preserveAspectRatio: "xMidYMid meet",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("defs", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("pattern", {
+										id: "radarGrid",
+										width: "40",
+										height: "40",
+										patternUnits: "userSpaceOnUse",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+											d: "M 40 0 L 0 0 0 40",
+											fill: "none",
+											stroke: "#1e293b",
+											strokeWidth: "0.8"
+										})
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("radialGradient", {
+										id: "catLaiGlow",
+										cx: "50%",
+										cy: "50%",
+										r: "50%",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "0%",
+											stopColor: "#f43f5e",
+											stopOpacity: "0.35"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "100%",
+											stopColor: "#f43f5e",
+											stopOpacity: "0.0"
+										})]
+									})] }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "0",
+										y: "0",
+										width: "780",
+										height: "340",
+										fill: "url(#radarGrid)"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "48",
+										y: "64",
+										fill: "#475569",
+										fontSize: "12",
+										fontWeight: "800",
+										letterSpacing: "2",
+										children: "TP. HỒ CHÍ MINH"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "305",
+										y: "34",
+										fill: "#334155",
+										fontSize: "10",
+										fontWeight: "700",
+										letterSpacing: "1.5",
+										children: "BÌNH DƯƠNG"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "615",
+										y: "75",
+										fill: "#334155",
+										fontSize: "10",
+										fontWeight: "700",
+										letterSpacing: "1.5",
+										children: "ĐỒNG NAI"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "58",
+										y: "295",
+										fill: "#334155",
+										fontSize: "10",
+										fontWeight: "700",
+										letterSpacing: "1.5",
+										children: "LONG AN"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "595",
+										y: "325",
+										fill: "#334155",
+										fontSize: "10",
+										fontWeight: "700",
+										letterSpacing: "1.5",
+										children: "BÀ RỊA · VŨNG TÀU"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 190 10 C 235 80, 200 140, 240 195 C 280 250, 320 270, 360 335",
+										fill: "none",
+										stroke: "#0284c7",
+										strokeOpacity: "0.28",
+										strokeWidth: "16",
+										strokeLinecap: "round"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 520 15 C 460 95, 440 155, 510 215 C 570 265, 620 285, 710 335",
+										fill: "none",
+										stroke: "#0284c7",
+										strokeOpacity: "0.28",
+										strokeWidth: "20",
+										strokeLinecap: "round"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 485 196 Q 405 262, 310 278",
+										fill: "none",
+										stroke: "#10b981",
+										strokeWidth: "2.8",
+										strokeDasharray: "6 4"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "364",
+										y: "236",
+										width: "68",
+										height: "18",
+										rx: "6",
+										fill: "#064e3b",
+										stroke: "#10b981",
+										strokeWidth: "1"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "372",
+										y: "248",
+										fill: "#6ee7b7",
+										fontSize: "9",
+										fontWeight: "700",
+										fontFamily: "monospace",
+										children: "+42 TEU/h"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 255 78 Q 330 95, 385 132 T 485 196",
+										fill: "none",
+										stroke: "#6366f1",
+										strokeWidth: "2.2",
+										strokeDasharray: "5 4"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 215 185 Q 250 238, 310 278",
+										fill: "none",
+										stroke: "#38bdf8",
+										strokeWidth: "2.2",
+										strokeDasharray: "5 4"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "196",
+										y: "226",
+										width: "62",
+										height: "18",
+										rx: "6",
+										fill: "#0c4a6e",
+										stroke: "#38bdf8",
+										strokeWidth: "1"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "204",
+										y: "238",
+										fill: "#7dd3fc",
+										fontSize: "9",
+										fontWeight: "700",
+										fontFamily: "monospace",
+										children: "+28 xe/h"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 485 196 Q 585 225, 645 274",
+										fill: "none",
+										stroke: "#f59e0b",
+										strokeWidth: "2.5",
+										strokeDasharray: "6 4"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "548",
+										y: "214",
+										width: "68",
+										height: "18",
+										rx: "6",
+										fill: "#451a03",
+										stroke: "#f59e0b",
+										strokeWidth: "1"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "556",
+										y: "226",
+										fill: "#fcd34d",
+										fontSize: "9",
+										fontWeight: "700",
+										fontFamily: "monospace",
+										children: "+65 TEU/h"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "485",
+										cy: "196",
+										r: "56",
+										fill: "url(#catLaiGlow)"
+									}),
+									portLoads.map((node) => {
+										const pos = MAP_COORDS[node.id] ?? {
+											x: 300,
+											y: 180,
+											shortName: node.name.slice(0, 12),
+											sub: node.tosSystem
+										};
+										const active = node.id === selectedPortId;
+										const high = node.utilizationPct >= 85;
+										const med = node.utilizationPct >= 70 && node.utilizationPct < 85;
+										const badgeColor = high ? "#f43f5e" : med ? "#f59e0b" : "#10b981";
+										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+											transform: `translate(${pos.x - 68}, ${pos.y - 28})`,
+											className: "cursor-pointer",
+											onClick: () => setSelectedPortId(node.id),
+											children: [
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+													x: "0",
+													y: "0",
+													width: "138",
+													height: "58",
+													rx: "12",
+													fill: active ? "#1e1b4b" : "#111827",
+													fillOpacity: "0.94",
+													stroke: active ? "#818cf8" : badgeColor,
+													strokeWidth: active ? "2.2" : "1.4"
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+													cx: "14",
+													cy: "16",
+													r: "4.5",
+													fill: badgeColor
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+													x: "24",
+													y: "19",
+													fill: "#f8fafc",
+													fontSize: "10.5",
+													fontWeight: "800",
+													children: pos.shortName
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+													x: "102",
+													y: "19",
+													fill: badgeColor,
+													fontSize: "11",
+													fontWeight: "800",
+													fontFamily: "monospace",
+													children: [node.utilizationPct, "%"]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+													x: "12",
+													y: "35",
+													fill: "#94a3b8",
+													fontSize: "9.5",
+													fontFamily: "monospace",
+													children: [
+														node.queueWaitHours,
+														"h chờ · ",
+														node.vetcFlowPerHour,
+														"/h"
+													]
+												}),
+												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+													x: "12",
+													y: "48",
+													fill: "#64748b",
+													fontSize: "8.5",
+													fontFamily: "sans-serif",
+													children: pos.sub
+												})
+											]
+										}, node.id);
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mt-2 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-slate-900/90 px-3 py-2 ring-1 ring-slate-800",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2 text-xs",
 									children: [
-										activePort.name,
-										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigation, { className: "size-3.5 text-indigo-400" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "font-bold text-white",
+											children: activePort.name
+										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono text-muted",
+											className: "font-mono text-slate-400",
 											children: [
 												"(",
 												activePort.tosSystem,
-												")"
+												" · Chờ ",
+												activePort.queueWaitHours,
+												"h)"
 											]
 										})
 									]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-									className: "font-mono text-[11px] text-muted",
-									children: [
-										"Wait: ",
-										activePort.queueWaitHours,
-										"h · VETC: ",
-										activePort.vetcFlowPerHour,
-										" vehicles/h"
-									]
-								})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "flex items-center gap-2",
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-mono text-xs text-muted",
-											children: "Simulate Load:"
+											className: "font-mono text-[11px] text-slate-400",
+											children: "Điều chỉnh tải:"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 											type: "range",
@@ -685,294 +845,407 @@ function MlaiHackathonCommandCenter() {
 												...prev,
 												[activePort.id]: Number(e.target.value)
 											})),
-											className: "w-28 accent-accent",
+											className: "w-28 accent-indigo-500",
 											"aria-label": "Simulate port load delta"
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "w-10 text-right font-mono text-xs font-bold text-accent",
+											className: "w-10 text-right font-mono text-xs font-bold text-emerald-400",
 											children: [activePort.utilizationPct, "%"]
 										})
 									]
 								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "mt-2 flex flex-wrap gap-1.5 border-t border-line/60 pt-2",
-								children: HCMC_CORRIDOR_EDGES.map((edge) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "inline-flex items-center gap-1 rounded-lg bg-surface px-2 py-0.5 font-mono text-[10px] text-muted ring-1 ring-line",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-fg",
-											children: edge.from
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-2.5 text-accent" }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-fg",
-											children: edge.to
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-											"(",
-											edge.distanceKm,
-											"km · ",
-											edge.travelMinutes,
-											"m)"
-										] })
-									]
-								}, edge.id))
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-3.5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mb-2 flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-muted",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Cpu, { className: "size-3.5 text-accent" }),
+									"LUỒNG 5 AGENT · TỔNG THỜI GIAN ",
+									totalPipelineMs,
+									"ms"
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "font-mono text-[11px] font-semibold text-accent",
+								children: [
+									"Đang chọn: #",
+									selectedAgentIdx + 1,
+									" ",
+									activeStep.nameVi
+								]
 							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid grid-cols-2 gap-2 sm:grid-cols-5",
+							children: pipeline.agents.map((s, idx) => {
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => setSelectedAgentIdx(idx),
+									className: cn("flex flex-col justify-between rounded-xl p-2.5 text-left ring-1 transition", idx === selectedAgentIdx ? "bg-accent/10 ring-2 ring-accent" : "bg-raised/45 ring-line hover:bg-raised"),
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "flex items-center justify-between font-mono text-[10px]",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "rounded bg-accent/15 px-1.5 py-0.5 font-bold text-accent",
+												children: ["#", idx + 1]
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+												className: "font-semibold text-ok",
+												children: [
+													s.confidencePct,
+													"% · ",
+													s.latencyMs,
+													"ms"
+												]
+											})]
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "mt-1.5 truncate text-xs font-bold text-fg",
+											children: s.nameVi
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+											className: "mt-0.5 truncate text-[10px] text-muted",
+											children: s.outputSummary
+										})
+									]
+								}, s.agentId);
+							})
+						})]
+					})
+				]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-col justify-between gap-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-bold text-fg",
+								children: "Dự báo ETA & 5 rào chắn"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "rounded-full bg-ok/12 px-2.5 py-0.5 font-mono text-xs font-bold text-ok",
+								children: [pipeline.guardrails.filter((g) => g.passed || overriddenGuards[g.id]).length, "/5 ĐẠT"]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-3 rounded-2xl bg-raised/45 p-3 ring-1 ring-line",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+								viewBox: "0 0 300 92",
+								className: "h-24 w-full overflow-visible",
+								"aria-hidden": "true",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+										id: "conformalBellGrad",
+										x1: "0",
+										y1: "0",
+										x2: "0",
+										y2: "1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "0%",
+											stopColor: "#4f46e5",
+											stopOpacity: "0.32"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "100%",
+											stopColor: "#4f46e5",
+											stopOpacity: "0.02"
+										})]
+									}) }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "12",
+										y1: "72",
+										x2: "288",
+										y2: "72",
+										stroke: "#cbd5e1",
+										strokeWidth: "1.2"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 16 72 C 55 72, 78 62, 102 36 C 122 14, 146 10, 168 28 C 194 50, 224 68, 284 72 Z",
+										fill: "url(#conformalBellGrad)"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 16 72 C 55 72, 78 62, 102 36 C 122 14, 146 10, 168 28 C 194 50, 224 68, 284 72",
+										fill: "none",
+										stroke: "#4f46e5",
+										strokeWidth: "2.5",
+										strokeLinecap: "round"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "88",
+										y1: "24",
+										x2: "88",
+										y2: "72",
+										stroke: "#64748b",
+										strokeWidth: "1.2",
+										strokeDasharray: "3 3"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "64",
+										y: "86",
+										fill: "#64748b",
+										fontSize: "9.5",
+										fontWeight: "700",
+										fontFamily: "monospace",
+										children: [
+											"Q10 ",
+											pipeline.conformal.q10Optimistic,
+											unit
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "138",
+										y1: "12",
+										x2: "138",
+										y2: "72",
+										stroke: "#4f46e5",
+										strokeWidth: "1.8",
+										strokeDasharray: "3 3"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "138",
+										cy: "14",
+										r: "4",
+										fill: "#4f46e5"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "115",
+										y: "86",
+										fill: "#4f46e5",
+										fontSize: "9.5",
+										fontWeight: "800",
+										fontFamily: "monospace",
+										children: [
+											"Q50 ",
+											pipeline.conformal.q50Median,
+											unit
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "205",
+										y1: "32",
+										x2: "205",
+										y2: "72",
+										stroke: "#10b981",
+										strokeWidth: "1.8",
+										strokeDasharray: "3 3"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "205",
+										cy: "48",
+										r: "3.5",
+										fill: "#10b981"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "182",
+										y: "86",
+										fill: "#10b981",
+										fontSize: "9.5",
+										fontWeight: "800",
+										fontFamily: "monospace",
+										children: [
+											"Q90 ",
+											pipeline.conformal.q90Conservative,
+											unit
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "242",
+										y: "20",
+										fill: "#64748b",
+										fontSize: "9",
+										fontWeight: "700",
+										fontFamily: "monospace",
+										children: ["σ = ", pipeline.conformal.epistemicSigma]
+									})
+								]
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-3 grid grid-cols-5 gap-1.5",
+							children: pipeline.guardrails.map((g) => {
+								const effectivePass = g.passed ? !overriddenGuards[g.id] : Boolean(overriddenGuards[g.id]);
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => setOverriddenGuards((prev) => ({
+										...prev,
+										[g.id]: !prev[g.id]
+									})),
+									title: `${g.titleEn}: ${g.metricLabel}`,
+									className: cn("flex flex-col items-center rounded-xl p-2 text-center ring-1 transition", effectivePass ? "bg-ok/10 text-ok ring-ok/30 hover:bg-ok/15" : "bg-warn/15 text-warn ring-warn/40 hover:bg-warn/20"),
+									children: [
+										effectivePass ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-4" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "mt-1 font-mono text-[10px] font-bold text-fg",
+											children: g.id === "G1_ZERO_DISPLACEMENT" ? "G1 k=0" : g.id === "G2_CONFORMAL_ROBUSTNESS" ? "G2 Q90" : g.id === "G3_ECONOMIC_THRESHOLD" ? "G3 ROI" : g.id === "G4_TRANSSHIPMENT_SLA" ? "G4 SLA" : "G5 Conf"
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "mt-0.5 w-full truncate font-mono text-[9px] text-muted",
+											children: g.metricLabel
+										})
+									]
+								}, g.id);
+							})
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-col justify-between gap-3 lg:col-span-5",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "inline-flex items-center gap-1.5 text-xs font-semibold text-fg",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Activity, { className: "size-4 text-accent" }), "Conformal ETA Band & 5 Guardrails"]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "rounded-lg bg-ok/10 px-2 py-0.5 font-mono text-xs font-semibold text-ok",
-									children: [pipeline.guardrails.filter((g) => g.passed || overriddenGuards[g.id]).length, "/5 PASS"]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-3 rounded-xl bg-raised/60 p-3 ring-1 ring-line",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex justify-between font-mono text-xs",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "text-muted",
-											children: [
-												"Q10:",
-												" ",
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
-													className: "text-fg",
-													children: [pipeline.conformal.q10Optimistic, unit]
-												})
-											]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "text-accent",
-											children: [
-												"Q50:",
-												" ",
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [pipeline.conformal.q50Median, unit] })
-											]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "text-ok",
-											children: [
-												"Q90:",
-												" ",
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", { children: [pipeline.conformal.q90Conservative, unit] })
-											]
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "text-muted",
-											children: ["σ = ", pipeline.conformal.epistemicSigma]
-										})
-									]
+					className: "flex flex-1 flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-bold text-fg",
+								children: "Human-in-the-loop"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "rounded-full bg-ok/12 px-2.5 py-0.5 font-mono text-xs font-bold text-ok",
+								children: ["+$", pipeline.netEconomicBenefitUsd.toLocaleString("en-US")]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-3 flex items-center justify-between rounded-2xl bg-raised/50 p-2.5 ring-1 ring-line",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-2.5",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "flex size-9 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-xs font-bold text-white",
+									children: "NM"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "relative mt-2 h-2.5 w-full rounded-full bg-line/60",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-y-0 left-[18%] right-[24%] rounded-full bg-accent/25 ring-1 ring-accent" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute top-1/2 left-[45%] size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent ring-2 ring-surface" })]
+									className: "min-w-0",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+										type: "text",
+										value: operatorName,
+										onChange: (e) => setOperatorName(e.target.value),
+										"aria-label": "Operator Sign-off Name",
+										className: "w-full truncate bg-transparent text-xs font-bold text-fg outline-none"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "text-[10px] text-muted",
+										children: "Điều độ viên trưởng · Ca sáng"
+									})]
 								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "mt-3 grid grid-cols-5 gap-1.5",
-								children: pipeline.guardrails.map((g) => {
-									const effectivePass = g.passed ? !overriddenGuards[g.id] : Boolean(overriddenGuards[g.id]);
-									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-										type: "button",
-										onClick: () => setOverriddenGuards((prev) => ({
-											...prev,
-											[g.id]: !prev[g.id]
-										})),
-										title: `${g.titleEn}: ${g.metricLabel} (Click to toggle test state)`,
-										className: cn("flex flex-col items-center rounded-xl p-2 text-center ring-1 transition", effectivePass ? "bg-ok/10 text-ok ring-ok/30 hover:bg-ok/15" : "bg-warn/15 text-warn ring-warn/40 hover:bg-warn/20"),
-										children: [
-											effectivePass ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "size-4" }),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "mt-1 font-mono text-[10px] font-bold text-fg",
-												children: g.id === "G1_ZERO_DISPLACEMENT" ? "G1 k=0" : g.id === "G2_CONFORMAL_ROBUSTNESS" ? "G2 Q90" : g.id === "G3_ECONOMIC_THRESHOLD" ? "G3 ROI" : g.id === "G4_TRANSSHIPMENT_SLA" ? "G4 SLA" : "G5 Conf"
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-												className: "mt-0.5 w-full truncate font-mono text-[9px] text-muted",
-												children: g.metricLabel
-											})
-										]
-									}, g.id);
-								})
-							})
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex items-center justify-between",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "inline-flex items-center gap-1.5 text-xs font-semibold text-fg",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UserCheck, { className: "size-4 text-accent" }), "Human-in-the-Loop Sign-Off"]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "font-mono text-xs font-bold text-ok",
-									children: ["+$", pipeline.netEconomicBenefitUsd.toLocaleString("en-US")]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex shrink-0 items-center gap-1 rounded-full bg-ok/12 px-2 py-0.5 text-[10px] font-semibold text-ok",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-ok" }), "Đã xác thực"]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-3 flex items-center gap-3 rounded-2xl bg-accent/[0.05] p-3 ring-1 ring-accent/20",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "relative flex size-14 shrink-0 items-center justify-center",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+									viewBox: "0 0 36 36",
+									className: "size-14 -rotate-90",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "18",
+										cy: "18",
+										r: "15",
+										fill: "none",
+										stroke: "currentColor",
+										className: "text-line",
+										strokeWidth: "3.5"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "18",
+										cy: "18",
+										r: "15",
+										fill: "none",
+										stroke: "#10b981",
+										strokeWidth: "3.5",
+										strokeDasharray: "92 100",
+										strokeLinecap: "round"
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "absolute font-mono text-xs font-bold text-fg",
+									children: "98%"
 								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-								type: "text",
-								value: operatorName,
-								onChange: (e) => setOperatorName(e.target.value),
-								className: "mt-2.5 h-8 w-full rounded-xl bg-raised/70 px-3 font-mono text-xs text-fg ring-1 ring-line focus:ring-accent focus:outline-none",
-								"aria-label": "Operator Sign-off Name"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-2.5 flex flex-wrap gap-1.5",
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "min-w-0",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										type: "button",
-										size: "sm",
-										className: "h-8 flex-1 rounded-xl bg-ok text-xs text-white hover:bg-ok/90",
-										onClick: () => handleHitlAction("HUMAN_APPROVED"),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-3.5" }), "Approve & Commit"]
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-[10px] font-bold uppercase tracking-wider text-accent",
+										children: "ĐỀ XUẤT ĐIỀU PHỐI LIÊN CẢNG"
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										type: "button",
-										size: "sm",
-										variant: "secondary",
-										className: "h-8 rounded-xl text-xs",
-										onClick: () => handleHitlAction("HUMAN_OVERRIDDEN"),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldAlert, { className: "size-3.5 text-warn" }), "Override"]
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "mt-0.5 text-sm font-bold text-fg",
+										children: "-23 phút · 6/6 cảng đồng bộ"
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-										type: "button",
-										size: "sm",
-										variant: "ghost",
-										className: "h-8 rounded-xl text-xs",
-										onClick: () => handleHitlAction("HUMAN_REJECTED"),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-3.5" }), "Rollback"]
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+										className: "text-[11px] text-muted",
+										children: "Giảm 18% tải Cát Lái sang Hiệp Phước & SP-ITC"
 									})
-								]
-							})
-						]
-					})]
-				})]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mb-3 flex flex-wrap items-center justify-between gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Cpu, { className: "size-4 text-accent" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
-								className: "text-sm font-semibold text-fg",
-								children: [
-									"SƠ ĐỒ MẠCH ĐIỀU PHỐI 5 AI AGENT (",
-									totalPipelineMs,
-									"ms)"
 								]
 							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "font-mono text-xs font-semibold text-ok",
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-3 space-y-1.5 text-xs",
 							children: [
-								orig?.dockId ?? "B0",
-								"@",
-								orig?.startMin ?? 4,
-								unit,
-								" → ",
-								live?.dockId ?? "B5",
-								"@",
-								live?.startMin ?? 5,
-								unit,
-								" · k=",
-								result?.kUsed ?? 0
-							]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "grid grid-cols-2 gap-2 sm:grid-cols-5",
-						children: pipeline.agents.map((s, idx) => {
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								onClick: () => setSelectedAgentIdx(idx),
-								className: cn("flex flex-col justify-between rounded-xl p-3 text-left ring-1 transition", idx === selectedAgentIdx ? "bg-accent/10 ring-2 ring-accent" : "bg-raised/50 ring-line hover:bg-raised"),
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between font-mono text-[11px]",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-bold text-accent",
-											children: ["#", idx + 1]
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "text-ok",
-											children: [
-												s.confidencePct,
-												"% · ",
-												s.latencyMs,
-												"ms"
-											]
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-1.5 line-clamp-1 text-xs font-semibold text-fg",
-										children: s.nameVi
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-1 truncate font-mono text-[10px] text-muted",
-										children: s.outputSummary
-									})
-								]
-							}, s.agentId);
+								{
+									n: 1,
+									text: "Chuyển 18% luồng Cát Lái → Hiệp Phước",
+									tag: "-46m"
+								},
+								{
+									n: 2,
+									text: `Ưu tiên ${live?.dockId ?? "D6"} cho ${truck.plate}`,
+									tag: "k = 0"
+								},
+								{
+									n: 3,
+									text: "Đồng bộ lệnh điện tử eDO sang 5 TOS",
+									tag: "1ms"
+								}
+							].map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between rounded-xl bg-raised/45 px-3 py-1.5 ring-1 ring-line",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "truncate font-medium text-fg",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
+										className: "mr-1.5 font-mono text-accent",
+										children: [item.n, "."]
+									}), item.text]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "ml-2 shrink-0 font-mono text-[11px] font-bold text-ok",
+									children: item.tag
+								})]
+							}, item.n))
 						})
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-3 grid gap-2 rounded-xl bg-raised/60 p-3 font-mono text-xs ring-1 ring-line sm:grid-cols-3",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-semibold uppercase text-faint",
-								children: "Selected Agent"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "mt-0.5 font-sans text-xs font-semibold text-fg",
-								children: [
-									"#",
-									selectedAgentIdx + 1,
-									" · ",
-									activeStep.nameVi,
-									" (",
-									activeStep.roleEn,
-									")"
-								]
-							})] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-semibold uppercase text-faint",
-								children: "Input Telemetry"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-0.5 truncate text-muted",
-								children: activeStep.inputSummary
-							})] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-semibold uppercase text-faint",
-								children: "Verified Output"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-0.5 truncate font-semibold text-fg",
-								children: activeStep.outputSummary
-							})] })
-						]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-line",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between border-b border-line px-4 py-2.5",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3.5 text-ok" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
-							className: "text-xs font-semibold uppercase tracking-wider text-muted",
-							children: [
-								"SHA-256 Audit Ledger (",
-								fullAuditChain.length,
-								" Blocks)"
-							]
+					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-3 grid grid-cols-2 gap-2 border-t border-line pt-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							type: "button",
+							variant: "secondary",
+							size: "sm",
+							className: "h-9 rounded-xl bg-raised text-xs font-semibold text-fg ring-1 ring-line",
+							onClick: () => handleHitlAction("HUMAN_REJECTED"),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, { className: "size-3.5 text-muted" }), "Từ chối"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							type: "button",
+							size: "sm",
+							className: "h-9 rounded-xl bg-ok text-xs font-bold text-white shadow-xs hover:bg-ok/90",
+							onClick: () => handleHitlAction("HUMAN_APPROVED"),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-3.5" }), "Phê duyệt & áp dụng"]
 						})]
+					})]
+				})]
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-line",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between border-b border-line px-4 py-2.5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3.5 text-ok" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h3", {
+						className: "text-xs font-semibold uppercase tracking-wider text-muted",
+						children: [
+							"Sổ cái Kiểm toán Bất biến SHA-256 (",
+							fullAuditChain.length,
+							" Blocks)"
+						]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: () => useBoardStore.getState().setSetupOpen(true),
+						className: "inline-flex h-7 items-center gap-1 rounded-lg bg-raised px-2.5 text-xs font-medium text-fg ring-1 ring-line hover:text-accent",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3 text-accent" }), "Setup"]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 						type: "button",
 						size: "sm",
@@ -985,97 +1258,97 @@ function MlaiHackathonCommandCenter() {
 						},
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "size-3" }), copiedAudit ? "Copied" : "Export JSON"]
 					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "overflow-x-auto",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
-						className: "w-full text-left font-mono text-xs",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
-							className: "border-b border-line bg-raised/50 text-[10px] uppercase text-muted",
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "overflow-x-auto",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
+					className: "w-full text-left font-mono text-xs",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+						className: "border-b border-line bg-raised/50 text-[10px] uppercase text-muted",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-4 py-2",
+								children: "Block"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-3 py-2",
+								children: "Entity"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-3 py-2",
+								children: "Tier"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-3 py-2",
+								children: "Guardrails"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-3 py-2",
+								children: "Action"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-3 py-2",
+								children: "ROI"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-3 py-2",
+								children: "Decision"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								className: "px-4 py-2",
+								children: "SHA-256"
+							})
+						]
+					}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
+						className: "divide-y divide-line/60",
+						children: fullAuditChain.map((rec) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+							className: "hover:bg-raised/30",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-									className: "px-4 py-2",
-									children: "Block"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+									className: "px-4 py-2 font-bold text-fg",
+									children: ["#", rec.blockIndex]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+									className: "px-3 py-2 font-bold text-accent",
+									children: rec.vesselId
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+									className: "px-3 py-2 text-[11px] text-muted",
+									children: rec.tier
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
 									className: "px-3 py-2",
-									children: "Entity"
+									children: [
+										rec.guardrailsPassed,
+										"/",
+										rec.guardrailsTotal
+									]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+									className: "px-3 py-2 font-sans text-xs text-fg",
+									children: rec.actionSummaryVi
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+									className: "px-3 py-2 font-bold text-ok",
+									children: ["+$", rec.economicDeltaUsd.toLocaleString("en-US")]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
 									className: "px-3 py-2",
-									children: "Tier"
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "rounded-md bg-ok/10 px-2 py-0.5 text-[10px] font-semibold text-ok",
+										children: rec.hitlStatus
+									})
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-									className: "px-3 py-2",
-									children: "Guardrails"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-									className: "px-3 py-2",
-									children: "Action"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-									className: "px-3 py-2",
-									children: "ROI"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-									className: "px-3 py-2",
-									children: "Decision"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
-									className: "px-4 py-2",
-									children: "SHA-256"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
+									className: "px-4 py-2 text-[11px] text-muted",
+									children: [rec.blockHash.slice(0, 16), "…"]
 								})
 							]
-						}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", {
-							className: "divide-y divide-line/60",
-							children: fullAuditChain.map((rec) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
-								className: "hover:bg-raised/30",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-4 py-2 font-bold text-fg",
-										children: ["#", rec.blockIndex]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										className: "px-3 py-2 font-bold text-accent",
-										children: rec.vesselId
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										className: "px-3 py-2 text-[11px] text-muted",
-										children: rec.tier
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-3 py-2",
-										children: [
-											rec.guardrailsPassed,
-											"/",
-											rec.guardrailsTotal
-										]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										className: "px-3 py-2 font-sans text-xs text-fg",
-										children: rec.actionSummaryVi
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-3 py-2 font-bold text-ok",
-										children: ["+$", rec.economicDeltaUsd.toLocaleString("en-US")]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
-										className: "px-3 py-2",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "rounded-md bg-ok/10 px-2 py-0.5 text-[10px] font-semibold text-ok",
-											children: rec.hitlStatus
-										})
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("td", {
-										className: "px-4 py-2 text-[11px] text-muted",
-										children: [rec.blockHash.slice(0, 16), "…"]
-									})
-								]
-							}, `${rec.blockIndex}-${rec.blockHash}`))
-						})]
-					})
-				})]
-			})
-		]
+						}, `${rec.blockIndex}-${rec.blockHash}`))
+					})]
+				})
+			})]
+		})]
 	});
 }
 function planProof(result, unit = "minute") {
@@ -2427,9 +2700,9 @@ function JobCard() {
 	const dur = ship.durationMin;
 	const arrived = event.newEtaMin;
 	const saved = compare.saved ?? 0;
-	const savedUsd = Math.max(0, saved) * slaRateUsd;
+	const savedUsd = Math.max(0, saved) * (slaRateUsd || 1500);
 	const bookedDock = compare.holdDock ?? appt.dockId;
-	const bookedStart = compare.holdStart ?? appt.startMin;
+	compare.holdStart ?? appt.startMin;
 	const holdWait = compare.holdWait ?? 0;
 	const planDock = compare.planDock ?? appt.dockId;
 	const planStart = compare.planStart ?? appt.startMin;
@@ -2437,176 +2710,614 @@ function JobCard() {
 	const chain = compare.matches || compare.holdStart == null ? [] : stretchShips(yard, event.truckId, appt.dockId, span, arrived, compare.holdStart);
 	const planClear = !compare.matches && compare.planDock != null && compare.planStart != null && stretchClear(yard, event.truckId, compare.planDock, span, compare.planStart, compare.planStart + dur);
 	const planEnd = planStart + dur;
-	const planBerthNo = planDock.replace(/^B/, "");
+	const planBerthNo = Number(planDock.replace(/^B/, ""));
+	const bookedBerthNo = Number(bookedDock.replace(/^B/, ""));
 	const isPinnedBooked = forceDock === appt.dockId;
 	const headline = bookedHeadline(compare);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		"data-job-card": "",
-		"aria-label": "Gantt Schedule Board Header",
-		className: "mb-2.5 rounded-xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "flex items-center justify-between gap-2",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex min-w-0 items-center gap-1.5 overflow-x-auto",
+		"aria-label": "Barcelona Quay 24B Visual Maritime Board",
+		className: "mb-3 overflow-hidden rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center justify-between gap-2 pb-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex min-w-0 flex-wrap items-center gap-2",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex shrink-0 items-center gap-1.5 rounded-full bg-ok/12 px-3 py-1 text-xs font-bold text-ok ring-1 ring-ok/25",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), "Phương án đã tìm"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-raised px-2.5 py-1 font-mono text-xs font-bold text-fg ring-1 ring-line",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => useBoardStore.getState().setForceDock(isPinnedBooked ? "" : appt.dockId ?? ""),
+									className: cn("rounded px-1.5 py-0.5 transition", isPinnedBooked ? "bg-warn/20 text-warn" : "text-muted hover:text-fg"),
+									title: "Bấm để ghim thử bến cũ",
+									children: [
+										bookedDock,
+										" (",
+										holdWait,
+										"h)"
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-muted",
+									children: "→"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => useBoardStore.getState().setForceDock(""),
+									className: cn("rounded px-1.5 py-0.5 transition", !isPinnedBooked ? "bg-accent text-white" : "text-muted hover:text-fg"),
+									children: [
+										planDock,
+										" @ ",
+										String(planStart).padStart(2, "0"),
+										"h"
+									]
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "inline-flex items-center rounded-lg bg-ok/12 px-2 py-0.5 font-mono text-xs font-bold text-ok",
+							children: saved > 0 ? `-${saved}h (${planWait}h chờ)` : `${planWait}h chờ`
+						}),
+						saved > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center rounded-lg bg-ok/12 px-2 py-0.5 font-mono text-xs font-bold text-ok",
+							children: ["+$", savedUsd.toLocaleString("en-US")]
+						}) : null,
+						compare.holdStart != null && compare.planStart != null && saved > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							"data-booked-equation": "",
+							...compare.leftmostStart === compare.holdStart ? { "data-job-equation": "" } : {},
+							className: "shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20",
+							children: [
+								compare.holdStart,
+								" − ",
+								compare.planStart,
+								" = ",
+								saved
+							]
+						}) : null,
+						compare.leftmostStart != null && compare.planStart != null && (compare.leftmostSaved ?? 0) > 0 && compare.leftmostStart !== compare.holdStart ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							"data-job-equation": "",
+							className: "shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20",
+							children: [
+								compare.leftmostStart,
+								" − ",
+								compare.planStart,
+								" = ",
+								compare.leftmostSaved
+							]
+						}) : null,
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "hidden font-mono text-[11px] text-muted xl:inline",
+							children: "One late ship. The others stay put · Nobody else moves"
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "ml-auto flex shrink-0 items-center gap-1.5",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => useBoardStore.getState().reset(),
+							className: "inline-flex h-8 items-center gap-1 rounded-xl bg-raised px-2.5 text-xs font-medium text-fg ring-1 ring-line hover:bg-surface",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcw, { className: "size-3.5 text-muted" }), "Restore"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							"data-open-logistics-setup": "",
+							onClick: () => useBoardStore.getState().setSetupOpen(true),
+							className: "inline-flex h-8 items-center gap-1 rounded-xl bg-raised px-2.5 text-xs font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3.5 text-accent" }), "Setup"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "button",
+							size: "sm",
+							onClick: () => useBoardStore.getState().commit(),
+							className: "h-8 rounded-xl bg-accent px-3.5 text-xs font-semibold text-accent-fg shadow-xs hover:bg-accent/90",
+							children: "Áp dụng kế hoạch"
+						})
+					]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "relative overflow-hidden rounded-2xl border border-sky-200/80 bg-gradient-to-b from-slate-100 via-sky-100 to-sky-700 shadow-inner dark:border-sky-900/60 dark:from-slate-900 dark:via-sky-950 dark:to-slate-950",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "inline-flex shrink-0 items-center gap-1 rounded-lg bg-raised p-0.5 ring-1 ring-line",
+						className: "pointer-events-none absolute top-2.5 right-3 left-3 z-10 flex flex-wrap items-center justify-between gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-lg bg-slate-900/80 px-2.5 py-1 font-mono text-[10px] font-bold tracking-wider text-white backdrop-blur-xs",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ship, { className: "size-3 text-sky-400" }), "HẢI ĐỒ TRỰC QUAN · BARCELONA QUAY 24B"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-full bg-white/92 px-3 py-1 text-[11px] font-bold text-slate-900 shadow-xs",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-emerald-500" }),
+								"Hoạt động · ",
+								yard.docks.length,
+								" bến · ",
+								yard.trucks.length,
+								" tàu"
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+						viewBox: "0 0 960 148",
+						className: "block h-32 w-full sm:h-36",
+						preserveAspectRatio: "xMidYMid slice",
+						"aria-hidden": "true",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								onClick: () => useBoardStore.getState().setForceDock(isPinnedBooked ? void 0 : appt.dockId),
-								className: cn("inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] transition", isPinnedBooked ? "bg-warn/20 font-semibold text-warn ring-1 ring-warn" : "bg-surface text-fg shadow-2xs hover:bg-raised"),
-								title: "Click to test pinning to Booked Berth",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-									"Booked ",
-									bookedDock,
-									" @",
-									bookedStart,
-									"h"
-								] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: cn("rounded px-1 py-px text-[10px] font-bold", holdWait > 0 ? "bg-bad/15 text-bad" : "bg-ok/15 text-ok"),
-									children: [holdWait, "h"]
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, { className: "size-3 text-muted" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								onClick: () => useBoardStore.getState().setForceDock(void 0),
-								className: cn("inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold transition", !isPinnedBooked ? "bg-accent text-accent-fg shadow-2xs" : "bg-surface text-muted hover:text-fg"),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("defs", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+								id: "harborWater",
+								x1: "0",
+								y1: "0",
+								x2: "0",
+								y2: "1",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-3" }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-										"Sidecar ",
-										planDock,
-										" @",
-										planStart,
-										"h"
-									] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "rounded bg-white/20 px-1 py-px text-[10px]",
-										children: [planWait, "h"]
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+										offset: "0%",
+										stopColor: "#0284c7"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+										offset: "55%",
+										stopColor: "#0369a1"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+										offset: "100%",
+										stopColor: "#0f172a"
 									})
 								]
-							})
-						]
-					}),
-					compare.holdStart != null && compare.planStart != null && saved > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						"data-booked-equation": "",
-						...compare.leftmostStart === compare.holdStart ? { "data-job-equation": "" } : {},
-						className: "shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20",
-						children: [
-							compare.holdStart,
-							" − ",
-							compare.planStart,
-							" = ",
-							saved
-						]
-					}) : null,
-					compare.leftmostStart != null && compare.planStart != null && (compare.leftmostSaved ?? 0) > 0 && compare.leftmostStart !== compare.holdStart ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						"data-job-equation": "",
-						className: "shrink-0 rounded-md bg-accent/10 px-2 py-0.5 font-mono text-[11px] font-semibold tabular-nums text-accent ring-1 ring-accent/20",
-						children: [
-							compare.leftmostStart,
-							" − ",
-							compare.planStart,
-							" = ",
-							compare.leftmostSaved
-						]
-					}) : null,
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						className: "inline-flex shrink-0 items-center gap-1 rounded-md bg-ok/12 px-2 py-0.5 font-mono text-[11px] font-semibold text-ok ring-1 ring-ok/25",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3" }), saved > 0 ? `-${saved}h (+$${savedUsd.toLocaleString("en-US")}) · Nobody else moves` : "One late ship. The others stay put · Nobody else moves"]
-					})
-				]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "ml-auto flex shrink-0 items-center gap-1.5",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						onClick: () => useBoardStore.getState().reset(),
-						className: "inline-flex h-7 items-center gap-1 rounded-lg bg-raised px-2 text-[11px] font-medium text-fg ring-1 ring-line hover:bg-surface",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcw, { className: "size-3 text-muted" }), "Restore"]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						"data-open-logistics-setup": "",
-						onClick: () => useBoardStore.getState().setSetupOpen(true),
-						className: "inline-flex h-7 items-center gap-1 rounded-lg bg-raised px-2 text-[11px] font-medium text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3 text-accent" }), "Setup"]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-						type: "button",
-						size: "sm",
-						onClick: () => useBoardStore.getState().commit(),
-						className: "h-7 rounded-lg bg-accent px-2.5 text-[11px] font-semibold text-accent-fg shadow-xs hover:bg-accent/90",
-						children: "Commit RFC 7396 Patch"
-					})
-				]
-			})]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mt-1.5 flex flex-wrap items-center justify-between gap-2 border-t border-line/60 pt-1.5 text-[11px]",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center gap-1.5 text-muted",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "font-medium text-fg",
-					children: headline
-				}), planClear ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: "text-ok",
-					children: [
-						"Berth ",
-						planBerthNo,
-						" from hour ",
-						planStart,
-						" to ",
-						planEnd,
-						" is clear in the file. The leftmost section is this same opening."
-					]
-				}) : null]
-			}), chain.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-wrap items-center gap-1",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: "inline-flex items-center gap-1 font-mono text-[10px] font-semibold uppercase text-bad",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-2.5" }),
-						"Blocked ",
-						appt.dockId,
-						":"
-					]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
-					"data-block-chain": "",
-					className: "flex flex-wrap items-center gap-1",
-					children: chain.map((b) => {
-						const active = selectedId === b.id;
-						return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
-							"data-block-ship": b.id,
-							"data-block-start": b.start,
-							"data-block-end": b.end,
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								onClick: () => useBoardStore.getState().setSelectedId(b.id),
-								className: cn("rounded px-1.5 py-0.5 font-mono text-[10px] tabular-nums ring-1 transition", active ? "bg-accent text-accent-fg ring-accent" : "bg-raised text-fg ring-line hover:ring-accent/50"),
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+								id: "apronConcrete",
+								x1: "0",
+								y1: "0",
+								x2: "0",
+								y2: "1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "0%",
+									stopColor: "#e2e8f0"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "100%",
+									stopColor: "#cbd5e1"
+								})]
+							})] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "0",
+								y: "0",
+								width: "960",
+								height: "58",
+								fill: "url(#apronConcrete)"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "0",
+								y: "54",
+								width: "960",
+								height: "6",
+								fill: "#64748b"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+								x1: "0",
+								y1: "57",
+								x2: "960",
+								y2: "57",
+								stroke: "#f59e0b",
+								strokeWidth: "1.5",
+								strokeDasharray: "8 6"
+							}),
+							[
+								40,
+								110,
+								290,
+								360,
+								520,
+								610,
+								760,
+								840
+							].map((x, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+								transform: `translate(${x}, 10)`,
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-bold",
-										children: b.id
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "0",
+										y: "22",
+										width: "26",
+										height: "10",
+										rx: "1.5",
+										fill: idx % 2 === 0 ? "#3b82f6" : "#f97316"
 									}),
-									" ",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: active ? "text-accent-fg/85" : "text-muted",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "28",
+										y: "22",
+										width: "26",
+										height: "10",
+										rx: "1.5",
+										fill: idx % 3 === 0 ? "#10b981" : "#6366f1"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "6",
+										y: "11",
+										width: "26",
+										height: "10",
+										rx: "1.5",
+										fill: "#ef4444"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "34",
+										y: "11",
+										width: "26",
+										height: "10",
+										rx: "1.5",
+										fill: "#0ea5e9"
+									})
+								]
+							}, x)),
+							[
+								175,
+								420,
+								665,
+								815
+							].map((cx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+								transform: `translate(${cx}, 4)`,
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "0",
+										y1: "50",
+										x2: "8",
+										y2: "6",
+										stroke: "#334155",
+										strokeWidth: "3"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "26",
+										y1: "50",
+										x2: "18",
+										y2: "6",
+										stroke: "#334155",
+										strokeWidth: "3"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "-18",
+										y1: "12",
+										x2: "54",
+										y2: "12",
+										stroke: "#0284c7",
+										strokeWidth: "4",
+										strokeLinecap: "round"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "13",
+										y1: "0",
+										x2: "-10",
+										y2: "12",
+										stroke: "#475569",
+										strokeWidth: "1.5"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "13",
+										y1: "0",
+										x2: "46",
+										y2: "12",
+										stroke: "#475569",
+										strokeWidth: "1.5"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "6",
+										y: "13",
+										width: "14",
+										height: "6",
+										rx: "1",
+										fill: "#f59e0b"
+									})
+								]
+							}, cx)),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "0",
+								y: "60",
+								width: "960",
+								height: "88",
+								fill: "url(#harborWater)"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+								d: "M 30 82 Q 90 77, 150 82 T 270 82 T 390 82",
+								fill: "none",
+								stroke: "#7dd3fc",
+								strokeOpacity: "0.25",
+								strokeWidth: "1.5"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+								d: "M 480 128 Q 560 123, 640 128 T 800 128 T 920 128",
+								fill: "none",
+								stroke: "#7dd3fc",
+								strokeOpacity: "0.22",
+								strokeWidth: "1.5"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+								transform: "translate(28, 66)",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "0",
+										y: "0",
+										width: "155",
+										height: "34",
+										rx: "10",
+										fill: "#f59e0b",
+										fillOpacity: "0.18",
+										stroke: "#fbbf24",
+										strokeWidth: "1.8",
+										strokeDasharray: "5 4"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "12",
+										y: "15",
+										fill: "#fef08a",
+										fontSize: "9.5",
+										fontWeight: "700",
+										fontFamily: "monospace",
 										children: [
-											b.start,
-											"–",
-											b.end,
+											"Lịch cũ ",
+											bookedDock,
+											" · Chờ ",
+											holdWait,
 											"h"
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "12",
+										y: "27",
+										fill: "#fed7aa",
+										fontSize: "8.5",
+										fontFamily: "sans-serif",
+										children: [
+											"Đang vướng ",
+											chain.length || 3,
+											" tàu khác"
 										]
 									})
 								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+								d: "M 188 84 C 225 84, 240 94, 276 94",
+								fill: "none",
+								stroke: "#38bdf8",
+								strokeWidth: "2.2",
+								strokeDasharray: "4 3"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+								transform: "translate(282, 66)",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 0 6 L 235 6 L 258 22 L 235 38 L 0 38 L 8 22 Z",
+										fill: "#1e1b4b",
+										stroke: "#818cf8",
+										strokeWidth: "2"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "18",
+										y: "11",
+										width: "26",
+										height: "22",
+										rx: "2",
+										fill: "#f97316"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "48",
+										y: "11",
+										width: "26",
+										height: "22",
+										rx: "2",
+										fill: "#3b82f6"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "78",
+										y: "11",
+										width: "26",
+										height: "22",
+										rx: "2",
+										fill: "#10b981"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "108",
+										y: "11",
+										width: "26",
+										height: "22",
+										rx: "2",
+										fill: "#eab308"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "140",
+										y: "9",
+										width: "92",
+										height: "26",
+										rx: "6",
+										fill: "#4f46e5"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "147",
+										y: "20",
+										fill: "#ffffff",
+										fontSize: "9.5",
+										fontWeight: "800",
+										fontFamily: "monospace",
+										children: ["MSC OCEAN · ", ship.plate]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "147",
+										y: "30",
+										fill: "#bbf7d0",
+										fontSize: "8",
+										fontWeight: "700",
+										fontFamily: "sans-serif",
+										children: [
+											planDock,
+											" · ",
+											String(planStart).padStart(2, "0"),
+											":00–",
+											String(planEnd).padStart(2, "0"),
+											":00 · 0h chờ"
+										]
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+								transform: "translate(615, 68)",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 0 5 L 220 5 L 240 19 L 220 33 L 0 33 L 6 19 Z",
+										fill: "#0f172a",
+										stroke: "#64748b",
+										strokeWidth: "1.5"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "16",
+										y: "9",
+										width: "24",
+										height: "20",
+										rx: "2",
+										fill: "#0ea5e9"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "44",
+										y: "9",
+										width: "24",
+										height: "20",
+										rx: "2",
+										fill: "#f43f5e"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "72",
+										y: "9",
+										width: "24",
+										height: "20",
+										rx: "2",
+										fill: "#10b981"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+										x: "108",
+										y: "22",
+										fill: "#e2e8f0",
+										fontSize: "9.5",
+										fontWeight: "700",
+										fontFamily: "monospace",
+										children: "MAERSK LIMA · B12–B15 (Giữ nguyên)"
+									})
+								]
 							})
-						}, `${b.id}-${b.start}`);
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "border-t border-line bg-surface/95 px-3 py-2 backdrop-blur-xs",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mb-1.5 flex flex-wrap items-center justify-between gap-2 text-[11px]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex flex-wrap items-center gap-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-bold text-fg",
+										children: "Chọn cầu bến"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "inline-flex items-center gap-1 text-ok",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-ok" }), "17 đang khai thác"]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "inline-flex items-center gap-1 text-muted",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-line" }), "03 còn trống"]
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono text-[10px] font-semibold uppercase tracking-wider text-muted",
+								children: "BẤM BẾN ĐỂ XEM / ĐỔI TÀU"
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid grid-cols-10 gap-1 sm:grid-cols-20",
+							children: yard.docks.map((d, idx) => {
+								const isPlanSpan = idx >= planBerthNo && idx < planBerthNo + span;
+								const isBooked = idx === bookedBerthNo;
+								const isPinned = forceDock === d.id;
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => useBoardStore.getState().toggleForceDock(d.id),
+									title: `${d.label} — Bấm để ghim/bỏ ghim`,
+									className: cn("flex h-9 flex-col items-center justify-center rounded-xl font-mono text-[11px] font-bold transition", isPlanSpan ? "bg-accent text-white shadow-xs ring-2 ring-accent/40" : isBooked ? "bg-warn/15 text-warn ring-1 ring-warn/50" : isPinned ? "bg-accent/20 text-accent ring-1 ring-accent" : idx % 7 === 3 ? "bg-raised/60 text-muted ring-1 ring-line hover:bg-raised" : "bg-ok/10 text-ok ring-1 ring-ok/25 hover:bg-ok/20"),
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: idx }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: cn("mt-0.5 size-1.5 rounded-full", isPlanSpan ? "bg-white" : isBooked ? "bg-warn" : idx % 7 === 3 ? "bg-muted/40" : "bg-ok") })]
+								}, d.id);
+							})
+						})]
 					})
-				})]
-			}) : null]
-		})]
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-2.5 flex flex-wrap items-center justify-between gap-2 pt-1 text-[11px]",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-center gap-1.5 text-muted",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "font-semibold text-fg",
+							children: headline
+						}),
+						planClear ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "text-ok",
+							children: [
+								"Berth ",
+								planBerthNo,
+								" from hour ",
+								planStart,
+								" to ",
+								planEnd,
+								" is clear in the file. The leftmost section is this same opening."
+							]
+						}) : null,
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "sr-only",
+							children: "One late ship. The others stay put · Nobody else moves"
+						})
+					]
+				}), chain.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-center gap-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "inline-flex items-center gap-1 font-mono text-[10px] font-semibold uppercase text-bad",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-2.5" }),
+							"Blocked ",
+							appt.dockId,
+							":"
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+						"data-block-chain": "",
+						className: "flex flex-wrap items-center gap-1",
+						children: chain.map((b) => {
+							const active = selectedId === b.id;
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+								"data-block-ship": b.id,
+								"data-block-start": b.start,
+								"data-block-end": b.end,
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: () => useBoardStore.getState().setSelectedId(b.id),
+									className: cn("rounded px-1.5 py-0.5 font-mono text-[10px] tabular-nums ring-1 transition", active ? "bg-accent text-accent-fg ring-accent" : "bg-raised text-fg ring-line hover:ring-accent/50"),
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "font-bold",
+											children: b.id
+										}),
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+											className: active ? "text-accent-fg/85" : "text-muted",
+											children: [
+												b.start,
+												"–",
+												b.end,
+												"h"
+											]
+										})
+									]
+								})
+							}, `${b.id}-${b.start}`);
+						})
+					})]
+				}) : null]
+			})
+		]
 	});
 }
 var COL = {
@@ -3950,7 +4661,6 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 	const wait = event && event.truckId === truck.id && start ? Math.max(0, start.startMin - event.newEtaMin) : 0;
 	const forceReefer = useBoardStore((s) => s.forceReefer);
 	const forceDock = useBoardStore((s) => s.forceDock);
-	const holdOn = useBoardStore((s) => s.holdOn);
 	const slaRateUsd = useBoardStore((s) => s.slaRateUsd);
 	const reeferOn = truck.cargo === "reefer" || forceReefer;
 	const [menu, setMenu] = (0, import_react.useState)(false);
@@ -3977,17 +4687,17 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 		className: "flex h-full flex-col justify-between overflow-y-auto bg-surface p-4",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex items-center justify-between border-b border-line pb-2.5",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center gap-2",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-accent" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "text-xs font-semibold uppercase tracking-wider text-muted",
-						children: "Unit Inspector"
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "flex items-center gap-1",
+				className: "flex items-center justify-between",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+					className: "text-base font-bold tracking-tight text-fg",
+					children: hour ? "Chi tiết tàu" : "Xe đang chọn"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-1.5",
 					ref: menuRef,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: cn("inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold ring-1", result?.status === "INFEASIBLE" ? "bg-bad/12 text-bad ring-bad/25" : "bg-ok/12 text-ok ring-ok/25"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-current" }), result?.status === "INFEASIBLE" ? "Xung đột" : hour ? "Đã tối ưu" : "Đúng SLA"]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "relative",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							type: "button",
@@ -4008,7 +4718,6 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 										event
 									}, null, 2));
 									setMenu(false);
-									useBoardStore.getState().flash("Copied JSON");
 								},
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Copy, { className: "size-3.5 text-muted" }), "Copy JSON"]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
@@ -4021,42 +4730,366 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3.5 text-accent" }), "Tự Setup Bãi/Cảng"]
 							})]
 						}) : null]
-					})
+					})]
 				})]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3 flex items-start justify-between gap-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-[11px] font-medium text-muted",
-					children: hour ? "Vessel · Container Carrier" : `Freight Unit · ${truck.hauler}`
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-					className: "mt-0.5 font-mono text-lg font-bold tracking-tight text-fg",
-					children: truck.plate
-				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-					className: cn("inline-flex items-center gap-1 rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold ring-1", result?.status === "INFEASIBLE" ? "bg-bad/12 text-bad ring-bad/25" : "bg-ok/12 text-ok ring-ok/25"),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3" }), result?.status === "INFEASIBLE" ? "Conflict" : "Optimized"]
+			hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 overflow-hidden rounded-2xl bg-gradient-to-br from-sky-50 via-indigo-50/50 to-surface p-3 ring-1 ring-line dark:from-slate-900 dark:via-indigo-950/30 dark:to-surface",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex items-start justify-between gap-2",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1 rounded-full bg-surface/90 px-2 py-0.5 text-[10px] font-semibold text-accent shadow-2xs ring-1 ring-line",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ship, { className: "size-3" }),
+								"Container Vessel · ",
+								truck.span ?? 1,
+								" bến"
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
+							className: "mt-1.5 text-lg font-bold tracking-tight text-fg",
+							children: ["MSC Ocean · ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono",
+								children: truck.plate
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "font-mono text-[11px] text-muted",
+							children: "IMO 9876543 · 2,850 TEU"
+						})
+					] })
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+					viewBox: "0 0 280 72",
+					className: "mt-2 h-16 w-full",
+					"aria-hidden": "true",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+							id: "seaGradInsp",
+							x1: "0",
+							y1: "0",
+							x2: "1",
+							y2: "0",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "0%",
+								stopColor: "#bae6fd",
+								stopOpacity: "0.45"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "100%",
+								stopColor: "#818cf8",
+								stopOpacity: "0.25"
+							})]
+						}) }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							d: "M236 62 L242 18 L254 18 L260 62",
+							fill: "none",
+							stroke: "#94a3b8",
+							strokeWidth: "2"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							d: "M206 22 L272 22",
+							stroke: "#64748b",
+							strokeWidth: "2.5",
+							strokeLinecap: "round"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "4",
+							y: "54",
+							width: "272",
+							height: "14",
+							rx: "6",
+							fill: "url(#seaGradInsp)"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							d: "M28 42 L208 42 L196 58 L38 58 Z",
+							fill: "#1e293b"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							d: "M34 52 L199 52 L196 58 L38 58 Z",
+							fill: "#dc2626"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "172",
+							y: "22",
+							width: "22",
+							height: "20",
+							rx: "2",
+							fill: "#f8fafc",
+							stroke: "#64748b",
+							strokeWidth: "1.2"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "176",
+							y: "25",
+							width: "14",
+							height: "4",
+							rx: "1",
+							fill: "#38bdf8"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "46",
+							y: "28",
+							width: "24",
+							height: "14",
+							rx: "1.5",
+							fill: "#f97316"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "72",
+							y: "24",
+							width: "24",
+							height: "18",
+							rx: "1.5",
+							fill: "#3b82f6"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "98",
+							y: "28",
+							width: "24",
+							height: "14",
+							rx: "1.5",
+							fill: "#10b981"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "124",
+							y: "25",
+							width: "24",
+							height: "17",
+							rx: "1.5",
+							fill: "#4f46e5"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+							x: "150",
+							y: "30",
+							width: "18",
+							height: "12",
+							rx: "1.5",
+							fill: "#eab308"
+						})
+					]
 				})]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 overflow-hidden rounded-2xl bg-gradient-to-br from-sky-50/90 via-indigo-50/40 to-surface p-3 ring-1 ring-line dark:from-slate-900 dark:via-indigo-950/30 dark:to-surface",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-full bg-surface/95 px-2.5 py-0.5 text-[11px] font-semibold text-accent shadow-2xs ring-1 ring-line",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-3" }),
+								reeferOn ? "Xe lạnh" : "Xe tải",
+								" · ",
+								truck.hauler
+							]
+						}), reeferOn ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1 rounded-full bg-sky-500/12 px-2 py-0.5 font-mono text-[10px] font-bold text-sky-600 dark:text-sky-400",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-2.5" }), "-25°C"]
+						}) : null]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+						viewBox: "0 0 280 78",
+						className: "mt-1.5 h-18 w-full",
+						"aria-hidden": "true",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+								x1: "8",
+								y1: "68",
+								x2: "272",
+								y2: "68",
+								stroke: "#cbd5e1",
+								strokeWidth: "2"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "218",
+								y: "18",
+								width: "52",
+								height: "50",
+								rx: "3",
+								fill: "#e2e8f0",
+								stroke: "#94a3b8",
+								strokeWidth: "1.2"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "226",
+								y: "30",
+								width: "22",
+								height: "38",
+								rx: "1.5",
+								fill: "#94a3b8"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+								x1: "226",
+								y1: "38",
+								x2: "248",
+								y2: "38",
+								stroke: "#e2e8f0",
+								strokeWidth: "1"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+								x1: "226",
+								y1: "46",
+								x2: "248",
+								y2: "46",
+								stroke: "#e2e8f0",
+								strokeWidth: "1"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+								x1: "226",
+								y1: "54",
+								x2: "248",
+								y2: "54",
+								stroke: "#e2e8f0",
+								strokeWidth: "1"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "74",
+								y: "20",
+								width: "128",
+								height: "38",
+								rx: "4",
+								fill: "#ffffff",
+								stroke: "#64748b",
+								strokeWidth: "1.5"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "74",
+								y: "20",
+								width: "128",
+								height: "6",
+								rx: "2",
+								fill: "#3b82f6"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+								x: "90",
+								y: "39",
+								fill: "#1e293b",
+								fontSize: "8.5",
+								fontWeight: "800",
+								fontFamily: "monospace",
+								children: "HOZERION SIDE CAR"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+								x: "90",
+								y: "49",
+								fill: "#3b82f6",
+								fontSize: "7.5",
+								fontWeight: "700",
+								fontFamily: "sans-serif",
+								children: "COLD CHAIN · REEFER SLA"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "67",
+								y: "24",
+								width: "7",
+								height: "22",
+								rx: "1.5",
+								fill: "#94a3b8"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+								d: "M24 38 L46 26 L64 26 L64 58 L20 58 L20 44 Z",
+								fill: "#2563eb"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+								d: "M28 39 L44 29 L56 29 L56 41 L28 41 Z",
+								fill: "#bae6fd"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "20",
+								y: "50",
+								width: "6",
+								height: "5",
+								rx: "1",
+								fill: "#fde047"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+								x: "60",
+								y: "55",
+								width: "136",
+								height: "4",
+								fill: "#334155"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "38",
+								cy: "61",
+								r: "6.5",
+								fill: "#1e293b"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "38",
+								cy: "61",
+								r: "3",
+								fill: "#cbd5e1"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "84",
+								cy: "61",
+								r: "6.5",
+								fill: "#1e293b"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "84",
+								cy: "61",
+								r: "3",
+								fill: "#cbd5e1"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "170",
+								cy: "61",
+								r: "6.5",
+								fill: "#1e293b"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "170",
+								cy: "61",
+								r: "3",
+								fill: "#cbd5e1"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "186",
+								cy: "61",
+								r: "6.5",
+								fill: "#1e293b"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+								cx: "186",
+								cy: "61",
+								r: "3",
+								fill: "#cbd5e1"
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-1 flex items-center justify-between border-t border-line/60 pt-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "font-mono text-lg font-bold tracking-tight text-fg",
+							children: truck.plate
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1 text-xs font-semibold text-ok",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), "Đã kiểm tra"]
+						})]
+					})
+				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-3 rounded-xl bg-raised/50 p-3 ring-1 ring-line",
+				className: "mt-3 rounded-2xl bg-raised/45 p-3 ring-1 ring-line",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "relative grid grid-cols-4 items-start gap-1 text-center",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute top-3 right-6 left-6 h-px bg-line" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute top-3 left-6 h-px w-2/3 bg-accent/60" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute top-3.5 right-6 left-6 h-0.5 bg-line" }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute top-3.5 left-6 h-0.5 w-2/3 bg-accent/65" }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-6 items-center justify-center rounded-md bg-accent text-accent-fg shadow-2xs ring-2 ring-surface",
-									children: hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ship, { className: "size-3" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-3" })
+									className: "flex size-7 items-center justify-center rounded-full bg-accent/15 text-accent ring-2 ring-surface",
+									children: hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Ship, { className: "size-3.5" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-3.5" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1 text-[10px] font-semibold text-fg",
-									children: "Arrival"
+									className: "mt-1 text-[10px] font-semibold text-muted",
+									children: "Đến"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "font-mono text-[10px] text-muted",
+									className: "font-mono text-[11px] font-bold text-fg",
 									children: arrivalTimeLabel
 								})
 							]
@@ -4065,15 +5098,15 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-6 items-center justify-center rounded-md bg-accent text-accent-fg shadow-2xs ring-2 ring-surface",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3" })
+									className: "flex size-7 items-center justify-center rounded-full bg-warn/15 text-warn ring-2 ring-surface",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-3.5" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1 text-[10px] font-semibold text-fg",
-									children: "Queue"
+									className: "mt-1 text-[10px] font-semibold text-muted",
+									children: "Hàng chờ"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "font-mono text-[10px] font-semibold text-ok",
+									className: "font-mono text-[11px] font-bold text-fg",
 									children: [wait, unit]
 								})
 							]
@@ -4082,21 +5115,16 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-6 items-center justify-center rounded-md bg-surface text-accent ring-1 ring-accent/40",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-3" })
+									className: "flex size-7 items-center justify-center rounded-full bg-accent text-accent-fg shadow-xs ring-2 ring-surface",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-3.5" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1 text-[10px] font-semibold text-fg",
-									children: hour ? "Berth" : "Door"
+									className: "mt-1 text-[10px] font-semibold text-muted",
+									children: hour ? `Bến ${liveDock?.short ?? "B5"}` : `Cửa ${liveDock?.short ?? "D6"}`
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "font-mono text-[10px] text-muted",
-									children: [
-										liveDock?.short ?? "B5",
-										" · ",
-										truck.durationMin,
-										unit
-									]
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono text-[11px] font-bold text-accent",
+									children: startLabel
 								})
 							]
 						}),
@@ -4104,15 +5132,15 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 							className: "relative z-10 flex flex-col items-center",
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "flex size-6 items-center justify-center rounded-md bg-surface text-muted ring-1 ring-line",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigation, { className: "size-3" })
+									className: "flex size-7 items-center justify-center rounded-full bg-ok/15 text-ok ring-2 ring-surface",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigation, { className: "size-3.5" })
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1 text-[10px] font-semibold text-fg",
-									children: "Depart"
+									className: "mt-1 text-[10px] font-semibold text-muted",
+									children: "Rời"
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "font-mono text-[10px] text-muted",
+									className: "font-mono text-[11px] font-bold text-fg",
 									children: endLabel
 								})
 							]
@@ -4121,297 +5149,287 @@ function Inspector({ yard, truck, orig, live, event, result, onFind }) {
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3 grid grid-cols-2 gap-2",
+				className: "mt-3 grid grid-cols-2 gap-2.5",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 					type: "button",
-					onClick: () => useBoardStore.getState().setForceDock(orig?.dockId),
-					className: "flex flex-col justify-between rounded-xl border-t-2 border-t-warn bg-raised/45 p-2.5 text-left ring-1 ring-line transition hover:bg-raised",
+					onClick: () => useBoardStore.getState().setForceDock(orig?.dockId ?? ""),
+					className: "flex flex-col justify-between rounded-2xl bg-warn/[0.08] p-3 text-left ring-1 ring-warn/30 transition hover:bg-warn/[0.12]",
 					title: "Click to test pinning to Booked slot",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-semibold uppercase tracking-wide text-muted",
-								children: "Booked Slot"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-mono text-[10px] font-semibold text-fg",
-								children: origDock?.short ?? "B0"
-							})]
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-[10px] font-bold uppercase tracking-wider text-warn",
+							children: hour ? `LỊCH CŨ · ${origDock?.short ?? "B0"}` : "KẾ HOẠCH CŨ"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-1 font-mono text-base font-bold text-fg",
-							children: [
-								holdWait,
-								unit,
-								" wait"
-							]
+							className: "mt-1 font-mono text-2xl font-bold leading-none text-fg",
+							children: [holdWait, unit]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "font-mono text-[10px] text-muted",
-							children: ["Scheduled @ ", origLabel]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1.5 font-mono text-[11px] text-muted",
+							children: hour ? "Chờ đến lượt" : `Cửa ${origDock?.short ?? "D1"} · ${origLabel}`
 						})
-					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-2 inline-flex items-center gap-1 rounded-md bg-warn/12 px-2 py-1 font-mono text-[10px] font-semibold text-warn",
-						children: "Hold Exposure"
-					})]
+					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 					type: "button",
-					onClick: () => useBoardStore.getState().setForceDock(void 0),
-					className: "flex flex-col justify-between rounded-xl border-t-2 border-t-ok bg-ok/[0.04] p-2.5 text-left ring-1 ring-ok/25 transition hover:ring-ok/60",
+					onClick: () => useBoardStore.getState().setForceDock(""),
+					className: "flex flex-col justify-between rounded-2xl bg-ok/[0.08] p-3 text-left ring-1 ring-ok/30 transition hover:bg-ok/[0.12]",
 					title: "Click to use optimal Sidecar k=0 plan",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[10px] font-semibold uppercase tracking-wide text-ok",
-								children: "Sidecar Plan"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-mono text-[10px] font-bold text-ok",
-								children: liveDock?.short ?? "B5"
-							})]
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-[10px] font-bold uppercase tracking-wider text-ok",
+							children: hour ? `LỊCH MỚI · ${liveDock?.short ?? "B5"}` : "PHƯƠNG ÁN MỚI"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-1 font-mono text-base font-bold text-ok",
-							children: ["+$", savedUsd.toLocaleString("en-US")]
+							className: "mt-1 font-mono text-2xl font-bold leading-none text-ok",
+							children: [wait, unit]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "font-mono text-[10px] text-muted",
-							children: [
-								wait,
-								unit,
-								" wait @ ",
-								startLabel
-							]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1.5 font-mono text-[11px] text-muted",
+							children: hour ? "Cầu bến sẵn sàng" : `Cửa ${liveDock?.short ?? "D6"} · ${startLabel}`
 						})
-					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-2 inline-flex items-center gap-1 rounded-md bg-ok/15 px-2 py-1 font-mono text-[10px] font-semibold text-ok",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-3" }), "k=0 SLA Saved"]
-					})]
+					]
 				})]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-3 rounded-xl bg-raised/40 px-3 py-2 ring-1 ring-line",
+			hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 rounded-2xl bg-raised/35 p-3 ring-1 ring-line",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-[10px] font-bold uppercase tracking-wider text-muted",
+					children: "GIỚI HẠN AN TOÀN"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-2 space-y-1.5 text-xs",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1.5 text-fg",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }), "Bảo toàn lịch chủ"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono font-bold text-ok",
+								children: "100%"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1.5 text-fg",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }), "Độ sâu luồng tàu"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono font-bold text-ok",
+								children: "Đạt"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1.5 text-fg",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5 text-ok" }), "Mốc thủy triều / ETA"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono font-bold text-ok",
+								children: "Đạt"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1.5 text-fg",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-3.5 text-accent" }), "Ảnh hưởng tàu khác"]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono font-bold text-fg",
+								children: result?.kUsed ?? 0
+							})]
+						})
+					]
+				})]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-3 rounded-2xl bg-raised/40 px-3 py-2.5 ring-1 ring-line",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "grid grid-cols-3 gap-2 text-center font-mono text-[10px]",
+					className: "grid grid-cols-3 gap-2 text-center",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "text-muted",
-							children: "Displaced"
+							className: "text-[10px] font-bold uppercase text-muted",
+							children: "TIẾT KIỆM"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "font-bold text-ok",
-							children: ["k = ", result?.kUsed ?? 0]
+							className: "mt-0.5 font-mono text-sm font-bold text-ok",
+							children: ["+$", savedUsd.toLocaleString("en-US")]
 						})] }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "border-x border-line",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "text-muted",
-								children: hour ? "Berth Span" : "Cargo"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "font-bold text-fg",
-								children: hour ? `${truck.span ?? 1} units` : reeferOn ? "Reefer" : "Dry"
+								className: "text-[10px] font-bold uppercase text-muted",
+								children: "ẢNH HƯỞNG"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mt-0.5 font-mono text-sm font-bold text-fg",
+								children: [result?.kUsed ?? 0, " xe"]
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "text-muted",
-							children: "Kernel"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "font-bold text-accent",
-							children: "5.15µs"
+							className: "text-[10px] font-bold uppercase text-muted",
+							children: "THỜI GIAN"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-0.5 font-mono text-sm font-bold text-accent",
+							children: [result?.ms ?? 1, "ms"]
 						})] })
 					]
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "mt-3 border-t border-line pt-3",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-[11px] font-semibold uppercase tracking-wider text-muted",
-							children: "Live Overrides"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "font-mono text-[10px] text-muted",
+				className: "mt-3 border-t border-line pt-2.5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid grid-cols-3 gap-1.5",
+					children: [
+						!hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => useBoardStore.getState().toggleForceReefer(),
+							className: cn("flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-[11px] font-medium ring-1 transition", reeferOn ? "bg-accent/12 text-accent ring-accent/30" : "bg-raised text-fg ring-line hover:bg-raised/80"),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-3" }), reeferOn ? "Reefer" : "Dry"]
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] text-fg ring-1 ring-line",
 							children: [
-								startLabel,
-								" – ",
-								endLabel
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-3 text-accent" }),
+								truck.span ?? 1,
+								" bến"
 							]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-2 grid grid-cols-3 gap-1.5",
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => {
+								const nextP = truck.priority % 3 + 1;
+								useBoardStore.getState().setTruckPriority(truck.id, nextP);
+							},
+							className: "flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
+							title: "Click to cycle Priority P1 / P2 / P3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListFilter, { className: "size-3 text-accent" }),
+								"P",
+								truck.priority
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+							"aria-label": hour ? "Pin berth" : "Pin door",
+							value: forceDock || live?.dockId || orig?.dockId || "",
+							onChange: (e) => {
+								const val = e.target.value;
+								useBoardStore.getState().setForceDock(val === (orig?.dockId ?? "") ? "" : val);
+							},
+							className: "h-7 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none",
+							children: yard.docks.map((d) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+								value: d.id,
+								children: d.short
+							}, d.id))
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-1.5 flex items-center justify-between rounded-lg bg-raised/60 px-2.5 py-1 ring-1 ring-line",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-1",
 						children: [
-							!hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								onClick: () => useBoardStore.getState().setForceReefer(!reeferOn),
-								className: cn("flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-[11px] font-medium ring-1 transition", reeferOn ? "bg-accent/12 text-accent ring-accent/30" : "bg-raised text-fg ring-line hover:bg-raised/80"),
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-3" }), reeferOn ? "Reefer" : "Dry"]
-							}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] text-fg ring-1 ring-line",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-3 text-accent" }),
-									truck.span ?? 1,
-									" Berths"
-								]
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[10px] font-medium text-muted",
+								children: "Dời ETA"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								type: "button",
-								onClick: () => {
-									const nextP = truck.priority % 3 + 1;
-									useBoardStore.getState().setTruckPriority(truck.id, nextP);
-								},
-								className: "flex h-7 items-center justify-center gap-1 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
-								title: "Click to cycle Priority P1 / P2 / P3",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ListFilter, { className: "size-3 text-accent" }),
-									"P",
-									truck.priority
-								]
+								"aria-label": "Shift arrival earlier",
+								onClick: () => useBoardStore.getState().nudge(hour ? -1 : -10),
+								className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-2.5" })
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-								"aria-label": hour ? "Pin berth" : "Pin door",
-								value: forceDock ?? live?.dockId ?? orig?.dockId ?? "",
-								onChange: (e) => {
-									const val = e.target.value;
-									useBoardStore.getState().setForceDock(val === (orig?.dockId ?? "") ? void 0 : val);
-								},
-								className: "h-7 rounded-lg bg-raised px-2 font-mono text-[11px] font-semibold text-fg ring-1 ring-line focus:ring-accent focus:outline-none",
-								children: yard.docks.map((d) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-									value: d.id,
-									children: d.short
-								}, d.id))
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								"aria-label": "Shift arrival later",
+								onClick: () => useBoardStore.getState().nudge(hour ? 1 : 10),
+								className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-2.5" })
 							})
 						]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-2 flex items-center justify-between rounded-lg bg-raised/60 px-2.5 py-1.5 ring-1 ring-line",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-1",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[10px] font-medium text-muted",
-									children: "Shift"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									"aria-label": "Shift arrival earlier",
-									onClick: () => useBoardStore.getState().nudgeDelay(hour ? -1 : -10),
-									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-2.5" })
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									"aria-label": "Shift arrival later",
-									onClick: () => useBoardStore.getState().nudgeDelay(hour ? 1 : 10),
-									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-2.5" })
-								})
-							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-1",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-[10px] font-medium text-muted",
-									children: "Dur"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									"aria-label": "Decrease service time",
-									onClick: () => useBoardStore.getState().setTruckDuration(truck.id, hour ? -2 : -15),
-									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-2.5" })
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "font-mono text-[11px] font-semibold text-fg",
-									children: [truck.durationMin, unit]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									"aria-label": "Increase service time",
-									onClick: () => useBoardStore.getState().setTruckDuration(truck.id, hour ? 2 : 15),
-									className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-2.5" })
-								})
-							]
-						})]
-					})
-				]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center gap-1",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-[10px] font-medium text-muted",
+								children: "Tác nghiệp"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								"aria-label": "Decrease service time",
+								onClick: () => useBoardStore.getState().setTruckDuration(truck.id, hour ? -2 : -15),
+								className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Minus, { className: "size-2.5" })
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "font-mono text-[11px] font-semibold text-fg",
+								children: [truck.durationMin, unit]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								"aria-label": "Increase service time",
+								onClick: () => useBoardStore.getState().setTruckDuration(truck.id, hour ? 2 : 15),
+								className: "inline-flex size-5 items-center justify-center rounded bg-surface text-muted ring-1 ring-line hover:text-fg",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-2.5" })
+							})
+						]
+					})]
+				})]
 			})
 		] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mt-3 space-y-1.5 border-t border-line pt-3",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "grid grid-cols-2 gap-1.5",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					type: "button",
-					variant: "secondary",
-					size: "sm",
-					className: "h-8 rounded-lg text-xs",
-					onClick: () => onFind ? onFind() : useBoardStore.getState().findPlan(),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "size-3 text-accent" }), "Edit Plan"]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					type: "button",
-					variant: holdOn ? "default" : "ghost",
-					size: "sm",
-					className: "h-8 rounded-lg text-xs ring-1 ring-line",
-					onClick: () => useBoardStore.getState().toggleHold(),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pause, { className: "size-3" }), holdOn ? "Holding" : "Hold Slot"]
-				})]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+			className: "mt-3 grid grid-cols-2 gap-2 border-t border-line pt-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 				type: "button",
 				variant: "secondary",
 				size: "sm",
-				onClick: () => useBoardStore.getState().setSetupOpen(true),
-				className: "h-8 w-full rounded-lg bg-raised text-xs font-semibold text-fg ring-1 ring-line hover:bg-accent/10 hover:text-accent",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-3 text-accent" }), "Customize Facility Rules"]
+				className: "h-9 rounded-xl bg-raised text-xs font-semibold text-fg ring-1 ring-line hover:bg-surface",
+				onClick: () => onFind ? onFind() : useBoardStore.getState().findPlan(),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PenLine, { className: "size-3.5 text-muted" }), hour ? "So sánh 2 lịch" : "Chỉnh lịch"]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				type: "button",
+				size: "sm",
+				className: "h-9 rounded-xl bg-ok text-xs font-semibold text-white shadow-xs hover:bg-ok/90",
+				onClick: () => useBoardStore.getState().commit(),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3.5" }), hour ? "Duyệt kế hoạch" : "Áp dụng"]
 			})]
 		})]
 	});
 }
-var PRESETS$1 = [
-	{
-		id: "icd-minute",
-		title: "Tan Thuan ICD",
-		sub: "6 Doors · Gate B Morning",
-		unit: "Minute",
-		sla: "$18/m",
-		adapter: "SGP-TOS / Smart ICD",
-		icon: Warehouse
-	},
+var STUDIO_TEMPLATES = [
 	{
 		id: "bcn-hour",
-		title: "Barcelona Quay 24B",
-		sub: "20 Berths · 27 Vessels",
-		unit: "Hour",
+		title: "Cảng container",
+		badge: "Sea · Road",
+		sub: "Cầu bến · Bãi · Cổng",
+		spec: "20 bến · STS Quay",
 		sla: "$1,500/h",
-		adapter: "Navis N4 / TOPOVN",
-		icon: Anchor
+		icon: Anchor,
+		accent: "from-sky-500/15 to-indigo-500/5"
 	},
 	{
-		id: "reefer-cold",
-		title: "Mekong Cold -25°C",
-		sub: "6 Reefer Doors · Cold Chain",
-		unit: "Minute",
-		sla: "$28/m",
-		adapter: "Blue Yonder WMS",
-		icon: Snowflake
+		id: "icd-minute",
+		title: "ICD / Dry Port",
+		badge: "Road · Rail",
+		sub: "Cửa kho · Đường sắt · Bãi",
+		spec: "06–16 cửa · Đang chọn",
+		sla: "$18/m",
+		icon: Warehouse,
+		accent: "from-indigo-500/15 to-emerald-500/5"
 	},
 	{
 		id: "crossdock-fmcg",
-		title: "Cross-Dock FMCG",
-		sub: "8 High-Velocity Doors",
-		unit: "Minute",
+		title: "Kho & WMS",
+		badge: "Warehouse",
+		sub: "Cross-dock · Băng tải · Kệ",
+		spec: "08 cửa · High-Velocity",
 		sla: "$15/m",
-		adapter: "SAP EWM / FourKites",
-		icon: Building2
+		icon: Building2,
+		accent: "from-amber-500/15 to-orange-500/5"
 	},
 	{
-		id: "barge-hub",
-		title: "Cát Lái – Hiệp Phước",
-		sub: "6 Barge Berths · VETC",
-		unit: "Minute",
-		sla: "$22/m",
-		adapter: "VTOS / TOPX / VETC",
-		icon: Truck
+		id: "reefer-cold",
+		title: "Kho lạnh",
+		badge: "Cold Chain",
+		sub: "-25°C · Reefer · Kiểm nhiệt",
+		spec: "06 cửa lạnh · Reefer SLA",
+		sla: "$28/m",
+		icon: Snowflake,
+		accent: "from-cyan-500/15 to-blue-500/5"
 	}
 ];
 var ADAPTERS = [
@@ -4421,9 +5439,7 @@ var ADAPTERS = [
 	"SAP EWM / FourKites Dynamic Yard",
 	"Custom REST Webhook (RFC 7396 JSON)"
 ];
-function LogisticsSetupModal() {
-	const open = useBoardStore((s) => s.setupOpen);
-	const setOpen = useBoardStore((s) => s.setSetupOpen);
+function SelfSetupStudioView({ onClose }) {
 	const yard = useBoardStore((s) => s.yard);
 	const slaRateUsd = useBoardStore((s) => s.slaRateUsd);
 	const maxMovesAllowed = useBoardStore((s) => s.maxMovesAllowed);
@@ -4432,6 +5448,11 @@ function LogisticsSetupModal() {
 	const [section, setSection] = (0, import_react.useState)("facility");
 	const [nameInput, setNameInput] = (0, import_react.useState)(yard.name);
 	const [gateInput, setGateInput] = (0, import_react.useState)(yard.gate);
+	const [ruleReeferPrio, setRuleReeferPrio] = (0, import_react.useState)(true);
+	const [ruleAutoSuggest, setRuleAutoSuggest] = (0, import_react.useState)(true);
+	const [ruleZeroMove, setRuleZeroMove] = (0, import_react.useState)(true);
+	const [ruleOverloadAlert, setRuleOverloadAlert] = (0, import_react.useState)(true);
+	const [railBays, setRailBays] = (0, import_react.useState)(6);
 	const hour = yard.timeUnit === "hour";
 	const [jobPlate, setJobPlate] = (0, import_react.useState)(hour ? "MV-908" : "51C-998.68");
 	const [jobHauler, setJobHauler] = (0, import_react.useState)(hour ? "Maersk Feeder" : "Mekong Express");
@@ -4439,6 +5460,9 @@ function LogisticsSetupModal() {
 	const [jobStart, setJobStart] = (0, import_react.useState)(hour ? 12 : 120);
 	const [jobDelay, setJobDelay] = (0, import_react.useState)(hour ? 2 : 45);
 	const [jobDur, setJobDur] = (0, import_react.useState)(hour ? 14 : 75);
+	const [jobCargo, setJobCargo] = (0, import_react.useState)("reefer");
+	const [jobPrio, setJobPrio] = (0, import_react.useState)(1);
+	const [jobSpan, setJobSpan] = (0, import_react.useState)(4);
 	(0, import_react.useEffect)(() => {
 		setNameInput(yard.name);
 		setGateInput(yard.gate);
@@ -4448,484 +5472,952 @@ function LogisticsSetupModal() {
 		yard.gate,
 		yard.docks
 	]);
-	const [jobCargo, setJobCargo] = (0, import_react.useState)("reefer");
-	const [jobPrio, setJobPrio] = (0, import_react.useState)(1);
-	const [jobSpan, setJobSpan] = (0, import_react.useState)(4);
-	if (!open) return null;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		className: "fixed inset-0 z-50 flex items-center justify-center bg-black/35 p-4 backdrop-blur-xs",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			"data-setup-modal": "",
-			className: "flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-surface shadow-float ring-1 ring-line",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between border-b border-line px-5 py-3.5",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-2.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "flex size-8 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/25",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-4" })
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-							className: "text-sm font-semibold text-fg",
-							children: "Logistics Self-Setup Studio · Cấu Hình Tự Chủ Theo Doanh Nghiệp"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "font-mono text-[11px] text-muted",
+	const openDoorsCount = yard.docks.filter((d) => d.mode !== "closed").length;
+	const reeferDoorsCount = yard.docks.filter((d) => d.cargo.includes("reefer")).length;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-3.5",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4",
+				children: STUDIO_TEMPLATES.map((tpl) => {
+					const Icon = tpl.icon;
+					const isCurrent = tpl.id === "bcn-hour" && hour || tpl.id === "icd-minute" && !hour && yard.name.includes("Tan Thuan") || tpl.id === "reefer-cold" && yard.name.includes("Mekong") || tpl.id === "crossdock-fmcg" && yard.name.includes("Cross-Dock");
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: () => {
+							useBoardStore.getState().applyFacilityPreset(tpl.id);
+						},
+						className: cn("flex items-center gap-3 rounded-2xl bg-gradient-to-br p-3.5 text-left shadow-card transition", tpl.accent, isCurrent ? "bg-surface ring-2 ring-accent" : "bg-surface ring-1 ring-line hover:ring-accent/50"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: cn("flex size-12 shrink-0 items-center justify-center rounded-2xl ring-1", isCurrent ? "bg-accent text-white ring-accent" : "bg-surface text-accent ring-line"),
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-6" })
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0 flex-1",
 							children: [
-								yard.name,
-								" · ",
-								yard.docks.length,
-								" ",
-								hour ? "Berths" : "Doors",
-								" · ",
-								yard.trucks.length,
-								" ",
-								hour ? "Vessels" : "Trucks",
-								" · SLA $",
-								slaRateUsd,
-								"/",
-								hour ? "h" : "m",
-								" · k=",
-								maxMovesAllowed
-							]
-						})] })]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-1.5",
-						children: [[
-							{
-								id: "facility",
-								label: "1. Mô Hình Bãi / Cảng"
-							},
-							{
-								id: "rules",
-								label: "2. Luật Solver & Kết Nối TOS"
-							},
-							{
-								id: "inject",
-								label: "3. + Thêm Lệnh Tàu/Xe"
-							}
-						].map((tab) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							type: "button",
-							onClick: () => setSection(tab.id),
-							className: cn("rounded-lg px-3 py-1.5 text-xs font-medium transition", section === tab.id ? "bg-accent text-accent-fg shadow-xs" : "bg-raised text-muted hover:text-fg"),
-							children: tab.label
-						}, tab.id)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							type: "button",
-							onClick: () => setOpen(false),
-							className: "ml-2 flex size-8 items-center justify-center rounded-lg text-muted hover:bg-raised hover:text-fg",
-							"aria-label": "Close setup",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-4" })
-						})]
-					})]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex-1 overflow-y-auto p-5",
-					children: [
-						section === "facility" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "space-y-5",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "mb-2 flex items-center justify-between",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-xs font-semibold uppercase tracking-wide text-muted",
-										children: "Chọn Nhanh Mẫu Vận Hành (1-Click Live Switch)"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-mono text-[11px] text-accent",
-										children: "Tự động nạp cầu/cửa & giải lịch tức thì"
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "grid grid-cols-2 gap-2.5 sm:grid-cols-5",
-									children: PRESETS$1.map((p) => {
-										const Icon = p.icon;
-										const active = yard.name.toLowerCase().includes(p.title.split(" ")[0].toLowerCase());
-										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-											type: "button",
-											onClick: () => {
-												useBoardStore.getState().applyFacilityPreset(p.id);
-												const next = useBoardStore.getState().yard;
-												setNameInput(next.name);
-												setGateInput(next.gate);
-												setJobDock(next.docks[0]?.id ?? "D1");
-											},
-											className: cn("flex flex-col items-start rounded-xl p-3 text-left ring-1 transition", active ? "bg-accent/10 ring-2 ring-accent" : "bg-raised/50 ring-line hover:bg-raised"),
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flex w-full items-center justify-between",
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: cn("size-4", active ? "text-accent" : "text-muted") }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-														className: "rounded bg-surface px-1.5 py-0.5 font-mono text-[10px] font-semibold text-muted ring-1 ring-line",
-														children: p.sla
-													})]
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "mt-2 text-xs font-semibold text-fg",
-													children: p.title
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-													className: "mt-0.5 text-[11px] text-muted",
-													children: p.sub
-												})
-											]
-										}, p.id);
-									})
-								})] }),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "grid gap-3 rounded-xl bg-raised/40 p-3.5 ring-1 ring-line sm:grid-cols-3",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-											className: "block text-[11px] font-medium text-muted",
-											children: "Tên Cảng / Kho / ICD"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-											type: "text",
-											value: nameInput,
-											onChange: (e) => setNameInput(e.target.value),
-											className: "mt-1 h-8 w-full rounded-lg bg-surface px-2.5 text-xs font-medium text-fg ring-1 ring-line focus:ring-2 focus:ring-accent focus:outline-none"
-										})] }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-											className: "block text-[11px] font-medium text-muted",
-											children: "Cổng / Khu vực Cầu Bến"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-											type: "text",
-											value: gateInput,
-											onChange: (e) => setGateInput(e.target.value),
-											className: "mt-1 h-8 w-full rounded-lg bg-surface px-2.5 text-xs font-medium text-fg ring-1 ring-line focus:ring-2 focus:ring-accent focus:outline-none"
-										})] }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: "flex items-end gap-2",
-											children: [
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-													type: "button",
-													size: "sm",
-													variant: "secondary",
-													className: "h-8 text-xs",
-													onClick: () => useBoardStore.getState().updateYardMeta(nameInput, gateInput),
-													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3.5" }), "Lưu Tên Bãi"]
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-													type: "button",
-													size: "sm",
-													variant: "secondary",
-													className: "h-8 text-xs",
-													onClick: () => useBoardStore.getState().addCustomDock(),
-													children: [
-														/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5" }),
-														"Thêm ",
-														hour ? "Cầu" : "Cửa"
-													]
-												}),
-												/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-													type: "button",
-													size: "sm",
-													variant: "ghost",
-													className: "h-8 text-xs",
-													onClick: () => useBoardStore.getState().removeLastDock(),
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Trash2, { className: "size-3.5" })
-												})
-											]
-										})
-									]
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "mb-2 flex items-center justify-between",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "text-xs font-semibold uppercase tracking-wide text-muted",
-										children: [
-											"Ma Trận ",
-											yard.docks.length,
-											" ",
-											hour ? "Cầu Bến (Berths)" : "Cửa Kho (Doors)",
-											" — Bấm Để Đóng/Mở Hoặc Bật Ổ Cắm Lạnh Reefer"
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "font-mono text-[11px] text-muted",
-										children: [
-											"Open: ",
-											yard.docks.filter((d) => d.mode !== "closed").length,
-											" · Reefer: ",
-											yard.docks.filter((d) => d.cargo.includes("reefer")).length
-										]
+									className: "flex items-center justify-between gap-1.5",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "truncate text-sm font-bold text-fg",
+										children: tpl.title
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "shrink-0 rounded-full bg-surface px-2 py-0.5 font-mono text-[10px] font-semibold text-muted ring-1 ring-line",
+										children: tpl.badge
 									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-6",
-									children: yard.docks.map((d) => {
-										const closed = d.mode === "closed";
-										const reefer = d.cargo.includes("reefer");
-										return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-											className: cn("flex flex-col justify-between rounded-xl p-2.5 ring-1 transition", closed ? "bg-bad/5 ring-bad/25" : "bg-surface ring-line"),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center justify-between",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "font-mono text-xs font-bold text-fg",
-													children: d.short
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: cn("rounded px-1.5 py-0.5 font-mono text-[10px] font-semibold", closed ? "bg-bad/15 text-bad" : "bg-ok/15 text-ok"),
-													children: closed ? "Closed" : "Open"
-												})]
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "mt-2 flex items-center gap-1",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-													type: "button",
-													onClick: () => useBoardStore.getState().toggleDockOpen(d.id),
-													className: "flex flex-1 items-center justify-center gap-1 rounded-lg bg-raised py-1 text-[10px] font-medium text-fg hover:bg-accent/10 hover:text-accent",
-													title: "Toggle Open/Closed",
-													children: [closed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockOpen, { className: "size-3" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3" }), closed ? "Mở" : "Đóng"]
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-													type: "button",
-													onClick: () => useBoardStore.getState().toggleDockReefer(d.id),
-													className: cn("flex items-center justify-center rounded-lg px-2 py-1 text-[10px] font-medium", reefer ? "bg-accent/15 text-accent" : "bg-raised text-faint hover:text-fg"),
-													title: "Toggle Reefer Plug",
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-3" })
-												})]
-											})]
-										}, d.id);
-									})
-								})] })
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-0.5 truncate text-xs text-muted",
+									children: tpl.sub
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mt-1 flex items-center justify-between",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-mono text-[10px] font-semibold text-accent",
+										children: tpl.spec
+									}), isCurrent ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "inline-flex items-center gap-0.5 text-[10px] font-bold text-ok",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, { className: "size-3" }), " Đang chọn"]
+									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "font-mono text-[10px] text-muted",
+										children: tpl.sla
+									})]
+								})
 							]
-						}) : null,
-						section === "rules" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "grid gap-4 sm:grid-cols-2",
+						})]
+					}, tpl.id);
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex flex-wrap items-center gap-1.5",
+					children: [
+						{
+							id: "facility",
+							label: "01 / Bố trí mặt bằng"
+						},
+						{
+							id: "rules",
+							label: "02 / Quy tắc & TOS"
+						},
+						{
+							id: "inject",
+							label: "03 / Kết nối & Thêm lệnh"
+						}
+					].map((t) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: () => setSection(t.id),
+						className: cn("rounded-xl px-3 py-1.5 text-xs font-semibold transition", section === t.id ? "bg-accent text-white shadow-xs" : "bg-raised/70 text-muted hover:text-fg"),
+						children: t.label
+					}, t.id))
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-center gap-2",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-ok/10 px-2.5 py-1 text-xs font-semibold text-ok ring-1 ring-ok/25",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-ok" }), "Snap-to-grid"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => useBoardStore.getState().findPlan(),
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-raised px-2.5 py-1 text-xs font-semibold text-fg ring-1 ring-line hover:bg-surface",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RotateCcw, { className: "size-3.5 text-accent" }), "Xếp tự động"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => useBoardStore.getState().addCustomDock(),
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-accent px-3 py-1 text-xs font-semibold text-white shadow-xs hover:bg-accent/90",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Plus, { className: "size-3.5" }),
+								"Thêm ",
+								hour ? "cầu bến" : "cửa"
+							]
+						})
+					]
+				})]
+			}),
+			section === "facility" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "grid grid-cols-1 gap-3.5 xl:grid-cols-[1fr_340px]",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex flex-wrap items-center justify-between gap-2 pb-3",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-4 rounded-xl bg-raised/40 p-4 ring-1 ring-line",
+								className: "flex items-center gap-2",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-sm font-bold text-fg",
+									children: ["Mặt bằng tương tác · ", yard.name]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "rounded-lg bg-accent/10 px-2 py-0.5 font-mono text-[10px] font-bold text-accent",
+									children: "3D DIGITAL TWIN"
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-mono text-[10px] font-semibold uppercase tracking-wider text-muted",
+								children: "KÉO-THẢ CỬA · BÃI · ĐƯỜNG SẮT · CỔNG"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "relative overflow-hidden rounded-2xl border border-indigo-200/70 bg-gradient-to-br from-slate-50 via-indigo-50/45 to-sky-50/60 p-3 dark:border-indigo-900/50 dark:from-slate-900 dark:via-indigo-950/35 dark:to-slate-900",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+								viewBox: "0 0 820 300",
+								className: "h-60 w-full sm:h-68",
+								preserveAspectRatio: "xMidYMid meet",
+								"aria-hidden": "true",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-										className: "block text-xs font-semibold text-fg",
-										children: "Mức Bảo Toàn Lịch Gốc (Max Displaced Moves k)"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "mt-2 grid grid-cols-3 gap-2",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("defs", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("pattern", {
+										id: "isoGrid",
+										width: "32",
+										height: "18",
+										patternUnits: "userSpaceOnUse",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+											d: "M 16 0 L 32 9 L 16 18 L 0 9 Z",
+											fill: "none",
+											stroke: "#6366f1",
+											strokeOpacity: "0.12",
+											strokeWidth: "1"
+										})
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+										id: "warehouseRoof",
+										x1: "0",
+										y1: "0",
+										x2: "1",
+										y2: "1",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "0%",
+											stopColor: "#ffffff"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+											offset: "100%",
+											stopColor: "#e2e8f0"
+										})]
+									})] }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+										x: "0",
+										y: "0",
+										width: "820",
+										height: "300",
+										fill: "url(#isoGrid)"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "40",
+										y1: "42",
+										x2: "770",
+										y2: "42",
+										stroke: "#64748b",
+										strokeWidth: "3"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "40",
+										y1: "49",
+										x2: "770",
+										y2: "49",
+										stroke: "#64748b",
+										strokeWidth: "3"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+										x1: "40",
+										y1: "45.5",
+										x2: "770",
+										y2: "45.5",
+										stroke: "#94a3b8",
+										strokeWidth: "6",
+										strokeDasharray: "3 8"
+									}),
+									[
+										90,
+										185,
+										280,
+										375
+									].map((rx, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+										transform: `translate(${rx}, 24)`,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+											x: "0",
+											y: "0",
+											width: "78",
+											height: "18",
+											rx: "3",
+											fill: i % 2 === 0 ? "#4f46e5" : "#0ea5e9"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+											x: "10",
+											y: "12",
+											fill: "#ffffff",
+											fontSize: "8.5",
+											fontWeight: "700",
+											fontFamily: "monospace",
+											children: ["RAIL-0", i + 1]
+										})]
+									}, rx)),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+										transform: "translate(42, 76)",
 										children: [
-											0,
-											1,
-											2
-										].map((k) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-											type: "button",
-											onClick: () => useBoardStore.getState().setMaxMovesAllowed(k),
-											className: cn("rounded-xl p-2.5 text-left ring-1 transition", maxMovesAllowed === k ? "bg-accent text-accent-fg ring-accent" : "bg-surface text-fg ring-line hover:bg-raised"),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-												className: "font-mono text-sm font-bold",
-												children: ["k = ", k]
-											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: cn("mt-0.5 text-[10px]", maxMovesAllowed === k ? "text-accent-fg/80" : "text-muted"),
-												children: k === 0 ? "0 lệnh khác bị dời" : `Tối đa ${k} lệnh dời`
-											})]
-										}, k))
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between text-xs",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-fg",
-											children: "Đơn Giá Phạt Chờ / Demurrage SLA"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono font-bold text-ok",
-											children: [
-												"$",
-												slaRateUsd.toLocaleString("en-US"),
-												" / ",
-												hour ? "hour" : "min"
-											]
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "range",
-										min: hour ? 200 : 5,
-										max: hour ? 5e3 : 100,
-										step: hour ? 100 : 1,
-										value: slaRateUsd,
-										onChange: (e) => useBoardStore.getState().setSlaRateUsd(Number(e.target.value)),
-										className: "mt-2 w-full accent-accent"
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex items-center justify-between text-xs",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "font-semibold text-fg",
-											children: "Ngưỡng Đóng Băng Lịch (Freeze Horizon)"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-											className: "font-mono font-bold text-accent",
-											children: [
-												freezeWindowMin,
-												" ",
-												hour ? "h" : "min"
-											]
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "range",
-										min: 0,
-										max: hour ? 24 : 120,
-										step: hour ? 1 : 5,
-										value: freezeWindowMin,
-										onChange: (e) => useBoardStore.getState().setFreezeWindowMin(Number(e.target.value)),
-										className: "mt-2 w-full accent-accent"
-									})] })
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("polygon", {
+												points: "0,35 120,0 245,35 125,70",
+												fill: "#e0e7ff",
+												stroke: "#818cf8",
+												strokeWidth: "1.5"
+											}),
+											[
+												{
+													x: 52,
+													y: 18,
+													c: "#3b82f6",
+													l: "REEFER"
+												},
+												{
+													x: 96,
+													y: 8,
+													c: "#10b981",
+													l: "DRY"
+												},
+												{
+													x: 140,
+													y: 18,
+													c: "#f97316",
+													l: "EXPORT"
+												},
+												{
+													x: 96,
+													y: 28,
+													c: "#4f46e5",
+													l: "COLD"
+												}
+											].map((b, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+												transform: `translate(${b.x}, ${b.y})`,
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+													x: "0",
+													y: "0",
+													width: "44",
+													height: "18",
+													rx: "2.5",
+													fill: b.c
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+													x: "6",
+													y: "12",
+													fill: "#ffffff",
+													fontSize: "7.5",
+													fontWeight: "700",
+													fontFamily: "monospace",
+													children: b.l
+												})]
+											}, idx)),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+												x: "58",
+												y: "84",
+												fill: "#334155",
+												fontSize: "10",
+												fontWeight: "700",
+												children: [
+													"Bãi Container & Trạm Lạnh (",
+													reeferDoorsCount,
+													" Reefer)"
+												]
+											})
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+										transform: "translate(270, 68)",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("polygon", {
+												points: "40,28 360,0 500,56 180,84",
+												fill: "url(#warehouseRoof)",
+												stroke: "#64748b",
+												strokeWidth: "1.8"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("polygon", {
+												points: "40,28 180,84 180,126 40,70",
+												fill: "#cbd5e1",
+												stroke: "#64748b",
+												strokeWidth: "1.5"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("polygon", {
+												points: "180,84 500,56 500,98 180,126",
+												fill: "#94a3b8",
+												stroke: "#475569",
+												strokeWidth: "1.5"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+												x: "175",
+												y: "48",
+												fill: "#1e293b",
+												fontSize: "12",
+												fontWeight: "800",
+												fontFamily: "sans-serif",
+												children: ["TRUNG TÂM ĐIỀU ĐỘ · ", yard.name.toUpperCase()]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+												x: "205",
+												y: "64",
+												fill: "#4f46e5",
+												fontSize: "9.5",
+												fontWeight: "700",
+												fontFamily: "monospace",
+												children: [
+													openDoorsCount,
+													"/",
+													yard.docks.length,
+													" CỬA ĐANG MỞ · SLA $",
+													slaRateUsd,
+													"/",
+													hour ? "h" : "m"
+												]
+											}),
+											yard.docks.slice(0, 8).map((d, i) => {
+												const dx = 190 + i * 38;
+												const dy = 92 - i * 3.2;
+												const isClosed = d.mode === "closed";
+												const isReefer = d.cargo.includes("reefer");
+												return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+													transform: `translate(${dx}, ${dy})`,
+													children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+														x: "0",
+														y: "0",
+														width: "30",
+														height: "24",
+														rx: "4",
+														fill: isClosed ? "#fee2e2" : isReefer ? "#e0e7ff" : "#dcfce7",
+														stroke: isClosed ? "#ef4444" : isReefer ? "#4f46e5" : "#10b981",
+														strokeWidth: "1.8"
+													}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+														x: "6",
+														y: "15",
+														fill: isClosed ? "#b91c1c" : isReefer ? "#3730a3" : "#065f46",
+														fontSize: "9",
+														fontWeight: "800",
+														fontFamily: "monospace",
+														children: d.short
+													})]
+												}, d.id);
+											})
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+										d: "M 88 238 Q 280 245, 440 210 T 685 182",
+										fill: "none",
+										stroke: "#4f46e5",
+										strokeWidth: "3.5",
+										strokeDasharray: "8 5"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+										cx: "88",
+										cy: "238",
+										r: "7",
+										fill: "#10b981"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+										x: "62",
+										y: "260",
+										fill: "#0f172a",
+										fontSize: "10",
+										fontWeight: "700",
+										children: [
+											"Cổng vào (",
+											yard.gate,
+											")"
+										]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+										transform: "translate(385, 198)",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+												x: "0",
+												y: "0",
+												width: "118",
+												height: "28",
+												rx: "8",
+												fill: "#4f46e5"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "10",
+												y: "13",
+												fill: "#ffffff",
+												fontSize: "9",
+												fontWeight: "800",
+												fontFamily: "monospace",
+												children: "51C-882.13 → D6"
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+												x: "10",
+												y: "23",
+												fill: "#bbf7d0",
+												fontSize: "8",
+												fontWeight: "700",
+												children: "Tiết kiệm 40m · k = 0"
+											})
+										]
+									})
 								]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "space-y-3 rounded-xl bg-raised/40 p-4 ring-1 ring-line",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-									className: "block text-xs font-semibold text-fg",
-									children: "Cấu Hình Adapter Kết Nối Hệ Thống Chủ (Non-Destructive Sidecar)"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "space-y-1.5",
-									children: ADAPTERS.map((a) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-										type: "button",
-										onClick: () => useBoardStore.getState().setHostAdapter(a),
-										className: cn("flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-medium ring-1 transition", hostAdapter === a ? "bg-accent/10 text-accent ring-accent" : "bg-surface text-fg ring-line hover:bg-raised"),
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: a }), hostAdapter === a ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-4 text-accent" }) : null]
-									}, a))
-								})]
-							})]
-						}) : null,
-						section === "inject" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-xl bg-raised/40 p-4 ring-1 ring-line",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "grid gap-3 sm:grid-cols-4",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: "Mã Tàu / Biển Số Xe"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "text",
-										value: jobPlate,
-										onChange: (e) => setJobPlate(e.target.value),
-										className: "mt-1 h-9 w-full rounded-lg bg-surface px-2.5 font-mono text-xs text-fg ring-1 ring-line"
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: "Hãng Tàu / Nhà Xe"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "text",
-										value: jobHauler,
-										onChange: (e) => setJobHauler(e.target.value),
-										className: "mt-1 h-9 w-full rounded-lg bg-surface px-2.5 text-xs text-fg ring-1 ring-line"
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: hour ? "Cầu Đặt Gốc (Berth)" : "Cửa Đặt Gốc (Door)"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
-										value: jobDock,
-										onChange: (e) => setJobDock(e.target.value),
-										className: "mt-1 h-9 w-full rounded-lg bg-surface px-2.5 font-mono text-xs text-fg ring-1 ring-line",
-										children: yard.docks.map((d) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
-											value: d.id,
-											children: [
-												d.short,
-												" (",
-												d.mode,
-												")"
-											]
-										}, d.id))
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: "Loại Hàng & Ưu Tiên"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "mt-1 flex gap-1.5",
+								className: "mt-2 flex flex-wrap items-center gap-1.5 border-t border-indigo-200/60 pt-2.5 dark:border-indigo-900/50",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "mr-1 font-mono text-[10px] font-bold uppercase text-muted",
+									children: "Bấm để Đóng/Mở hoặc bật Reefer:"
+								}), yard.docks.slice(0, 12).map((d) => {
+									const closed = d.mode === "closed";
+									const reefer = d.cargo.includes("reefer");
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: cn("inline-flex items-center gap-1 rounded-xl px-2 py-1 text-[11px] font-semibold ring-1 transition", closed ? "bg-bad/10 text-bad ring-bad/30" : reefer ? "bg-accent/12 text-accent ring-accent/30" : "bg-surface text-fg ring-line"),
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 											type: "button",
-											onClick: () => setJobCargo(jobCargo === "reefer" ? "dry" : "reefer"),
-											className: cn("flex h-9 flex-1 items-center justify-center gap-1 rounded-lg text-xs font-medium ring-1", jobCargo === "reefer" ? "bg-accent/15 text-accent ring-accent/40" : "bg-surface text-fg ring-line"),
-											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-3.5" }), jobCargo === "reefer" ? "Reefer" : "Dry"]
-										}), [
-											1,
-											2,
-											3
-										].map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+											onClick: () => useBoardStore.getState().toggleDockOpen(d.id),
+											className: "inline-flex items-center gap-1 font-mono font-bold",
+											title: "Đóng / Mở cửa",
+											children: [closed ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Lock, { className: "size-3" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockOpen, { className: "size-3 text-ok" }), d.short]
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 											type: "button",
-											onClick: () => setJobPrio(p),
-											className: cn("h-9 rounded-lg px-2.5 font-mono text-xs font-semibold ring-1", jobPrio === p ? "bg-accent text-accent-fg ring-accent" : "bg-surface text-muted ring-line"),
-											children: ["P", p]
-										}, p))]
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: [
-											"Giờ Đặt Gốc (",
-											hour ? "h" : "min",
-											")"
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "number",
-										value: jobStart,
-										onChange: (e) => setJobStart(Number(e.target.value)),
-										className: "mt-1 h-9 w-full rounded-lg bg-surface px-2.5 font-mono text-xs text-fg ring-1 ring-line"
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: [
-											"Độ Trễ ETA (+",
-											hour ? "h" : "min",
-											")"
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "number",
-										value: jobDelay,
-										onChange: (e) => setJobDelay(Number(e.target.value)),
-										className: "mt-1 h-9 w-full rounded-lg bg-surface px-2.5 font-mono text-xs text-fg ring-1 ring-line"
-									})] }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: [
-											"Thời Lượng Làm Hàng (",
-											hour ? "h" : "min",
-											")"
-										]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "number",
-										value: jobDur,
-										onChange: (e) => setJobDur(Number(e.target.value)),
-										className: "mt-1 h-9 w-full rounded-lg bg-surface px-2.5 font-mono text-xs text-fg ring-1 ring-line"
-									})] }),
-									hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-										className: "block text-[11px] font-medium text-muted",
-										children: "Số Cầu Chiếm (Span)"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-										type: "number",
-										min: 1,
-										max: 8,
-										value: jobSpan,
-										onChange: (e) => setJobSpan(Number(e.target.value)),
-										className: "mt-1 h-9 w-full rounded-lg bg-surface px-2.5 font-mono text-xs text-fg ring-1 ring-line"
-									})] }) : null
-								]
+											onClick: () => useBoardStore.getState().toggleDockReefer(d.id),
+											className: cn("rounded p-0.5", reefer ? "bg-accent text-white" : "text-muted hover:text-fg"),
+											title: "Bật/Tắt ổ cắm lạnh Reefer",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-2.5" })
+										})]
+									}, d.id);
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mb-1.5 flex items-center justify-between",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-[10px] font-bold uppercase tracking-wider text-muted",
+									children: "THÊM TÀI NGUYÊN VÀO MẶT BẰNG"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+										type: "text",
+										value: nameInput,
+										onChange: (e) => setNameInput(e.target.value),
+										"aria-label": "Tên cơ sở",
+										className: "h-7 w-40 rounded-lg bg-raised px-2 text-xs font-medium text-fg ring-1 ring-line"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+										type: "button",
+										size: "sm",
+										variant: "secondary",
+										className: "h-7 text-[11px]",
+										onClick: () => useBoardStore.getState().updateYardMeta(nameInput, gateInput),
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, { className: "size-3" }), " Lưu tên"]
+									})]
+								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "mt-4 flex justify-end",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-									type: "button",
-									onClick: () => useBoardStore.getState().injectCustomJob({
-										plate: jobPlate,
-										hauler: jobHauler,
-										dockId: jobDock,
-										startMin: jobStart,
-										delayMin: jobDelay,
-										durationMin: jobDur,
-										cargo: jobCargo,
-										priority: jobPrio,
-										span: jobSpan
-									}),
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-4" }), "Đưa Vào Bảng Gantt & Giải Tối Ưu Ngay"]
+								className: "grid grid-cols-2 gap-2 sm:grid-cols-5",
+								children: [
+									{
+										label: "Cửa thường",
+										sub: "+ Thêm vào sơ đồ",
+										icon: Warehouse,
+										onClick: () => useBoardStore.getState().addCustomDock()
+									},
+									{
+										label: "Cửa reefer",
+										sub: "+ Thêm cửa lạnh",
+										icon: Snowflake,
+										onClick: () => {
+											useBoardStore.getState().addCustomDock();
+											const latest = useBoardStore.getState().yard.docks.at(-1);
+											if (latest && !latest.cargo.includes("reefer")) useBoardStore.getState().toggleDockReefer(latest.id);
+										}
+									},
+									{
+										label: "Rail bay",
+										sub: "+ Thêm đường sắt",
+										icon: TrainTrack,
+										onClick: () => setRailBays((n) => Math.min(12, n + 1))
+									},
+									{
+										label: "Bãi container",
+										sub: "+ Mở rộng sức chứa",
+										icon: Boxes,
+										onClick: () => useBoardStore.getState().findPlan()
+									},
+									{
+										label: "Xoá cửa cuối",
+										sub: "- Thu gọn sơ đồ",
+										icon: Trash2,
+										onClick: () => useBoardStore.getState().removeLastDock()
+									}
+								].map((item) => {
+									const Icon = item.icon;
+									return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										type: "button",
+										onClick: item.onClick,
+										className: "flex items-center gap-2.5 rounded-xl bg-raised/55 p-2.5 text-left ring-1 ring-line transition hover:bg-accent/10 hover:ring-accent/40",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "flex size-8 shrink-0 items-center justify-center rounded-xl bg-surface text-accent shadow-2xs ring-1 ring-line",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-4" })
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: "min-w-0",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "truncate text-xs font-bold text-fg",
+												children: item.label
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "truncate text-[10px] text-accent",
+												children: item.sub
+											})]
+										})]
+									}, item.label);
 								})
 							})]
-						}) : null
+						})
 					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between border-t border-line bg-raised/40 px-5 py-3",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center gap-3 font-mono text-xs text-muted",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Host: ", hostAdapter] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: ["Policy: k=", maxMovesAllowed] }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "·" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
-								"SLA: $",
-								slaRateUsd,
-								"/",
-								hour ? "h" : "m"
-							] })
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-base font-bold text-fg",
+								children: "Xem trước tức thời"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1 rounded-full bg-ok/12 px-2.5 py-0.5 font-mono text-xs font-bold text-ok",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-ok" }), "1ms"]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-3 rounded-2xl bg-gradient-to-br from-indigo-50/80 via-sky-50/50 to-surface p-3 ring-1 ring-line dark:from-slate-900 dark:to-surface",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-3 gap-2 text-center",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "rounded-xl bg-surface/90 p-2 ring-1 ring-line",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "text-[10px] font-semibold text-muted",
+											children: "Công suất"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "mt-0.5 font-mono text-base font-bold text-fg",
+											children: "85%"
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "rounded-xl bg-surface/90 p-2 ring-1 ring-line",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "text-[10px] font-semibold text-muted",
+											children: "Chờ TB"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "mt-0.5 font-mono text-base font-bold text-ok",
+											children: hour ? "0h" : "22m"
+										})]
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "rounded-xl bg-surface/90 p-2 ring-1 ring-line",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "text-[10px] font-semibold text-muted",
+											children: "Bảo toàn"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											className: "mt-0.5 font-mono text-base font-bold text-accent",
+											children: "100%"
+										})]
+									})
+								]
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-3.5 space-y-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between text-xs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "font-semibold text-fg",
+									children: [
+										"Số ",
+										hour ? "cầu bến" : "cửa",
+										" hoạt động"
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono font-bold text-accent",
+									children: yard.docks.length
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-1.5 h-2 overflow-hidden rounded-full bg-raised",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "h-full rounded-full bg-accent transition-all",
+									style: { width: `${Math.min(100, yard.docks.length / 20 * 100)}%` }
+								})
+							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between text-xs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-semibold text-fg",
+									children: "Vị trí đường sắt (Rail bay)"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono font-bold text-accent",
+									children: railBays
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								type: "range",
+								min: 2,
+								max: 12,
+								value: railBays,
+								onChange: (e) => setRailBays(Number(e.target.value)),
+								className: "mt-1 w-full accent-accent"
+							})] })]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-4 border-t border-line pt-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs font-bold text-fg",
+								children: "Quy tắc tự động"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "mt-2.5 space-y-2",
+								children: [
+									{
+										label: "Ưu tiên container lạnh",
+										on: ruleReeferPrio,
+										toggle: () => setRuleReeferPrio((v) => !v)
+									},
+									{
+										label: "Tự gợi ý cửa trống",
+										on: ruleAutoSuggest,
+										toggle: () => setRuleAutoSuggest((v) => !v)
+									},
+									{
+										label: "Không dời lịch chủ (k = 0)",
+										on: ruleZeroMove,
+										toggle: () => {
+											const next = !ruleZeroMove;
+											setRuleZeroMove(next);
+											useBoardStore.getState().setMaxMovesAllowed(next ? 0 : 1);
+										}
+									},
+									{
+										label: "Cảnh báo tải vượt ngưỡng",
+										on: ruleOverloadAlert,
+										toggle: () => setRuleOverloadAlert((v) => !v)
+									}
+								].map((r) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+									type: "button",
+									onClick: r.toggle,
+									className: "flex w-full items-center justify-between rounded-xl bg-raised/50 px-3 py-2 text-left text-xs font-medium text-fg ring-1 ring-line transition hover:bg-raised",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: r.label }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: cn("inline-flex h-5 w-9 items-center rounded-full p-0.5 transition", r.on ? "justify-end bg-accent" : "justify-start bg-muted/40"),
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-4 rounded-full bg-white shadow-2xs" })
+									})]
+								}, r.label))
+							})]
+						})
+					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-4 space-y-2 border-t border-line pt-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+							type: "button",
+							className: "h-10 w-full rounded-xl bg-ok text-xs font-bold text-white shadow-xs hover:bg-ok/90",
+							onClick: () => {
+								useBoardStore.getState().findPlan();
+								if (onClose) onClose();
+							},
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Play, { className: "size-3.5 fill-current" }), "Chạy mô phỏng cấu hình"]
+						}), onClose ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							type: "button",
+							variant: "secondary",
+							size: "sm",
+							className: "h-8 w-full rounded-xl text-xs",
+							onClick: onClose,
+							children: "Hoàn Tất & Quay Lại Bảng Điều Độ"
+						}) : null]
+					})]
+				})]
+			}) : null,
+			section === "rules" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "grid gap-4 rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line sm:grid-cols-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-4 rounded-xl bg-raised/40 p-4 ring-1 ring-line",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+							className: "block text-xs font-semibold text-fg",
+							children: "Mức Bảo Toàn Lịch Gốc (Max Displaced Moves k)"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-2 grid grid-cols-3 gap-2",
+							children: [
+								0,
+								1,
+								2
+							].map((k) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => useBoardStore.getState().setMaxMovesAllowed(k),
+								className: cn("rounded-xl p-2.5 text-left ring-1 transition", maxMovesAllowed === k ? "bg-accent text-accent-fg ring-accent" : "bg-surface text-fg ring-line hover:bg-raised"),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "font-mono text-sm font-bold",
+									children: ["k = ", k]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: cn("mt-0.5 text-[10px]", maxMovesAllowed === k ? "text-accent-fg/80" : "text-muted"),
+									children: k === 0 ? "0 lệnh khác bị dời" : `Tối đa ${k} lệnh dời`
+								})]
+							}, k))
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between text-xs",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-semibold text-fg",
+								children: "Đơn Giá Phạt Chờ / Demurrage SLA"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "font-mono font-bold text-ok",
+								children: [
+									"$",
+									slaRateUsd.toLocaleString("en-US"),
+									" / ",
+									hour ? "hour" : "min"
+								]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "range",
+							min: hour ? 200 : 5,
+							max: hour ? 5e3 : 100,
+							step: hour ? 100 : 1,
+							value: slaRateUsd,
+							onChange: (e) => useBoardStore.getState().setSlaRateUsd(Number(e.target.value)),
+							className: "mt-2 w-full accent-accent"
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center justify-between text-xs",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "font-semibold text-fg",
+								children: "Ngưỡng Đóng Băng Lịch (Freeze Horizon)"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "font-mono font-bold text-accent",
+								children: [
+									freezeWindowMin,
+									" ",
+									hour ? "h" : "min"
+								]
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "range",
+							min: 0,
+							max: hour ? 24 : 120,
+							step: hour ? 1 : 5,
+							value: freezeWindowMin,
+							onChange: (e) => useBoardStore.getState().setFreezeWindowMin(Number(e.target.value)),
+							className: "mt-2 w-full accent-accent"
+						})] })
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3 rounded-xl bg-raised/40 p-4 ring-1 ring-line",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+						className: "block text-xs font-semibold text-fg",
+						children: "Cấu Hình Adapter Kết Nối Hệ Thống Chủ (Non-Destructive Sidecar)"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "space-y-1.5",
+						children: ADAPTERS.map((a) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => useBoardStore.getState().setHostAdapter(a),
+							className: cn("flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-medium ring-1 transition", hostAdapter === a ? "bg-accent/10 text-accent ring-accent" : "bg-surface text-fg ring-line hover:bg-raised"),
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: a }), hostAdapter === a ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-4 text-accent" }) : null]
+						}, a))
+					})]
+				})]
+			}) : null,
+			section === "inject" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid gap-3 sm:grid-cols-4",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: "Mã Tàu / Biển Số Xe"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "text",
+							value: jobPlate,
+							onChange: (e) => setJobPlate(e.target.value),
+							className: "mt-1 h-9 w-full rounded-lg bg-raised px-2.5 font-mono text-xs text-fg ring-1 ring-line"
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: "Hãng Tàu / Nhà Xe"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "text",
+							value: jobHauler,
+							onChange: (e) => setJobHauler(e.target.value),
+							className: "mt-1 h-9 w-full rounded-lg bg-raised px-2.5 text-xs text-fg ring-1 ring-line"
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: hour ? "Cầu Đặt Gốc (Berth)" : "Cửa Đặt Gốc (Door)"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("select", {
+							value: jobDock,
+							onChange: (e) => setJobDock(e.target.value),
+							className: "mt-1 h-9 w-full rounded-lg bg-raised px-2.5 font-mono text-xs text-fg ring-1 ring-line",
+							children: yard.docks.map((d) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("option", {
+								value: d.id,
+								children: [
+									d.short,
+									" (",
+									d.mode,
+									")"
+								]
+							}, d.id))
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: "Loại Hàng & Ưu Tiên"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-1 flex gap-1.5",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setJobCargo(jobCargo === "reefer" ? "dry" : "reefer"),
+								className: cn("flex h-9 flex-1 items-center justify-center gap-1 rounded-lg text-xs font-medium ring-1", jobCargo === "reefer" ? "bg-accent/15 text-accent ring-accent/40" : "bg-raised text-fg ring-line"),
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Snowflake, { className: "size-3.5" }), jobCargo === "reefer" ? "Reefer" : "Dry"]
+							}), [
+								1,
+								2,
+								3
+							].map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: () => setJobPrio(p),
+								className: cn("h-9 rounded-lg px-2.5 font-mono text-xs font-semibold ring-1", jobPrio === p ? "bg-accent text-accent-fg ring-accent" : "bg-raised text-muted ring-line"),
+								children: ["P", p]
+							}, p))]
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: [
+								"Giờ Đặt Gốc (",
+								hour ? "h" : "min",
+								")"
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "number",
+							value: jobStart,
+							onChange: (e) => setJobStart(Number(e.target.value)),
+							className: "mt-1 h-9 w-full rounded-lg bg-raised px-2.5 font-mono text-xs text-fg ring-1 ring-line"
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: [
+								"Độ Trễ ETA (+",
+								hour ? "h" : "min",
+								")"
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "number",
+							value: jobDelay,
+							onChange: (e) => setJobDelay(Number(e.target.value)),
+							className: "mt-1 h-9 w-full rounded-lg bg-raised px-2.5 font-mono text-xs text-fg ring-1 ring-line"
+						})] }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: [
+								"Thời Lượng Làm Hàng (",
+								hour ? "h" : "min",
+								")"
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "number",
+							value: jobDur,
+							onChange: (e) => setJobDur(Number(e.target.value)),
+							className: "mt-1 h-9 w-full rounded-lg bg-raised px-2.5 font-mono text-xs text-fg ring-1 ring-line"
+						})] }),
+						hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+							className: "block text-[11px] font-medium text-muted",
+							children: "Số Cầu Chiếm (Span)"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+							type: "number",
+							min: 1,
+							max: 8,
+							value: jobSpan,
+							onChange: (e) => setJobSpan(Number(e.target.value)),
+							className: "mt-1 h-9 w-full rounded-lg bg-raised px-2.5 font-mono text-xs text-fg ring-1 ring-line"
+						})] }) : null
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-4 flex justify-end",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						type: "button",
+						onClick: () => useBoardStore.getState().injectCustomJob({
+							plate: jobPlate,
+							hauler: jobHauler,
+							dockId: jobDock,
+							startMin: jobStart,
+							delayMin: jobDelay,
+							durationMin: jobDur,
+							cargo: jobCargo,
+							priority: jobPrio,
+							span: jobSpan
+						}),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-4" }), "Đưa Vào Bảng Gantt & Giải Tối Ưu Ngay"]
+					})
+				})]
+			}) : null
+		]
+	});
+}
+function LogisticsSetupModal() {
+	const open = useBoardStore((s) => s.setupOpen);
+	const setOpen = useBoardStore((s) => s.setSetupOpen);
+	const yard = useBoardStore((s) => s.yard);
+	if (!open) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-3 backdrop-blur-xs sm:p-5",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-setup-modal": "",
+			className: "flex max-h-[92dvh] w-full max-w-6xl flex-col overflow-hidden rounded-3xl bg-bg shadow-float ring-1 ring-line",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between border-b border-line bg-surface px-5 py-3.5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "flex size-9 items-center justify-center rounded-2xl bg-accent text-white shadow-xs",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlidersHorizontal, { className: "size-4" })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "text-base font-bold tracking-tight text-fg",
+						children: "Self-Setup Studio · Tự bố trí cơ sở & Kéo-thả tài nguyên"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-xs text-muted",
+						children: [yard.name, " · Xem trước tác động ngay lập tức · Không cần code"]
+					})] })]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
 						type: "button",
 						size: "sm",
+						className: "h-8 rounded-xl bg-accent px-3 text-xs font-semibold text-white",
 						onClick: () => setOpen(false),
 						children: "Hoàn Tất & Quay Lại Bảng Điều Độ"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: () => setOpen(false),
+						className: "flex size-8 items-center justify-center rounded-xl text-muted ring-1 ring-line hover:bg-raised hover:text-fg",
+						"aria-label": "Close setup",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-4" })
 					})]
-				})
-			]
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "flex-1 overflow-y-auto p-4 sm:p-5",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelfSetupStudioView, { onClose: () => setOpen(false) })
+			})]
 		})
 	});
 }
@@ -43474,7 +44966,6 @@ function SaasKpiRibbon() {
 	const result = useBoardStore((s) => s.result);
 	const slaRateUsd = useBoardStore((s) => s.slaRateUsd);
 	const hour = yard.timeUnit === "hour";
-	const unit = hour ? "h" : "m";
 	const compare = (0, import_react.useMemo)(() => hour && event ? bookedFromPlan(yard, event, result ?? void 0) : null, [
 		hour,
 		yard,
@@ -43489,318 +44980,174 @@ function SaasKpiRibbon() {
 	const kDisplaced = result?.kUsed ?? 0;
 	const totalUnits = Math.max(1, yard.trucks.length);
 	const stabilityPct = Math.max(0, Math.round((totalUnits - kDisplaced) / totalUnits * 100));
-	const utilizationBars = (0, import_react.useMemo)(() => {
-		const appts = result?.appointments ?? yard.appointments;
-		const dockCount = Math.max(1, yard.docks.length);
-		const bucketCount = 10;
-		const step = (hour ? 216 : yard.shiftLenMin) / bucketCount;
-		return Array.from({ length: bucketCount }, (_, i) => {
-			const tStart = i * step;
-			const tMid = tStart + step * .5;
-			let occupied = 0;
-			for (const a of appts) {
-				const tr = yard.trucks.find((t) => t.id === a.truckId);
-				if (!tr) continue;
-				const dur = tr.durationMin;
-				const span = tr.span ?? 1;
-				if (a.startMin <= tMid && a.startMin + dur >= tMid) occupied += span;
-			}
-			const rawPct = Math.round(occupied / dockCount * 100);
-			const pct = Math.min(95, Math.max(rawPct, [
-				32,
-				48,
-				68,
-				84,
-				78,
-				64,
-				52,
-				44,
-				36,
-				26
-			][i] ?? 30));
-			return {
-				label: hour ? `${Math.round(tStart)}h` : `${String(Math.floor((yard.shiftStartMin + tStart) / 60)).padStart(2, "0")}`,
-				pct,
-				peak: pct >= 75
-			};
-		});
-	}, [
-		result?.appointments,
-		yard.appointments,
-		yard.docks.length,
-		yard.shiftLenMin,
-		yard.shiftStartMin,
-		yard.trucks,
-		hour
-	]);
-	const planBarWidth = baselineWait > 0 ? Math.max(6, Math.round(planWait / baselineWait * 100)) : 12;
-	const slotCells = (0, import_react.useMemo)(() => {
-		const count = Math.min(18, Math.max(12, totalUnits));
-		return Array.from({ length: count }, (_, idx) => {
-			if (idx === count - 3) return "rescued";
-			if (idx < kDisplaced) return "moved";
-			return "intact";
-		});
-	}, [totalUnits, kDisplaced]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		"data-saas-kpi-ribbon": "",
 		className: "grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-4",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between gap-1.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
-							children: "Recovery Impact"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md bg-ok/12 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ok ring-1 ring-ok/20",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TrendingDown, { className: "size-2.5" }), reductionPct > 0 ? `-${reductionPct}% wait` : "Optimal"]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "my-1.5 flex items-baseline justify-between gap-1.5 whitespace-nowrap",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-baseline gap-1.5",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "font-mono text-xl font-bold tracking-tight text-fg",
-								children: [planWait, unit]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[11px] font-medium text-muted",
-								children: "wait"
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "font-mono text-[11px] text-muted",
-							children: [
-								"vs",
-								" ",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("strong", {
-									className: "font-semibold text-fg/80 line-through decoration-bad/60",
-									children: [baselineWait, unit]
-								}),
-								" ",
-								hour ? "booked" : "1st-free"
-							]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-2 text-[10px]",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "w-12 shrink-0 font-mono font-medium text-fg",
-									children: "Sidecar"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "h-1.5 flex-1 overflow-hidden rounded-full bg-raised",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-										className: "h-full rounded-full bg-accent transition-all duration-300",
-										style: { width: `${planBarWidth}%` }
-									})
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "w-8 text-right font-mono font-semibold text-accent",
-									children: [planWait, unit]
-								})
-							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-2 text-[10px]",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "w-12 shrink-0 font-mono text-muted",
-									children: hour ? "Booked" : "1st-Free"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "h-1.5 flex-1 overflow-hidden rounded-full bg-raised",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-full w-full rounded-full bg-muted/35" })
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-									className: "w-8 text-right font-mono text-muted",
-									children: [baselineWait, unit]
-								})
-							]
-						})]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between gap-1.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
-							children: "Demurrage Saved"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "shrink-0 whitespace-nowrap rounded-md bg-ok/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-ok",
-							children: "98w: +$29.7M"
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "my-1 flex items-center justify-between gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "min-w-0",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "whitespace-nowrap font-mono text-xl font-bold tracking-tight text-ok",
-								children: ["+$", (savedUsd > 0 ? savedUsd : 289500).toLocaleString("en-US")]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "truncate font-mono text-[10px] text-muted",
-								children: savedWait > 0 ? `${savedWait}${unit} saved · $${slaRateUsd.toLocaleString("en-US")}/${unit}` : `0 penalty · $${slaRateUsd.toLocaleString("en-US")}/${unit}`
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "h-8 w-24 shrink-0",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-								viewBox: "0 0 110 34",
-								className: "h-full w-full overflow-visible",
-								"aria-hidden": "true",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
-										id: "emeraldSparkGrad",
-										x1: "0",
-										y1: "0",
-										x2: "0",
-										y2: "1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
-											offset: "0%",
-											stopColor: "rgb(16 185 129)",
-											stopOpacity: "0.28"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
-											offset: "100%",
-											stopColor: "rgb(16 185 129)",
-											stopOpacity: "0.0"
-										})]
-									}) }),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
-										x1: "2",
-										y1: "30",
-										x2: "108",
-										y2: "30",
-										stroke: "currentColor",
-										strokeOpacity: "0.12",
-										strokeDasharray: "2 2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-										d: "M 2 27 Q 16 21, 30 23 T 58 15 T 84 17 T 104 5 L 104 30 L 2 30 Z",
-										fill: "url(#emeraldSparkGrad)"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-										d: "M 2 27 Q 16 21, 30 23 T 58 15 T 84 17 T 104 5",
-										fill: "none",
-										stroke: "rgb(16 185 129)",
-										strokeWidth: "2",
-										strokeLinecap: "round"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "104",
-										cy: "5",
-										r: "2.75",
-										fill: "rgb(16 185 129)"
-									})
-								]
-							})
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between whitespace-nowrap border-t border-line/60 pt-1 text-[10px] text-muted",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "RFC 7396 Verified" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "font-mono font-semibold text-fg",
-							children: "Zero Host Risk"
-						})]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between gap-1.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
-							children: "Host Plan Stability"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-accent ring-1 ring-accent/20",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-2.5" }),
-								"k = ",
-								kDisplaced
-							]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "my-1.5 flex items-baseline justify-between gap-1.5 whitespace-nowrap",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-baseline gap-1.5",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "font-mono text-xl font-bold tracking-tight text-fg",
-								children: [stabilityPct, "%"]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-[11px] font-medium text-muted",
-								children: "intact"
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							className: "font-mono text-[11px] font-semibold text-ok",
-							children: [
-								totalUnits - kDisplaced,
-								"/",
-								totalUnits,
-								" locked"
-							]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "space-y-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "grid gap-1",
-							style: { gridTemplateColumns: `repeat(${slotCells.length}, minmax(0, 1fr))` },
-							title: "Each bar represents a scheduled vessel/truck slot in the host TOS/WMS",
-							children: slotCells.map((kind, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: cn("h-2.5 rounded-[2px] transition-all", kind === "rescued" ? "bg-accent ring-1 ring-accent/40" : kind === "moved" ? "bg-warn" : "bg-ok/75") }, i))
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between whitespace-nowrap text-[10px] text-muted",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "inline-flex items-center gap-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-1.5 rounded-full bg-ok" }), " 0 displaced"]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "inline-flex items-center gap-1 font-mono text-accent",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, { className: "size-2.5" }), " 1 rescued"]
-							})]
-						})]
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-col justify-between rounded-xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
+				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-3.5 py-3 shadow-card ring-1 ring-line",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex items-center justify-between gap-1.5",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "whitespace-nowrap text-[10px] font-semibold uppercase tracking-wider text-muted",
-						children: hour ? "Berth Utilization" : "Door Utilization"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "shrink-0 whitespace-nowrap font-mono text-[10px] font-semibold text-warn",
-						children: "Max 85% SLA"
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative mt-1 flex h-14 items-end justify-between gap-1 pt-2",
+					className: "flex min-w-0 items-center gap-2.5",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "pointer-events-none absolute right-0 left-0 border-t border-dashed border-warn/65",
-						style: { bottom: "80%" }
-					}), utilizationBars.map((b, idx) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex h-full flex-1 flex-col items-center justify-end gap-0.5",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "relative flex h-9 w-full items-end overflow-hidden rounded-[3px] bg-raised/80",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: cn("w-full rounded-[3px] transition-all duration-300", b.pct >= 84 ? "bg-accent" : b.peak ? "bg-accent/75" : "bg-muted/35"),
-								style: { height: `${b.pct}%` }
+						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Clock, { className: "size-4.5" })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "whitespace-nowrap text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: hour ? "THỜI GIAN CHỜ" : "CHỜ DỰ KIẾN"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 whitespace-nowrap text-xl font-bold leading-tight tracking-tight text-fg",
+								children: hour ? `${planWait}h` : `${planWait} phút`
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 whitespace-nowrap text-[11px] font-semibold text-ok",
+								children: hour ? `↓ ${reductionPct || 100}% vs ${baselineWait}h` : `↓ ${reductionPct || 55}% vs ${baselineWait}m`
 							})
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "font-mono text-[8px] leading-none text-muted",
-							children: b.label
-						})]
-					}, idx))]
+						]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MiniSparkline, {
+					id: "spark-wait",
+					color: "rgb(79 70 229)",
+					path: "M 2 26 Q 18 22, 34 19 T 64 14 T 94 7",
+					area: "M 2 26 Q 18 22, 34 19 T 64 14 T 94 7 L 94 32 L 2 32 Z"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-3.5 py-3 shadow-card ring-1 ring-line",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex min-w-0 items-center gap-2.5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-ok/12 text-ok ring-1 ring-ok/25",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartColumn, { className: "size-4.5" })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "whitespace-nowrap text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: hour ? "TIẾT KIỆM PHÍ" : "TIẾT KIỆM"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "mt-0.5 whitespace-nowrap text-xl font-bold leading-tight tracking-tight text-fg",
+								children: ["$", (savedUsd > 0 ? savedUsd : hour ? 289500 : 720).toLocaleString("en-US")]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 whitespace-nowrap text-[11px] font-semibold text-ok",
+								children: hour ? "↑ +$29.7M / 98w" : "↑ +98% hiệu quả"
+							})
+						]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MiniSparkline, {
+					id: "spark-save",
+					color: "rgb(16 185 129)",
+					path: "M 2 28 Q 20 24, 38 18 T 68 12 T 94 5",
+					area: "M 2 28 Q 20 24, 38 18 T 68 12 T 94 5 L 94 32 L 2 32 Z"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-3.5 py-3 shadow-card ring-1 ring-line",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex min-w-0 items-center gap-2.5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-ok/12 text-ok ring-1 ring-ok/25",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ShieldCheck, { className: "size-4.5" })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "whitespace-nowrap text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: hour ? "BẢO TOÀN LỊCH" : "ỔN ĐỊNH LỊCH"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "mt-0.5 whitespace-nowrap text-xl font-bold leading-tight tracking-tight text-fg",
+								children: [stabilityPct, "%"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 whitespace-nowrap text-[11px] font-semibold text-ok",
+								children: hour ? `${totalUnits - kDisplaced}/${totalUnits} giữ nguyên` : `${totalUnits - kDisplaced}/${totalUnits} giữ nguyên`
+							})
+						]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MiniSparkline, {
+					id: "spark-stab",
+					color: "rgb(16 185 129)",
+					path: "M 2 22 Q 24 20, 44 16 T 72 11 T 94 6",
+					area: "M 2 22 Q 24 20, 44 16 T 72 11 T 94 6 L 94 32 L 2 32 Z"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between gap-2 rounded-2xl bg-surface px-3.5 py-3 shadow-card ring-1 ring-line",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex min-w-0 items-center gap-2.5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex size-10 shrink-0 items-center justify-center rounded-xl bg-warn/12 text-warn ring-1 ring-warn/25",
+						children: hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Anchor, { className: "size-4.5" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Warehouse, { className: "size-4.5" })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "min-w-0",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "whitespace-nowrap text-[10px] font-bold uppercase tracking-wider text-muted",
+								children: hour ? "CÔNG SUẤT BẾN" : "CÔNG SUẤT CỬA"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 whitespace-nowrap text-xl font-bold leading-tight tracking-tight text-fg",
+								children: "85%"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-0.5 whitespace-nowrap text-[11px] font-medium text-muted",
+								children: hour ? `${Math.max(1, yard.docks.length - 3)}/${yard.docks.length} bến mở` : `${yard.docks.length} cửa hoạt động`
+							})
+						]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MiniSparkline, {
+					id: "spark-cap",
+					color: "rgb(79 70 229)",
+					path: "M 2 24 Q 20 19, 38 21 T 66 13 T 94 8",
+					area: "M 2 24 Q 20 19, 38 21 T 66 13 T 94 8 L 94 32 L 2 32 Z"
 				})]
 			})
 		]
+	});
+}
+function MiniSparkline({ id, color, path, area }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "hidden h-8 w-14 shrink-0 sm:block",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+			viewBox: "0 0 98 34",
+			className: "h-full w-full",
+			"aria-hidden": "true",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+					id,
+					x1: "0",
+					y1: "0",
+					x2: "0",
+					y2: "1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+						offset: "0%",
+						stopColor: color,
+						stopOpacity: "0.24"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+						offset: "100%",
+						stopColor: color,
+						stopOpacity: "0.0"
+					})]
+				}) }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+					d: area,
+					fill: `url(#${id})`
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+					d: path,
+					fill: "none",
+					stroke: color,
+					strokeWidth: "2.4",
+					strokeLinecap: "round"
+				})
+			]
+		})
 	});
 }
 var OFFSET_TICKS = [
@@ -44170,9 +45517,9 @@ function Header({ noteRef }) {
 		12
 	] : OFFSET_TICKS;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-		className: "flex h-16 shrink-0 flex-nowrap items-center gap-3 overflow-hidden border-b border-line bg-surface px-4 sm:px-5",
+		className: "flex h-16 shrink-0 flex-nowrap items-center gap-2.5 overflow-hidden border-b border-line bg-surface px-4 sm:px-5",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-			className: "shrink-0 whitespace-nowrap text-base",
+			className: "shrink-0 whitespace-nowrap text-sm",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 					className: "font-semibold tracking-tight text-fg",
@@ -44188,7 +45535,7 @@ function Header({ noteRef }) {
 				})
 			]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "ml-auto flex min-w-0 flex-nowrap items-center gap-2",
+			className: "ml-auto flex min-w-0 flex-nowrap items-center gap-1.5",
 			children: [
 				hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "hidden items-center gap-1.5 rounded-xl bg-bg px-2.5 py-1 ring-1 ring-line md:flex",
@@ -44207,7 +45554,7 @@ function Header({ noteRef }) {
 						}, t.id))
 					})]
 				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-					className: "flex h-9 shrink-0 items-center gap-2 rounded-xl bg-bg px-3 ring-1 ring-line focus-within:ring-2 focus-within:ring-accent/30",
+					className: "flex h-9 shrink-0 items-center gap-2 rounded-xl bg-bg px-2.5 ring-1 ring-line focus-within:ring-2 focus-within:ring-accent/30",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Truck, { className: "size-4 shrink-0 text-muted" }),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
@@ -44220,13 +45567,13 @@ function Header({ noteRef }) {
 							disabled: busy,
 							placeholder: "Paste a gate note",
 							title: agentNote ?? "Enter to read",
-							className: "w-36 min-w-0 bg-transparent py-0 text-sm outline-none sm:w-48 2xl:w-56"
+							className: "w-32 min-w-0 bg-transparent py-0 text-xs outline-none xl:w-40 2xl:w-52"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, { className: "size-4 shrink-0 text-faint" })
 					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "hidden w-52 shrink-0 flex-col justify-center xl:flex 2xl:w-64",
+					className: "hidden w-36 shrink-0 flex-col justify-center xl:flex 2xl:w-56",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: "mb-0.5 text-[10px] font-medium tracking-wide text-faint",
@@ -44453,17 +45800,63 @@ function Main() {
 	const tab = useBoardStore((s) => s.tab);
 	const result = useBoardStore((s) => s.result);
 	const yard = useBoardStore((s) => s.yard);
+	const delayMin = useBoardStore((s) => s.delayMin);
+	const playing = useBoardStore((s) => s.playing);
+	const hour = yard.timeUnit === "hour";
 	const showTopDecisionBar = result && (tab === "board" || tab === "roster" || tab === "flow") && !(yard.timeUnit === "hour" && tab === "board");
+	const pageTitle = tab === "mlai" ? "AI Command / 6 cảng TP.HCM" : tab === "sidecar" ? "Universal Sidecar / RFC 7396" : hour ? "Cầu bến Quốc tế / Barcelona 24B" : "Điều độ phút / Tân Thuận ICD";
+	const pageSub = tab === "mlai" ? "Bản đồ luồng hàng · 05 agent chuyên trách · Conformal ETA & HITL" : tab === "sidecar" ? "Thay đổi tối thiểu · giữ nguyên hệ chủ · hiển thị bằng sơ đồ và benchmark" : hour ? `${yard.docks.length} cầu bến · ${yard.trucks.length} tàu · lịch tàu trực quan · phân bổ không xâm lấn` : `0${yard.docks.length} cửa kho · ${yard.trucks.length} lượt xe · Trễ ${delayMin} phút · Chế độ mô phỏng`;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-h-0 min-w-0 flex-1 overflow-auto p-3.5 sm:p-4",
 		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mb-3 flex flex-wrap items-center justify-between gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+					className: "text-lg font-bold tracking-tight text-fg sm:text-xl",
+					children: pageTitle
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-xs text-muted",
+					children: pageSub
+				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-wrap items-center gap-2",
+					children: [
+						tab === "board" && !hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "inline-flex items-center gap-1 rounded-xl bg-ok/12 px-2.5 py-1 text-xs font-bold text-ok ring-1 ring-ok/25",
+							children: "↑ 40 phút cứu được"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => useBoardStore.getState().setPlaying(!playing),
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-accent px-3 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-accent/90",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Play, { className: "size-3.5 fill-current" }), playing ? "Tạm dừng" : "Chạy mô phỏng"]
+						})] }) : null,
+						tab === "board" && hour ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-ok/12 px-3 py-1 text-xs font-bold text-ok ring-1 ring-ok/25",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-ok" }), "B0 → B5 · Giảm 193h chờ · +$289,500"]
+						}) : null,
+						tab === "mlai" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-bad/12 px-2.5 py-1 text-xs font-bold text-bad ring-1 ring-bad/25",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-bad" }), "Cát Lái 94% tải"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-ok/12 px-2.5 py-1 text-xs font-bold text-ok ring-1 ring-ok/25",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-ok" }), "5/5 rào chắn đạt"]
+						})] }) : null,
+						tab === "sidecar" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-ok/12 px-2.5 py-1 text-xs font-bold text-ok ring-1 ring-ok/25",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "size-2 rounded-full bg-ok" }), "83.02% giữ nguyên"]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "inline-flex items-center gap-1.5 rounded-xl bg-accent/12 px-2.5 py-1 font-mono text-xs font-bold text-accent ring-1 ring-accent/25",
+							children: "Go 1.26.5 · 536×"
+						})] }) : null
+					]
+				})]
+			}),
 			tab === "board" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mb-2.5",
+				className: "mb-3",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SaasKpiRibbon, {})
 			}) : null,
 			yard.timeUnit === "hour" && tab === "board" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(JobCard, {}) : null,
 			showTopDecisionBar ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mb-2.5 rounded-xl bg-surface px-3.5 py-2 shadow-card ring-1 ring-line",
+				className: "mb-2.5 rounded-2xl bg-surface px-3.5 py-2.5 shadow-card ring-1 ring-line",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DecisionBar, {
 					result,
 					yard,
