@@ -1,9 +1,9 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { _ as Link, b as require_jsx_runtime, v as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { G as CircleCheck, g as RefreshCw, m as ShieldCheck } from "../_libs/lucide-react.mjs";
-import { F as classifyYardContestedCalls, P as calculateContainerBilling, R as computeIso6346CheckDigit, X as reconcileShipmentDocuments, Y as recommendIncomingSlot, a as HCMC_INCIDENTS, ct as useBoardStore, d as UniversalSidecarAndBenchmarkPanel, it as solveInterPortFederation, j as blockedExampleYard, l as SEED_BAY_CONTAINERS, lt as validateIso6346, nt as solveBayRetrieval, r as DEFAULT_BAY_CONFIG, rt as solveHinterlandExceptions, tt as solveBacapRecovery, u as SHIPMENT_DOCUMENT_CASES, z as evaluateGateTransaction } from "./dock-exceptions-BUX1_rU9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/design-UDNL0V_j.js
+import { dt as CircleCheck, v as ShieldCheck, w as RefreshCw } from "../_libs/lucide-react.mjs";
+import { F as classifyYardContestedCalls, P as calculateContainerBilling, R as computeIso6346CheckDigit, X as reconcileShipmentDocuments, Y as recommendIncomingSlot, a as HCMC_INCIDENTS, ct as useBoardStore, d as UniversalSidecarAndBenchmarkPanel, it as solveInterPortFederation, j as blockedExampleYard, l as SEED_BAY_CONTAINERS, lt as validateIso6346, nt as solveBayRetrieval, r as DEFAULT_BAY_CONFIG, rt as solveHinterlandExceptions, tt as solveBacapRecovery, u as SHIPMENT_DOCUMENT_CASES, z as evaluateGateTransaction } from "./dock-exceptions-sz2OHzmE.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/design-0w04yVd3.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ArchitectureDiagram({ compact = false }) {
@@ -28,7 +28,7 @@ function ArchitectureDiagram({ compact = false }) {
 				letterSpacing: "2",
 				children: "ONE PROCESS · ARBITER PICKS THE MINUTE · SOLVER OWNS STATE"
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box, {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box$1, {
 				x: 28,
 				y: 56,
 				w: 200,
@@ -36,7 +36,7 @@ function ArchitectureDiagram({ compact = false }) {
 				title: "Parse",
 				lines: ["radio note → event", "deterministic, local"]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box, {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box$1, {
 				x: 248,
 				y: 56,
 				w: 200,
@@ -44,7 +44,7 @@ function ArchitectureDiagram({ compact = false }) {
 				title: "Agent",
 				lines: ["optional Grok", "intent only, never writes"]
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box, {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box$1, {
 				x: 468,
 				y: 56,
 				w: 200,
@@ -53,7 +53,7 @@ function ArchitectureDiagram({ compact = false }) {
 				lines: ["lex k-repair + freeze", "IIS deletion filter"],
 				accent: true
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box, {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box$1, {
 				x: 688,
 				y: 56,
 				w: 204,
@@ -85,7 +85,7 @@ function ArchitectureDiagram({ compact = false }) {
 				x2: 568,
 				y2: 188
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box, {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box$1, {
 				x: 430,
 				y: 188,
 				w: 276,
@@ -100,7 +100,7 @@ function ArchitectureDiagram({ compact = false }) {
 				x2: 248,
 				y2: 228
 			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box, {
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Box$1, {
 				x: 28,
 				y: 188,
 				w: 220,
@@ -144,7 +144,7 @@ function ArchitectureDiagram({ compact = false }) {
 		]
 	});
 }
-function Box({ x, y, w, h, title, lines, accent }) {
+function Box$1({ x, y, w, h, title, lines, accent }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", { children: [
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
 			x,

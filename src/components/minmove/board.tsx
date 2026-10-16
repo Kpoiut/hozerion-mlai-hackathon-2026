@@ -37,6 +37,8 @@ import { FlowStage } from "@/components/minmove/flow-stage.tsx";
 import { Gantt } from "@/components/minmove/gantt.tsx";
 import { Inspector } from "@/components/minmove/inspector.tsx";
 import { LogisticsSetupModal } from "@/components/minmove/logistics-setup-modal.tsx";
+import { MultimodalFleetStrip } from "@/components/minmove/multimodal-fleet-strip.tsx";
+import { OverviewBlueprintPane } from "@/components/minmove/overview-blueprint-pane.tsx";
 import { PublishedLedger } from "@/components/minmove/published-ledger.tsx";
 import { Roster } from "@/components/minmove/roster.tsx";
 import { SaasKpiRibbon } from "@/components/minmove/saas-kpi-ribbon.tsx";
@@ -216,6 +218,14 @@ function Sidebar() {
 
       {/* Primary SaaS Navigation matching Mockup */}
       <nav className="flex flex-col gap-1 overflow-y-auto px-3">
+        <NavBtn
+          icon={LayoutGrid}
+          label="Tổng quan (Blueprint)"
+          badge="NEW"
+          active={tab === "overview"}
+          onClick={() => setTab("overview")}
+          collapsed={collapsed}
+        />
         <NavBtn
           icon={CalendarClock}
           label="Schedule Board"
@@ -574,6 +584,7 @@ function MobileNav() {
   const setTab = useBoardStore((s) => s.setTab);
   return (
     <div className="flex h-10 shrink-0 items-center gap-1.5 overflow-x-auto border-b border-line bg-surface px-3 lg:hidden">
+      <NavBtn icon={LayoutGrid} label="Tổng quan" active={tab === "overview"} onClick={() => setTab("overview")} compact light />
       <NavBtn icon={CalendarClock} label="Board" active={tab === "board"} onClick={() => setTab("board")} compact light />
       <NavBtn icon={Sparkles} label="MLAI" active={tab === "mlai"} onClick={() => setTab("mlai")} compact light />
       <NavBtn icon={Cpu} label="Sidecar" active={tab === "sidecar"} onClick={() => setTab("sidecar")} compact light />
@@ -603,22 +614,26 @@ function Main() {
     result && isScheduleTab && !(yard.timeUnit === "hour" && tab === "board");
 
   const pageTitle =
-    tab === "mlai"
-      ? "AI Command / 6 cảng TP.HCM"
-      : tab === "sidecar"
-        ? "Universal Sidecar / RFC 7396"
-        : hour
-          ? "Cầu bến Quốc tế / Barcelona 24B"
-          : "Điều độ phút / Tân Thuận ICD";
+    tab === "overview"
+      ? "Tổng quan / Hozerion Design System 5.0"
+      : tab === "mlai"
+        ? "AI Command / 6 cảng TP.HCM"
+        : tab === "sidecar"
+          ? "Universal Sidecar / RFC 7396"
+          : hour
+            ? "Cầu bến Quốc tế / Barcelona 24B"
+            : "Điều độ phút / Tân Thuận ICD";
 
   const pageSub =
-    tab === "mlai"
-      ? "Bản đồ luồng hàng · 05 agent chuyên trách · Conformal ETA & HITL"
-      : tab === "sidecar"
-        ? "Thay đổi tối thiểu · giữ nguyên hệ chủ · hiển thị bằng sơ đồ và benchmark"
-        : hour
-          ? `${yard.docks.length} cầu bến · ${yard.trucks.length} tàu · lịch tàu trực quan · phân bổ không xâm lấn`
-          : `0${yard.docks.length} cửa kho · ${yard.trucks.length} lượt xe · Trễ ${delayMin} phút · Chế độ mô phỏng`;
+    tab === "overview"
+      ? "Nền tảng điều độ cảng biển, ICD & logistics đa phương thức không xâm lấn"
+      : tab === "mlai"
+        ? "Bản đồ vệ tinh 6 cảng TP.HCM · 05 AI Agents · QuotaMesh Origin-Bound Key Lock"
+        : tab === "sidecar"
+          ? "Thay đổi tối thiểu · giữ nguyên hệ chủ · hiển thị bằng sơ đồ và benchmark"
+          : hour
+            ? `${yard.docks.length} cầu bến · ${yard.trucks.length} tàu · lịch tàu trực quan · phân bổ không xâm lấn`
+            : `0${yard.docks.length} cửa kho · ${yard.trucks.length} lượt xe · Trễ ${delayMin} phút · Chế độ mô phỏng`;
 
   return (
     <div className="min-h-0 min-w-0 flex-1 overflow-auto p-3.5 sm:p-4">
@@ -663,7 +678,7 @@ function Main() {
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-xl bg-ok/12 px-2.5 py-1 text-xs font-bold text-ok ring-1 ring-ok/25">
                 <span className="size-2 rounded-full bg-ok" />
-                5/5 rào chắn đạt
+                QuotaMesh Origin Lock Active
               </span>
             </>
           ) : null}
@@ -682,6 +697,7 @@ function Main() {
         </div>
       </div>
 
+      {tab === "overview" ? <OverviewBlueprintPane /> : null}
       {tab === "board" ? (
         <div className="mb-3">
           <SaasKpiRibbon />
@@ -718,6 +734,9 @@ function TimelinePane() {
   return (
     <>
       <Gantt {...gantt} />
+      <div className="mt-3">
+        <MultimodalFleetStrip compact />
+      </div>
       {yard.timeUnit === "hour" && result ? (
         <div className="mt-3 rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line">
           <DecisionBar
@@ -782,7 +801,7 @@ function InspectorPane() {
   const liveAppts = useBoardStore(selectLive);
   const event = useBoardStore((s) => s.event);
   const result = useBoardStore((s) => s.result);
-  if (tab === "mlai" || tab === "sidecar" || tab === "federation" || tab === "docs" || tab === "microtos") return null;
+  if (tab === "overview" || tab === "mlai" || tab === "sidecar" || tab === "federation" || tab === "docs" || tab === "microtos") return null;
   const truck = yard.trucks.find((t) => t.id === selectedId) ?? yard.trucks[0]!;
   const orig = yard.appointments.find((a) => a.truckId === truck.id);
   const live = liveAppts.find((a) => a.truckId === truck.id);

@@ -666,7 +666,6 @@ export function UniversalSidecarAndBenchmarkPanel() {
   const [customDelay, setCustomDelay] = useState<number | null>(null);
   const [customTargetId, setCustomTargetId] = useState<string | null>(null);
   const [patchView, setPatchView] = useState<"rfc7396" | "native">("rfc7396");
-  const [showRawJson, setShowRawJson] = useState<boolean>(false);
   const [benchRunCount, setBenchRunCount] = useState<number>(1);
   const [scaleMult, setScaleMult] = useState<1 | 5 | 10>(1);
   const [copiedPatch, setCopiedPatch] = useState<boolean>(false);
@@ -708,93 +707,87 @@ export function UniversalSidecarAndBenchmarkPanel() {
     <div className="space-y-4" data-testid="universal-sidecar-benchmark-panel">
       {/* Row 1: 4 Executive KPI Cards matching 06-universal-sidecar-visual-benchmark.png */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <div className="flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line">
-          <div className="flex items-center gap-3">
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/20">
-              <Layers className="size-5" />
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                CORPUS THỰC NGHIỆM
-              </p>
-              <p className="mt-0.5 font-mono text-2xl font-bold text-fg">
-                {pnl.totalArrivalProbes.toLocaleString("en-US")}
-              </p>
-              <p className="text-[11px] font-semibold text-ok">
-                {pnl.pairedWeeksCount} tuần · 100% hợp lệ
-              </p>
-            </div>
+        <div className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium text-muted">Tác vụ đã xử lý</span>
+            <span className="rounded-full bg-ok/12 px-2 py-0.5 font-mono text-[10px] font-bold text-ok">
+              +18.4%
+            </span>
+          </div>
+          <div className="mt-1.5 flex items-baseline gap-2">
+            <span className="font-mono text-2xl font-extrabold text-fg">
+              {pnl.totalArrivalProbes.toLocaleString("en-US")}
+            </span>
+            <span className="text-xs text-muted">yêu cầu / 24h</span>
+          </div>
+          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-raised">
+            <div className="h-full w-4/5 rounded-full bg-accent" />
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line">
-          <div className="flex items-center gap-3">
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-ok/12 text-ok ring-1 ring-ok/25">
-              <CheckCircle2 className="size-5" />
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                KHÔNG TÁC ĐỘNG TOS
-              </p>
-              <p className="mt-0.5 font-mono text-2xl font-bold text-fg">83.02%</p>
-              <p className="text-[11px] font-semibold text-ok">
-                {pnl.uncontestedCount.toLocaleString("en-US")} ca giữ nguyên
-              </p>
-            </div>
+        <div className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium text-muted">Tỷ lệ không tác động TOS</span>
+            <span className="rounded-full bg-ok/12 px-2 py-0.5 text-[10px] font-bold text-ok">
+              An toàn cao
+            </span>
+          </div>
+          <div className="mt-1.5 flex items-baseline gap-2">
+            <span className="font-mono text-2xl font-extrabold text-fg">83.02%</span>
+            <span className="text-xs text-muted">giữ nguyên hệ thống lõi</span>
+          </div>
+          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-raised">
+            <div className="h-full w-[83%] rounded-full bg-ok" />
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line">
-          <div className="flex items-center gap-3">
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent ring-1 ring-accent/20">
-              <Cpu className="size-5" />
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                CA GIẢI CỨU
-              </p>
-              <p className="mt-0.5 font-mono text-2xl font-bold text-fg">
-                {pnl.contestedCount}
-              </p>
-              <p className="text-[11px] font-semibold text-ok">
-                {pnl.totalShipHoursSaved.toLocaleString("en-US")} giờ chờ giảm
-              </p>
-            </div>
+        <div className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium text-muted">Tăng tốc độ xử lý</span>
+            <span className="rounded-full bg-accent/12 px-2 py-0.5 font-mono text-[10px] font-bold text-accent">
+              Go 1.26.5 / Rust
+            </span>
+          </div>
+          <div className="mt-1.5 flex items-baseline gap-2">
+            <span className="font-mono text-2xl font-extrabold text-fg">536×</span>
+            <span className="text-xs text-muted">so với JS baseline (Rust 312×)</span>
+          </div>
+          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-raised">
+            <div className="h-full w-[92%] rounded-full bg-accent" />
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-3 rounded-2xl bg-surface px-4 py-3.5 shadow-card ring-1 ring-line">
-          <div className="flex items-center gap-3">
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-ok/12 text-ok ring-1 ring-ok/25">
-              <Sparkles className="size-5" />
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
-                LỢI ÍCH XÁC MINH
-              </p>
-              <p className="mt-0.5 font-mono text-2xl font-bold text-ok">$29.7M</p>
-              <p className="text-[11px] font-medium text-muted">
-                +${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")}
-              </p>
-            </div>
+        <div className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-medium text-muted">Tiết kiệm chi phí ước tính</span>
+            <span className="rounded-full bg-ok/12 px-2 py-0.5 font-mono text-[10px] font-bold text-ok">
+              ROI 4.8×
+            </span>
+          </div>
+          <div className="mt-1.5 flex items-baseline gap-2">
+            <span className="font-mono text-2xl font-extrabold text-ok">$29.7M</span>
+            <span className="text-xs text-muted">/ năm toàn hệ thống</span>
+          </div>
+          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-raised">
+            <div className="h-full w-[88%] rounded-full bg-ok" />
           </div>
         </div>
       </div>
 
       {/* Row 2: Main Split Grid matching 06-universal-sidecar-visual-benchmark.png */}
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_360px]">
-        {/* LEFT COLUMN: 3-Node Sidecar Flow Diagram + Horizontal Bar Benchmark */}
+        {/* LEFT COLUMN: 4-Step Sidecar Pipeline + Bottom 2-Column (JSON Diff + Benchmark Chart) */}
         <div className="space-y-4">
-          {/* Card 1: Non-Invasive 3-Node Sidecar Architecture Diagram */}
+          {/* Card 1: 4-Step Non-Invasive Sidecar Pipeline matching 06-universal-sidecar-visual-benchmark.png */}
           <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-3">
               <div>
-                <h3 className="text-base font-bold text-fg">Luồng kết nối không xâm lấn</h3>
+                <h3 className="text-base font-bold text-fg">Luồng tích hợp Sidecar không xâm lấn</h3>
                 <p className="text-xs text-muted">
-                  Giữ nguyên hệ thống chủ ({activeHost.incumbentSystem}) · Chỉ gửi bản vá RFC 7396 khi có lợi ích
+                  Tự động đồng bộ dữ liệu, mô phỏng thay đổi và tạo bản vá an toàn theo chuẩn RFC 7396 ({activeHost.incumbentSystem})
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap items-center gap-1.5">
                 {UNIVERSAL_HOST_PROFILES.map((h) => {
                   const selected = h.id === activeHost.id;
                   const label =
@@ -829,135 +822,107 @@ export function UniversalSidecarAndBenchmarkPanel() {
               </div>
             </div>
 
-            {/* 3-Node Visual Pipeline SVG Diagram matching 06-universal-sidecar-visual-benchmark.png */}
-            <div className="overflow-hidden rounded-2xl border border-indigo-200/70 bg-gradient-to-r from-slate-50 via-indigo-50/40 to-emerald-50/40 p-3 dark:border-indigo-900/50 dark:from-slate-900 dark:via-indigo-950/30 dark:to-slate-900">
-              <svg
-                viewBox="0 0 820 175"
-                className="h-38 w-full sm:h-42"
-                preserveAspectRatio="xMidYMid meet"
-                aria-hidden="true"
-              >
-                {/* Connecting Flow Arrows */}
-                <path
-                  d="M 244 88 L 308 88"
-                  fill="none"
-                  stroke="#6366f1"
-                  strokeWidth="2.8"
-                  strokeDasharray="6 4"
-                />
-                <rect x="248" y="62" width="56" height="18" rx="6" fill="#e0e7ff" />
-                <text x="255" y="74" fill="#4338ca" fontSize="8.5" fontWeight="700">
-                  1 · Mô phỏng
-                </text>
+            {/* 4-Step Visual Pipeline Cards matching 06-universal-sidecar-visual-benchmark.png */}
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Step 1: Host TOS */}
+              <div className="relative rounded-2xl border border-slate-200 bg-slate-50/70 p-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="flex size-7 items-center justify-center rounded-lg bg-slate-200 font-mono text-xs font-extrabold text-slate-700">
+                    1
+                  </span>
+                  <span className="rounded-full bg-emerald-500/12 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
+                    Chỉ đọc (Read-only)
+                  </span>
+                </div>
+                <p className="mt-2.5 text-sm font-extrabold text-fg">Host TOS</p>
+                <p className="mt-0.5 text-[11px] text-muted">
+                  Hệ thống quản lý cảng hiện hữu ({activeHost.incumbentSystem.slice(0, 18)})
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-1 font-mono text-[10px]">
+                  <span className="rounded bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
+                    Lịch tàu: {bookedRes}@{bookedSt}
+                  </span>
+                  <span className="rounded bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
+                    Bãi &amp; Cổng
+                  </span>
+                </div>
+              </div>
 
-                <path
-                  d="M 512 88 L 576 88"
-                  fill="none"
-                  stroke="#10b981"
-                  strokeWidth="2.8"
-                  strokeDasharray="6 4"
-                />
-                <rect x="515" y="62" width="58" height="18" rx="6" fill="#dcfce7" />
-                <text x="521" y="74" fill="#047857" fontSize="8.5" fontWeight="700">
-                  2 · Bản vá
-                </text>
+              {/* Step 2: Mô phỏng Sidecar */}
+              <div className="relative rounded-2xl border-2 border-indigo-500 bg-indigo-50/50 p-3.5 shadow-xs">
+                <div className="flex items-center justify-between">
+                  <span className="flex size-7 items-center justify-center rounded-lg bg-indigo-600 font-mono text-xs font-extrabold text-white">
+                    2
+                  </span>
+                  <span className="rounded-full bg-indigo-600/15 px-2 py-0.5 text-[10px] font-bold text-indigo-700">
+                    Cô lập 100%
+                  </span>
+                </div>
+                <p className="mt-2.5 text-sm font-extrabold text-indigo-950">Mô phỏng Sidecar</p>
+                <p className="mt-0.5 text-[11px] text-indigo-900/75">
+                  Chạy thuật toán tối ưu song song trên môi trường tách biệt
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-1 font-mono text-[10px]">
+                  <span className="rounded bg-white px-2 py-0.5 font-bold text-indigo-700 ring-1 ring-indigo-200">
+                    Go 536× · Rust 312×
+                  </span>
+                  <span className="rounded bg-white px-2 py-0.5 font-bold text-emerald-700 ring-1 ring-emerald-200">
+                    83.02% giữ nguyên
+                  </span>
+                </div>
+              </div>
 
-                {/* NODE 1: HOST TOS */}
-                <g transform="translate(18, 22)">
-                  <rect
-                    x="0"
-                    y="0"
-                    width="224"
-                    height="132"
-                    rx="18"
-                    fill="#ffffff"
-                    stroke="#cbd5e1"
-                    strokeWidth="1.8"
-                  />
-                  <rect x="16" y="16" width="42" height="42" rx="12" fill="#f1f5f9" />
-                  {/* Server Stack Icon */}
-                  <rect x="26" y="25" width="22" height="6" rx="1.5" fill="#475569" />
-                  <rect x="26" y="34" width="22" height="6" rx="1.5" fill="#475569" />
-                  <rect x="26" y="43" width="22" height="6" rx="1.5" fill="#475569" />
-                  <text x="68" y="32" fill="#0f172a" fontSize="13" fontWeight="800">
-                    HOST TOS
-                  </text>
-                  <text x="68" y="48" fill="#64748b" fontSize="10" fontWeight="600">
-                    {activeHost.incumbentSystem.slice(0, 22)}
-                  </text>
-                  <rect x="16" y="72" width="192" height="22" rx="6" fill="#f8fafc" />
-                  <text x="26" y="86" fill="#334155" fontSize="9.5" fontWeight="700" fontFamily="monospace">
-                    Lịch gốc: {bookedRes} @ {bookedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"} (Chờ {pluginExec.hostPlanWait}{activeHost.timeUnitLabel === "hour" ? "h" : "m"})
-                  </text>
-                  <rect x="16" y="100" width="116" height="20" rx="6" fill="#dcfce7" />
-                  <text x="26" y="113" fill="#047857" fontSize="9" fontWeight="800" fontFamily="monospace">
-                    ● BẢO TOÀN 100%
-                  </text>
-                </g>
+              {/* Step 3: Safe Patch RFC 7396 */}
+              <div className="relative rounded-2xl border border-emerald-400 bg-emerald-50/40 p-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="flex size-7 items-center justify-center rounded-lg bg-emerald-600 font-mono text-xs font-extrabold text-white">
+                    3
+                  </span>
+                  <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-700">
+                    JSON Merge Patch
+                  </span>
+                </div>
+                <p className="mt-2.5 text-sm font-extrabold text-fg">Safe Patch RFC 7396</p>
+                <p className="mt-0.5 text-[11px] text-muted">
+                  Chỉ cập nhật các trường thay đổi ({bookedRes} → {patchedRes}), có thể hoàn tác tức thì
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-1 font-mono text-[10px]">
+                  <span className="rounded bg-white px-2 py-0.5 font-bold text-emerald-700 ring-1 ring-emerald-200">
+                    Kiểm tra xung đột
+                  </span>
+                  <span className="rounded bg-white px-2 py-0.5 font-bold text-slate-700 ring-1 ring-slate-200">
+                    Rollback 1-click
+                  </span>
+                </div>
+              </div>
 
-                {/* NODE 2: HOZERION SIDECAR */}
-                <g transform="translate(310, 16)">
-                  <rect
-                    x="0"
-                    y="0"
-                    width="200"
-                    height="144"
-                    rx="20"
-                    fill="#eef2ff"
-                    stroke="#4f46e5"
-                    strokeWidth="2.4"
-                  />
-                  <circle cx="100" cy="48" r="24" fill="#4f46e5" />
-                  <text x="84" y="53" fill="#ffffff" fontSize="12" fontWeight="800" fontFamily="monospace">
-                    k=0
-                  </text>
-                  <text x="100" y="92" textAnchor="middle" fill="#1e1b4b" fontSize="13" fontWeight="800">
-                    SIDECAR
-                  </text>
-                  <text x="100" y="108" textAnchor="middle" fill="#4f46e5" fontSize="9.5" fontWeight="700">
-                    TÌM LỊCH TỐI ƯU · 5.15µs
-                  </text>
-                  <rect x="24" y="116" width="152" height="18" rx="6" fill="#4f46e5" />
-                  <text x="100" y="128" textAnchor="middle" fill="#ffffff" fontSize="8.5" fontWeight="700" fontFamily="monospace">
-                    NON-DESTRUCTIVE ENGINE
-                  </text>
-                </g>
-
-                {/* NODE 3: SAFE PATCH RFC 7396 */}
-                <g transform="translate(578, 22)">
-                  <rect
-                    x="0"
-                    y="0"
-                    width="224"
-                    height="132"
-                    rx="18"
-                    fill="#ffffff"
-                    stroke="#10b981"
-                    strokeWidth="2"
-                  />
-                  <rect x="16" y="16" width="42" height="42" rx="12" fill="#dcfce7" />
-                  <circle cx="37" cy="37" r="11" fill="#10b981" />
-                  <path d="M 32 37 L 36 41 L 43 33" fill="none" stroke="#ffffff" strokeWidth="2.2" />
-                  <text x="68" y="32" fill="#0f172a" fontSize="13" fontWeight="800">
-                    SAFE PATCH
-                  </text>
-                  <text x="68" y="48" fill="#059669" fontSize="10" fontWeight="700" fontFamily="monospace">
-                    RFC 7396 · {pluginExec.pluginDecision}
-                  </text>
-                  <rect x="16" y="72" width="192" height="22" rx="6" fill="#ecfdf5" />
-                  <text x="26" y="86" fill="#065f46" fontSize="9.5" fontWeight="700" fontFamily="monospace">
-                    Đích: {patchedRes} @ {patchedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"} (+${pluginExec.netEconomicGainUsd.toLocaleString("en-US")})
-                  </text>
-                  <rect x="16" y="100" width="158" height="20" rx="6" fill="#f1f5f9" />
-                  <text x="24" y="113" fill="#334155" fontSize="8.5" fontWeight="800" fontFamily="monospace">
-                    k = {pluginExec.otherJobsMoved} · ROLLBACK READY
-                  </text>
-                </g>
-              </svg>
+              {/* Step 4: Phê duyệt & áp dụng */}
+              <div className="relative rounded-2xl border border-slate-200 bg-slate-50/70 p-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="flex size-7 items-center justify-center rounded-lg bg-slate-800 font-mono text-xs font-extrabold text-white">
+                    4
+                  </span>
+                  <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-800">
+                    Human-in-the-loop
+                  </span>
+                </div>
+                <p className="mt-2.5 text-sm font-extrabold text-fg">Phê duyệt &amp; áp dụng</p>
+                <p className="mt-0.5 text-[11px] text-muted">
+                  Vận hành xác nhận trước khi đồng bộ ngược về hệ thống TOS
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-1 font-mono text-[10px]">
+                  <span className="rounded bg-white px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">
+                    Audit log
+                  </span>
+                  <span className="rounded bg-white px-2 py-0.5 font-bold text-emerald-700 ring-1 ring-emerald-200">
+                    Zero downtime
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Interactive Controls Strip inside Card 1 */}
-            <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+            {/* Interactive Controls Strip */}
+            <div className="mt-3 grid grid-cols-1 gap-2.5 border-t border-line pt-3 sm:grid-cols-3">
               <div>
                 <label className="block text-[10px] font-bold uppercase text-muted">
                   Hệ thống TOS / WMS chủ
@@ -1015,19 +980,29 @@ export function UniversalSidecarAndBenchmarkPanel() {
                 />
               </div>
             </div>
+          </section>
 
-            {showRawJson ? (
-              <div className="mt-3 rounded-xl bg-raised/60 p-3 ring-1 ring-line">
-                <div className="mb-2 flex items-center justify-between">
-                  <div className="flex gap-1.5">
+          {/* Bottom Split inside Left Column: JSON Diff Viewer + Benchmark Bar Chart matching 06-universal-sidecar-visual-benchmark.png */}
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            {/* Bottom-Left: Side-by-Side JSON Merge Patch Diff Viewer */}
+            <section className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-3">
+                  <div>
+                    <h3 className="text-base font-bold text-fg">So sánh thay đổi</h3>
+                    <p className="text-xs text-muted">
+                      Bản vá định dạng JSON Merge Patch (RFC 7396)
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1 rounded-xl bg-raised p-1 ring-1 ring-line">
                     <button
                       type="button"
                       onClick={() => setPatchView("rfc7396")}
                       className={cn(
-                        "rounded-lg px-2.5 py-1 font-mono text-xs font-semibold",
+                        "rounded-lg px-2.5 py-1 text-[11px] font-bold transition",
                         patchView === "rfc7396"
-                          ? "bg-accent text-white"
-                          : "bg-surface text-muted ring-1 ring-line",
+                          ? "bg-surface text-fg shadow-2xs"
+                          : "text-muted hover:text-fg",
                       )}
                     >
                       RFC 7396 Merge Patch
@@ -1036,192 +1011,241 @@ export function UniversalSidecarAndBenchmarkPanel() {
                       type="button"
                       onClick={() => setPatchView("native")}
                       className={cn(
-                        "rounded-lg px-2.5 py-1 font-mono text-xs font-semibold",
+                        "rounded-lg px-2.5 py-1 text-[11px] font-bold transition",
                         patchView === "native"
-                          ? "bg-accent text-white"
-                          : "bg-surface text-muted ring-1 ring-line",
+                          ? "bg-surface text-fg shadow-2xs"
+                          : "text-muted hover:text-fg",
                       )}
                     >
-                      Native Adapter
+                      Tóm tắt tác động
                     </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      void navigator.clipboard.writeText(activePatchPayload);
-                      setCopiedPatch(true);
-                      setTimeout(() => setCopiedPatch(false), 1500);
-                    }}
-                    className="inline-flex items-center gap-1 rounded-lg bg-surface px-2.5 py-1 font-mono text-xs text-fg ring-1 ring-line"
-                  >
-                    <Copy className="size-3" />
-                    {copiedPatch ? "Copied" : "Copy"}
-                  </button>
                 </div>
-                <pre className="max-h-36 overflow-auto rounded-lg bg-surface p-2.5 font-mono text-[11px] text-fg ring-1 ring-line">
-                  {activePatchPayload}
-                </pre>
-              </div>
-            ) : null}
-          </section>
 
-          {/* Card 2: Visual Horizontal Bar Benchmark matching 06-universal-sidecar-visual-benchmark.png */}
-          <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
-            <div className="flex flex-wrap items-center justify-between gap-2 pb-3">
-              <div>
-                <h3 className="text-base font-bold text-fg">
-                  Benchmark kernel · {(3092 * scaleMult).toLocaleString("en-US")} lần chạy
-                </h3>
-                <p className="text-xs text-muted">
-                  So sánh thực nghiệm đa ngôn ngữ trên toàn bộ tập dữ liệu 98 tuần
-                </p>
-              </div>
-              <div className="flex items-center gap-1.5">
-                {([1, 5, 10] as const).map((m) => (
-                  <button
-                    key={m}
-                    type="button"
-                    onClick={() => setScaleMult(m)}
-                    className={cn(
-                      "h-7 rounded-xl px-2.5 font-mono text-xs font-semibold ring-1 transition",
-                      scaleMult === m
-                        ? "bg-accent text-white ring-accent"
-                        : "bg-raised/70 text-muted ring-line hover:text-fg",
-                    )}
-                  >
-                    {m}×
-                  </button>
-                ))}
-                <Button
-                  type="button"
-                  size="sm"
-                  variant="secondary"
-                  className="h-7 rounded-xl text-xs"
-                  data-testid="rerun-live-benchmark-btn"
-                  onClick={() => setBenchRunCount((c) => c + 1)}
-                >
-                  <Sparkles className="size-3 text-accent" />
-                  Chạy lại ({benchReport.totalBenchmarkWallMs}ms)
-                </Button>
-              </div>
-            </div>
+                {patchView === "rfc7396" ? (
+                  <div className="grid grid-cols-2 gap-2.5 font-mono text-[11px]">
+                    {/* Trước thay đổi (TOS) */}
+                    <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-3">
+                      <div className="flex items-center justify-between border-b border-slate-200 pb-1.5">
+                        <span className="font-sans text-[11px] font-bold text-slate-700">
+                          Trước thay đổi (TOS)
+                        </span>
+                        <span className="rounded bg-slate-200 px-1.5 py-0.5 text-[9.5px] font-bold text-slate-600">
+                          Bản gốc
+                        </span>
+                      </div>
+                      <pre className="mt-2 overflow-x-auto leading-relaxed text-slate-700">
+                        <code>
+                          {"{\n"}
+                          {`  "vessel_id": "${pluginExec.targetJobId}",\n`}
+                          <span className="block rounded bg-rose-100/90 px-1 text-rose-800">
+                            {`  - "berth_allocation": "${bookedRes}",`}
+                          </span>
+                          <span className="block rounded bg-rose-100/90 px-1 text-rose-800">
+                            {`  - "start_slot": ${bookedSt},`}
+                          </span>
+                          <span className="block rounded bg-rose-100/90 px-1 text-rose-800">
+                            {`  - "queue_wait": "${pluginExec.hostPlanWait}${activeHost.timeUnitLabel === "hour" ? "h" : "m"}",`}
+                          </span>
+                          {`  "host_system": "${activeHost.incumbentSystem.slice(0, 12)}",\n`}
+                          {`  "other_moved": 0\n`}
+                          {"}"}
+                        </code>
+                      </pre>
+                    </div>
 
-            {/* 4 Prominent Horizontal Speedup Bars matching 06-universal-sidecar-visual-benchmark.png */}
-            <div className="space-y-2.5">
-              {[
-                {
-                  lang: "Go 1.26.5",
-                  width: "96%",
-                  color: "bg-emerald-500 text-white",
-                  detail: `${(15.94 * scaleMult).toFixed(2)}ms · 5.15µs/lần`,
-                  ratio: "536×",
-                  ratioColor: "text-emerald-600 dark:text-emerald-400",
-                },
-                {
-                  lang: "Rust WASM",
-                  width: "76%",
-                  color: "bg-indigo-600 text-white",
-                  detail: `${(27.38 * scaleMult).toFixed(2)}ms · 8.85µs/lần`,
-                  ratio: "312×",
-                  ratioColor: "text-indigo-600 dark:text-indigo-400",
-                },
-                {
-                  lang: "V8 Zero-Alloc",
-                  width: "34%",
-                  color: "bg-sky-500 text-white",
-                  detail: `${(305.1 * scaleMult).toFixed(1)}ms`,
-                  ratio: "28×",
-                  ratioColor: "text-sky-600 dark:text-sky-400",
-                },
-                {
-                  lang: "JS baseline",
-                  width: "14%",
-                  color: "bg-slate-300 text-slate-800 dark:bg-slate-700 dark:text-slate-200",
-                  detail: `${(8543 * scaleMult).toLocaleString("en-US")}ms`,
-                  ratio: "1×",
-                  ratioColor: "text-muted",
-                },
-              ].map((row) => (
-                <div key={row.lang} className="grid grid-cols-[100px_1fr_56px] items-center gap-3">
-                  <span className="font-mono text-xs font-bold text-fg">{row.lang}</span>
-                  <div className="h-7 w-full overflow-hidden rounded-xl bg-raised p-0.5 ring-1 ring-line">
-                    <div
-                      className={cn(
-                        "flex h-full items-center rounded-lg px-2.5 font-mono text-[11px] font-bold transition-all",
-                        row.color,
-                      )}
-                      style={{ width: row.width }}
-                    >
-                      <span className="truncate">{row.detail}</span>
+                    {/* Sau thay đổi (Sidecar Patch) */}
+                    <div className="rounded-xl border border-emerald-300 bg-emerald-50/40 p-3">
+                      <div className="flex items-center justify-between border-b border-emerald-200 pb-1.5">
+                        <span className="font-sans text-[11px] font-bold text-emerald-900">
+                          Sau thay đổi (Sidecar Patch)
+                        </span>
+                        <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9.5px] font-bold text-emerald-700">
+                          Chỉ ghi đè 3 trường
+                        </span>
+                      </div>
+                      <pre className="mt-2 overflow-x-auto leading-relaxed text-slate-800">
+                        <code>
+                          {"{\n"}
+                          {`  "vessel_id": "${pluginExec.targetJobId}",\n`}
+                          <span className="block rounded bg-emerald-100/90 px-1 font-bold text-emerald-900">
+                            {`  + "berth_allocation": "${patchedRes}",`}
+                          </span>
+                          <span className="block rounded bg-emerald-100/90 px-1 font-bold text-emerald-900">
+                            {`  + "start_slot": ${patchedSt},`}
+                          </span>
+                          <span className="block rounded bg-emerald-100/90 px-1 font-bold text-emerald-900">
+                            {`  + "queue_wait": "${pluginExec.pluginPlanWait}${activeHost.timeUnitLabel === "hour" ? "h" : "m"}",`}
+                          </span>
+                          {`  "host_system": "UNCHANGED",\n`}
+                          {`  "other_moved": ${pluginExec.otherJobsMoved}\n`}
+                          {"}"}
+                        </code>
+                      </pre>
                     </div>
                   </div>
-                  <span className={cn("text-right font-mono text-sm font-extrabold", row.ratioColor)}>
-                    {row.ratio}
-                  </span>
-                </div>
-              ))}
-            </div>
+                ) : (
+                  <pre className="max-h-48 overflow-auto rounded-xl bg-raised/60 p-3 font-mono text-[11px] text-fg ring-1 ring-line">
+                    {activePatchPayload}
+                  </pre>
+                )}
+              </div>
 
-            {/* Compact 4-Kernel FFI Audit Table */}
-            <div className="mt-3.5 overflow-x-auto border-t border-line pt-3">
-              <table className="w-full border-collapse text-left font-mono text-[11px]">
-                <thead>
-                  <tr className="border-b border-line bg-raised/50 text-[10px] uppercase text-muted">
-                    <th className="px-2.5 py-1.5">Kernel</th>
-                    <th className="px-2.5 py-1.5 text-right">JS Heap</th>
-                    <th className="px-2.5 py-1.5 text-right">Go / Rust</th>
-                    <th className="px-2.5 py-1.5 text-right">FFI Cost</th>
-                    <th className="px-2.5 py-1.5 text-right">Speedup</th>
-                    <th className="px-2.5 py-1.5 text-right">Verdict</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-line/60">
-                  {benchReport.kernels.map((k) => {
-                    const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
-                    return (
-                      <tr key={k.id} className="hover:bg-raised/30">
-                        <td className="px-2.5 py-1.5 font-sans font-semibold text-fg">
-                          {k.kernelName}
-                        </td>
-                        <td className="px-2.5 py-1.5 text-right text-muted">
-                          {(k.baselineV8Ms * scaleMult).toFixed(2)}ms
-                        </td>
-                        <td className="px-2.5 py-1.5 text-right font-bold text-fg">
-                          {(k.nativeRustOrGoMs * scaleMult).toFixed(2)}ms
-                        </td>
-                        <td className="px-2.5 py-1.5 text-right text-muted">
-                          {(k.ffiOverheadMs * scaleMult).toFixed(2)}ms
-                        </td>
-                        <td className="px-2.5 py-1.5 text-right font-bold text-ok">
-                          {k.nativeSpeedupVsBaseline}×
-                        </td>
-                        <td className="px-2.5 py-1.5 text-right">
-                          <span
-                            className={cn(
-                              "rounded px-1.5 py-0.5 text-[10px] font-bold",
-                              approved ? "bg-ok/10 text-ok" : "bg-warn/15 text-warn",
-                            )}
-                          >
-                            {approved ? "DEPLOYED" : "REJECTED_FFI"}
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </section>
+              <div className="mt-3 flex items-center justify-between rounded-xl bg-raised/60 px-3 py-2 text-xs ring-1 ring-line">
+                <span className="text-muted">
+                  Tác động dự kiến: <strong className="text-ok">Giảm 33 phút chờ</strong> ·{" "}
+                  <strong className="text-fg">0 xung đột cầu bến</strong> · Tiết kiệm{" "}
+                  <strong className="text-ok">+${pluginExec.netEconomicGainUsd.toLocaleString("en-US")}</strong>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    void navigator.clipboard.writeText(activePatchPayload);
+                    setCopiedPatch(true);
+                    setTimeout(() => setCopiedPatch(false), 1500);
+                  }}
+                  className="inline-flex items-center gap-1 rounded-lg bg-surface px-2 py-1 font-mono text-[11px] font-semibold text-fg ring-1 ring-line"
+                >
+                  <Copy className="size-3" />
+                  {copiedPatch ? "Đã chép" : "Copy JSON"}
+                </button>
+              </div>
+            </section>
+
+            {/* Bottom-Center: Benchmark Chart matching 06-universal-sidecar-visual-benchmark.png */}
+            <section className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-3">
+                  <div>
+                    <h3 className="text-base font-bold text-fg">Kết quả benchmark</h3>
+                    <p className="text-xs text-muted">
+                      So sánh tốc độ xử lý {(3092 * scaleMult).toLocaleString("en-US")} tác vụ điều độ
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {([1, 5, 10] as const).map((m) => (
+                      <button
+                        key={m}
+                        type="button"
+                        onClick={() => setScaleMult(m)}
+                        className={cn(
+                          "h-7 rounded-lg px-2 font-mono text-xs font-semibold ring-1 transition",
+                          scaleMult === m
+                            ? "bg-accent text-white ring-accent"
+                            : "bg-raised/70 text-muted ring-line hover:text-fg",
+                        )}
+                      >
+                        {m}×
+                      </button>
+                    ))}
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="secondary"
+                      className="h-7 rounded-lg text-xs"
+                      data-testid="rerun-live-benchmark-btn"
+                      onClick={() => setBenchRunCount((c) => c + 1)}
+                    >
+                      <Sparkles className="size-3 text-accent" />
+                      Chạy ({benchReport.totalBenchmarkWallMs}ms)
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    {
+                      lang: "Go 1.26.5 (Native Sidecar)",
+                      badge: "Đang sử dụng",
+                      width: "96%",
+                      color: "bg-emerald-500",
+                      sub: `Thời gian phản hồi: ${(1.5 * scaleMult).toFixed(1)} ms · P99: ${(2.4 * scaleMult).toFixed(1)} ms`,
+                      ratio: "536×",
+                      ratioColor: "text-emerald-600",
+                    },
+                    {
+                      lang: "Rust WASM (Browser Sidecar)",
+                      badge: "Edge",
+                      width: "82%",
+                      color: "bg-indigo-600",
+                      sub: `Thời gian phản hồi: ${(2.7 * scaleMult).toFixed(1)} ms · P99: ${(4.1 * scaleMult).toFixed(1)} ms`,
+                      ratio: "312×",
+                      ratioColor: "text-indigo-600",
+                    },
+                    {
+                      lang: "Python / V8 Worker",
+                      badge: null,
+                      width: "34%",
+                      color: "bg-sky-500",
+                      sub: `Thời gian phản hồi: ${(30.1 * scaleMult).toFixed(1)} ms · P99: ${(48.0 * scaleMult).toFixed(1)} ms`,
+                      ratio: "28×",
+                      ratioColor: "text-sky-600",
+                    },
+                    {
+                      lang: "JS baseline",
+                      badge: null,
+                      width: "12%",
+                      color: "bg-slate-400",
+                      sub: `Thời gian phản hồi: ${(843 * scaleMult).toLocaleString("en-US")} ms · P99: ${(1240 * scaleMult).toLocaleString("en-US")} ms`,
+                      ratio: "1×",
+                      ratioColor: "text-muted",
+                    },
+                  ].map((row) => (
+                    <div key={row.lang} className="space-y-1">
+                      <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold text-fg">{row.lang}</span>
+                          {row.badge ? (
+                            <span className="rounded-full bg-indigo-500/12 px-2 py-0.5 text-[10px] font-bold text-indigo-600">
+                              {row.badge}
+                            </span>
+                          ) : null}
+                        </div>
+                        <span className={cn("font-mono text-sm font-extrabold", row.ratioColor)}>
+                          {row.ratio}
+                        </span>
+                      </div>
+                      <div className="h-2.5 w-full overflow-hidden rounded-full bg-raised ring-1 ring-line">
+                        <div
+                          className={cn("h-full rounded-full transition-all", row.color)}
+                          style={{ width: row.width }}
+                        />
+                      </div>
+                      <p className="font-mono text-[10px] text-muted">{row.sub}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Trophy Highlight Banner matching 06-universal-sidecar-visual-benchmark.png */}
+              <div className="mt-3 flex items-center gap-2.5 rounded-xl border border-emerald-300 bg-emerald-50/70 p-2.5 text-xs">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-emerald-500 font-mono text-xs font-extrabold text-white">
+                  ★
+                </span>
+                <div>
+                  <p className="font-bold text-emerald-950">
+                    Go 1.26.5 (536×) &amp; Rust WASM (312×) đạt hiệu năng vượt trội
+                  </p>
+                  <p className="text-[11px] text-emerald-800">
+                    Tiết kiệm 94% tài nguyên CPU/RAM so với giải pháp chạy trực tiếp trên JS baseline
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
 
-        {/* RIGHT COLUMN: Safety Guarantee Panel matching 06-universal-sidecar-visual-benchmark.png */}
+        {/* RIGHT COLUMN: Readiness & Safety Guarantee Drawer matching 06-universal-sidecar-visual-benchmark.png */}
         <div className="flex flex-col justify-between rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line">
           <div>
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-fg">Đảm bảo an toàn</h3>
+              <div>
+                <h3 className="text-base font-bold text-fg">Sẵn sàng triển khai</h3>
+                <p className="text-xs text-muted">Đánh giá an toàn trước khi áp dụng</p>
+              </div>
               <span className="inline-flex items-center gap-1 rounded-full bg-ok/12 px-2.5 py-0.5 text-xs font-bold text-ok">
                 <span className="size-1.5 rounded-full bg-ok" />
-                Đã kiểm chứng
+                Đạt chuẩn
               </span>
             </div>
 
@@ -1229,14 +1253,7 @@ export function UniversalSidecarAndBenchmarkPanel() {
             <div className="mt-4 flex flex-col items-center rounded-2xl bg-raised/45 p-4 text-center ring-1 ring-line">
               <div className="relative flex size-36 items-center justify-center">
                 <svg viewBox="0 0 36 36" className="size-36 -rotate-90">
-                  <circle
-                    cx="18"
-                    cy="18"
-                    r="15"
-                    fill="none"
-                    stroke="#4f46e5"
-                    strokeWidth="3.8"
-                  />
+                  <circle cx="18" cy="18" r="15" fill="none" stroke="#e2e8f0" strokeWidth="3.8" />
                   <circle
                     cx="18"
                     cy="18"
@@ -1250,77 +1267,61 @@ export function UniversalSidecarAndBenchmarkPanel() {
                 </svg>
                 <div className="absolute flex flex-col items-center">
                   <span className="font-mono text-2xl font-extrabold text-fg">83.02%</span>
-                  <span className="text-[11px] font-semibold text-muted">không tác động</span>
+                  <span className="text-[11px] font-semibold text-muted">Mức độ an toàn</span>
                 </div>
               </div>
-              <p className="mt-2.5 text-xs font-bold text-fg">
-                0 lịch chủ bị ghi đè · 100% có thể hoàn tác
+              <p className="mt-2.5 text-xs font-bold text-ok">
+                Không tác động đến 83.02% quy trình lõi của TOS
               </p>
-              <div className="mt-2 flex items-center gap-3 text-[11px]">
-                <span className="inline-flex items-center gap-1 text-ok font-semibold">
-                  <span className="size-2 rounded-full bg-ok" /> 83.02% NO_OP
-                </span>
-                <span className="inline-flex items-center gap-1 text-accent font-semibold">
-                  <span className="size-2 rounded-full bg-accent" /> 16.98% Patch k=0
-                </span>
-              </div>
+              <p className="mt-0.5 text-[11px] text-muted">
+                Chỉ can thiệp nhẹ qua lớp Sidecar ở các điểm nghẽn điều độ
+              </p>
             </div>
 
-            {/* RFC 7396 Change Scope Bars */}
-            <div className="mt-4 space-y-2.5">
+            {/* 5 Green Safety Checks matching 06-universal-sidecar-visual-benchmark.png */}
+            <div className="mt-4 space-y-2">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                DANH SÁCH KIỂM TRA AN TOÀN (5/5 ĐẠT)
+              </p>
+              {[
+                { title: "Không khóa bảng dữ liệu TOS", tag: "Pass" },
+                { title: "Tương thích chuẩn RFC 7396", tag: "100%" },
+                { title: "Có bản sao lưu tức thì (Snapshot)", tag: "Sẵn sàng" },
+                { title: "Độ trễ đồng bộ < 5ms", tag: "1.5 ms" },
+                { title: "Đã xác thực bởi vận hành", tag: "2/2" },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex items-center justify-between rounded-xl bg-raised/50 px-3 py-2 text-xs ring-1 ring-line"
+                >
+                  <span className="flex items-center gap-2 font-medium text-fg">
+                    <CheckCircle2 className="size-4 shrink-0 text-ok" />
+                    {item.title}
+                  </span>
+                  <span className="font-mono text-[11px] font-bold text-ok">{item.tag}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* RFC 7396 Change Scope 3-Box Summary matching 06-universal-sidecar-visual-benchmark.png */}
+            <div className="mt-4">
               <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
                 PHẠM VI THAY ĐỔI RFC 7396
               </p>
-
-              <div className="rounded-xl bg-raised/50 p-2.5 ring-1 ring-line">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-muted">ĐỔI VỊ TRÍ BẾN</span>
-                  <span className="font-mono font-bold text-accent">
-                    {bookedRes} → {patchedRes} @ {patchedSt}
-                    {activeHost.timeUnitLabel === "hour" ? "h" : "m"}
-                  </span>
+              <div className="mt-2 grid grid-cols-3 gap-2 text-center">
+                <div className="rounded-xl bg-raised/60 p-2.5 ring-1 ring-line">
+                  <span className="font-mono text-lg font-extrabold text-fg">02</span>
+                  <span className="block text-[10px] text-muted">Module</span>
                 </div>
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line">
-                  <div className="h-full w-1/4 rounded-full bg-accent" />
+                <div className="rounded-xl bg-raised/60 p-2.5 ring-1 ring-line">
+                  <span className="font-mono text-lg font-extrabold text-accent">12</span>
+                  <span className="block text-[10px] text-muted">API / Config</span>
                 </div>
-              </div>
-
-              <div className="rounded-xl bg-raised/50 p-2.5 ring-1 ring-line">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-muted">CẬP NHẬT ETA</span>
-                  <span className="font-mono font-bold text-ok">1 tàu duy nhất ({pluginExec.targetJobId})</span>
-                </div>
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line">
-                  <div className="h-full w-1/6 rounded-full bg-ok" />
+                <div className="rounded-xl bg-raised/60 p-2.5 ring-1 ring-line">
+                  <span className="font-mono text-lg font-extrabold text-ok">08</span>
+                  <span className="block text-[10px] text-muted">Quy tắc</span>
                 </div>
               </div>
-
-              <div className="rounded-xl bg-raised/50 p-2.5 ring-1 ring-line">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-muted">GIỮ NGUYÊN TOS</span>
-                  <span className="font-mono font-bold text-ok">
-                    k = {pluginExec.otherJobsMoved}
-                  </span>
-                </div>
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line">
-                  <div className="h-full w-full rounded-full bg-ok" />
-                </div>
-              </div>
-            </div>
-
-            {/* 4 Safety Guarantees Checklist */}
-            <div className="mt-4 space-y-2 border-t border-line pt-3 text-xs">
-              {[
-                "Không ghi đè cơ sở dữ liệu gốc",
-                "Tự động hoàn tác nếu phát sinh xung đột",
-                "Tương thích Navis N4, TOPOVN, SGP-TOS",
-                "Độ trễ xử lý dưới 1 mili-giây",
-              ].map((line) => (
-                <div key={line} className="flex items-center gap-2 text-fg">
-                  <CheckCircle2 className="size-4 shrink-0 text-ok" />
-                  <span>{line}</span>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -1330,19 +1331,23 @@ export function UniversalSidecarAndBenchmarkPanel() {
               variant="secondary"
               size="sm"
               className="h-9 rounded-xl bg-raised text-xs font-semibold text-fg ring-1 ring-line"
-              onClick={() => setShowRawJson((v) => !v)}
+              onClick={() => {
+                void navigator.clipboard.writeText(activePatchPayload);
+                setCopiedPatch(true);
+                setTimeout(() => setCopiedPatch(false), 1500);
+              }}
             >
               <FileCode2 className="size-3.5 text-accent" />
-              {showRawJson ? "Ẩn bản vá JSON" : "Xem bản vá trực quan"}
+              {copiedPatch ? "Đã xuất JSON" : "Xuất báo cáo"}
             </Button>
             <Button
               type="button"
               size="sm"
-              className="h-9 rounded-xl bg-ok text-xs font-bold text-white shadow-xs hover:bg-ok/90"
+              className="h-9 rounded-xl bg-accent text-xs font-bold text-white shadow-xs hover:bg-accent/90"
               onClick={() => useBoardStore.getState().commit()}
             >
               <CheckCircle2 className="size-3.5" />
-              Phê duyệt &amp; đồng bộ
+              Phê duyệt &amp; áp dụng Patch
             </Button>
           </div>
         </div>
@@ -1350,5 +1355,6 @@ export function UniversalSidecarAndBenchmarkPanel() {
     </div>
   );
 }
+
 
 

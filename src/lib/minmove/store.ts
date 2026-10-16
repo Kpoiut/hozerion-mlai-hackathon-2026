@@ -11,7 +11,7 @@ import { BASE_DELAY_MIN, EVENT_TRUCK_ID, createYard } from "./seed.ts";
 import type { Appointment, ConstraintId, DelayEvent, EtcReading, EtcSourceId, EtcVerdict, SolveResult, Yard } from "./types.ts";
 import { defaultNowMin } from "./windows.ts";
 
-export type Tab = "board" | "roster" | "flow" | "mlai" | "sidecar" | "bacap" | "federation" | "docs" | "microtos";
+export type Tab = "overview" | "board" | "roster" | "flow" | "mlai" | "sidecar" | "bacap" | "federation" | "docs" | "microtos";
 export type GanttFilter = "all" | "late" | "moved" | "reefer" | "dry" | "priority";
 export type FacilityPresetId = "icd-minute" | "bcn-hour" | "reefer-cold" | "crossdock-fmcg" | "barge-hub";
 
