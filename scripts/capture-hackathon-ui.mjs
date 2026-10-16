@@ -58,8 +58,8 @@ try {
   await page.getByRole("button", { name: /Hoàn Tất & Quay Lại/i }).click();
   await page.waitForTimeout(300);
 
-  // 4. AI Agent & HITL tab
-  await page.getByRole("button", { name: /AI Agent & HITL/i }).click();
+  // 4. AI Command & HITL tab
+  await page.getByRole("button", { name: /AI Command & HITL/i }).click();
   await page.waitForTimeout(600);
   await saveShot(page, "mlai-top1-agents-hitl.png", false);
 

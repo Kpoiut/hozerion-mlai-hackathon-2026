@@ -88,7 +88,7 @@ export function DecisionBar({
       )}
       {result.status === "OPTIMAL" && !hour ? <ProofStrip result={result} yard={yard} /> : null}
       {etc ? (
-        <p className="basis-full truncate font-mono text-[11px] text-muted" data-etc-winner={etc.winner}>
+        <p className="truncate font-mono text-[11px] text-muted" data-etc-winner={etc.winner}>
           {formatEtcVerdict(etc, yard.shiftStartMin, yard.timeUnit)}
           {etc.conflicts.length > 1 ? ` · ${etc.conflicts.length} disagreements` : ""}
         </p>
@@ -212,25 +212,21 @@ function ProofStrip({ result, yard }: { result: SolveResult; yard: Yard }) {
   const suffix = hour ? "h" : "m";
   const place = (id: string) => (hour ? `Berth ${id.replace(/^B/, "")}` : `Door ${id}`);
   return (
-    <div className="basis-full rounded-xl bg-raised px-3 py-2" data-proof-saved={proof.savedMin}>
-      <p className="text-sm font-medium">{proof.headline}</p>
-      <dl className="mt-2 grid grid-cols-3 gap-2">
-        <div>
-          <dt className="text-[10px] font-medium uppercase tracking-wide text-faint">First free</dt>
-          <dd className="font-mono text-lg tabular-nums leading-tight">{proof.habitWaitMin}{suffix}</dd>
-          <dd className="text-xs text-muted">{place(proof.habitDock)}</dd>
-        </div>
-        <div>
-          <dt className="text-[10px] font-medium uppercase tracking-wide text-faint">This plan</dt>
-          <dd className="font-mono text-lg tabular-nums leading-tight">{proof.waitMin}{suffix}</dd>
-          <dd className="text-xs text-muted">{place(proof.dock)}</dd>
-        </div>
-        <div>
-          <dt className="text-[10px] font-medium uppercase tracking-wide text-faint">Saved</dt>
-          <dd className="font-mono text-lg tabular-nums leading-tight">{proof.savedMin}{suffix}</dd>
-          <dd className="text-xs text-muted">{proof.moved === 0 ? "nobody else moves" : `${proof.moved} moved`}</dd>
-        </div>
-      </dl>
+    <div
+      className="inline-flex flex-wrap items-center gap-2 rounded-xl bg-raised px-3 py-1 text-xs ring-1 ring-line"
+      data-proof-saved={proof.savedMin}
+    >
+      <span className="font-semibold text-fg">{proof.headline}</span>
+      <span className="font-mono text-muted">
+        First free <strong className="text-fg">{proof.habitWaitMin}{suffix}</strong> ({place(proof.habitDock)})
+      </span>
+      <span className="text-muted">→</span>
+      <span className="font-mono text-accent">
+        This plan <strong>{proof.waitMin}{suffix}</strong> ({place(proof.dock)})
+      </span>
+      <span className="rounded-md bg-ok/12 px-2 py-0.5 font-mono font-semibold text-ok">
+        Saved {proof.savedMin}{suffix} · {proof.moved === 0 ? "nobody else moves" : `${proof.moved} moved`}
+      </span>
     </div>
   );
 }

@@ -4,13 +4,13 @@ import { b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].
 import { n as TSS_SERVER_FUNCTION, r as getServerFnById, t as createServerFn } from "./ssr.mjs";
 import { i as parseEvent, n as createYard, t as clockLabel } from "./parse-C_Xtcwss.mjs";
 import { a as string, i as object, r as number, t as _enum } from "../_libs/zod.mjs";
-import { $ as ArrowRight, R as Cpu, p as Ship, u as Sparkles, z as Copy } from "../_libs/lucide-react.mjs";
+import { H as Copy, V as Cpu, nt as ArrowRight, p as Ship, u as Sparkles } from "../_libs/lucide-react.mjs";
 import { t as Slot } from "../_libs/radix-ui__react-slot.mjs";
 import { n as clsx, t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { n as atom, r as getDefaultStore } from "../_libs/jotai.mjs";
 import { t as create } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-Dr5QNb07.js
+//#region node_modules/.nitro/vite/services/ssr/assets/dock-exceptions-3-JydA2o.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -8332,49 +8332,12 @@ function etaMap(yard, live, eventTruckId, newEtaMin) {
 	for (const a of live) if (!map.has(a.truckId)) map.set(a.truckId, a.startMin);
 	return map;
 }
-/** Four bounded contexts, one process. Solver owns the board. */
-var SERVICES = [
-	{
-		id: "parse",
-		label: "Parse",
-		owns: "radio note → event"
-	},
-	{
-		id: "arbiter",
-		label: "Arbiter",
-		owns: "which minute is real"
-	},
-	{
-		id: "solver",
-		label: "Solver",
-		owns: "lex plan + IIS"
-	},
-	{
-		id: "flow",
-		label: "Flow",
-		owns: "gate → yard → dock"
-	},
-	{
-		id: "agent",
-		label: "Agent",
-		owns: "intent only"
-	}
-];
 object({
 	truckId: string().min(1).max(4),
 	newEtaMin: number().int().min(0).max(480),
 	cargoOverride: _enum(["dry", "reefer"]).optional(),
 	forceDockId: string().optional()
 });
-function healthMap(agentOn) {
-	return {
-		parse: "ok",
-		arbiter: "ok",
-		solver: "ok",
-		flow: "ok",
-		agent: agentOn ? "ok" : "off"
-	};
-}
 function parseNote(text, yard = createYard()) {
 	if (!text.trim()) return {
 		event: { raw: text },
@@ -9041,6 +9004,7 @@ var useBoardStore = create((set, get) => ({
 			base.gate = "High-Velocity Gate C · 8 Doors";
 			const extraDocks = [{
 				id: "D7",
+				name: "Door 7",
 				label: "Door 7",
 				short: "D7",
 				mode: "open",
@@ -9048,6 +9012,7 @@ var useBoardStore = create((set, get) => ({
 				equipment: ["forklift"]
 			}, {
 				id: "D8",
+				name: "Door 8",
 				label: "Door 8",
 				short: "D8",
 				mode: "open",
@@ -9075,6 +9040,7 @@ var useBoardStore = create((set, get) => ({
 			base.gate = "Sông Đồng Nai · 6 Cầu Sà Lan";
 			base.docks = base.docks.map((d, i) => ({
 				...d,
+				name: `Bến Sà Lan ${i + 1}`,
 				label: `Bến Sà Lan ${i + 1}`,
 				mode: "open"
 			}));
@@ -9123,9 +9089,11 @@ var useBoardStore = create((set, get) => ({
 		const hour = yard.timeUnit === "hour";
 		const n = yard.docks.length;
 		const id = hour ? `B${n}` : `D${n + 1}`;
+		const name = hour ? `Berth ${n}` : `Door ${n + 1}`;
 		yard.docks.push({
 			id,
-			label: hour ? `Berth ${n}` : `Door ${n + 1}`,
+			name,
+			label: name,
 			short: id,
 			mode: "open",
 			cargo: ["dry", "reefer"],
@@ -10875,4 +10843,4 @@ function solveHinterlandExceptions(scenario = HINTERLAND_SCENARIOS[0]) {
 	};
 }
 //#endregion
-export { runFlow as $, bks_bcn_36A_2_default as A, evaluateGateTransaction as B, bks_bcn_24B_10_default as C, bks_bcn_24B_50_default as D, bks_bcn_24B_47_default as E, calculateContainerBilling as F, packCfsCargo3D as G, healthMap as H, classifyYardContestedCalls as I, phaseAt as J, packDepth as K, clockMinAtom as L, blockedExampleYard as M, bookedFromPlan as N, bks_bcn_36A_10_default as O, bookedHeadline as P, reconcileShipmentDocuments as Q, cn as R, berthSpan as S, bks_bcn_24B_2_default as T, holdingCall as U, formatEtcVerdict as V, occupyIndexes as W, publishedYard as X, publishedWeekList as Y, recommendIncomingSlot as Z, bcn_24B_50_default as _, HCMC_INCIDENTS as a, solveHinterlandExceptions as at, bcn_36A_2_default as b, PUBLISHED_REPO as c, stretchShips as ct, SHIPMENT_DOCUMENT_CASES as d, validateIso6346 as dt, scoreOneHourLate as et, UniversalSidecarAndBenchmarkPanel as f, bcn_24B_47_default as g, bcn_24B_2_default as h, FederationPane as i, solveBayRetrieval as it, bks_bcn_36A_50_default as j, bks_bcn_36A_25_default as k, SEED_BAY_CONTAINERS as l, tryPublishedYard as lt, bcn_24B_25_default as m, Button as n, selectPlayhead as nt, PUBLISHED_DOI as o, solveInterPortFederation as ot, bcn_24B_10_default as p, packLanes as q, DEFAULT_BAY_CONFIG as r, solveBacapRecovery as rt, PUBLISHED_DOI_URL as s, stretchClear as st, BacapPane as t, selectLive as tt, SERVICES as u, useBoardStore as ut, bcn_36A_10_default as v, bks_bcn_24B_25_default as w, bcn_36A_50_default as x, bcn_36A_25_default as y, computeIso6346CheckDigit as z };
+export { selectLive as $, bks_bcn_36A_50_default as A, formatEtcVerdict as B, bks_bcn_24B_25_default as C, bks_bcn_36A_10_default as D, bks_bcn_24B_50_default as E, classifyYardContestedCalls as F, packLanes as G, occupyIndexes as H, clockMinAtom as I, publishedYard as J, phaseAt as K, cn as L, bookedFromPlan as M, bookedHeadline as N, bks_bcn_36A_25_default as O, calculateContainerBilling as P, scoreOneHourLate as Q, computeIso6346CheckDigit as R, bks_bcn_24B_10_default as S, bks_bcn_24B_47_default as T, packCfsCargo3D as U, holdingCall as V, packDepth as W, reconcileShipmentDocuments as X, recommendIncomingSlot as Y, runFlow as Z, bcn_36A_10_default as _, HCMC_INCIDENTS as a, stretchClear as at, bcn_36A_50_default as b, PUBLISHED_REPO as c, useBoardStore as ct, UniversalSidecarAndBenchmarkPanel as d, selectPlayhead as et, bcn_24B_10_default as f, bcn_24B_50_default as g, bcn_24B_47_default as h, FederationPane as i, solveInterPortFederation as it, blockedExampleYard as j, bks_bcn_36A_2_default as k, SEED_BAY_CONTAINERS as l, validateIso6346 as lt, bcn_24B_2_default as m, Button as n, solveBayRetrieval as nt, PUBLISHED_DOI as o, stretchShips as ot, bcn_24B_25_default as p, publishedWeekList as q, DEFAULT_BAY_CONFIG as r, solveHinterlandExceptions as rt, PUBLISHED_DOI_URL as s, tryPublishedYard as st, BacapPane as t, solveBacapRecovery as tt, SHIPMENT_DOCUMENT_CASES as u, bcn_36A_25_default as v, bks_bcn_24B_2_default as w, berthSpan as x, bcn_36A_2_default as y, evaluateGateTransaction as z };

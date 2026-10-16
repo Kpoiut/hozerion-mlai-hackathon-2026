@@ -39,6 +39,7 @@ import { Inspector } from "@/components/minmove/inspector.tsx";
 import { LogisticsSetupModal } from "@/components/minmove/logistics-setup-modal.tsx";
 import { PublishedLedger } from "@/components/minmove/published-ledger.tsx";
 import { Roster } from "@/components/minmove/roster.tsx";
+import { SaasKpiRibbon } from "@/components/minmove/saas-kpi-ribbon.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { SERVICES, healthMap, runFlow } from "@/lib/minmove/engine.ts";
 import { formatWhen } from "@/lib/minmove/seed.ts";
@@ -121,12 +122,8 @@ function Sidebar() {
   const tab = useBoardStore((s) => s.tab);
   const setTab = useBoardStore((s) => s.setTab);
   const yard = useBoardStore((s) => s.yard);
-  const event = useBoardStore((s) => s.event);
   const result = useBoardStore((s) => s.result);
   const liveEta = useBoardStore((s) => s.liveEta);
-  const useAgent = useBoardStore((s) => s.useAgent);
-  const health = healthMap(useAgent);
-  const lateCount = event ? 1 : 0;
   const [siteMenu, setSiteMenu] = useState(false);
 
   return (
@@ -136,36 +133,49 @@ function Sidebar() {
         collapsed ? "w-[4.5rem]" : "w-sidebar",
       )}
     >
-      <div className="flex h-14 items-center gap-3 px-4">
+      {/* SaaS Brand Header */}
+      <div className="flex h-15 items-center gap-3 px-4">
         <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-accent text-sm font-bold text-accent-fg shadow-xs">
           H
         </span>
         {collapsed ? null : (
           <div className="min-w-0">
-            <p className="text-base font-semibold leading-tight tracking-tight">Hozerion</p>
-            <p className="truncate font-mono text-[10px] text-accent">Universal Logistics Sidecar</p>
+            <p className="text-base font-bold leading-tight tracking-tight text-fg">
+              Hozerion Sidecar
+            </p>
+            <p className="truncate font-mono text-[10px] text-muted">
+              Enterprise Schedule Control
+            </p>
           </div>
         )}
       </div>
+
+      {/* Facility Selector Card matching Mockup */}
       {collapsed ? null : (
-        <div className="relative mx-3 mb-2.5">
+        <div className="relative mx-3 mb-3">
           <button
             type="button"
+            data-site-picker-btn=""
             onClick={() => setSiteMenu((v) => !v)}
-            className="w-full rounded-xl bg-surface px-3 py-2 text-left shadow-border transition hover:bg-raised/80"
+            className="w-full rounded-2xl bg-surface px-3.5 py-2.5 text-left shadow-card ring-1 ring-line transition hover:bg-raised/80"
           >
             <div className="flex items-center justify-between">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-nav-muted">SITE</p>
-              <ChevronDown className={cn("size-3.5 text-nav-muted transition-transform", siteMenu && "rotate-180")} />
+              <p className="text-[11px] font-medium text-muted">Facility Selector</p>
+              <ChevronDown
+                className={cn(
+                  "size-3.5 text-muted transition-transform",
+                  siteMenu && "rotate-180",
+                )}
+              />
             </div>
-            <p className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-nav-fg">
-              <MapPin className="size-3.5 text-accent" />
+            <p className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-fg">
+              <MapPin className="size-4 shrink-0 text-accent" />
               <span className="truncate">{yard.name}</span>
             </p>
-            <p className="truncate pl-5 text-xs text-nav-muted">{yard.gate}</p>
+            <p className="truncate pl-6 text-xs text-muted">{yard.gate}</p>
           </button>
           {siteMenu ? (
-            <div className="absolute top-full right-0 left-0 z-50 mt-1 rounded-xl bg-surface p-1.5 shadow-float ring-1 ring-line">
+            <div className="absolute top-full right-0 left-0 z-50 mt-1.5 rounded-2xl bg-surface p-1.5 shadow-float ring-1 ring-line">
               {(
                 [
                   { id: "icd-minute", label: "Tan Thuan ICD (Minute)" },
@@ -182,7 +192,7 @@ function Sidebar() {
                     setSiteMenu(false);
                     useBoardStore.getState().applyFacilityPreset(item.id);
                   }}
-                  className="flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-xs font-medium text-fg hover:bg-raised"
+                  className="flex w-full items-center justify-between rounded-xl px-2.5 py-1.5 text-left text-xs font-medium text-fg hover:bg-raised"
                 >
                   <span>{item.label}</span>
                 </button>
@@ -194,7 +204,7 @@ function Sidebar() {
                   setSiteMenu(false);
                   useBoardStore.getState().setSetupOpen(true);
                 }}
-                className="flex w-full items-center gap-1.5 rounded-lg bg-accent/10 px-2.5 py-1.5 text-left text-xs font-semibold text-accent hover:bg-accent/15"
+                className="flex w-full items-center gap-1.5 rounded-xl bg-accent/10 px-2.5 py-1.5 text-left text-xs font-semibold text-accent hover:bg-accent/15"
               >
                 <SlidersHorizontal className="size-3.5" />
                 Tự Setup Cấu Hình Riêng...
@@ -203,18 +213,19 @@ function Sidebar() {
           ) : null}
         </div>
       )}
-      <nav className="flex flex-col gap-0.5 overflow-y-auto px-3">
-        <NavBtn icon={CalendarClock} label="Timeline" active={tab === "board"} onClick={() => setTab("board")} collapsed={collapsed} />
-        <NavBtn icon={LayoutGrid} label="Appointments" active={tab === "roster"} onClick={() => setTab("roster")} collapsed={collapsed} />
-        <NavBtn icon={Waypoints} label="Flow" active={tab === "flow"} onClick={() => setTab("flow")} collapsed={collapsed} />
-        {collapsed ? null : (
-          <p className="px-2 pt-2.5 pb-1 text-[10px] font-semibold uppercase tracking-wider text-faint">
-            Modules
-          </p>
-        )}
+
+      {/* Primary SaaS Navigation matching Mockup */}
+      <nav className="flex flex-col gap-1 overflow-y-auto px-3">
+        <NavBtn
+          icon={CalendarClock}
+          label="Schedule Board"
+          active={tab === "board"}
+          onClick={() => setTab("board")}
+          collapsed={collapsed}
+        />
         <NavBtn
           icon={Sparkles}
-          label="AI Agent & HITL"
+          label="AI Command & HITL"
           badge="MLAI"
           active={tab === "mlai"}
           onClick={() => setTab("mlai")}
@@ -229,9 +240,35 @@ function Sidebar() {
           collapsed={collapsed}
         />
         <NavBtn
+          icon={SlidersHorizontal}
+          label="Self-Setup Studio"
+          active={false}
+          onClick={() => useBoardStore.getState().setSetupOpen(true)}
+          collapsed={collapsed}
+        />
+
+        {collapsed ? null : (
+          <p className="px-2 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-faint">
+            Operations &amp; Plugins
+          </p>
+        )}
+        <NavBtn
+          icon={LayoutGrid}
+          label="Appointments"
+          active={tab === "roster"}
+          onClick={() => setTab("roster")}
+          collapsed={collapsed}
+        />
+        <NavBtn
+          icon={Waypoints}
+          label="Flow"
+          active={tab === "flow"}
+          onClick={() => setTab("flow")}
+          collapsed={collapsed}
+        />
+        <NavBtn
           icon={Anchor}
           label="BACAP · Cẩu & TOS"
-          badge="STS"
           active={tab === "bacap"}
           onClick={() => setTab("bacap")}
           collapsed={collapsed}
@@ -239,7 +276,6 @@ function Sidebar() {
         <NavBtn
           icon={Network}
           label="Liên thông Cảng"
-          badge="5 TOS"
           active={tab === "federation"}
           onClick={() => setTab("federation")}
           collapsed={collapsed}
@@ -247,7 +283,6 @@ function Sidebar() {
         <NavBtn
           icon={FileCheck2}
           label="Hải quan · eDO"
-          badge="ISO"
           active={tab === "docs"}
           onClick={() => setTab("docs")}
           collapsed={collapsed}
@@ -255,56 +290,38 @@ function Sidebar() {
         <NavBtn
           icon={Boxes}
           label="Micro-TOS · Bãi 3D"
-          badge="3D"
           active={tab === "microtos"}
           onClick={() => setTab("microtos")}
           collapsed={collapsed}
         />
       </nav>
-      <div className="mt-auto space-y-2.5 p-3">
+
+      {/* Bottom System Operational Card matching Mockup */}
+      <div className="mt-auto space-y-2 p-3">
         {collapsed ? null : (
           <>
-            <div className="grid grid-cols-3 gap-1.5">
-              <Kpi value={yard.trucks.length} label={yard.timeUnit === "hour" ? "Calls" : "Trucks"} icon={Truck} />
-              <Kpi value={yard.docks.length} label={yard.timeUnit === "hour" ? "Berths" : "Doors"} icon={LayoutList} />
-              <Kpi value={lateCount} label="Late" warn={lateCount > 0} />
-            </div>
-            <div className="rounded-xl bg-surface px-3 py-2.5 shadow-border">
-              <div className="mb-1.5 flex items-center justify-between">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-nav-muted">SERVICES</p>
-                <span className="font-mono text-[10px] font-semibold text-ok">Go 5.15µs</span>
+            <div className="rounded-2xl bg-ok/10 px-3.5 py-3 ring-1 ring-ok/25">
+              <div className="flex items-start gap-2.5">
+                <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-ok text-white">
+                  <Check className="size-3" strokeWidth={2.5} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold text-fg">System Operational:</p>
+                  <p className="text-xs font-semibold text-ok">All Berths Synced</p>
+                  <p className="mt-0.5 font-mono text-[10px] text-muted">
+                    Go 5.15µs · k={result?.kUsed ?? 0} · {yard.trucks.length} units
+                  </p>
+                  {liveEta ? <p className="mt-0.5 font-mono text-[10px] text-ok">{liveEta}</p> : null}
+                </div>
               </div>
-              <ul className="space-y-1">
-                {SERVICES.map((s) => (
-                  <li key={s.id} className="flex items-center justify-between text-xs">
-                    <span className="text-nav-muted">{s.label}</span>
-                    {health[s.id] === "ok" ? (
-                      <Check className="size-3.5 text-ok" />
-                    ) : (
-                      <span className="font-mono text-[10px] uppercase text-faint">{health[s.id]}</span>
-                    )}
-                  </li>
-                ))}
-                <li className="flex items-center justify-between text-xs">
-                  <button type="button" onClick={() => useBoardStore.getState().toggleAgent()} className="text-nav-muted hover:text-nav-fg">
-                    Agent {useAgent ? "on" : "off"}
-                  </button>
-                  {useAgent ? <Check className="size-3.5 text-ok" /> : <Minus className="size-3.5 text-faint" />}
-                </li>
-              </ul>
-              {result ? (
-                <p className="mt-2 rounded-lg bg-accent/10 px-2 py-1 text-center font-mono text-[11px] font-medium tabular-nums text-accent">
-                  Last {result.ms}ms · k={result.kUsed}
-                </p>
-              ) : null}
-              {liveEta ? <p className="mt-1 text-xs text-ok">{liveEta}</p> : null}
             </div>
-            <div className="flex flex-wrap gap-1">
+
+            <div className="flex flex-wrap items-center gap-1">
               {yard.timeUnit === "hour" ? (
                 <button
                   type="button"
                   onClick={() => useBoardStore.getState().openDemo()}
-                  className="rounded-full bg-surface px-2.5 py-1 text-xs text-nav-muted shadow-border hover:bg-nav-hover hover:text-nav-fg"
+                  className="rounded-full bg-surface px-2.5 py-1 text-xs font-medium text-nav-muted shadow-border hover:bg-nav-hover hover:text-nav-fg"
                 >
                   ICD minute demo
                 </button>
@@ -329,7 +346,10 @@ function Sidebar() {
                   </button>
                 </>
               )}
-              <Link to="/design" className="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent hover:bg-accent/15">
+              <Link
+                to="/design"
+                className="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent hover:bg-accent/15"
+              >
                 Spec
               </Link>
             </div>
@@ -576,10 +596,18 @@ function Main() {
   const result = useBoardStore((s) => s.result);
   const yard = useBoardStore((s) => s.yard);
   const isScheduleTab = tab === "board" || tab === "roster" || tab === "flow";
+  const showTopDecisionBar =
+    result && isScheduleTab && !(yard.timeUnit === "hour" && tab === "board");
+
   return (
     <div className="min-h-0 min-w-0 flex-1 overflow-auto p-4 sm:p-5">
+      {tab === "board" ? (
+        <div className="mb-3.5">
+          <SaasKpiRibbon />
+        </div>
+      ) : null}
       {yard.timeUnit === "hour" && tab === "board" ? <JobCard /> : null}
-      {result && isScheduleTab ? (
+      {showTopDecisionBar ? (
         <div className="mb-3 rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line">
           <DecisionBar
             result={result}
@@ -604,9 +632,21 @@ function Main() {
 
 function TimelinePane() {
   const gantt = useGanttProps();
+  const result = useBoardStore((s) => s.result);
+  const yard = useBoardStore((s) => s.yard);
   return (
     <>
       <Gantt {...gantt} />
+      {yard.timeUnit === "hour" && result ? (
+        <div className="mt-3 rounded-2xl bg-surface px-4 py-2.5 shadow-card ring-1 ring-line">
+          <DecisionBar
+            result={result}
+            yard={yard}
+            onApplyRelax={(drop) => useBoardStore.getState().applyRelax(drop)}
+            onCommit={() => useBoardStore.getState().commit()}
+          />
+        </div>
+      ) : null}
       <PublishedLedger />
     </>
   );
@@ -703,26 +743,6 @@ function useGanttProps() {
   };
 }
 
-function Kpi({
-  value,
-  label,
-  warn,
-  icon: Icon,
-}: {
-  value: number;
-  label: string;
-  warn?: boolean;
-  icon?: typeof Truck;
-}) {
-  return (
-    <div className="rounded-xl bg-surface px-1 py-2 text-center shadow-border">
-      {Icon ? <Icon className={cn("mx-auto size-3.5", warn ? "text-bad" : "text-muted")} /> : null}
-      <p className={cn("mt-1 font-mono text-sm tabular-nums", warn && "text-bad")}>{value}</p>
-      <p className="text-xs text-nav-muted">{label}</p>
-    </div>
-  );
-}
-
 function NavBtn({
   icon: Icon,
   label,
@@ -748,15 +768,15 @@ function NavBtn({
       onClick={onClick}
       title={label}
       className={cn(
-        "flex items-center justify-between gap-2 rounded-xl text-sm font-medium",
+        "flex items-center justify-between gap-2 rounded-xl text-sm font-medium transition",
         compact ? "h-8 px-2" : "h-9 px-3",
         collapsed && "justify-center px-0",
         light
           ? active
-            ? "bg-accent/10 text-accent"
+            ? "bg-accent text-accent-fg shadow-xs"
             : "text-muted hover:bg-raised hover:text-fg"
           : active
-            ? "bg-accent/10 text-accent"
+            ? "bg-accent text-accent-fg shadow-xs"
             : "text-nav-muted hover:bg-nav-hover hover:text-nav-fg",
       )}
     >
@@ -768,7 +788,7 @@ function NavBtn({
         <span
           className={cn(
             "shrink-0 rounded px-1.5 py-0.5 font-mono text-[10px] font-semibold",
-            active ? "bg-accent text-accent-fg" : "bg-raised text-nav-muted",
+            active ? "bg-white/20 text-white" : "bg-raised text-nav-muted",
           )}
         >
           {badge}

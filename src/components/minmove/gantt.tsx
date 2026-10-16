@@ -588,12 +588,14 @@ const ApptCard = memo(function ApptCard({
         onSelect(block.truckId);
       }}
       className={cn(
-        "absolute z-10 text-left transition-opacity [contain:layout]",
+        "absolute z-10 text-left transition-all [contain:layout]",
         geom.compact ? "" : "[content-visibility:auto]",
-        geom.compact ? "rounded-md px-1" : "rounded-2xl px-3",
-        featured ? "z-30 overflow-visible bg-accent text-accent-fg shadow-float" : "overflow-hidden bg-surface ring-1 ring-line hover:ring-accent/50",
-        !featured && block.changed && "bg-ok/10 ring-ok/25",
-        !featured && reefer && !block.changed && "bg-warn/[0.12] ring-warn/25",
+        geom.compact ? "rounded-md px-1" : "rounded-2xl px-3 py-2",
+        featured
+          ? "z-30 overflow-visible bg-accent text-accent-fg shadow-float ring-2 ring-accent"
+          : "overflow-hidden bg-surface shadow-2xs ring-1 ring-line hover:ring-accent/60",
+        !featured && block.changed && "bg-ok/10 ring-ok/35",
+        !featured && reefer && !block.changed && "bg-accent/[0.06] ring-accent/25",
         selected && !featured && "ring-2 ring-accent",
         !matchesFilter && "opacity-25",
       )}
@@ -602,35 +604,65 @@ const ApptCard = memo(function ApptCard({
       {featured ? (
         <span className="pointer-events-none absolute top-0 left-1/2 z-40 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent ring-[3px] ring-surface" />
       ) : null}
-      <span className="pointer-events-none flex h-full items-center gap-2">
-        <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-1.5">
+      <span className="pointer-events-none flex h-full flex-col justify-between">
+        <span className="flex items-center justify-between gap-1.5">
+          <span className="flex min-w-0 items-center gap-1.5">
             {geom.compact ? null : <Truck className="size-3.5 shrink-0 opacity-80" />}
-            <span className={cn("truncate font-semibold leading-none tracking-tight", geom.compact ? "font-mono text-[10px]" : "text-sm")}>{truck.plate}</span>
+            <span
+              className={cn(
+                "truncate font-semibold leading-none tracking-tight",
+                geom.compact ? "font-mono text-[10px]" : "text-xs sm:text-sm",
+              )}
+            >
+              {truck.plate}
+            </span>
           </span>
-          {geom.compact ? null : (
-          <span className={cn("mt-1.5 flex items-center gap-1 font-mono text-xs leading-none", featured ? "text-accent-fg/80" : "text-muted")}>
-            {start}
-            <CargoMark cargo={truck.cargo} featured={featured} className="size-3" />
-          </span>
-          )}
-          {featured && !geom.compact ? (
-            <span className="mt-2 hidden items-center gap-1 sm:flex">
-              <span className="inline-flex items-center gap-1 rounded-full bg-accent-fg/15 px-1.5 py-0.5 text-[11px] font-medium leading-none">
-                {reefer ? <Snowflake className="size-3" /> : null}
-                {reefer ? "Reefer" : "Dry"}
-              </span>
-              <span className="rounded-full bg-accent-fg/15 px-1.5 py-0.5 text-[11px] font-medium leading-none">P{truck.priority}</span>
+          {!geom.compact && !stacked && block.width >= 15 ? (
+            <span
+              className={cn(
+                "hidden shrink-0 rounded-md px-1.5 py-0.5 font-mono text-[9px] font-bold sm:inline-block",
+                featured
+                  ? "bg-white/20 text-white"
+                  : reefer
+                    ? "bg-accent/12 text-accent"
+                    : "bg-ok/12 text-ok",
+              )}
+            >
+              {truck.hauler.split(" ")[0]}
             </span>
           ) : null}
         </span>
-        {featured && !stacked && !geom.compact ? (
-          <img
-            src="/truck.jpg"
-            alt=""
-            className="hidden h-12 w-16 shrink-0 rounded-lg object-cover outline outline-1 -outline-offset-1 outline-black/10 sm:block"
-          />
-        ) : null}
+
+        {geom.compact ? null : (
+          <span className="flex items-center justify-between gap-1">
+            <span
+              className={cn(
+                "flex items-center gap-1 font-mono text-[11px] leading-none",
+                featured ? "text-accent-fg/90" : "text-muted",
+              )}
+            >
+              <span>{start}</span>
+              <CargoMark cargo={truck.cargo} featured={featured} className="size-3" />
+              {featured ? (
+                <span className="rounded bg-white/20 px-1 py-0.5 text-[9px] font-bold">
+                  P{truck.priority}
+                </span>
+              ) : null}
+            </span>
+
+            {!stacked ? (
+              <span
+                className={cn(
+                  "hidden items-center gap-1 font-mono text-[10px] font-bold sm:inline-flex",
+                  featured ? "text-white" : "text-ok",
+                )}
+              >
+                <span className="size-2 rounded-full bg-current" />
+                {featured ? "100%" : "90%"}
+              </span>
+            ) : null}
+          </span>
+        )}
       </span>
     </button>
   );

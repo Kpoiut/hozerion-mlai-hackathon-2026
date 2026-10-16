@@ -3,8 +3,8 @@ import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].
 import { b as require_jsx_runtime, f as createRouter, g as createRootRoute, h as createFileRoute, l as Scripts, m as lazyRouteComponent, p as Outlet, u as HeadContent, y as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as string, i as object, n as literal, o as union, r as number } from "../_libs/zod.mjs";
 import { s as TriangleAlert } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-C778APe4.js
-var router_C778APe4_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+//#region node_modules/.nitro/vite/services/ssr/assets/router-ClVYrw88.js
+var router_ClVYrw88_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function AppErrorComponent({ error }) {
@@ -273,7 +273,7 @@ function PreviewHostBridge() {
 	}, [router]);
 	return null;
 }
-var styles_default = "/assets/styles-untR5S0R.css";
+var styles_default = "/assets/styles-C16I9pqP.css";
 var Route$2 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -359,9 +359,9 @@ var Route$2 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$1 = () => import("./routes-Ca04d1Xh.mjs");
+var $$splitComponentImporter$1 = () => import("./routes-Bv_u5HkQ.mjs");
 var Route$1 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./design-4QxJvP7f.mjs");
+var $$splitComponentImporter = () => import("./design-TPWeNZO_.mjs");
 var Route = createFileRoute("/design")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$1.update({
@@ -383,4 +383,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { getRouter, router_C778APe4_exports as t };
+export { getRouter, router_ClVYrw88_exports as t };
