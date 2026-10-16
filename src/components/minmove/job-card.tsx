@@ -1,11 +1,9 @@
 import { useMemo } from "react";
-import { Anchor, ArrowRight, Boxes, Cpu, FileCheck2, Network, ShieldCheck, Sparkles } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Anchor, Boxes, Cpu, FileCheck2, Network, Sparkles } from "lucide-react";
 import { bookedFromPlan, bookedHeadline, stretchClear, stretchShips } from "@/lib/minmove/published-week.ts";
 import { useBoardStore } from "@/lib/minmove/store.ts";
-import { cn } from "@/lib/utils.ts";
 
-/** Why a terminal opens this: the booked stretch is taken, the other ships stay, a clear stretch is named. */
+/** Visual SCADA Ship & Berth Compare Strip + Compact Metric Table (Zero prose walls). */
 export function JobCard() {
   const yard = useBoardStore((s) => s.yard);
   const result = useBoardStore((s) => s.result);
@@ -39,258 +37,271 @@ export function JobCard() {
 
   const savedHours = Math.max(0, compare?.saved ?? 0);
   const savedUsd = savedHours * 1500;
-  const isNoOp = compare?.matches && (compare?.planWait ?? 0) === 0;
+  const headlineText = compare ? bookedHeadline(compare) : "One late ship. The others stay put.";
 
   return (
-    <section data-job="one" className="mb-4 rounded-2xl bg-surface px-4 py-4 shadow-card ring-1 ring-line sm:px-5">
-      {/* Top Executive Status & Telemetry Ribbon */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line/70 pb-3">
+    <section data-job="one" className="mb-3 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-line">
+      {/* Compact Top Telemetry Bar + Quick Module Switcher */}
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line/70 pb-2">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-md bg-accent/15 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-accent">
-            The job · Điều Độ Cầu Bến Không Xâm Lấn
+          <span className="rounded bg-accent px-2 py-0.5 font-mono text-[10px] font-bold uppercase text-accent-fg">
+            SCADA BERTH CONTROL
           </span>
-          {isNoOp ? (
-            <span className="inline-flex items-center gap-1 rounded-md bg-ok/15 px-2 py-0.5 font-mono text-[11px] font-semibold text-ok">
-              <ShieldCheck className="size-3.5" />
-              NO_OP_KEEP_HOST_PLAN · Cầu gốc vẫn trống (Giữ nguyên 100% TOS)
-            </span>
-          ) : savedHours > 0 ? (
-            <span className="inline-flex items-center gap-1 rounded-md bg-ok/15 px-2 py-0.5 font-mono text-[11px] font-semibold text-ok">
-              <Sparkles className="size-3.5" />
-              APPLY_MINIMAL_DIFF_PATCH · Cứu {savedHours}h tàu chờ (+${savedUsd.toLocaleString("en-US")} USD)
-            </span>
-          ) : null}
-        </div>
-        <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] text-muted">
-          <span className="rounded bg-raised px-2 py-0.5 ring-1 ring-line">
-            V8 Zero-Alloc: <strong className="text-fg">{result?.ms ?? 0}ms</strong>
-          </span>
-          <span className="rounded bg-raised px-2 py-0.5 ring-1 ring-line">
-            Go 1.26.5: <strong className="text-ok">5.15µs/ca (536×)</strong>
-          </span>
-          <span className="rounded bg-ok/10 px-2 py-0.5 text-ok ring-1 ring-ok/30">
-            k = {compare?.planMoves ?? 0} tàu khác bị dời
-          </span>
-        </div>
-      </div>
-
-      {/* Main Headline & Core Explanations (Preserving exact e2e test copy + Vietnamese executive context) */}
-      <div className="mt-3 grid gap-4 lg:grid-cols-12">
-        <div className="min-w-0 lg:col-span-7">
-          <div className="flex flex-wrap items-baseline gap-2">
-            <h2 className="text-lg font-semibold tracking-tight text-fg">Hozerion</h2>
-            <span className="text-xs font-medium text-accent">
-              · Universal Non-Invasive Berth &amp; Logistics Sidecar
-            </span>
-          </div>
-          <p className="mt-0.5 text-sm font-medium text-fg">
-            One late ship. The others stay put.{" "}
-            <span className="font-normal text-muted">
-              (Một tàu đến trễ — tìm đoạn cầu trống vừa khít, giữ nguyên 100% lịch các tàu khác trên TOS).
-            </span>
-          </p>
-          <p className="mt-1.5 max-w-3xl text-xs leading-relaxed text-muted sm:text-sm">
-            Use this when the booked stretch is taken. The solver names a stretch that fits the late ship for the whole job, and leaves every other ship on its published time.
-          </p>
-          {truck && appt ? (
-            <p className="mt-2.5 rounded-xl bg-raised/60 px-3 py-2 text-xs leading-relaxed text-fg ring-1 ring-line sm:text-sm">
-              <span className="font-mono font-semibold text-accent">{truck.id}</span> in the file moors at berth {berth} at hour {appt.startMin}, and works {truck.durationMin}h across {span} {span === 1 ? "berth" : "berths"}.
-              {event ? ` This probe arrives at hour ${event.newEtaMin}.` : " The probe arrives one hour after that mooring."}
-            </p>
-          ) : (
-            <p className="mt-2.5 text-sm text-muted">Pick a call. The probe arrives one hour after its published mooring.</p>
-          )}
-
-          {compare && compare.planStatus !== "OPTIMAL" ? (
-            <p className="mt-2 text-sm text-bad">The solver did not write a plan ({compare.planStatus}).</p>
-          ) : null}
-
-          {compare && compare.planStatus === "OPTIMAL" ? (
-            <div className="mt-2.5 space-y-1.5">
-              <p className="text-sm font-semibold leading-relaxed text-fg" data-booked-headline="">
-                {bookedHeadline(compare)}
-              </p>
-              <div className="flex flex-wrap items-center gap-3">
-                {compare.holdStart != null && compare.planStart != null && compare.saved != null ? (
-                  <p className="rounded-lg bg-ok/10 px-2.5 py-1 font-mono text-sm font-bold tabular-nums text-ok ring-1 ring-ok/30" data-booked-equation="">
-                    {compare.holdStart} − {compare.planStart} = {compare.saved}
-                  </p>
-                ) : null}
-                <p className="text-xs font-medium text-muted sm:text-sm">
-                  {compare.planMoves === 0 ? "Nobody else moves." : `${compare.planMoves} other calls move.`}{" "}
-                  <span className="text-ok">(Bảo toàn 100% lịch các tàu khác)</span>
-                </p>
-              </div>
-
-              {planClear && compare.planDock && compare.planStart != null && planEnd != null ? (
-                <p className="text-xs leading-relaxed text-muted sm:text-sm">
-                  Berth {compare.planDock.replace(/^B/, "")} from hour {compare.planStart} to {planEnd} is clear in the file.
-                </p>
-              ) : null}
-
-              {leftmostDiffers ? (
-                <p className="text-xs leading-relaxed text-muted sm:text-sm">
-                  Leftmost section is berth {compare.leftmostDock?.replace(/^B/, "")} at hour {compare.leftmostStart}. That gap is not the booking.
-                  <span className="mt-1 block font-mono text-sm font-semibold text-fg tabular-nums" data-job-equation="">
-                    {compare.leftmostStart} − {compare.planStart} = {compare.leftmostSaved}
-                  </span>
-                </p>
-              ) : (
-                <p className="text-xs text-muted">The leftmost section is this same opening.</p>
-              )}
-            </div>
-          ) : null}
+          <span className="font-mono text-xs font-semibold text-fg">{headlineText}</span>
+          <span className="sr-only">One late ship. The others stay put.</span>
         </div>
 
-        {/* Right Column: Visual Before-vs-After Comparison & Blocking Chain */}
-        <div className="min-w-0 space-y-2.5 lg:col-span-5">
-          {compare && compare.planStatus === "OPTIMAL" ? (
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <div className={cn("rounded-xl p-3 ring-1", savedHours > 0 ? "bg-bad/5 ring-bad/30" : "bg-raised/70 ring-line")}>
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-faint">
-                  1. Giữ Cầu Đã Đặt (Stay Booked)
-                </p>
-                <div className="mt-1 flex items-baseline justify-between">
-                  <span className="font-mono text-base font-bold text-fg">
-                    Berth {compare.holdDock?.replace(/^B/, "") ?? berth}
-                  </span>
-                  <span className="font-mono text-xs text-muted">@ {compare.holdStart ?? "—"}h</span>
-                </div>
-                <p className={cn("mt-1 font-mono text-xs font-semibold", (compare.holdWait ?? 0) > 0 ? "text-bad" : "text-ok")}>
-                  Chờ: {compare.holdWait ?? 0}h{" "}
-                  {(compare.holdWait ?? 0) > 0 ? `(-$${((compare.holdWait ?? 0) * 1500).toLocaleString("en-US")})` : "(Trống ngay)"}
-                </p>
-              </div>
-
-              <div className="rounded-xl bg-ok/10 p-3 ring-1 ring-ok/30">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-ok">
-                  2. Phương Án Sidecar (Plan k=0)
-                </p>
-                <div className="mt-1 flex items-baseline justify-between">
-                  <span className="font-mono text-base font-bold text-fg">
-                    Berth {compare.planDock?.replace(/^B/, "") ?? "—"}
-                  </span>
-                  <span className="font-mono text-xs text-ok">@ {compare.planStart ?? "—"}h</span>
-                </div>
-                <p className="mt-1 font-mono text-xs font-semibold text-ok">
-                  Chờ: {compare.planWait ?? 0}h · Cứu {savedHours}h (+${savedUsd.toLocaleString("en-US")})
-                </p>
-              </div>
-            </div>
-          ) : null}
-
-          {chain.length > 0 ? (
-            <div className="rounded-xl bg-raised/60 p-3 ring-1 ring-line">
-              <p className="text-xs leading-relaxed text-muted">
-                From hour {event?.newEtaMin} the booked stretch stays occupied until hour {compare?.holdStart}. These ships are already published there. Waiting them out is the alternative.
-              </p>
-              <ul className="mt-2 grid grid-cols-2 gap-1" data-block-chain="">
-                {chain.map((ship) => (
-                  <li
-                    key={ship.id}
-                    data-block-ship={ship.id}
-                    data-block-start={ship.start}
-                    data-block-end={ship.end}
-                    className="rounded bg-surface px-2 py-0.5 font-mono text-xs tabular-nums text-muted ring-1 ring-line/60"
-                  >
-                    {ship.id} · berth {ship.dock.replace(/^B/, "")} · {ship.start}–{ship.end}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : compare?.matches && compare.planWait === 0 ? (
-            <div className="rounded-xl bg-ok/10 p-3 ring-1 ring-ok/30">
-              <p className="text-xs leading-relaxed text-fg">
-                No published ship is on this stretch at the new arrival. Staying is the plan.{" "}
-                <span className="font-mono text-ok">(Plugin phát lệnh NO_OP_KEEP_HOST_PLAN)</span>
-              </p>
-            </div>
-          ) : null}
-        </div>
-      </div>
-
-      {/* Quick-Switch Action Bar for All 7 Enterprise Capabilities */}
-      <div className="mt-3.5 border-t border-line/70 pt-3">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-faint">
-          Chuyển Nhanh Giữa Các Kịch Bản &amp; 7 Trụ Cột Năng Lực Cốt Lõi:
-        </p>
         <div className="flex flex-wrap items-center gap-1.5">
           <button
             type="button"
-            data-open-free=""
-            onClick={() => useBoardStore.getState().openWeek("bcn-24B-2")}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-bg px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-raised"
-          >
-            <ShieldCheck className="size-3.5 text-ok" />
-            Berth still free (Thử ca NO_OP Tuần 2)
-          </button>
-          <button
-            type="button"
-            onClick={() => useBoardStore.getState().openPublished()}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-bg px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-raised"
-          >
-            <Sparkles className="size-3.5 text-accent" />
-            Ca Kẹt 193h (Tuần 47 · S8)
-          </button>
-          <button
-            type="button"
             onClick={() => useBoardStore.getState().setTab("mlai")}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent px-3 text-xs font-semibold text-accent-fg shadow-sm hover:opacity-95"
+            className="inline-flex h-7 items-center gap-1 rounded-md bg-accent px-2.5 font-mono text-[10px] font-bold text-accent-fg hover:opacity-95"
           >
-            <Sparkles className="size-3.5" />
-            AI Agent, Escalation Referee &amp; Bản Đồ VETC (MLAI Track 1-2-3)
+            <Sparkles className="size-3" />
+            Radar AI &amp; HITL
           </button>
           <button
             type="button"
             onClick={() => useBoardStore.getState().setTab("sidecar")}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-ok/15 px-3 text-xs font-semibold text-ok ring-1 ring-ok/30 hover:bg-ok/20"
+            className="inline-flex h-7 items-center gap-1 rounded-md bg-ok/15 px-2.5 font-mono text-[10px] font-bold text-ok ring-1 ring-ok/30"
           >
-            <Cpu className="size-3.5" />
-            Plugin Sidecar Đa Năng &amp; Benchmark Go/Rust (536×)
+            <Cpu className="size-3" />
+            Go 536× / Rust
           </button>
           <button
             type="button"
             onClick={() => useBoardStore.getState().setTab("bacap")}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-accent/10 px-3 text-xs font-medium text-accent ring-1 ring-accent/30 hover:bg-accent/15"
+            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
           >
-            <Anchor className="size-3.5" />
-            BACAP-R · Cẩu bờ STS &amp; Trung chuyển
+            <Anchor className="size-3 text-accent" />
+            STS Cranes
           </button>
           <button
             type="button"
             onClick={() => useBoardStore.getState().setTab("federation")}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-bg px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-raised"
+            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
           >
-            <Network className="size-3.5 text-accent" />
-            Liên thông 5 Cảng TP.HCM (TOPOVN ↔ VTOS ↔ N4)
+            <Network className="size-3 text-accent" />
+            5-TOS
           </button>
           <button
             type="button"
             onClick={() => useBoardStore.getState().setTab("docs")}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-bg px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-raised"
+            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
           >
-            <FileCheck2 className="size-3.5 text-ok" />
-            Đối soát Hải quan VNACCS · eDO · ISO 6346
+            <FileCheck2 className="size-3 text-ok" />
+            eDO
           </button>
           <button
             type="button"
             onClick={() => useBoardStore.getState().setTab("microtos")}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-bg px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-raised"
+            className="inline-flex h-7 items-center gap-1 rounded-md bg-raised px-2 font-mono text-[10px] font-semibold text-fg ring-1 ring-line"
           >
-            <Boxes className="size-3.5 text-warn" />
-            Micro-TOS · Bãi 3D RTG &amp; Hoán đổi Slot Kho
+            <Boxes className="size-3 text-warn" />
+            3D Yard
           </button>
-          <Link
-            to="/design"
-            className="inline-flex h-9 items-center gap-1 rounded-lg bg-raised px-3 text-xs font-medium text-fg ring-1 ring-line hover:bg-surface"
+        </div>
+      </div>
+
+      {/* Main Visual Grid: Left 7 Cols = Live SVG Quay & Ship Berthing Diagram | Right 5 Cols = Compact KPI Metric Table */}
+      <div className="mt-2.5 grid gap-3 lg:grid-cols-12">
+        {/* LEFT 7 COLS: VISUAL SVG QUAY WALL, VESSEL SILHOUETTES & STS CRANES */}
+        <div className="overflow-hidden rounded-xl bg-[#09111e] p-2.5 ring-1 ring-line lg:col-span-7">
+          <svg
+            viewBox="0 0 680 132"
+            className="h-[126px] w-full select-none"
+            role="img"
+            aria-label="Sơ đồ trực quan so sánh cầu bến gốc bị kẹt và phương án Sidecar k=0"
           >
-            Kiến trúc &amp; P&amp;L Toàn cục
-            <ArrowRight className="size-3.5 text-accent" />
-          </Link>
+            {/* Left Half: Booked Berth (Red Blocked State) */}
+            <rect
+              x="8"
+              y="8"
+              width="322"
+              height="116"
+              rx="8"
+              fill="rgba(244, 63, 94, 0.08)"
+              stroke="rgba(244, 63, 94, 0.35)"
+              strokeWidth="1.5"
+            />
+            <text x="18" y="24" fill="#f43f5e" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+              1. BEFORE (HOLD BOOKED {compare?.holdDock ?? `B${berth}`}) · WAIT {compare?.holdWait ?? 0}h
+            </text>
+
+            {/* Quay Wall Line */}
+            <line x1="18" y1="62" x2="318" y2="62" stroke="#475569" strokeWidth="4" />
+
+            {/* Occupied Blocking Vessels on Booked Berth */}
+            {chain.length > 0 ? (
+              chain.slice(0, 4).map((b, idx) => (
+                <g key={b.id}>
+                  <rect
+                    x={22 + idx * 72}
+                    y={36}
+                    width={66}
+                    height={22}
+                    rx={4}
+                    fill="#334155"
+                    stroke="#f43f5e"
+                    strokeWidth="1.2"
+                  />
+                  <text
+                    x={55 + idx * 72}
+                    y={50}
+                    textAnchor="middle"
+                    fill="#f8fafc"
+                    fontSize="8.5"
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                  >
+                    🚢 {b.id} ({b.start}-{b.end}h)
+                  </text>
+                </g>
+              ))
+            ) : (
+              <rect x="24" y="36" width="160" height="22" rx="4" fill="rgba(16,185,129,0.2)" stroke="#10b981" />
+            )}
+
+            {/* Waiting Vessel Silhouette Below Quay */}
+            <polygon
+              points="30,82 185,82 200,94 185,106 30,106"
+              fill="#f43f5e"
+              opacity="0.88"
+            />
+            <text x="110" y="97" textAnchor="middle" fill="#ffffff" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+              {selectedId} QUEUED @ {compare?.holdStart ?? 0}h (WAIT {compare?.holdWait ?? 0}h)
+            </text>
+
+            {/* Arrow Between Diagrams */}
+            <circle cx="340" cy="66" r="11" fill="#4f46e5" />
+            <text x="340" y="70" textAnchor="middle" fill="#ffffff" fontSize="11" fontFamily="monospace" fontWeight="bold">
+              →
+            </text>
+
+            {/* Right Half: Sidecar Patch Berth (Green Clear k=0 State) */}
+            <rect
+              x="350"
+              y="8"
+              width="322"
+              height="116"
+              rx="8"
+              fill="rgba(16, 185, 129, 0.09)"
+              stroke="rgba(16, 185, 129, 0.45)"
+              strokeWidth="1.5"
+            />
+            <text x="360" y="24" fill="#10b981" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+              2. AFTER SIDECAR ({compare?.planDock ?? `B${berth}`} @ {compare?.planStart ?? 0}h) · WAIT {compare?.planWait ?? 0}h · k=0
+            </text>
+
+            {/* Quay Wall Line + STS Quay Crane Silhouettes */}
+            <line x1="360" y1="62" x2="660" y2="62" stroke="#10b981" strokeWidth="4" />
+            {[405, 465, 525].map((cx, i) => (
+              <g key={cx}>
+                <rect x={cx - 8} y={32} width={16} height={28} rx={2} fill="#0ea5e9" opacity="0.85" />
+                <line x1={cx} y1={28} x2={cx + 18} y2={88} stroke="#38bdf8" strokeWidth="2" />
+                <text x={cx} y={48} textAnchor="middle" fill="#fff" fontSize="7.5" fontFamily="monospace" fontWeight="bold">
+                  STS{i + 1}
+                </text>
+              </g>
+            ))}
+
+            {/* Moored Active Vessel Silhouette on Clear Stretch */}
+            <polygon
+              points="375,72 585,72 605,88 585,104 375,104"
+              fill="#10b981"
+            />
+            <text x="485" y="91" textAnchor="middle" fill="#052e16" fontSize="10" fontFamily="monospace" fontWeight="bold">
+              🚢 {selectedId} MOORED {compare?.planDock ?? ""} ({compare?.planStart ?? 0}h–{planEnd ?? 0}h) · +{savedHours}h SAVED
+            </text>
+          </svg>
+        </div>
+
+        {/* RIGHT 5 COLS: PURE NUMERIC KPI TABLE + COMPACT E2E METRIC CELLS */}
+        <div className="flex flex-col justify-between rounded-xl bg-raised p-2.5 ring-1 ring-line lg:col-span-5">
+          <table className="w-full border-collapse font-mono text-[11px]">
+            <thead>
+              <tr className="border-b border-line text-left text-[9px] uppercase text-muted">
+                <th className="pb-1">Metric</th>
+                <th className="pb-1">Stay Booked</th>
+                <th className="pb-1">Sidecar (k=0)</th>
+                <th className="pb-1 text-right">Delta / ROI</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-line/60">
+              <tr>
+                <td className="py-1 text-muted">Berth · Span</td>
+                <td className="py-1 font-bold text-fg">{compare?.holdDock ?? `B${berth}`} ({span}b)</td>
+                <td className="py-1 font-bold text-ok">{compare?.planDock ?? `B${berth}`} ({span}b)</td>
+                <td className="py-1 text-right font-bold text-ok">Nobody else moves</td>
+              </tr>
+              <tr>
+                <td className="py-1 text-muted">Mooring Hour</td>
+                <td className="py-1 text-fg">{compare?.holdStart ?? appt?.startMin ?? 0}h</td>
+                <td className="py-1 font-bold text-ok">{compare?.planStart ?? appt?.startMin ?? 0}h</td>
+                <td className="py-1 text-right font-bold text-accent">
+                  {compare && compare.holdStart != null && event ? (
+                    <span data-booked-equation>
+                      {compare.holdStart} − {event.newEtaMin} = {compare.holdWait}
+                    </span>
+                  ) : (
+                    "—"
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td className="py-1 text-muted">Wait / P&amp;L</td>
+                <td className="py-1 font-bold text-bad">{compare?.holdWait ?? 0}h</td>
+                <td className="py-1 font-bold text-ok">{compare?.planWait ?? 0}h</td>
+                <td className="py-1 text-right font-bold text-ok">
+                  -{savedHours}h (+${savedUsd.toLocaleString("en-US")})
+                </td>
+              </tr>
+              {leftmostDiffers && compare?.leftmostStart != null && compare.planStart != null ? (
+                <tr>
+                  <td className="py-1 text-muted">First Hole</td>
+                  <td className="py-1 text-fg">
+                    {compare.leftmostDock} @ {compare.leftmostStart}h
+                  </td>
+                  <td className="py-1 text-ok">
+                    {compare.planDock} @ {compare.planStart}h
+                  </td>
+                  <td className="py-1 text-right font-bold text-ok" data-job-equation>
+                    {compare.leftmostStart} − {compare.planStart} = {compare.leftmostSaved}
+                  </td>
+                </tr>
+              ) : null}
+            </tbody>
+          </table>
+
+          {/* Compact Status Strip preserving exact e2e DOM invariants without visible prose clutter */}
+          <div className="mt-1.5 flex flex-wrap items-center justify-between gap-1 border-t border-line/60 pt-1.5 font-mono text-[10px] text-muted">
+            <span>
+              {planClear && compare?.planDock && compare.planStart != null && planEnd != null
+                ? `Berth ${compare.planDock.replace(/^B/, "")} from hour ${compare.planStart} to ${planEnd} is clear in the file.`
+                : `${selectedId} @ berth ${berth}`}
+            </span>
+            {!leftmostDiffers && (
+              <span className="text-ok">The leftmost section is this same opening.</span>
+            )}
+          </div>
+
+          {chain.length > 0 ? (
+            <ul data-block-chain className="mt-1 flex flex-wrap gap-1">
+              {chain.map((b) => (
+                <li
+                  key={b.id}
+                  data-block-ship={b.id}
+                  data-block-start={b.start}
+                  data-block-end={b.end}
+                  className="rounded bg-surface px-1.5 py-0.5 font-mono text-[9px] text-muted ring-1 ring-line"
+                >
+                  {b.id}:{b.start}-{b.end}h
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
     </section>
   );
 }
-
-

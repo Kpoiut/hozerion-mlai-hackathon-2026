@@ -2,12 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, ChevronDown, CircleAlert, CircleX, Copy, Undo2 } from "lucide-react";
 import { formatEtcVerdict } from "@/lib/minmove/arbitrate.ts";
 import { planProof } from "@/lib/minmove/proof.ts";
-import { bookedFromPlan, bookedHeadline, holdingCall, type BookedProbe } from "@/lib/minmove/published-week.ts";
+import { holdingCall } from "@/lib/minmove/published-week.ts";
 import { formatWhen } from "@/lib/minmove/seed.ts";
 import { useBoardStore } from "@/lib/minmove/store.ts";
 import type { Certificate, ConstraintId, SolveResult, Yard } from "@/lib/minmove/types.ts";
 import { Button } from "@/components/ui/button.tsx";
-import { cn } from "@/lib/utils.ts";
 
 const DROP_LABEL: Record<string, string> = {
   forceDock: "Unforce door",
@@ -58,25 +57,25 @@ export function DecisionBar({
   const fact = hour && cert ? fileCall(yard, cert.chosen.truckId) : undefined;
 
   return (
-    <div className="flex min-h-10 flex-wrap items-center gap-3">
+    <div className="flex min-h-9 flex-wrap items-center gap-2">
       {result.status === "OPTIMAL" ? (
-        <span className="inline-flex h-9 items-center gap-1.5 rounded-full bg-ok/10 px-3 text-sm font-medium text-ok">
-          <CheckCircle2 className="size-4" />
+        <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-ok/10 px-2.5 text-xs font-semibold text-ok">
+          <CheckCircle2 className="size-3.5" />
           Ready
         </span>
       ) : result.status === "HUMAN_REQUIRED" ? (
-        <span className="inline-flex h-9 items-center gap-1.5 rounded-full bg-warn/10 px-3 text-sm font-medium text-warn">
-          <CircleAlert className="size-4" />
+        <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-warn/10 px-2.5 text-xs font-semibold text-warn">
+          <CircleAlert className="size-3.5" />
           Review
         </span>
       ) : (
-        <span className="inline-flex h-9 items-center gap-1.5 rounded-full bg-bad/10 px-3 text-sm font-medium text-bad">
-          <CircleX className="size-4" />
+        <span className="inline-flex h-8 items-center gap-1.5 rounded-full bg-bad/10 px-2.5 text-xs font-semibold text-bad">
+          <CircleX className="size-3.5" />
           Blocked
         </span>
       )}
       {result.status === "OPTIMAL" && cert ? (
-        <p className="min-w-0 flex-1 truncate text-sm font-medium text-accent">
+        <p className="min-w-0 flex-1 truncate font-mono text-xs font-medium text-accent">
           {placeName(cert.chosen.dockId, hour)} at {formatWhen(yard, cert.chosen.startMin)}
           <span className="ml-2 font-normal">wait {result.metrics.eventWaitMin}{hour ? "h" : "m"}</span>
           <span className="font-normal text-muted">
@@ -85,17 +84,11 @@ export function DecisionBar({
           <span className="ml-2 font-normal text-faint">· draft</span>
         </p>
       ) : (
-        <p className="min-w-0 flex-1 truncate text-sm text-muted">{msg}</p>
+        <p className="min-w-0 flex-1 truncate text-xs text-muted">{msg}</p>
       )}
-      {result.status === "OPTIMAL" ? <ProofStrip result={result} yard={yard} /> : null}
-      {hour && fact && event ? (
-        <p className="basis-full text-sm text-muted">
-          {fact.id} in the file: arrives {fact.arrival}h, moors {fact.moor}h on berth {fact.berth}, occupies {fact.len} berths, works {fact.handling}h. This probe arrives at {event.newEtaMin}h.
-        </p>
-      ) : null}
-      {hour && cert ? <CertificateAudit cert={cert} yard={yard} /> : null}
+      {result.status === "OPTIMAL" && !hour ? <ProofStrip result={result} yard={yard} /> : null}
       {etc ? (
-        <p className="basis-full truncate font-mono text-xs text-muted" data-etc-winner={etc.winner}>
+        <p className="basis-full truncate font-mono text-[11px] text-muted" data-etc-winner={etc.winner}>
           {formatEtcVerdict(etc, yard.shiftStartMin, yard.timeUnit)}
           {etc.conflicts.length > 1 ? ` · ${etc.conflicts.length} disagreements` : ""}
         </p>
@@ -108,7 +101,7 @@ export function DecisionBar({
       <div className="relative flex shrink-0" ref={wrap}>
         <Button
           type="button"
-          className="h-10 min-w-24 rounded-l-xl rounded-r-none"
+          className="h-8 min-w-20 rounded-l-lg rounded-r-none text-xs"
           onClick={onCommit}
           disabled={result.status !== "OPTIMAL"}
         >
@@ -116,13 +109,13 @@ export function DecisionBar({
         </Button>
         <Button
           type="button"
-          className="h-10 rounded-l-none rounded-r-xl px-2"
+          className="h-8 rounded-l-none rounded-r-lg px-2"
           onClick={() => setMenu((v) => !v)}
           disabled={result.status !== "OPTIMAL"}
           aria-label="Commit options"
           aria-expanded={menu}
         >
-          <ChevronDown className="size-4" />
+          <ChevronDown className="size-3.5" />
         </Button>
         {menu ? (
           <div className="absolute top-full right-0 z-50 mt-1 min-w-44 rounded-xl bg-surface p-1 shadow-float ring-1 ring-line">
@@ -162,6 +155,16 @@ export function DecisionBar({
           </div>
         ) : null}
       </div>
+      {hour && (fact || cert) ? (
+        <div className="basis-full flex items-center gap-2 truncate font-mono text-[10px] text-faint">
+          {fact && event ? (
+            <span className="truncate">
+              {fact.id} in the file: arrives {fact.arrival}h, moors {fact.moor}h on berth {fact.berth}, occupies {fact.len} berths, works {fact.handling}h. This probe arrives at {event.newEtaMin}h.
+            </span>
+          ) : null}
+          {cert ? <CertificateAudit cert={cert} yard={yard} /> : null}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -173,14 +176,14 @@ function CertificateAudit({ cert, yard }: { cert: Certificate; yard: Yard }) {
   const span = yard.trucks.find((t) => t.id === cert.chosen.truckId)?.span ?? 1;
   const holder = hole ? holdingCall(yard, hole.greedyDockId, hole.greedyStartMin, span) : null;
   return (
-    <p className="basis-full font-mono text-xs text-muted" data-certificate="audit">
+    <span className="truncate font-mono text-[10px] text-faint" data-certificate="audit">
       Decision hour {cert.nowMin}. Frozen {cert.frozenIds.length}. Done {cert.doneIds.length}. Legal windows {cert.legalWindows.length}. Rejected {cert.rejected.length}.
       {hole
         ? ` First hole berth ${hole.greedyDockId.replace(/^B/, "")} at ${hole.greedyStartMin}h${holder ? `, when ${holder} leaves` : ""}.`
         : " First hole is this plan."}
       {next ? ` Next plan berth ${next.dockId.replace(/^B/, "")} at ${next.startMin}h, ${next.whyWorse}.` : ""}
       {rejected.length ? ` ${rejected.join(" · ")}` : ""}
-    </p>
+    </span>
   );
 }
 
@@ -202,40 +205,8 @@ function placeName(id: string, hour: boolean): string {
   return hour ? `Berth ${id.replace(/^B/, "")}` : `Door ${id.replace(/^D/, "")}`;
 }
 
-function BookedStrip({ row }: { row: BookedProbe }) {
-  const suffix = "h";
-  const place = (id: string | null) => (id ? `Berth ${id.replace(/^B/, "")}` : "—");
-  return (
-    <div className="basis-full rounded-xl bg-raised px-3 py-2" data-proof-saved={row.saved ?? ""}>
-      <p className="text-sm font-medium">{bookedHeadline(row)}</p>
-      <dl className="mt-2 grid grid-cols-3 gap-2">
-        <div>
-          <dt className="text-[10px] font-medium uppercase tracking-wide text-faint">Stay booked</dt>
-          <dd className="font-mono text-lg tabular-nums leading-tight">{row.holdWait ?? "—"}{row.holdWait == null ? "" : suffix}</dd>
-          <dd className="text-xs text-muted">{place(row.holdDock)}</dd>
-        </div>
-        <div>
-          <dt className="text-[10px] font-medium uppercase tracking-wide text-faint">This plan</dt>
-          <dd className="font-mono text-lg tabular-nums leading-tight">{row.planWait ?? "—"}{row.planWait == null ? "" : suffix}</dd>
-          <dd className="text-xs text-muted">{place(row.planDock)}</dd>
-        </div>
-        <div>
-          <dt className="text-[10px] font-medium uppercase tracking-wide text-faint">Versus booked</dt>
-          <dd className="font-mono text-lg tabular-nums leading-tight">{row.saved ?? "—"}{row.saved == null ? "" : suffix}</dd>
-          <dd className="text-xs text-muted">{row.planMoves === 0 ? "nobody else moves" : `${row.planMoves ?? 0} moved`}</dd>
-        </div>
-      </dl>
-    </div>
-  );
-}
-
 function ProofStrip({ result, yard }: { result: SolveResult; yard: Yard }) {
   const hour = yard.timeUnit === "hour";
-  const event = useBoardStore((s) => s.event);
-  if (hour && event) {
-    const booked = bookedFromPlan(yard, event, result);
-    if (booked.planStatus === "OPTIMAL") return <BookedStrip row={booked} />;
-  }
   const proof = planProof(result, hour ? "hour" : "minute");
   if (!proof) return null;
   const suffix = hour ? "h" : "m";

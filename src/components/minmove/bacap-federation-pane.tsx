@@ -693,39 +693,25 @@ export function UniversalSidecarAndBenchmarkPanel() {
   const activePatchPayload =
     patchView === "rfc7396" ? pluginExec.rfc7396MergePatchJson : pluginExec.hostNativeAdapterPayload;
 
+  const targetAppt = activeHost.yard.appointments.find((a) => a.truckId === pluginExec.targetJobId);
+  const targetDiff = pluginExec.diffEntries.find((d) => d.jobId === pluginExec.targetJobId);
+  const bookedRes = targetDiff?.previousResource ?? targetAppt?.dockId ?? "B0";
+  const bookedSt = targetDiff?.previousStart ?? targetAppt?.startMin ?? 0;
+  const patchedRes = targetDiff?.nextResource ?? bookedRes;
+  const patchedSt = targetDiff?.nextStart ?? bookedSt;
+
   return (
-    <div className="space-y-4" data-testid="universal-sidecar-benchmark-panel">
-      {/* Section 1: Universal Non-Invasive Sidecar Plugin */}
-      <section className="overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line sm:p-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-md bg-accent/15 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-accent">
-                Universal Plug-and-Play Sidecar
-              </span>
-              <span className="rounded-md bg-ok/15 px-2 py-0.5 font-mono text-[10px] font-semibold text-ok">
-                100% Bảo Toàn Giá Trị Hệ Thống Chủ
-              </span>
-            </div>
-            <h3 className="mt-1.5 text-base font-semibold tracking-tight sm:text-lg">
-              Kiến Trúc Plugin Đa Năng Zero-Lock-In &amp; Kiểm Chứng Lợi Nhuận Thực Nghiệm (3.092 Ca Tàu Thực Tế)
-            </h3>
-            <p className="mt-1 max-w-4xl text-xs text-muted sm:text-sm">
-              Doanh nghiệp đã bỏ hàng triệu USD mua <span className="font-medium text-fg">Navis N4, TOPOVN, SGP-TOS, SAP EWM, C3 hay FourKites</span> sẽ không bao giờ thay hệ thống gốc. Hozerion hoạt động như một{" "}
-              <span className="font-semibold text-fg">Plugin Sidecar Không Xâm Lấn</span>: trong{" "}
-              <span className="font-mono font-semibold text-ok">
-                {pnl.uncontestedCount.toLocaleString("en-US")}/{pnl.totalArrivalProbes.toLocaleString("en-US")} ca ({pnl.uncontestedPct}%)
-              </span>{" "}
-              khi tàu/xe trễ nhưng cầu đã đặt vẫn trống, Plugin tự động phát lệnh{" "}
-              <span className="font-mono font-semibold text-fg">NO_OP_KEEP_HOST_PLAN</span> (không sửa 1 byte nào của TOS/WMS chủ). Chỉ trong{" "}
-              <span className="font-mono font-semibold text-accent">
-                {pnl.contestedCount}/{pnl.totalArrivalProbes.toLocaleString("en-US")} ca ({pnl.contestedPct}%)
-              </span>{" "}
-              thực sự bị kẹt dây chuyền, Plugin mới xuất bản vá tối thiểu (<span className="font-mono text-fg">RFC 7396 Merge Patch</span>,{" "}
-              <span className="font-mono text-ok">k = 0 tàu khác bị dời</span>), cứu được{" "}
-              <span className="font-mono font-semibold text-ok">{pnl.totalShipHoursSaved.toLocaleString("en-US")} giờ tàu chờ</span> (tương đương{" "}
-              <span className="font-mono font-semibold text-ok">+${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")} USD</span>).
-            </p>
+    <div className="space-y-3" data-testid="universal-sidecar-benchmark-panel">
+      {/* Section 1: Visual SVG Donut + Sidecar Architecture Canvas + 4 Domain Control Pad */}
+      <section className="overflow-hidden rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-2.5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-md bg-accent px-2 py-0.5 font-mono text-[10px] font-bold uppercase text-accent-fg">
+              UNIVERSAL SIDECAR SCADA
+            </span>
+            <span className="rounded-md bg-ok/15 px-2 py-0.5 font-mono text-[10px] font-bold text-ok">
+              3,092 Calls · 83.02% NO_OP · 16.98% Patch (k=0) · +$29,701,500 USD
+            </span>
           </div>
           <div className="flex flex-wrap gap-1.5">
             <Button
@@ -741,7 +727,7 @@ export function UniversalSidecarAndBenchmarkPanel() {
                 }
               }}
             >
-              Thử Ca Không Tranh Chấp (Zero-Touch NO_OP)
+              Mode 1: Zero-Touch NO_OP
             </Button>
             <Button
               type="button"
@@ -751,190 +737,233 @@ export function UniversalSidecarAndBenchmarkPanel() {
                 setCustomDelay(activeHost.defaultDelayDelta);
               }}
             >
-              Thử Ca Kẹt Dây Chuyền (Minimal Diff Patch)
+              Mode 2: Minimal Patch (k=0)
             </Button>
           </div>
         </div>
 
-        {/* Visual Segmented Empirical Distribution Bar */}
-        <div className="mt-4 rounded-xl bg-raised/60 p-3 ring-1 ring-line">
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-            <span className="font-semibold text-fg">
-              Phân Bổ Thực Nghiệm Toàn Cục Trên 98 Tuần Cảng Barcelona ({pnl.totalArrivalProbes.toLocaleString("en-US")} Ca Cập Cảng):
-            </span>
-            <span className="font-mono text-[11px] text-muted">
-              100% Khớp Toán Học · 0 Tàu Khác Bị Xáo Trộn (k = 0)
-            </span>
-          </div>
-          <div className="mt-2 flex h-3.5 w-full overflow-hidden rounded-full bg-bg ring-1 ring-line">
-            <div
-              className="flex items-center justify-center bg-ok/80 text-[10px] font-bold text-bg transition-all"
-              style={{ width: `${pnl.uncontestedPct}%` }}
-              title={`83.02% (${pnl.uncontestedCount} ca): NO_OP_KEEP_HOST_PLAN`}
-            >
-              83.02% NO_OP (Giữ nguyên TOS chủ)
+        {/* Visual SVG Row: Left 5 Cols = SVG Donut + Corpus KPI Table | Right 7 Cols = Live SVG Sidecar & Lane Diff Schematic */}
+        <div className="mt-3 grid gap-3 lg:grid-cols-12">
+          {/* Left 5 Cols: SVG Donut Chart + Numeric Summary Table */}
+          <div className="flex flex-col justify-between rounded-xl bg-[#09111e] p-3 ring-1 ring-line lg:col-span-5">
+            <div className="flex items-center gap-3">
+              <svg viewBox="0 0 120 120" className="size-28 shrink-0">
+                <circle cx="60" cy="60" r="44" fill="none" stroke="#1e293b" strokeWidth="14" />
+                {/* 83.02% NO_OP Emerald Arc */}
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="44"
+                  fill="none"
+                  stroke="#10b981"
+                  strokeWidth="14"
+                  strokeDasharray="229.5 276.5"
+                  transform="rotate(-90 60 60)"
+                />
+                {/* 16.98% Contested k=0 Indigo/Sky Arc */}
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="44"
+                  fill="none"
+                  stroke="#38bdf8"
+                  strokeWidth="14"
+                  strokeDasharray="47 276.5"
+                  strokeDashoffset="-229.5"
+                  transform="rotate(-90 60 60)"
+                />
+                <text x="60" y="56" textAnchor="middle" fill="#f8fafc" fontSize="13" fontFamily="monospace" fontWeight="bold">
+                  3,092
+                </text>
+                <text x="60" y="70" textAnchor="middle" fill="#10b981" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+                  +$29.7M
+                </text>
+              </svg>
+
+              <table className="w-full border-collapse font-mono text-[11px] text-slate-200">
+                <tbody className="divide-y divide-slate-800">
+                  <tr>
+                    <td className="py-1 text-slate-400">Weeks / Calls</td>
+                    <td className="py-1 text-right font-bold text-white">
+                      {pnl.pairedWeeksCount}w · {pnl.totalArrivalProbes.toLocaleString("en-US")}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 text-emerald-400">● NO_OP (83.02%)</td>
+                    <td className="py-1 text-right font-bold text-emerald-400">
+                      {pnl.uncontestedCount.toLocaleString("en-US")} calls
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 text-sky-400">● Patch k=0 (16.98%)</td>
+                    <td className="py-1 text-right font-bold text-sky-400">
+                      {pnl.contestedCount} calls
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 text-slate-400">Hours Rescued</td>
+                    <td className="py-1 text-right font-bold text-emerald-400">
+                      {pnl.totalShipHoursSaved.toLocaleString("en-US")}h (k=0)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 text-slate-400">Net P&amp;L Value</td>
+                    <td className="py-1 text-right font-bold text-emerald-400">
+                      +${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div
-              className="flex items-center justify-center bg-accent text-[10px] font-bold text-accent-fg transition-all"
-              style={{ width: `${pnl.contestedPct}%` }}
-              title={`16.98% (${pnl.contestedCount} ca): Cứu 19,801 giờ tàu (+$29.7M USD)`}
+          </div>
+
+          {/* Right 7 Cols: Live SVG Non-Invasive Sidecar & Resource Diff Diagram */}
+          <div className="overflow-hidden rounded-xl bg-[#09111e] p-3 ring-1 ring-line lg:col-span-7">
+            <svg
+              viewBox="0 0 640 128"
+              className="h-[118px] w-full select-none"
+              role="img"
+              aria-label="Sơ đồ kiến trúc Sidecar không xâm lấn"
             >
-              16.98% Vá k=0
-            </div>
-          </div>
-          <div className="mt-2 flex flex-wrap justify-between gap-2 text-[11px] text-muted">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-ok" />
-              <strong className="font-mono text-fg">{pnl.uncontestedCount.toLocaleString("en-US")} ca ({pnl.uncontestedPct}%):</strong>{" "}
-              Cầu gốc vẫn trống khi tàu trễ → Phát lệnh <code className="font-mono text-ok">NO_OP_KEEP_HOST_PLAN</code> (0 thay đổi)
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-accent" />
-              <strong className="font-mono text-fg">{pnl.contestedCount} ca ({pnl.contestedPct}%):</strong>{" "}
-              Cầu gốc bị kẹt dây chuyền → Phát lệnh <code className="font-mono text-accent">APPLY_MINIMAL_DIFF_PATCH</code> (Cứu{" "}
-              <strong className="font-mono text-ok">{pnl.totalShipHoursSaved.toLocaleString("en-US")} giờ = +${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")} USD</strong>)
-            </span>
+              {/* Node 1: Incumbent Host TOS/WMS */}
+              <rect x="10" y="14" width="175" height="100" rx="8" fill="#0f172a" stroke="#475569" strokeWidth="2" />
+              <text x="22" y="32" fill="#94a3b8" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
+                HOST SYSTEM (100% PRESERVED)
+              </text>
+              <text x="22" y="50" fill="#f8fafc" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                {activeHost.incumbentSystem.slice(0, 24)}
+              </text>
+              <rect x="22" y="62" width="150" height="40" rx="5" fill="rgba(244,63,94,0.12)" stroke="#f43f5e" />
+              <text x="30" y="78" fill="#f43f5e" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+                HOLD: {bookedRes} @ {bookedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"}
+              </text>
+              <text x="30" y="94" fill="#fca5a5" fontSize="9" fontFamily="monospace">
+                Wait: {pluginExec.hostPlanWait} {activeHost.timeUnitLabel}
+              </text>
+
+              {/* Bidirectional Bus Arrows */}
+              <line x1="185" y1="46" x2="235" y2="46" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4 2" />
+              <text x="210" y="39" textAnchor="middle" fill="#38bdf8" fontSize="8" fontFamily="monospace">
+                ETA+{effectiveDelay}
+              </text>
+              <line x1="235" y1="82" x2="185" y2="82" stroke="#10b981" strokeWidth="2" />
+              <text x="210" y="96" textAnchor="middle" fill="#10b981" fontSize="8" fontFamily="monospace">
+                RFC7396
+              </text>
+
+              {/* Node 2: Hozerion Go 1.26.5 / V8 Zero-Alloc Sidecar Kernel */}
+              <rect x="235" y="14" width="175" height="100" rx="8" fill="#0f172a" stroke="#38bdf8" strokeWidth="2" />
+              <text x="247" y="32" fill="#38bdf8" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
+                HOZERION SIDECAR KERNEL
+              </text>
+              <text x="247" y="50" fill="#f8fafc" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                Go 536× · 5.15µs · k=0
+              </text>
+              <rect x="247" y="62" width="150" height="40" rx="5" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" />
+              <text x="255" y="78" fill="#38bdf8" fontSize="9" fontFamily="monospace" fontWeight="bold">
+                {pluginExec.pluginDecision === "NO_OP_KEEP_HOST_PLAN" ? "NO_OP (0 MUTATION)" : "PATCH 1 JOB ONLY"}
+              </text>
+              <text x="255" y="94" fill="#e2e8f0" fontSize="9" fontFamily="monospace">
+                Other moved: k={pluginExec.otherJobsMoved}
+              </text>
+
+              {/* Arrow to Result */}
+              <line x1="410" y1="64" x2="450" y2="64" stroke="#10b981" strokeWidth="2.5" />
+
+              {/* Node 3: Patched Physical Quay / Dock Output */}
+              <rect x="450" y="14" width="180" height="100" rx="8" fill="rgba(16,185,129,0.1)" stroke="#10b981" strokeWidth="2" />
+              <text x="462" y="32" fill="#10b981" fontSize="8.5" fontFamily="monospace" fontWeight="bold">
+                PHYSICAL QUAY / DOCK STATE
+              </text>
+              <text x="462" y="52" fill="#ffffff" fontSize="11" fontFamily="monospace" fontWeight="bold">
+                {patchedRes} @ {patchedSt}{activeHost.timeUnitLabel === "hour" ? "h" : "m"} (Wait {pluginExec.pluginPlanWait})
+              </text>
+              <text x="462" y="74" fill="#10b981" fontSize="11" fontFamily="monospace" fontWeight="bold">
+                SAVED: {pluginExec.waitSaved} {activeHost.timeUnitLabel}
+              </text>
+              <text x="462" y="94" fill="#a7f3d0" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                ROI: +${pluginExec.netEconomicGainUsd.toLocaleString("en-US")} USD
+              </text>
+            </svg>
           </div>
         </div>
 
-        {/* 4 Empirical P&L Proof Cards */}
-        <div className="mt-3 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-xl bg-raised/70 p-3 ring-1 ring-line">
-            <p className="text-[11px] font-medium uppercase text-faint">Tập Kiểm Chứng Thực Nghiệm</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-fg">
-              {pnl.pairedWeeksCount} tuần · {pnl.totalArrivalProbes.toLocaleString("en-US")} ca
-            </p>
-            <p className="mt-0.5 text-[11px] text-muted">
-              100% ca hợp lệ · <span className="font-mono text-ok">0 ca lỗi</span> · Quét mẫu Tuần 47 ({pnl.liveSampleWeek47Probes} tàu) trong{" "}
-              <span className="font-mono text-fg">{pnl.liveSampleSweepMs}ms</span>
-            </p>
-          </div>
-          <div className="rounded-xl bg-raised/70 p-3 ring-1 ring-line">
-            <p className="text-[11px] font-medium uppercase text-faint">Chế Độ Bảo Toàn Hệ Thống Chủ (NO_OP)</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ok">
-              {pnl.uncontestedCount.toLocaleString("en-US")} ca ({pnl.uncontestedPct}%)
-            </p>
-            <p className="mt-0.5 text-[11px] text-muted">
-              Giữ nguyên 100% lịch của TOS/WMS chủ khi cầu/cửa gốc vẫn trống (Không gây nhiễu vận hành)
-            </p>
-          </div>
-          <div className="rounded-xl bg-raised/70 p-3 ring-1 ring-line">
-            <p className="text-[11px] font-medium uppercase text-faint">Ca Tranh Chấp Cứu Được (k = 0)</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-accent">
-              {pnl.contestedCount} ca · {pnl.totalShipHoursSaved.toLocaleString("en-US")} giờ tàu
-            </p>
-            <p className="mt-0.5 text-[11px] text-muted">
-              Trung bình <span className="font-mono text-fg">{pnl.avgHoursSavedPerContested}h/ca</span> · Đỉnh{" "}
-              <span className="font-mono text-fg">{pnl.maxSingleCallHoursSaved}h</span> ({pnl.maxSingleCallId})
-            </p>
-          </div>
-          <div className="rounded-xl bg-ok/10 p-3 ring-1 ring-ok/30">
-            <p className="text-[11px] font-medium uppercase text-ok">Giá Trị Kinh Tế Ròng Thực Nghiệm</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ok">
-              +${pnl.grossSavingsAcrossCorpusUsd.toLocaleString("en-US")} USD
-            </p>
-            <p className="mt-0.5 text-[11px] text-muted">
-              <span className="font-mono font-semibold text-fg">+${pnl.avgSavingsPerContestedCallUsd.toLocaleString("en-US")}/ca tranh chấp</span> ·{" "}
-              <span className="font-mono text-ok">{pnl.otherVesselsDisplacedTotal} tàu khác bị dời</span>
-            </p>
-          </div>
-        </div>
-
-        {/* 4 Interactive 1-Click Host Domain Cards */}
-        <div className="mt-4">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-faint">
-            Bấm Chọn Nhanh Hệ Thống Chủ Để Cắm Thử Nghiệm Sidecar Plugin (4 Miền Logistics):
-          </p>
-          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-            {UNIVERSAL_HOST_PROFILES.map((h) => {
-              const selected = h.id === activeHost.id;
-              return (
-                <button
-                  key={h.id}
-                  type="button"
-                  data-testid={`sidecar-profile-${h.domain}`}
-                  onClick={() => {
-                    setHostId(h.id);
-                    setCustomDelay(null);
-                    setCustomTargetId(null);
-                  }}
-                  className={cn(
-                    "flex flex-col justify-between rounded-xl p-3 text-left ring-1 transition-all",
-                    selected
-                      ? "bg-accent/10 ring-2 ring-accent shadow-sm"
-                      : "bg-raised/40 ring-line hover:bg-raised/80",
-                  )}
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-1">
-                      <span className="rounded bg-surface px-1.5 py-0.5 font-mono text-[10px] font-semibold text-accent ring-1 ring-line">
-                        {h.domain === "MARITIME_CONTAINER_QUAY"
-                          ? "CẢNG BIỂN TOS"
-                          : h.domain === "INLAND_BARGE_ICD"
-                            ? "SÀ LAN & ICD"
-                            : h.domain === "WAREHOUSE_DOCK_WMS"
-                              ? "KHO DOCK WMS"
-                              : "KHO LẠNH -25°C"}
-                      </span>
-                      <span className="font-mono text-[11px] font-semibold text-ok">
-                        ${h.costPerWaitUnitUsd}/{h.timeUnitLabel}
-                      </span>
-                    </div>
-                    <p className="mt-1.5 text-xs font-semibold leading-snug text-fg">{h.name}</p>
-                  </div>
-                  <p className="mt-2 truncate font-mono text-[10px] text-muted">{h.incumbentSystem}</p>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Host System Selector & Live Perturbation Controls */}
-        <div className="mt-3 grid gap-3 rounded-xl bg-raised/50 p-3.5 ring-1 ring-line lg:grid-cols-12">
-          <div className="min-w-0 space-y-2.5 lg:col-span-5">
-            <label className="block text-xs font-medium text-muted">
-              1. Hệ Thống Cầu Cảng / Sà Lan / Kho WMS Đang Chọn:
-              <select
-                data-testid="host-profile-select"
-                value={activeHost.id}
-                onChange={(e) => {
-                  setHostId(e.target.value);
+        {/* 4 Domain Selector Buttons + Interactive Sliders + Compact JSON Patch Box */}
+        <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {UNIVERSAL_HOST_PROFILES.map((h) => {
+            const selected = h.id === activeHost.id;
+            const iconGlyph =
+              h.domain === "MARITIME_CONTAINER_QUAY"
+                ? "🚢 CẢNG BIỂN TOS"
+                : h.domain === "INLAND_BARGE_ICD"
+                  ? "⚓ SÀ LAN & ICD"
+                  : h.domain === "WAREHOUSE_DOCK_WMS"
+                    ? "🚛 KHO DOCK WMS"
+                    : "❄️ KHO LẠNH -25°C";
+            return (
+              <button
+                key={h.id}
+                type="button"
+                data-testid={`sidecar-profile-${h.domain}`}
+                onClick={() => {
+                  setHostId(h.id);
                   setCustomDelay(null);
                   setCustomTargetId(null);
                 }}
-                className="mt-1 block w-full rounded-lg bg-surface px-2.5 py-2 text-xs font-medium text-fg ring-1 ring-line"
+                className={cn(
+                  "flex items-center justify-between rounded-xl px-3 py-2 text-left ring-1 transition-all",
+                  selected
+                    ? "bg-accent text-accent-fg ring-accent shadow-sm"
+                    : "bg-raised/60 text-fg ring-line hover:bg-raised",
+                )}
               >
-                {UNIVERSAL_HOST_PROFILES.map((h) => (
-                  <option key={h.id} value={h.id}>
-                    {h.name}
+                <span className="font-mono text-[11px] font-bold">{iconGlyph}</span>
+                <span className="font-mono text-[11px] font-semibold opacity-90">
+                  ${h.costPerWaitUnitUsd}/{h.timeUnitLabel}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Compact Control Strip + Patch Preview */}
+        <div className="mt-3 grid gap-3 rounded-xl bg-raised/50 p-3 ring-1 ring-line lg:grid-cols-12">
+          <div className="space-y-2 lg:col-span-5">
+            <select
+              data-testid="host-profile-select"
+              value={activeHost.id}
+              onChange={(e) => {
+                setHostId(e.target.value);
+                setCustomDelay(null);
+                setCustomTargetId(null);
+              }}
+              className="block w-full rounded-lg bg-surface px-2.5 py-1.5 font-mono text-xs font-semibold text-fg ring-1 ring-line"
+            >
+              {UNIVERSAL_HOST_PROFILES.map((h) => (
+                <option key={h.id} value={h.id}>
+                  {h.name}
+                </option>
+              ))}
+            </select>
+
+            <div className="grid grid-cols-2 gap-2">
+              <select
+                value={effectiveTargetId}
+                onChange={(e) => setCustomTargetId(e.target.value)}
+                className="block w-full rounded-lg bg-surface px-2 py-1.5 font-mono text-xs text-fg ring-1 ring-line"
+              >
+                {activeHost.yard.appointments.slice(0, 12).map((a) => (
+                  <option key={a.truckId} value={a.truckId}>
+                    {a.truckId} ({a.dockId}@{a.startMin})
                   </option>
                 ))}
               </select>
-            </label>
 
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <label className="block text-xs text-muted">
-                2. Chọn Tàu / Sà lan / Xe:
-                <select
-                  value={effectiveTargetId}
-                  onChange={(e) => setCustomTargetId(e.target.value)}
-                  className="mt-1 block w-full rounded-lg bg-surface px-2.5 py-1.5 font-mono text-xs text-fg ring-1 ring-line"
-                >
-                  {activeHost.yard.appointments.slice(0, 12).map((a) => (
-                    <option key={a.truckId} value={a.truckId}>
-                      {a.truckId} (Gốc: {a.dockId} @ {a.startMin}{activeHost.timeUnitLabel === "hour" ? "h" : "m"})
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="block text-xs text-muted">
-                <span className="flex justify-between">
-                  <span>3. Độ trễ ETA:</span>
-                  <span className="font-mono font-semibold text-fg">
-                    +{effectiveDelay} {activeHost.timeUnitLabel}
-                  </span>
-                </span>
+              <div className="rounded-lg bg-surface px-2.5 py-1 ring-1 ring-line">
+                <div className="flex justify-between font-mono text-[10px] text-muted">
+                  <span>ETA Δ:</span>
+                  <strong className="text-fg">+{effectiveDelay} {activeHost.timeUnitLabel}</strong>
+                </div>
                 <input
                   type="range"
                   min={0}
@@ -942,106 +971,34 @@ export function UniversalSidecarAndBenchmarkPanel() {
                   step={activeHost.timeUnitLabel === "hour" ? 1 : 5}
                   value={effectiveDelay}
                   onChange={(e) => setCustomDelay(Number(e.target.value))}
-                  className="mt-2 w-full"
+                  className="w-full"
                 />
-              </label>
-            </div>
-
-            {/* Visual Before vs After Comparison Cards */}
-            {(() => {
-              const targetAppt = activeHost.yard.appointments.find((a) => a.truckId === pluginExec.targetJobId);
-              const targetDiff = pluginExec.diffEntries.find((d) => d.jobId === pluginExec.targetJobId);
-              const bookedRes = targetDiff?.previousResource ?? targetAppt?.dockId ?? "—";
-              const bookedSt = targetDiff?.previousStart ?? targetAppt?.startMin ?? 0;
-              const patchedRes = targetDiff?.nextResource ?? bookedRes;
-              const patchedSt = targetDiff?.nextStart ?? bookedSt;
-              return (
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="rounded-lg bg-surface p-2.5 ring-1 ring-line">
-                    <p className="text-[10px] font-semibold uppercase text-faint">Khi Không Cắm Plugin (Hold)</p>
-                    <p className="mt-1 font-mono text-sm font-bold text-fg">
-                      {bookedRes} @ {bookedSt}
-                      {activeHost.timeUnitLabel === "hour" ? "h" : "m"}
-                    </p>
-                    <p className={cn("mt-0.5 font-mono text-xs font-semibold", pluginExec.hostPlanWait > 0 ? "text-bad" : "text-ok")}>
-                      Chờ: {pluginExec.hostPlanWait} {activeHost.timeUnitLabel}
-                    </p>
-                  </div>
-                  <div className="rounded-lg bg-ok/10 p-2.5 ring-1 ring-ok/30">
-                    <p className="text-[10px] font-semibold uppercase text-ok">Sau Khi Cắm Sidecar (k={pluginExec.otherJobsMoved})</p>
-                    <p className="mt-1 font-mono text-sm font-bold text-fg">
-                      {patchedRes} @ {patchedSt}
-                      {activeHost.timeUnitLabel === "hour" ? "h" : "m"}
-                    </p>
-                    <p className="mt-0.5 font-mono text-xs font-semibold text-ok">
-                      Chờ: {pluginExec.pluginPlanWait} {activeHost.timeUnitLabel} (Cứu {pluginExec.waitSaved} {activeHost.timeUnitLabel})
-                    </p>
-                  </div>
-                </div>
-              );
-            })()}
-
-            <div className="rounded-lg bg-surface p-2.5 text-xs ring-1 ring-line">
-              <div className="flex flex-wrap items-center justify-between gap-1">
-                <span className="text-faint">Hệ thống chủ (Host System):</span>
-                <span className="font-mono font-semibold text-fg">{activeHost.incumbentSystem}</span>
               </div>
-              <div className="mt-1 flex flex-wrap items-center justify-between gap-1">
-                <span className="text-faint">Giao thức kết nối:</span>
-                <span className="font-mono text-[11px] text-accent">{activeHost.protocolStandard}</span>
-              </div>
-              <p className="mt-1.5 text-[11px] text-muted">{activeHost.description}</p>
             </div>
           </div>
 
-          <div className="min-w-0 space-y-2.5 lg:col-span-7">
-            <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-surface p-3 ring-1 ring-line">
-              <div className="flex flex-wrap items-center gap-2">
-                {pluginExec.pluginDecision === "NO_OP_KEEP_HOST_PLAN" ? (
-                  <span className="rounded-md bg-ok/15 px-2.5 py-1 font-mono text-xs font-semibold text-ok">
-                    NO_OP_KEEP_HOST_PLAN (Zero-Touch)
-                  </span>
-                ) : pluginExec.pluginDecision === "APPLY_MINIMAL_DIFF_PATCH" ? (
-                  <span className="rounded-md bg-accent/15 px-2.5 py-1 font-mono text-xs font-semibold text-accent">
-                    APPLY_MINIMAL_DIFF_PATCH (k={pluginExec.otherJobsMoved})
-                  </span>
-                ) : (
-                  <span className="rounded-md bg-warn/15 px-2.5 py-1 font-mono text-xs font-semibold text-warn">
-                    HOLD_FOR_HUMAN_REVIEW
-                  </span>
-                )}
-                <span className="font-mono text-xs text-muted">
-                  Giải trong {pluginExec.solveLatencyMs}ms · Bảo toàn {pluginExec.hostValuePreservationPct}% lệnh khác
-                </span>
-              </div>
-              <span className="font-mono text-xs font-semibold text-ok">
-                Lợi ích ca này: +${pluginExec.netEconomicGainUsd.toLocaleString("en-US")} USD
-              </span>
-            </div>
-
-            <p className="text-xs leading-relaxed text-fg">{pluginExec.decisionReason}</p>
-
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex flex-wrap gap-1">
+          <div className="lg:col-span-7">
+            <div className="mb-1.5 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex gap-1">
                 <button
                   type="button"
                   onClick={() => setPatchView("rfc7396")}
                   className={cn(
-                    "rounded-md px-2.5 py-1 text-xs font-medium",
+                    "rounded px-2 py-0.5 font-mono text-[10px] font-bold",
                     patchView === "rfc7396" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line",
                   )}
                 >
-                  RFC 7396 JSON Merge Patch
+                  RFC 7396 JSON Patch
                 </button>
                 <button
                   type="button"
                   onClick={() => setPatchView("native")}
                   className={cn(
-                    "rounded-md px-2.5 py-1 text-xs font-medium",
+                    "rounded px-2 py-0.5 font-mono text-[10px] font-bold",
                     patchView === "native" ? "bg-accent text-accent-fg" : "bg-surface text-muted ring-1 ring-line",
                   )}
                 >
-                  Bản tin Adapter {activeHost.incumbentSystem.split("/")[0]?.trim()}
+                  Native Adapter
                 </button>
                 <button
                   type="button"
@@ -1050,40 +1007,29 @@ export function UniversalSidecarAndBenchmarkPanel() {
                     setCopiedPatch(true);
                     setTimeout(() => setCopiedPatch(false), 1500);
                   }}
-                  className="inline-flex items-center gap-1 rounded-md bg-surface px-2.5 py-1 text-xs font-medium text-fg ring-1 ring-line hover:bg-raised"
+                  className="inline-flex items-center gap-1 rounded bg-surface px-2 py-0.5 font-mono text-[10px] text-fg ring-1 ring-line"
                 >
                   <Copy className="size-3" />
-                  {copiedPatch ? "Đã chép Patch!" : "Chép Patch"}
+                  {copiedPatch ? "Copied" : "Copy"}
                 </button>
               </div>
-              <span className="break-all font-mono text-[11px] text-faint">Rollback: {pluginExec.rollbackToken}</span>
+              <span className="font-mono text-[10px] font-bold text-ok">
+                {pluginExec.pluginDecision} · +{pluginExec.waitSaved}{activeHost.timeUnitLabel} (+${pluginExec.netEconomicGainUsd.toLocaleString("en-US")})
+              </span>
             </div>
-
-            <pre className="max-h-44 overflow-auto rounded-lg bg-bg p-2.5 font-mono text-[11px] leading-relaxed text-fg ring-1 ring-line">
+            <pre className="max-h-24 overflow-auto rounded-lg bg-bg p-2 font-mono text-[10px] leading-snug text-fg ring-1 ring-line">
               {activePatchPayload}
             </pre>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Pre-Rewrite vs Post-Rewrite Empirical Language Benchmark (V8 vs Rust WASM vs Go 1.26) */}
-      <section className="overflow-hidden rounded-2xl bg-surface p-4 shadow-card ring-1 ring-line sm:p-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-wide text-accent">
-              Thực Nghiệm Tối Ưu Đa Ngôn Ngữ (TypeScript V8 vs Rust #![no_std] WebAssembly vs Go 1.26.5 Native)
-            </p>
-            <h3 className="mt-1 text-base font-semibold tracking-tight sm:text-lg">
-              Bộ Test Quy Mô Lớn Trước &amp; Sau Khi Cải Tạo Mã Nguồn: Chỉ Chuyển Đổi Khi Lợi Ích Thực Nghiệm Rõ Ràng
-            </h3>
-            <p className="mt-1 max-w-4xl text-xs text-muted sm:text-sm">
-              Tuân thủ kỷ luật kỹ thuật: Trước khi viết lại bất kỳ mô-đun nào sang <span className="font-mono text-fg">Go 1.26.5</span> hoặc{" "}
-              <span className="font-mono text-fg">Rust WebAssembly</span>, hệ thống chạy bộ đo kiểm thực nghiệm quy mô lớn trên cả 4 nhân tính toán.{" "}
-              <span className="font-semibold text-ok">3 nhân tính toán tổ hợp/hình học (Phân cầu 2D, Xếp khối 3D, Đảo chuyển RTG)</span> tăng tốc từ{" "}
-              <span className="font-mono font-semibold text-ok">12.46× đến 536.27×</span> nên được triển khai sâu; ngược lại{" "}
-              <span className="font-semibold text-warn">nhân xử lý chuỗi EDI/XML (Kernel 4)</span> bị chậm đi do chi phí copy chuỗi UTF-8 qua biên FFI nên được giữ nguyên trên V8 để tránh lãng phí.
-            </p>
-          </div>
+      {/* Section 2: Visual Multi-Language Speedup Bar Chart + Pure Numeric Table */}
+      <section className="overflow-hidden rounded-2xl bg-surface p-3.5 shadow-card ring-1 ring-line">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5">
+          <span className="font-mono text-xs font-bold uppercase tracking-wide text-fg">
+            BENCHMARK ĐA NGÔN NGỮ (GO 1.26.5 NATIVE 536× · RUST #![NO_STD] WASM · V8 ZERO-ALLOC)
+          </span>
           <Button
             type="button"
             size="sm"
@@ -1092,66 +1038,91 @@ export function UniversalSidecarAndBenchmarkPanel() {
             onClick={() => setBenchRunCount((c) => c + 1)}
           >
             <Sparkles className="size-3.5" />
-            Chạy Lại Thực Nghiệm Benchmark ({benchReport.totalBenchmarkWallMs}ms)
+            Re-run Benchmark ({benchReport.totalBenchmarkWallMs}ms)
           </Button>
         </div>
 
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[54rem] text-left text-xs">
-            <thead className="border-b border-line text-faint">
-              <tr>
-                <th className="py-2 pr-3 font-medium">Nhân Tính Toán &amp; Quy Mô Bộ Test</th>
-                <th className="px-2 py-2 font-medium">V8 Trước Tối Ưu</th>
-                <th className="px-2 py-2 font-medium">V8 Zero-Alloc</th>
-                <th className="px-2 py-2 font-medium">Rust WASM / Go 1.26.5</th>
-                <th className="px-2 py-2 font-medium">Hệ Số Tăng Tốc</th>
-                <th className="px-2 py-2 font-medium">Quyết Định Kỹ Thuật</th>
+        {/* Visual SVG Speedup Comparison Bars */}
+        <div className="overflow-hidden rounded-xl bg-[#09111e] p-3 ring-1 ring-line">
+          <svg
+            viewBox="0 0 860 112"
+            className="h-[104px] w-full select-none"
+            role="img"
+            aria-label="Biểu đồ thanh tốc độ Go 1.26.5 vs Rust WASM vs V8"
+          >
+            {benchReport.kernels.map((k, idx) => {
+              const y = 10 + idx * 25;
+              const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
+              const barW = approved
+                ? Math.min(540, Math.max(90, Math.log10(Math.max(2, k.nativeSpeedupVsBaseline)) * 195))
+                : 45;
+              const fill = approved ? "#10b981" : "#f59e0b";
+              return (
+                <g key={k.id}>
+                  <text x="10" y={y + 13} fill="#e2e8f0" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+                    K{idx + 1}: {k.kernelName.slice(0, 32)}
+                  </text>
+                  <rect x="235" y={y + 2} width="545" height="14" rx="4" fill="#1e293b" />
+                  <rect x="235" y={y + 2} width={barW} height="14" rx="4" fill={fill} />
+                  <text x={242 + barW} y={y + 13} fill={fill} fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+                    {k.nativeSpeedupVsBaseline}× ({k.nativeRustOrGoMs}ms vs {k.baselineV8Ms}ms)
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+
+        {/* Pure Numeric Table (Zero Prose Essays) */}
+        <div className="mt-2.5 overflow-x-auto">
+          <table className="w-full border-collapse text-left font-mono text-[11px]">
+            <thead>
+              <tr className="border-b border-line bg-raised text-[9px] uppercase text-muted">
+                <th className="px-2.5 py-1.5">Kernel</th>
+                <th className="px-2.5 py-1.5">Scale</th>
+                <th className="px-2.5 py-1.5 text-right">JS Heap</th>
+                <th className="px-2.5 py-1.5 text-right">V8 Zero-Alloc</th>
+                <th className="px-2.5 py-1.5 text-right">Go 1.26 / Rust WASM</th>
+                <th className="px-2.5 py-1.5 text-right">Speedup</th>
+                <th className="px-2.5 py-1.5 text-right">FFI Cost</th>
+                <th className="px-2.5 py-1.5 text-right">Verdict</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-line">
               {benchReport.kernels.map((k) => {
                 const approved = k.decision === "REWRITE_APPROVED_AND_DEPLOYED";
-                const barPct = approved ? Math.min(100, Math.max(22, Math.log10(Math.max(1.5, k.nativeSpeedupVsBaseline)) * 36)) : 15;
                 return (
-                  <tr key={k.id} className="border-b border-line/70 align-top">
-                    <td className="py-2.5 pr-3">
-                      <p className="font-semibold text-fg">{k.kernelName}</p>
-                      <p className="mt-0.5 text-[11px] text-muted">{k.workloadScale}</p>
-                      <p className="mt-1 text-[11px] text-faint">{k.parityVerified}</p>
+                  <tr key={k.id} className="hover:bg-raised/60">
+                    <td className="px-2.5 py-1.5 font-sans text-xs font-semibold text-fg">
+                      {k.kernelName}
                     </td>
-                    <td className="px-2 py-2.5 font-mono tabular-nums text-muted">{k.baselineV8Ms} ms</td>
-                    <td className="px-2 py-2.5 font-mono tabular-nums text-fg">
-                      {k.optimizedV8Ms} ms
-                      {k.v8SpeedupRatio > 1 ? (
-                        <span className="ml-1 text-[11px] font-semibold text-ok">({k.v8SpeedupRatio}×)</span>
-                      ) : null}
+                    <td className="px-2.5 py-1.5 text-[10px] text-muted">
+                      3,092 calls
                     </td>
-                    <td className="px-2 py-2.5 font-mono tabular-nums">
-                      <span className="font-semibold text-fg">{k.nativeRustOrGoMs} ms</span>
-                      <p className="mt-0.5 font-sans text-[11px] text-muted">{k.nativeLanguage}</p>
+                    <td className="px-2.5 py-1.5 text-right text-muted">
+                      {k.baselineV8Ms} ms
                     </td>
-                    <td className="px-2 py-2.5 font-mono tabular-nums">
-                      <span className={cn("font-semibold", approved ? "text-ok" : "text-warn")}>
-                        {k.nativeSpeedupVsBaseline}× so với gốc
-                      </span>
-                      <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full bg-raised">
-                        <div
-                          className={cn("h-full rounded-full", approved ? "bg-ok" : "bg-warn")}
-                          style={{ width: `${barPct}%` }}
-                        />
-                      </div>
-                      <p className="mt-1 text-[11px] text-faint">FFI cost: ~{k.ffiOverheadMs}ms</p>
+                    <td className="px-2.5 py-1.5 text-right text-fg">
+                      {k.optimizedV8Ms} ms ({k.v8SpeedupRatio}×)
                     </td>
-                    <td className="px-2 py-2.5">
+                    <td className="px-2.5 py-1.5 text-right font-bold text-fg">
+                      {k.nativeRustOrGoMs} ms
+                    </td>
+                    <td className={cn("px-2.5 py-1.5 text-right font-bold", approved ? "text-ok" : "text-warn")}>
+                      {k.nativeSpeedupVsBaseline}×
+                    </td>
+                    <td className="px-2.5 py-1.5 text-right text-muted">
+                      {k.ffiOverheadMs} ms
+                    </td>
+                    <td className="px-2.5 py-1.5 text-right">
                       <span
                         className={cn(
-                          "inline-block rounded-md px-2 py-0.5 font-mono text-[10px] font-semibold",
-                          approved ? "bg-ok/15 text-ok" : "bg-warn/15 text-warn",
+                          "rounded px-1.5 py-0.5 text-[9px] font-bold",
+                          approved ? "bg-ok/15 text-ok" : "bg-warn/20 text-warn",
                         )}
                       >
-                        {approved ? "ĐÃ TRIỂN KHAI (HIỆU QUẢ CAO)" : "LOẠI BỎ (LÃNG PHÍ FFI)"}
+                        {approved ? "DEPLOYED" : "REJECTED_FFI"}
                       </span>
-                      <p className="mt-1 max-w-xs text-[11px] leading-relaxed text-muted">{k.engineeringRationale}</p>
                     </td>
                   </tr>
                 );
